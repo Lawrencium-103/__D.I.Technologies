@@ -1,0 +1,148 @@
+{
+  "version": "family",
+  "publisher": "Google",
+  "releaseDate": "2025-03-12",
+  "grade": "L1",
+  "gradeLabel": "Open weights with a restricted/custom license",
+  "ladderVerdict": {
+    "rung": "L1",
+    "justification": "The Gemma Terms permit commercial use and redistribution of the weights provided the Gemma Terms are attached, but prohibit using the weights to train or improve other models, exceeding 1 million monthly users without a separate Google license, and removing or modifying the Gemma Terms. This restricted/custom license places Gemma 3 at L1 on the OMSF Openness Ladder.",
+    "source": {
+      "title": "Gemma Terms of Use (P1)",
+      "url": "https://ai.google.dev/gemma/terms",
+      "date": "2025-03-12"
+    }
+  },
+  "license": {
+    "name": "Gemma Terms of Use",
+    "allowed": [
+      "Commercial use within the Gemma Terms",
+      "Redistribution of the weights with the Gemma Terms attached"
+    ],
+    "notAllowed": [
+      "Use the weights to train or improve other models",
+      "Exceed 1 million monthly users without a Google license",
+      "Remove or modify the Gemma Terms"
+    ],
+    "scaleTrigger": "Google license required above 1 million monthly users",
+    "permitsCommercial": true,
+    "commercialNote": "Commercial use is permitted under the Gemma Terms. If a product or service has more than 1 million monthly users, you must request a license from Google."
+  },
+  "deployment": {
+    "minHardware": "3 GB VRAM (Gemma 3 4B Q4_K_M)",
+    "offlineCapable": "Yes",
+    "throughput": "Not available",
+    "verdict": "runs on a single consumer GPU"
+  },
+  "technical": {
+    "contextLength": "128K tokens",
+    "parameters": "1B / 4B / 12B / 27B (dense)",
+    "formats": [
+      "Safetensors",
+      "GGUF"
+    ],
+    "precision": "BF16",
+    "quantizationImpact": "For the 27B variant, full BF16 precision requires ~54 GB VRAM; quantizing to GGUF Q4_K_M reduces this to ~14‑16 GB (≈4‑bit). Similar proportional savings apply to the 12B and 4B variants.",
+    "tokensPerSec": "Not available",
+    "minVramGb": "3 GB (Gemma 3 4B Q4_K_M)"
+  },
+  "series": [
+    {
+      "name": "Gemma 3 27B",
+      "params": "27B",
+      "minVramGb": "17 GB (Q4_K_M)",
+      "quantOptions": "Q4_K_M, Q8_0",
+      "notes": "Single 24GB GPU"
+    },
+    {
+      "name": "Gemma 3 12B",
+      "params": "12B",
+      "minVramGb": "8 GB (Q4_K_M)",
+      "quantOptions": "Q4_K_M",
+      "notes": "Consumer GPU"
+    },
+    {
+      "name": "Gemma 3 4B",
+      "params": "4B",
+      "minVramGb": "3 GB (Q4_K_M)",
+      "quantOptions": "Q4_K_M",
+      "notes": "Laptop / edge"
+    }
+  ],
+  "frames": {
+    "private": {
+      "text": "Private individuals can use Gemma 3 under the Gemma Terms for personal projects, research, or prototyping. Commercial use is allowed as long as the resulting service does not exceed 1 million monthly active users, and the weights must not be used to train other models.",
+      "recommendation": "adopt"
+    },
+    "enterprise": {
+      "text": "Enterprises may deploy Gemma 3 commercially, but must monitor monthly active users; exceeding 1 million MAU triggers a requirement to obtain a separate license from Google. Additionally, the license forbids using the weights to train or improve other models. These obligations necessitate compliance tracking.",
+      "recommendation": "adopt with caution"
+    },
+    "nonprofit": {
+      "text": "Nonprofit organizations enjoy the same commercial‑use permission as enterprises, subject to the 1 million MAU threshold and the prohibition on using the weights to train other models. If the nonprofit’s public‑facing application stays below the threshold, usage is unrestricted.",
+      "recommendation": "adopt with caution"
+    }
+  },
+  "disagreements": "None",
+  "comparison": null,
+  "sources": [
+    {
+      "title": "Gemma 3 on Hugging Face",
+      "url": "https://huggingface.co/google/gemma-3-27b-it",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Gemma 3 official",
+      "url": "https://ai.google.dev/gemma",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Gemma Terms of Use",
+      "url": "https://ai.google.dev/gemma/terms",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Gemma 3 - AI Model Profile - D-Central",
+      "url": "https://d-central.tech/ai/model/gemma-3",
+      "tier": "P2",
+      "date": "2025-03-12"
+    },
+    {
+      "title": "Google DeepMind Releases Gemma 3 with Open Weights and Multimodal",
+      "url": "https://udit.co/blog/google-deepmind-gemma-3-open-weights-multimodal",
+      "tier": "P2",
+      "date": ""
+    },
+    {
+      "title": "Mungert/gemma-3-4b-it-gguf",
+      "url": "https://huggingface.co/Mungert/gemma-3-4b-it-gguf",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Which gemma-3 27B for 32GB Vram",
+      "url": "https://discuss.vllm.ai/t/which-gemma-3-27b-for-32gb-vram/1625",
+      "tier": "P3",
+      "date": ""
+    },
+    {
+      "title": "Gemma 3 QAT Models: Bringing state-of-the-Art AI to Consumer GPUs",
+      "url": "https://developers.googleblog.com/en/gemma-3-quantized-aware-trained-state-of-the-art-ai-to-consumer-gpus",
+      "tier": "P2",
+      "date": ""
+    },
+    {
+      "title": "gemma-3",
+      "url": "https://lmstudio.ai/models/gemma-3",
+      "tier": "P2",
+      "date": ""
+    }
+  ],
+  "model": "Gemma 3",
+  "audience": "enterprise",
+  "reportDate": "2026-07-16",
+  "preview": false
+}

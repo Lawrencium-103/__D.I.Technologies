@@ -1,0 +1,99 @@
+{
+  "version": "family",
+  "publisher": "Mistral AI",
+  "releaseDate": "2025-07-22",
+  "grade": "L2",
+  "gradeLabel": "Open weights under a permissive license",
+  "ladderVerdict": {
+    "rung": "L2",
+    "justification": "The Apache 2.0 license permits commercial use, modification, and redistribution, requiring only preservation of license and notice, which satisfies the L2 openness rung.",
+    "source": {
+      "title": "Apache 2.0 (open-weight releases) (P1)",
+      "url": "https://mistral.ai/licenses",
+      "date": "2025-07-22"
+    }
+  },
+  "license": {
+    "name": "Apache 2.0 (open-weight releases)",
+    "allowed": [
+      "Commercial use",
+      "Modification",
+      "Redistribution"
+    ],
+    "notAllowed": [
+      "Remove the Apache 2.0 notice",
+      "Use the Mistral trademarks without permission"
+    ],
+    "scaleTrigger": "None (Apache 2.0, no threshold)",
+    "permitsCommercial": true,
+    "commercialNote": "Mistral open-weight releases are under Apache 2.0, which permits commercial use, modification and redistribution with attribution."
+  },
+  "deployment": {
+    "minHardware": "5 GB VRAM (Q4_K_M) for the 7B variant",
+    "offlineCapable": "Yes",
+    "throughput": "~25-30 tokens/s on GTX 1070 (8GB VRAM) with Q6_K quantization",
+    "verdict": "runs on a single consumer GPU"
+  },
+  "technical": {
+    "contextLength": "128K tokens (Mistral Large 3)",
+    "parameters": "Mistral Large 3: ~100B+ (per model card); 7B / 8B open-weight also available",
+    "formats": [
+      "Safetensors",
+      "GGUF"
+    ],
+    "precision": "BF16",
+    "quantizationImpact": "BF16 7B ~14 GB VRAM; Q4_K_M GGUF ~5 GB VRAM (≈65% reduction)",
+    "tokensPerSec": "~25-30 tokens/s on GTX 1070 (8GB VRAM) with Q6_K quantization",
+    "minVramGb": "5 GB"
+  },
+  "series": [
+    {
+      "name": "Mistral 7B",
+      "params": "7B",
+      "minVramGb": "5 GB (Q4_K_M)",
+      "quantOptions": "Q4_K_M, Q8_0",
+      "notes": "Consumer GPU"
+    },
+    {
+      "name": "Mistral Large 3",
+      "params": "~100B+",
+      "minVramGb": "Not available",
+      "quantOptions": "GGUF",
+      "notes": "Check model card for VRAM"
+    }
+  ],
+  "frames": {
+    "private": {
+      "text": "Apache 2.0 license allows commercial use, modification, and redistribution; the 7B variant runs on consumer hardware with as little as 5 GB VRAM when quantized.",
+      "recommendation": "adopt"
+    },
+    "enterprise": {
+      "text": "No usage‑based thresholds or royalties apply; enterprises can deploy the model commercially under Apache 2.0 with only attribution required.",
+      "recommendation": "adopt"
+    },
+    "nonprofit": {
+      "text": "Same permissive terms apply; nonprofits can freely use, modify, and redistribute the model under Apache 2.0.",
+      "recommendation": "adopt"
+    }
+  },
+  "disagreements": "Source [5] reports 6 GB VRAM for Mistral 7B (likely FP16) whereas authoritative facts list 5 GB VRAM for Q4_K_M quantization; source [4] mentions 16‑32 GB RAM or ≥16 GB VRAM GPU for Mistral Small 4 Q4/Q5, which pertains to a different model and not the Mistral 7B/Large 3 family.",
+  "comparison": null,
+  "sources": [
+    {
+      "title": "Mistral Licenses",
+      "url": "https://mistral.ai/licenses",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Hardware specs for GGUF 7B/13B/30B parameter models #3847",
+      "url": "https://github.com/ggml-org/llama.cpp/discussions/3847",
+      "tier": "P1",
+      "date": "Oct 29, 2023"
+    }
+  ],
+  "model": "Mistral",
+  "audience": "private",
+  "reportDate": "2026-07-16",
+  "preview": false
+}

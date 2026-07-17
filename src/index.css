@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   IMPERCCABLE DESIGN SYSTEM — Dara Initiative Technology
+   Editorial-poster aesthetic: warm cream + burnt orange,
+   amber brand accent, Chakra Petch display, JetBrains Mono.
+   ============================================================ */
+
+@theme {
+  --font-display: 'Chakra Petch', system-ui, sans-serif;
+  --font-body: 'Chakra Petch', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Surfaces */
+  --color-paper: #FBF7EF;        /* warm cream base */
+  --color-paper-2: #F3EAD9;      /* deeper cream (cards) */
+  --color-ink: #1A1712;          /* warm near-black */
+  --color-ink-soft: #43392F;     /* muted text on cream (AA contrast) */
+  --color-ink-faint: #6E6356;    /* faint labels on cream (AA contrast) */
+
+  /* Brand */
+  --color-amber: #CC8800;        /* primary amber */
+  --color-amber-deep: #A66E00;
+  --color-burnt: #C55221;        /* burnt orange (secondary) */
+  --color-burnt-deep: #A8431A;
+
+  /* Status */
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-danger: #DC2626;
+
+  /* Lines */
+  --color-line: rgba(26, 23, 18, 0.14);
+  --color-line-strong: rgba(26, 23, 18, 0.28);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-paper);
+    color: var(--color-ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-paper-2); }
+  ::-webkit-scrollbar-thumb { background: var(--color-line-strong); border-radius: 6px; }
+  ::selection { background: var(--color-amber); color: #fff; }
+  :focus-visible { outline: 2px solid var(--color-burnt); outline-offset: 3px; }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    line-height: 1.04;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  h1 { font-size: clamp(2.6rem, 7vw, 5.2rem); }
+  h2 { font-size: clamp(1.9rem, 4.5vw, 3.2rem); }
+  h3 { font-size: 1.35rem; }
+  p { color: var(--color-ink-soft); }
+  a { color: var(--color-burnt); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--color-amber-deep); }
+}
+
+@layer components {
+  /* Section backgrounds */
+  .bg-cream { background: var(--color-paper); color: var(--color-ink); }
+  .bg-cream-2 { background: var(--color-paper-2); color: var(--color-ink); }
+  .bg-burnt { background: var(--color-burnt); color: var(--color-paper); }
+  .bg-burnt-deep { background: var(--color-burnt-deep); color: var(--color-paper); }
+  .bg-ink { background: var(--color-ink); color: var(--color-paper); }
+
+  /* Eyebrow — used sparingly (taste rule: max 1 per 3 sections) */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--color-burnt);
+  }
+  .bg-burnt .eyebrow, .bg-ink .eyebrow { color: var(--color-paper); opacity: 0.85; }
+
+  /* Primary button — amber block, ink label, hard offset shadow */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.98rem;
+    padding: 0.95rem 1.7rem;
+    border-radius: 0;
+    border: 2px solid transparent;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--color-amber);
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+    box-shadow: 4px 4px 0 var(--color-ink);
+  }
+  .btn-primary:hover {
+    background: var(--color-amber-deep);
+    color: var(--color-ink);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--color-ink);
+  }
+  .btn-primary:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--color-ink); }
+
+  /* Ghost button — ink outline on cream, paper outline on burnt */
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+  .btn-ghost:hover { background: var(--color-ink); color: var(--color-paper); transform: translate(-2px, -2px); box-shadow: 4px 4px 0 rgba(26,23,18,0.25); }
+
+  .bg-burnt .btn-ghost, .bg-ink .btn-ghost {
+    color: var(--color-paper);
+    border-color: var(--color-paper);
+  }
+  .bg-burnt .btn-ghost:hover, .bg-ink .btn-ghost:hover {
+    background: var(--color-paper);
+    color: var(--color-burnt-deep);
+    box-shadow: none;
+  }
+
+  /* Editorial card — flat, hairline border, hard corner */
+  .card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-line-strong);
+    box-shadow: 8px 8px 0 rgba(26,23,18,0.08);
+  }
+
+  /* Index marker for editorial numbering */
+  .marker {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-burnt);
+  }
+
+  /* Blog post title: large but readable, not the full hero scale */
+  .blog-title {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    line-height: 1.08;
+  }
+
+  /* Report sheet: force brand colours when printed/saved as PDF */
+  .report-sheet {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* Print: only the branded report becomes the PDF */
+@media print {
+  nav, footer, .no-print { display: none !important; }
+  body { background: #fff; }
+  .report-sheet {
+    max-width: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+  @page { size: A4; margin: 12mm; }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 28s linear infinite; }
+.marquee-paused:hover .animate-marquee { animation-play-state: paused; }
+
+/* Reduced motion — keep unlayered so it always beats utility animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

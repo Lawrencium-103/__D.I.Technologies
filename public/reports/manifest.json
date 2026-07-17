@@ -1,0 +1,47 @@
+[
+  {
+    "file": "OMSF-Report-llama-4-L1-2025-04-10.pdf",
+    "model": "Llama 4",
+    "grade": "L1",
+    "gradeLabel": "Open weights with a restricted/custom license",
+    "date": "2025-04-10",
+    "audience": "enterprise",
+    "publisher": "Meta"
+  },
+  {
+    "file": "OMSF-Report-qwen3-L2-2025-05-12.pdf",
+    "model": "Qwen3",
+    "grade": "L2",
+    "gradeLabel": "Open weights under a permissive license",
+    "date": "2025-05-12",
+    "audience": "private",
+    "publisher": "Alibaba (Qwen Team)"
+  },
+  {
+    "file": "OMSF-Report-deepseek-v3-L2-2025-01-28.pdf",
+    "model": "DeepSeek V3",
+    "grade": "L2",
+    "gradeLabel": "Open weights under a permissive license",
+    "date": "2025-01-28",
+    "audience": "nonprofit",
+    "publisher": "DeepSeek AI"
+  },
+  {
+    "file": "OMSF-Report-gemma-3-L1-2025-03-15.pdf",
+    "model": "Gemma 3",
+    "grade": "L1",
+    "gradeLabel": "Open weights with a restricted/custom license",
+    "date": "2025-03-15",
+    "audience": "enterprise",
+    "publisher": "Google"
+  },
+  {
+    "file": "OMSF-Report-mistral-L2-2025-07-22.pdf",
+    "model": "Mistral",
+    "grade": "L2",
+    "gradeLabel": "Open weights under a permissive license",
+    "date": "2025-07-22",
+    "audience": "private",
+    "publisher": "Mistral AI"
+  }
+]

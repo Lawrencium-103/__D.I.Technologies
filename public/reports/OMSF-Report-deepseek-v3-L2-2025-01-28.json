@@ -1,0 +1,110 @@
+{
+  "version": "family",
+  "publisher": "DeepSeek AI",
+  "releaseDate": "Not available",
+  "grade": "L2",
+  "gradeLabel": "Open weights under a permissive license",
+  "ladderVerdict": {
+    "rung": "L2",
+    "justification": "The MIT license permits commercial use, modification, and redistribution, requiring only retention of the copyright and license notice; this satisfies the criteria for L2 (open weights under a permissive license).",
+    "source": {
+      "title": "MIT (P1)",
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3/blob/main/LICENSE",
+      "date": ""
+    }
+  },
+  "license": {
+    "name": "MIT",
+    "allowed": [
+      "Commercial use",
+      "Modification",
+      "Redistribution"
+    ],
+    "notAllowed": [
+      "Remove the MIT license or copyright notice"
+    ],
+    "scaleTrigger": "None (MIT, no threshold)",
+    "permitsCommercial": true,
+    "commercialNote": "MIT permits commercial use, modification and redistribution provided the copyright and license notice are retained."
+  },
+  "deployment": {
+    "minHardware": "~400 GB VRAM (Q4_K_M) requiring multi‑GPU/distributed setup",
+    "offlineCapable": "Yes",
+    "throughput": "Not available",
+    "verdict": "needs a small server"
+  },
+  "technical": {
+    "contextLength": "128K tokens",
+    "parameters": "671B total / 37B active (MoE, 256 experts)",
+    "formats": [
+      "Safetensors",
+      "GGUF"
+    ],
+    "precision": "BF16",
+    "quantizationImpact": "Moving from BF16 (≈1.34 TB VRAM for the full 671B‑parameter dense equivalent) to GGUF Q4_K_M reduces VRAM to ~400 GB, a ~70% reduction that enables multi‑GPU deployment.",
+    "tokensPerSec": "Not available",
+    "minVramGb": "~400 GB (Q4_K_M)"
+  },
+  "series": [
+    {
+      "name": "DeepSeek-V3",
+      "params": "671B total / 37B active (MoE)",
+      "minVramGb": "~400 GB (Q4_K_M)",
+      "quantOptions": "Q4_K_M, Q8_0",
+      "notes": "Multi-GPU / distributed"
+    },
+    {
+      "name": "DeepSeek-V3 (distilled)",
+      "params": "varies by distillation",
+      "minVramGb": "Not available",
+      "quantOptions": "GGUF",
+      "notes": "Community distills"
+    }
+  ],
+  "frames": {
+    "private": {
+      "text": "The full DeepSeek-V3 model requires ~400 GB VRAM in Q4_K_M quantization, which exceeds the capacity of a single consumer GPU, making local deployment impractical for most individuals without access to multi‑GPU servers or cloud instances.",
+      "recommendation": "adopt with caution"
+    },
+    "enterprise": {
+      "text": "Enterprises can meet the hardware requirements with multi‑GPU servers or cloud instances; the MIT license permits commercial use, modification, and redistribution with only attribution required.",
+      "recommendation": "adopt"
+    },
+    "nonprofit": {
+      "text": "Nonprofits with access to sufficient GPU resources (e.g., via research grants or cloud credits) can deploy the model under the permissive MIT license; otherwise, smaller community‑distilled versions may be more feasible.",
+      "recommendation": "adopt with caution"
+    }
+  },
+  "disagreements": "Some sources (e.g., source 4, 7, 9) discuss DeepSeek V3.2 or V3.5 specifications (VRAM ~1.4 TB) which pertain to a different version and should not be conflated with DeepSeek V3.",
+  "comparison": null,
+  "sources": [
+    {
+      "title": "DeepSeek-V3 model card (Hugging Face)",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3",
+      "tier": "P1",
+      "date": "Not available"
+    },
+    {
+      "title": "DeepSeek-V3 GitHub repository",
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3",
+      "tier": "P1",
+      "date": "Not available"
+    },
+    {
+      "title": "Unsloth DeepSeek-V3 GGUF",
+      "url": "https://huggingface.co/unsloth/DeepSeek-V3-GGUF",
+      "tier": "P1",
+      "date": "Not available"
+    },
+    {
+      "title": "DeepSeek-V3 Technical Report",
+      "url": "https://arxiv.org/html/2412.19437v1",
+      "tier": "P1",
+      "date": "Not available"
+    }
+  ],
+  "model": "DeepSeek V3",
+  "audience": "nonprofit",
+  "reportDate": "2026-07-16",
+  "preview": false
+}

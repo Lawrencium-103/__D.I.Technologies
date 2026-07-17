@@ -1,0 +1,142 @@
+{
+  "version": "family",
+  "publisher": "Meta",
+  "releaseDate": "2025-04-05",
+  "grade": "L1",
+  "gradeLabel": "Open weights with a restricted/custom license",
+  "ladderVerdict": {
+    "rung": "L1",
+    "justification": "The Llama 4 Community License permits use, reproduction, distribution, creation of derivative works (including commercial products), self-hosting and fine-tuning, but imposes restrictions such as requiring a separate Meta license for products or services exceeding 700 million monthly active users, prohibiting removal of Meta or safety-classifier notices, and mandating compliance with the Llama 4 Acceptable Use Policy.",
+    "source": {
+      "title": "Llama 4 Community License (P1)",
+      "url": "https://www.llama.com/licensing/community-license/",
+      "date": "2025-04-05"
+    }
+  },
+  "license": {
+    "name": "Llama 4 Community License",
+    "allowed": [
+      "Use, reproduce, distribute and create derivative works, including commercial products",
+      "Self-host and fine-tune the weights"
+    ],
+    "notAllowed": [
+      "Use by products or organizations exceeding 700 million monthly active users without a separate Meta license",
+      "Remove Meta or safety-classifier notices",
+      "Use contrary to the Llama 4 Acceptable Use Policy"
+    ],
+    "scaleTrigger": "Separate Meta license required above 700M monthly active users",
+    "permitsCommercial": true,
+    "commercialNote": "Commercial use is permitted. A separate license from Meta is required only if products or services based on Llama reach more than 700 million monthly active users."
+  },
+  "deployment": {
+    "minHardware": "Scout: ~55 GB VRAM (Q4_K_M) fits on a single H100 80GB GPU; Maverick: ~200 GB VRAM (Q4_K_M) requires a multi-GPU host",
+    "offlineCapable": "Yes",
+    "throughput": "Not available",
+    "verdict": "needs a small server"
+  },
+  "technical": {
+    "contextLength": "Scout: 10M tokens; Maverick: 1M tokens",
+    "parameters": "Scout: 109B total / 17B active (MoE, 16 experts); Maverick: 400B total / 17B active (MoE, 128 experts)",
+    "formats": [
+      "Safetensors",
+      "Meta Llama download",
+      "GGUF (community, e.g. Unsloth)"
+    ],
+    "precision": "BF16 (full); INT4 / GGUF quantizations available",
+    "quantizationImpact": "Moving from BF16 (2 bytes/param) to Q4_K_M 4-bit reduces VRAM roughly by half: Scout ~109B x 2 B ≈ 218 GB → ~55 GB; Maverick ~400B x 2 B ≈ 800 GB → ~200 GB.",
+    "tokensPerSec": "Not available",
+    "minVramGb": "55 GB (Scout Q4_K_M)"
+  },
+  "series": [
+    {
+      "name": "Scout",
+      "params": "109B total / 17B active (MoE, 16 experts)",
+      "minVramGb": "55 GB (Q4_K_M)",
+      "quantOptions": "Q4_K_M, Q8_0, 1.78-bit Unsloth",
+      "notes": "Single H100 80GB GPU in 4-bit"
+    },
+    {
+      "name": "Maverick",
+      "params": "400B total / 17B active (MoE, 128 experts)",
+      "minVramGb": "200 GB (Q4_K_M)",
+      "quantOptions": "Q4_K_M, Q8_0",
+      "notes": "Multi-GPU server required"
+    }
+  ],
+  "frames": {
+    "private": {
+      "text": "For individual developers and researchers, Llama 4 can be self-hosted, fine-tuned and used to build applications without any licensing fee as long as the resulting service stays below 700 million monthly active users and complies with the Acceptable Use Policy. The model’s weights are openly available, enabling offline experimentation.",
+      "recommendation": "adopt"
+    },
+    "enterprise": {
+      "text": "Enterprises may deploy Llama 4 internally or in products, benefitting from commercial-use permission. However, if the deployed product or service is expected to surpass 700 million monthly active users, a separate Meta license must be negotiated. Additionally, outputs must not violate the Acceptable Use Policy, and Meta notices must be retained.",
+      "recommendation": "adopt with caution"
+    },
+    "nonprofit": {
+      "text": "Non-profit organizations enjoy the same commercial-use rights as for-profit entities, subject to the 700 million MAU threshold and Acceptable Use Policy. There is no fee for using the weights, but they must monitor usage to avoid crossing the trigger that requires a separate Meta license.",
+      "recommendation": "adopt with caution"
+    }
+  },
+  "disagreements": "No substantive disagreements; source [5] (third-party blog) aligns with authoritative VRAM figures, and source [6] (Reddit) discusses quantization methods without conflict.",
+  "comparison": null,
+  "sources": [
+    {
+      "title": "Llama 4 official page",
+      "url": "https://www.llama.com/",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Meta blog: Introducing Llama 4",
+      "url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Llama 4 Community License",
+      "url": "https://www.llama.com/licensing/community-license/",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Llama 4 on Hugging Face",
+      "url": "https://huggingface.co/meta-llama",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "What is Llama 4 and How to Run it With Ollama (July 2026)",
+      "url": "https://www.thundercompute.com/blog/llama-4-ai-model-ollama",
+      "tier": "P3",
+      "date": "2026-07"
+    },
+    {
+      "title": "Overview of GGUF quantization methods : r/LocalLLaMA",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1ba55rj/overview_of_gguf_quantization_methods/",
+      "tier": "P3",
+      "date": ""
+    },
+    {
+      "title": "llama-models/models/llama4/LICENSE at main",
+      "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Silicon Showdown: Performance, Efficiency, and Ecosystem Barriers",
+      "url": "https://arxiv.org/html/2605.00519v2",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "The Llama 4 herd: The beginning of a new era of natively ...",
+      "url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+      "tier": "P1",
+      "date": ""
+    }
+  ],
+  "model": "Llama 4",
+  "audience": "enterprise",
+  "reportDate": "2026-07-16",
+  "preview": false
+}

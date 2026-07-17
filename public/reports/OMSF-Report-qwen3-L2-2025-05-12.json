@@ -1,0 +1,118 @@
+{
+  "version": "family",
+  "publisher": "Alibaba (Qwen Team)",
+  "releaseDate": "2025-04-29",
+  "grade": "L2",
+  "gradeLabel": "Open weights under a permissive license",
+  "ladderVerdict": {
+    "rung": "L2",
+    "justification": "The license is explicitly identified as 'Apache License Version 2.0', a permissive license that permits commercial use, modification, and distribution provided attribution and license notice are retained.",
+    "source": {
+      "title": "Apache 2.0 (P1)",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0",
+      "date": "2025-04-29"
+    }
+  },
+  "license": {
+    "name": "Apache 2.0",
+    "allowed": [
+      "Commercial use",
+      "Modification",
+      "Redistribution",
+      "Fine-tuning and derivative works"
+    ],
+    "notAllowed": [
+      "Remove the Apache 2.0 license or attribution notices",
+      "Use the Qwen trademarks without permission"
+    ],
+    "scaleTrigger": "None (Apache 2.0, no MAU or revenue threshold)",
+    "permitsCommercial": true,
+    "commercialNote": "Apache 2.0 permits commercial use, modification and redistribution provided attribution and the license notice are retained."
+  },
+  "deployment": {
+    "minHardware": "20 GB VRAM (Q4_K_M) for Qwen3-32B dense variant",
+    "offlineCapable": "Yes",
+    "throughput": "Not available",
+    "verdict": "runs on a single consumer GPU"
+  },
+  "technical": {
+    "contextLength": "32K tokens native (up to 128K with YaRN)",
+    "parameters": "Dense 0.6B to 32B; MoE 235B-A22B (22B active)",
+    "formats": [
+      "Safetensors",
+      "GGUF"
+    ],
+    "precision": "BF16",
+    "quantizationImpact": "Moving from BF16 (≈2 bytes/param) to GGUF Q4_K_M (≈0.5 bytes/param) reduces VRAM roughly 4‑fold; e.g., Qwen3-32B drops from ~64 GB to ~20 GB, and the MoE 235B‑A22B drops from ~470 GB to ~130 GB.",
+    "tokensPerSec": "Not available",
+    "minVramGb": "20 GB (Q4_K_M, Qwen3-32B)"
+  },
+  "series": [
+    {
+      "name": "Qwen3-32B",
+      "params": "32B dense",
+      "minVramGb": "20 GB (Q4_K_M)",
+      "quantOptions": "Q4_K_M, Q8_0",
+      "notes": "Single 24GB GPU"
+    },
+    {
+      "name": "Qwen3-235B-A22B",
+      "params": "235B total / 22B active (MoE)",
+      "minVramGb": "130 GB (Q4_K_M)",
+      "quantOptions": "Q4_K_M",
+      "notes": "Multi-GPU"
+    }
+  ],
+  "frames": {
+    "private": {
+      "text": "Qwen3 is released under the permissive Apache 2.0 license, allowing commercial use, modification, and redistribution. The dense 32B variant fits on a single consumer‑grade 24 GB GPU when quantized to Q4_K_M, enabling offline operation without licensing friction.",
+      "recommendation": "adopt"
+    },
+    "enterprise": {
+      "text": "Enterprises can freely deploy Qwen3 commercially under Apache 2.0 with no usage‑based fees or MAU thresholds. Larger MoE variants require multi‑GPU servers but remain free of licensing restrictions; attribution and preservation of the license notice are the only obligations.",
+      "recommendation": "adopt"
+    },
+    "nonprofit": {
+      "text": "Non‑profit organizations benefit from the same permissive terms: no cost, no usage limits, and the ability to fine‑tune or derivative works. The model runs offline on modest hardware when quantized, supporting mission‑driven applications.",
+      "recommendation": "adopt"
+    }
+  },
+  "disagreements": "Source 5 (D‑Central) references a Qwen3‑30B‑A3B variant that is not listed in the authoritative facts for the Qwen3 base release; this claim relies on a single P3 source and is unconfirmed for this report.",
+  "comparison": null,
+  "sources": [
+    {
+      "title": "Qwen3 blog",
+      "url": "https://qwenlm.github.io/blog/qwen3/",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Qwen3 on Hugging Face",
+      "url": "https://huggingface.co/Qwen",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Mungert/Qwen3-8B-GGUF · Hugging Face",
+      "url": "https://huggingface.co/Mungert/Qwen3-8B-GGUF",
+      "tier": "P1",
+      "date": ""
+    },
+    {
+      "title": "Qwen 3 - AI Model Profile - D-Central",
+      "url": "https://d-central.tech/ai/model/qwen-3",
+      "tier": "P3",
+      "date": ""
+    },
+    {
+      "title": "How to choose a Qwen3-8B quantization method: deciding AWQ, GPTQ, FP8, and GGUF by use",
+      "url": "https://tomodahinata.com/en/blog/qwen3-quantization-awq-gptq-fp8-gguf-comparison-guide",
+      "tier": "P3",
+      "date": ""
+    }
+  ],
+  "model": "Qwen3",
+  "audience": "private",
+  "reportDate": "2026-07-16",
+  "preview": false
+}
