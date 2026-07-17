@@ -80,12 +80,12 @@ function ScoringTool({ tool, ratings, setRating }) {
           <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.16em] text-[var(--color-burnt)]">{tool.id.toUpperCase()}</span>
           <h2 className="text-[1.5rem] leading-tight mt-1">{tool.title}</h2>
         </div>
-        <div className={`shrink-0 px-4 py-3 border-2 ${statusBorder(complete ? tier.color : 'none')} ${complete ? statusClasses(tier.color) : 'bg-[var(--color-paper-2)] text-[var(--color-ink-faint)]'} text-center`}>
+        <div className={`shrink-0 px-4 py-3 border-2 ${answered > 0 ? statusBorder(tier.color) : 'border-[var(--color-line)]'} ${answered > 0 ? statusClasses(tier.color) : 'bg-[var(--color-paper-2)] text-[var(--color-ink-faint)]'} text-center`}>
           <div className="font-[var(--font-display)] font-bold text-[1.3rem] leading-none">
-            {complete ? `${total} / ${max}` : `${answered}/${tool.items.length} done`}
+            {`${Math.round(pct)}%`}
           </div>
           <div className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.12em] mt-1">
-            {complete ? `${tier.label} · ${Math.round(pct)}%` : 'in progress'}
+            {answered > 0 ? `${tier.label} · ${answered}/${tool.items.length}` : 'not started'}
           </div>
         </div>
       </div>
@@ -142,7 +142,7 @@ function ScoringTool({ tool, ratings, setRating }) {
           })}
         </div>
 
-        {complete && (
+        {answered > 0 && (
           <div className={`mt-6 p-5 border-l-[6px] ${statusBorder(tier.color)} ${statusClasses(tier.color)}`}>
             <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.18em]">Tier: {tier.label} ({Math.round(pct)}%)</span>
             <p className="mt-2 text-[0.95rem] leading-relaxed">{tier.advice}</p>
@@ -419,7 +419,7 @@ export default function SsmeToolkit() {
     })
     const pct = max ? (total / max) * 100 : 0
     const complete = answered === tool.items.length
-    return { tool, total, max, pct, complete, tier: tierFor(pct) }
+    return { tool, total, max, pct, complete, answered, tier: tierFor(pct) }
   })
 
   const navTools = [
@@ -477,15 +477,15 @@ export default function SsmeToolkit() {
           <h2 className="text-[1.4rem] mb-5">Your scoreboard</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
             {summary.map((s) => (
-              <div key={s.tool.id} className={`border-2 ${statusBorder(s.complete ? s.tier.color : 'none')} ${s.complete ? statusClasses(s.tier.color) : 'bg-[var(--color-paper-2)] text-[var(--color-ink)]'} p-5`}>
+              <div key={s.tool.id} className={`border-2 ${s.answered > 0 ? statusBorder(s.tier.color) : 'border-[var(--color-line)]'} ${s.answered > 0 ? statusClasses(s.tier.color) : 'bg-[var(--color-paper-2)] text-[var(--color-ink)]'} p-5`}>
                 <div className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] opacity-80">{s.tool.id.toUpperCase()}</div>
                 <div className="font-[var(--font-display)] font-bold text-[1.6rem] leading-none mt-2">
-                  {s.complete ? `${Math.round(s.pct)}%` : `${s.tool.items.filter((it) => state.ratings[`${s.tool.id}:${it.n}`]).length}/${s.tool.items.length}`}
+                  {`${Math.round(s.pct)}%`}
                 </div>
                 <div className="text-[0.82rem] mt-1 font-medium">
-                  {s.complete ? s.tier.label : 'In progress'}
+                  {s.answered > 0 ? s.tier.label : 'Not started'}
                 </div>
-                <div className="text-[0.72rem] mt-1 opacity-80">{s.complete ? `${s.total} / ${s.max}` : 'answer all items'}</div>
+                <div className="text-[0.72rem] mt-1 opacity-80">{s.answered}/{s.tool.items.length} · {s.total}/{s.max} pts</div>
               </div>
             ))}
           </div>
