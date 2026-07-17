@@ -222,10 +222,10 @@ export default function SSME() {
             <span className="eyebrow">Standards Alignment Matrix</span>
             <h2 className="mt-3 mb-3 max-w-[24ch]">Show funders and buyers you already comply.</h2>
             <p className="text-[1.05rem] max-w-[64ch] mb-10">
-              A single workbook that maps every item in the DIT Sustainable SME Toolkit to the frameworks that
-              actually open doors: the IFC Performance Standards (PS1-PS8), the EU ESRS, the VSME standard and EU
-              Taxonomy, and 14 Nigerian regulators - CAC, FIRS, NESREA, SMEDAN/FRCN, BoI, DBN, CBN and REA among
-              them. 117 items, individually scored as Full, Partial, Gap or N/A, with a How-to-use sheet built in.
+              One Excel workbook maps all 117 items in the DIT SME Toolkit to the frameworks that open doors -
+              IFC Performance Standards (PS1-PS8), EU ESRS, VSME, EU Taxonomy, and 14 Nigerian regulators
+              (CAC, FIRS, NESREA, SMEDAN/FRCN, BoI, DBN, CBN, REA). Each item is scored Full, Partial, Gap or
+              N/A, with a built-in How-to-use sheet.
             </p>
           </ScrollReveal>
 
@@ -235,10 +235,10 @@ export default function SSME() {
                 <h3 className="text-[1.3rem] mb-4 text-[var(--color-ink)]">Why this matrix sells your SME</h3>
                 <ul className="space-y-4">
                   {[
-                    { t: 'Unlock Nigerian finance', d: 'BoI, DBN and CBN all screen CAC status, tax clearance and governance before they lend. The matrix shows those items are covered - and which to fix first.' },
-                    { t: 'Pass EU green-finance and buyer checks', d: 'EU-linked lenders and European buyers screen against ESRS, VSME and the EU Deforestation Regulation. Map your toolkit to those standards in one view.' },
-                    { t: 'Win donor grants and tenders', d: 'Grant-makers and procurement teams ask for evidence of IFC and national standards. Hand them the cross-reference instead of rebuilding it.' },
-                    { t: 'Find the gaps before an auditor does', d: 'Red and amber cells flag exactly where the toolkit is silent, so you close gaps on your terms, not under pressure.' },
+                    { t: 'Unlock Nigerian finance', d: 'BoI, DBN and CBN screen CAC status, tax clearance and governance first. The matrix shows what is covered and what to fix.' },
+                    { t: 'Pass EU checks', d: 'Map your toolkit to ESRS, VSME and the EU Deforestation Regulation in one view for EU lenders and buyers.' },
+                    { t: 'Win grants and tenders', d: 'Hand auditors and procurement a cross-reference instead of rebuilding it.' },
+                    { t: 'Close gaps early', d: 'Red and amber cells flag where the toolkit is silent, on your terms.' },
                   ].map((x, i) => (
                     <li key={i}>
                       <span className="font-semibold text-[var(--color-burnt)]">{x.t}.</span>{' '}
@@ -252,7 +252,9 @@ export default function SSME() {
             <ScrollReveal delay={0.1}>
               <div className="bg-[var(--color-ink)] text-[var(--color-paper)] border-2 border-[var(--color-ink)] p-8 h-full flex flex-col">
                 <h3 className="text-[1.25rem] mb-3">{smeMatrix.label}</h3>
-                <p className="text-[0.95rem] text-[var(--color-paper)]/85 mb-6 flex-1">{smeMatrix.description}</p>
+                <p className="text-[0.95rem] text-[var(--color-paper)]/85 mb-6 flex-1">
+                  117 items mapped to IFC, EU and Nigerian standards, with a built-in How-to-use sheet.
+                </p>
                 <a
                   href={smeMatrix.file}
                   download
@@ -261,11 +263,7 @@ export default function SSME() {
                   Download the matrix (Excel) <ArrowRight size={18} />
                 </a>
                 <p className="text-[0.8rem] text-[var(--color-paper)]/70 mt-4">
-                  Includes a "How to use" sheet and the full Standards Legend. Open it in Excel, Google Sheets or
-                  LibreOffice - no macros required.
-                </p>
-                <p className="text-[0.78rem] text-[var(--color-paper)]/60 mt-4 border-t border-[var(--color-paper)]/20 pt-4">
-                  Open it in Excel, Google Sheets or LibreOffice. No macros required.
+                  Opens in Excel, Google Sheets or LibreOffice - no macros required.
                 </p>
               </div>
             </ScrollReveal>
