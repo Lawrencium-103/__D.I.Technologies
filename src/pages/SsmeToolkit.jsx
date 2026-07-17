@@ -502,7 +502,8 @@ export default function SsmeToolkit() {
                 key={d.file}
                 file={d.file}
                 label={d.label}
-                description={d.description}
+                summary={d.summary}
+                achieve={d.achieve}
                 counts={counts[d.file] || {}}
                 onDownload={download}
                 onLike={like}
