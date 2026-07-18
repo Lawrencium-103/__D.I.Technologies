@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
+import OmsfStats from '../components/OmsfStats'
 
 const academic = [
   {
@@ -84,6 +85,8 @@ export default function Research() {
             industry frameworks that already exist. This page names them directly, says what each one contributes,
             and says plainly where OMSF’s own contribution begins and ends.
           </p>
+
+          <OmsfStats />
 
           {/* Provenance rule */}
           <div className="bg-[var(--color-ink)] text-[var(--color-paper)] p-6 sm:p-8 mb-14 border-l-[6px] border-[var(--color-burnt)]">

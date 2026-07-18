@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Sun, WifiOff, ClipboardCheck, Target, Megaphone, Users, Store, Banknote, Landmark } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import SmePdfCard from '../components/SmePdfCard'
+import SmeStats from '../components/SmeStats'
 import { useSmePdfs } from '../lib/smePdf'
 import { smePdfDownloads, smeMatrix } from '../data/smeToolkit'
 
@@ -193,10 +194,11 @@ export default function SSME() {
           <ScrollReveal>
             <span className="eyebrow">Take it offline</span>
             <h2 className="mt-3 mb-3">Download the fillable DIT PDFs</h2>
-            <p className="text-[1.05rem] max-w-[62ch] mb-12">
+            <p className="text-[1.05rem] max-w-[62ch] mb-8">
               Seven printable, fillable tools that calculate your score as you fill them in. Each card shows what
               the tool does and what it helps you achieve.
             </p>
+            <SmeStats />
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {smePdfDownloads.map((d) => (

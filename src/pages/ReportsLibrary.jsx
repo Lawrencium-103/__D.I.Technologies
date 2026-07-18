@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Heart } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
+import OmsfStats from '../components/OmsfStats'
 
 export default function ReportsLibrary() {
   const [items, setItems] = useState([])
@@ -33,8 +34,6 @@ export default function ReportsLibrary() {
 
   const audienceLabel = (a) =>
     ({ general: 'General', private: 'Private / individual', enterprise: 'Enterprise', nonprofit: 'Non-profit / public' }[a] || a)
-
-  const totalLikes = Object.values(stats.likes || {}).reduce((a, b) => a + (b || 0), 0)
 
   const like = (id) => {
     if (liked[id]) return
@@ -71,19 +70,8 @@ export default function ReportsLibrary() {
             sourced from the web, and laid out in our branded DIT report template. Free to read, free to download.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 mb-10">
-            <div className="bg-[var(--color-ink)] text-[var(--color-paper)] px-4 py-2.5">
-              <span className="font-[var(--font-display)] font-bold text-[1.35rem] leading-none">{stats.generated}</span>
-              <span className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] ml-2 text-[var(--color-amber)]">
-                reports generated
-              </span>
-            </div>
-            <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] px-4 py-2.5">
-              <span className="font-[var(--font-display)] font-bold text-[1.35rem] leading-none">{totalLikes}</span>
-              <span className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] ml-2 text-[var(--color-ink-faint)]">
-                community likes
-              </span>
-            </div>
+          <div className="mb-10">
+            <OmsfStats libraryCount={items.length} />
           </div>
         </ScrollReveal>
 

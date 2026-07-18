@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
+import OmsfStats from '../components/OmsfStats'
 import framework from '../data/contentFramework'
 
 export default function Framework() {
@@ -24,6 +25,7 @@ export default function Framework() {
           <p className="text-[1.25rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[60ch] mb-10">
             {f.tagline}
           </p>
+          <OmsfStats />
         </ScrollReveal>
 
         {/* Position / moat */}
