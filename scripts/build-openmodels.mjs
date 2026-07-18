@@ -8,11 +8,6 @@ const outPath = process.argv[3] || resolve("src/data/openModels.json");
 
 const html = readFileSync(htmlPath, "utf8");
 
-function extract(re, text, group = 1, all = false) {
-  const m = all ? [...text.matchAll(re)] : text.match(re);
-  return m;
-}
-
 // Each row is an <a href="/model/..."> with 7 ordered spans.
 const rowRe = /<a [^>]*href="\/model\/([^"]+)"[^>]*>([\s\S]*?)<\/a>/g;
 const rows = [...html.matchAll(rowRe)];
