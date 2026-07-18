@@ -28,7 +28,7 @@ export default function Footer() {
               <Link to="/" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">Home</Link>
               <Link to="/about" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">About Us</Link>
               <Link to="/edutech" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">EduTech · SomaBox</Link>
-              <Link to="/ai-hub" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">AI Hub</Link>
+              <Link to="/ai-hub" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">AI Training Hub</Link>
               <Link to="/s-sme" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">S-SME</Link>
               <Link to="/blog" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">Blog</Link>
               <Link to="/framework" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">OpenModel Framework</Link>

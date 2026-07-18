@@ -4,7 +4,7 @@ import ScrollReveal from '../components/ScrollReveal'
 
 const pillars = [
   { icon: BookOpen, title: 'EduTech', subtitle: 'SomaBox', desc: ['Offline AI tutor', '60+ NERDC textbooks', '26 slash commands', 'Zero internet required'], link: '/edutech', tone: 'burnt' },
-  { icon: GraduationCap, title: 'AI Hub', subtitle: 'Dara AI Hub', desc: ['9 training tracks', 'Corporate & creative', 'Hands-on workshops', 'Nigerian context'], link: '/ai-hub', tone: 'ink' },
+  { icon: GraduationCap, title: 'AI Training Hub', subtitle: 'Dara AI Training Hub', desc: ['9 training tracks', 'Corporate & creative', 'Hands-on workshops', 'Nigerian context'], link: '/ai-hub', tone: 'ink' },
   { icon: Building2, title: 'S-SME', subtitle: 'Sustainable SMEs', desc: ['Green energy layouts', 'Offline inventory', 'AI advisory', 'Local digitisation'], link: '/s-sme', tone: 'amber' },
 ]
 

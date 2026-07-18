@@ -259,7 +259,7 @@ export default function EduTech() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="btn btn-primary">Join the pilot <ArrowRight size={18} /></Link>
-              <Link to="/ai-hub" className="btn btn-ghost">Explore AI Hub</Link>
+              <Link to="/ai-hub" className="btn btn-ghost">Explore AI Training Hub</Link>
             </div>
           </ScrollReveal>
         </div>

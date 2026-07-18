@@ -22,9 +22,9 @@ export default function AIHub() {
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal>
             <p className="font-[var(--font-mono)] text-[0.78rem] uppercase tracking-[0.18em] text-[var(--color-ink-faint)] mb-6">
-              <Link to="/" className="hover:text-[var(--color-burnt)] no-underline">Home</Link> / AI Hub
+              <Link to="/" className="hover:text-[var(--color-burnt)] no-underline">Home</Link> / AI Training Hub
             </p>
-            <h1 className="max-w-[18ch]">Dara AI Hub: <span className="text-[var(--color-burnt)]">AI skills for Nigeria.</span></h1>
+            <h1 className="max-w-[18ch]">Dara AI Training Hub: <span className="text-[var(--color-burnt)]">AI skills for Nigeria.</span></h1>
             <p className="text-[1.1rem] max-w-[58ch] mt-5">
               Not lectures about AI. Real, hands-on training that gives you AI skills you can use tomorrow, in your
               workplace, your business, your classroom.
@@ -68,7 +68,7 @@ export default function AIHub() {
           <ScrollReveal>
             <span className="eyebrow">Training tracks</span>
             <h2 className="mt-3 mb-3">9 tracks. Hands-on.</h2>
-            <p className="text-[1.05rem] max-w-[56ch] mb-12">Every track is project-based. You leave with a portfolio piece, not a certificate.</p>
+            <p className="text-[1.05rem] max-w-[56ch] mb-12">Every track is project-based and ends with a real artifact you can use. Expand a track for its curriculum, outcome and format.</p>
           </ScrollReveal>
 
           <div className="border-t-2 border-[var(--color-ink)]">
@@ -77,7 +77,7 @@ export default function AIHub() {
               const n = String(indexOf(track.id)).padStart(2, '0')
               return (
                 <ScrollReveal key={track.id}>
-                  <div className="border-b-2 border-[var(--color-ink)]">
+                  <div className={`border-b-2 border-[var(--color-ink)] ${open ? 'bg-[var(--color-paper-2)]' : ''}`}>
                     <button
                       onClick={() => setActive(open ? null : track.id)}
                       className="w-full flex items-center gap-4 sm:gap-6 py-6 text-left bg-transparent border-0 cursor-pointer group"
@@ -88,29 +88,46 @@ export default function AIHub() {
                         <h3 className="text-[1.3rem] sm:text-[1.5rem] text-[var(--color-ink)] group-hover:text-[var(--color-burnt)] transition-colors">{track.title}</h3>
                         <p className="text-[0.95rem] text-[var(--color-ink-soft)] mt-1 max-w-[60ch]">{track.what}</p>
                       </div>
+                      <span className="hidden lg:block font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.1em] text-[var(--color-burnt)] shrink-0 max-w-[12ch] text-right">{track.how}</span>
                       <span className="hidden sm:block font-[var(--font-mono)] text-[0.74rem] uppercase tracking-[0.12em] text-[var(--color-ink-faint)] shrink-0">{track.audience}</span>
                       <ChevronRight size={22} className={`text-[var(--color-burnt)] shrink-0 transition-transform ${open ? 'rotate-90' : ''}`} />
                     </button>
 
                     {open && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-9 px-2">
                         <div>
+                          <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.18em] text-[var(--color-burnt)]">Why this track</span>
+                          <p className="mt-3 text-[0.95rem] text-[var(--color-ink-soft)] mb-7">{track.why}</p>
+
                           <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.18em] text-[var(--color-burnt)]">Curriculum</span>
-                          <ul className="mt-4 space-y-3">
+                          <ul className="mt-4 space-y-4">
                             {track.curriculum.map((m, j) => (
-                              <li key={j} className="flex items-start gap-2 text-[0.92rem] text-[var(--color-ink-soft)]">
-                                <CheckCircle2 size={15} className="text-[var(--color-burnt)] mt-0.5 shrink-0" />
-                                <div><span className="text-[var(--color-ink)] font-medium">{m.module}</span> <span className="text-[var(--color-ink-faint)]">: {m.topics}</span></div>
+                              <li key={j} className="flex items-start gap-3">
+                                <CheckCircle2 size={16} className="text-[var(--color-burnt)] mt-0.5 shrink-0" />
+                                <div>
+                                  <div className="text-[0.95rem] text-[var(--color-ink)] font-medium">{m.module}</div>
+                                  <div className="text-[0.88rem] text-[var(--color-ink-soft)]">{m.topics}</div>
+                                  {m.tool && m.tool !== 'None' && (
+                                    <span className="inline-block mt-1 font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.08em] text-[var(--color-ink-faint)] border border-[var(--color-line)] px-2 py-0.5">
+                                      {m.tool}
+                                    </span>
+                                  )}
+                                </div>
                               </li>
                             ))}
                           </ul>
                         </div>
-                        <div>
+                        <div className="border-t-2 md:border-t-0 md:border-l-2 border-[var(--color-line)] md:pl-8 pt-7 md:pt-0">
                           <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.18em] text-[var(--color-burnt)]">Outcome</span>
-                          <p className="mt-4 text-[0.95rem] text-[var(--color-ink-soft)] mb-5">{track.outcome}</p>
-                          <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.18em] text-[var(--color-burnt)]">How</span>
-                          <p className="mt-2 text-[0.92rem] text-[var(--color-ink-soft)] mb-6">{track.how}</p>
-                          <Link to="/contact" className="btn btn-primary !py-2.5 !px-5 !text-sm">Book this track <ArrowRight size={16} /></Link>
+                          <p className="mt-3 text-[1.05rem] text-[var(--color-ink)] font-medium leading-snug">{track.outcome}</p>
+
+                          <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.18em] text-[var(--color-burnt)] block mt-7">Format &amp; duration</span>
+                          <p className="mt-2 text-[0.95rem] text-[var(--color-ink-soft)]">{track.how}</p>
+
+                          <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.18em] text-[var(--color-burnt)] block mt-7">For</span>
+                          <p className="mt-2 text-[0.95rem] text-[var(--color-ink-soft)]">{track.audience}</p>
+
+                          <Link to="/contact" className="btn btn-primary !py-2.5 !px-5 !text-sm mt-7">Book this track <ArrowRight size={16} /></Link>
                         </div>
                       </div>
                     )}
@@ -126,7 +143,7 @@ export default function AIHub() {
       <section className="bg-ink py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal>
-            <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-amber)]">Why DIT AI Hub</span>
+            <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-amber)]">Why DIT AI Training Hub</span>
             <h2 className="mt-3 mb-12 text-[var(--color-paper)]">Built for Nigeria, not imported.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -153,7 +170,7 @@ export default function AIHub() {
           <ScrollReveal>
             <span className="eyebrow">Who teaches the tracks</span>
             <h2 className="mt-3 mb-3">Run by people who build and use AI.</h2>
-            <p className="text-[1.05rem] max-w-[58ch] mb-12">Every Dara AI Hub session is led by the founders, not a roster of guest speakers. You learn from the people doing the work.</p>
+            <p className="text-[1.05rem] max-w-[58ch] mb-12">Every Dara AI Training Hub session is led by the founders, not a roster of guest speakers. You learn from the people doing the work.</p>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

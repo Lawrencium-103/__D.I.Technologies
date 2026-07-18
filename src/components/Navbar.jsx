@@ -6,7 +6,7 @@ const links = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/edutech', label: 'EduTech' },
-  { to: '/ai-hub', label: 'AI Hub' },
+  { to: '/ai-hub', label: 'AI Training Hub' },
   { to: '/s-sme', label: 'S-SME' },
   { to: '/blog', label: 'Blog' },
   { to: '/research', label: 'Research' },

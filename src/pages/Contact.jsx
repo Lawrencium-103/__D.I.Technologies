@@ -4,8 +4,8 @@ import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 
 const needs = [
-  'AI Hub training (individual)',
-  'AI Hub training (corporate)',
+  'AI Training Hub (individual)',
+  'AI Training Hub (corporate)',
   'SomaBox for my school',
   'S-SME sustainability audit',
   'Partnership / Collaboration',

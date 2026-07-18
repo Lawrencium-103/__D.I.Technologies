@@ -102,7 +102,7 @@ export default function Home() {
       {/* MARQUEE */}
       <section className="bg-ink py-0">
         <div className="border-y-2 border-[var(--color-paper)]/15 py-1">
-          <Marquee items={['SomaBox', 'Dara AI Hub', 'S-SME', 'Offline-first', 'NERDC curriculum', 'Open source', 'Teacher-built']} />
+          <Marquee items={['SomaBox', 'Dara AI Training Hub', 'S-SME', 'Offline-first', 'NERDC curriculum', 'Open source', 'Teacher-built']} />
         </div>
       </section>
 
