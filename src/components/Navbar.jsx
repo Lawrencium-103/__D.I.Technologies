@@ -10,6 +10,7 @@ const links = [
   { to: '/s-sme', label: 'S-SME' },
   { to: '/blog', label: 'Blog' },
   { to: '/research', label: 'Research' },
+  { to: '/open-models', label: 'Open Models' },
 ]
 
 export default function Navbar() {

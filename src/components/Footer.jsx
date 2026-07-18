@@ -33,6 +33,7 @@ export default function Footer() {
               <Link to="/blog" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">Blog</Link>
               <Link to="/framework" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">OpenModel Framework</Link>
               <Link to="/research" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">Research Behind OMSF</Link>
+  <Link to="/open-models" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">Open Model Leaderboard</Link>
               <Link to="/report" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">Report Builder</Link>
               <Link to="/reports" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors text-sm no-underline">Report Library</Link>
             </div>

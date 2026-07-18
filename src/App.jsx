@@ -14,6 +14,7 @@ import SsmeEvidence from './pages/SsmeEvidence'
 import SsmeToolkit from './pages/SsmeToolkit'
 import ReportBuilder from './pages/ReportBuilder'
 import ReportsLibrary from './pages/ReportsLibrary'
+import OpenModels from './pages/OpenModels'
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/s-sme/toolkit" element={<SsmeToolkit />} />
           <Route path="/report" element={<ReportBuilder />} />
           <Route path="/reports" element={<ReportsLibrary />} />
+          <Route path="/open-models" element={<OpenModels />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>
