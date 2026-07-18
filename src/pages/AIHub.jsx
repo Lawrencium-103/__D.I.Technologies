@@ -108,8 +108,12 @@ export default function AIHub() {
                                   <div className="text-[0.95rem] text-[var(--color-ink)] font-medium">{m.module}</div>
                                   <div className="text-[0.88rem] text-[var(--color-ink-soft)]">{m.topics}</div>
                                   {m.tool && m.tool !== 'None' && (
-                                    <span className="inline-block mt-1 font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.08em] text-[var(--color-ink-faint)] border border-[var(--color-line)] px-2 py-0.5">
-                                      {m.tool}
+                                    <span className="flex flex-wrap gap-1.5 mt-1.5">
+                                      {m.tool.split(',').map((t, k) => (
+                                        <span key={k} className="font-[var(--font-mono)] text-[0.64rem] uppercase tracking-[0.06em] text-[var(--color-ink-faint)] border border-[var(--color-line)] px-2 py-0.5">
+                                          {t.trim()}
+                                        </span>
+                                      ))}
                                     </span>
                                   )}
                                 </div>
