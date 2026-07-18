@@ -4,32 +4,32 @@ import { useState } from 'react'
 // the parent-provided handlers. These PDFs are the official fillable tools with
 // built-in calculations, so no "leaving the app" warning is shown.
 
-const LIKE_KEY = 'dit-sme-pdf-liked'
+const LIKE_SESSION_KEY = 'dit-sme-pdf-liked-session'
 
-function likedSet() {
+function sessionLiked(file) {
   try {
-    return new Set(JSON.parse(localStorage.getItem(LIKE_KEY) || '[]'))
+    return new Set(JSON.parse(sessionStorage.getItem(LIKE_SESSION_KEY) || '[]')).has(file)
   } catch {
-    return new Set()
+    return false
   }
 }
 
 export default function SmePdfCard({ file, label, summary = null, achieve = null, counts = {}, onDownload, onLike }) {
   const downloads = counts.downloads || 0
   const likes = counts.likes || 0
-  const [liked, setLiked] = useState(() => likedSet().has(file))
+  const [liked, setLiked] = useState(() => sessionLiked(file))
 
-  const handleLike = async () => {
+  const handleLike = () => {
     if (liked) return
-    const set = likedSet()
+    const set = new Set(JSON.parse(sessionStorage.getItem(LIKE_SESSION_KEY) || '[]'))
     set.add(file)
     try {
-      localStorage.setItem(LIKE_KEY, JSON.stringify([...set]))
+      sessionStorage.setItem(LIKE_SESSION_KEY, JSON.stringify([...set]))
     } catch {
       /* ignore */
     }
     setLiked(true)
-    if (onLike) await onLike(file)
+    if (onLike) onLike(file)
   }
 
   return (
