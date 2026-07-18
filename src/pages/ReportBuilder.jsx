@@ -35,15 +35,16 @@ export default function ReportBuilder() {
       if (res.ok) {
         const data = await res.json()
         setReport(data.report)
-        recordGenerated()
       } else if (res.status === 501) {
         // Backend not configured: use client preview so the tool still works.
         setReport(getMockReport(model.trim(), audience))
       } else {
         throw new Error('Report service returned an error.')
       }
+      recordGenerated()
     } catch {
       setReport(getMockReport(model.trim(), audience))
+      recordGenerated()
     } finally {
       setLoading(false)
     }
