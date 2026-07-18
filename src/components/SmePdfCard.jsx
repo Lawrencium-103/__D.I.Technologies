@@ -15,20 +15,9 @@ function likedSet() {
 }
 
 export default function SmePdfCard({ file, label, summary = null, achieve = null, counts = {}, onDownload, onLike }) {
-  const [busy, setBusy] = useState(false)
   const downloads = counts.downloads || 0
   const likes = counts.likes || 0
-  const liked = likedSet().has(file)
-
-  const handleDownload = async () => {
-    setBusy(true)
-    try {
-      if (onDownload) await onDownload(file)
-      window.open(file, '_blank', 'noopener')
-    } finally {
-      setBusy(false)
-    }
-  }
+  const [liked, setLiked] = useState(() => likedSet().has(file))
 
   const handleLike = async () => {
     if (liked) return
@@ -39,6 +28,7 @@ export default function SmePdfCard({ file, label, summary = null, achieve = null
     } catch {
       /* ignore */
     }
+    setLiked(true)
     if (onLike) await onLike(file)
   }
 
@@ -62,18 +52,26 @@ export default function SmePdfCard({ file, label, summary = null, achieve = null
         </p>
       ) : null}
       <div className="flex items-center justify-between gap-3 mt-5">
-        <button onClick={handleDownload} disabled={busy} className="btn btn-primary text-[0.85rem] px-4 py-2">
-          {busy ? 'Opening...' : 'Download PDF'}
-        </button>
-        <div className="flex items-center gap-3 font-[var(--font-mono)] text-[0.72rem] text-[var(--color-ink-faint)]">
-          <span title="Downloads">&#8595; {downloads}</span>
+        <a
+          href={file}
+          download
+          onClick={() => onDownload && onDownload(file)}
+          className="btn btn-primary text-[0.9rem] px-5 py-2.5 no-underline"
+        >
+          Download PDF
+        </a>
+        <div className="flex items-center gap-2 font-[var(--font-mono)] text-[0.78rem]">
+          <span title="Downloads" className="flex items-center gap-1 text-[var(--color-ink-faint)]">&#8595; {downloads}</span>
           <button
+            type="button"
             onClick={handleLike}
             disabled={liked}
-            className={`flex items-center gap-1 no-underline ${liked ? 'text-[var(--color-burnt)]' : 'text-[var(--color-ink-faint)] hover:text-[var(--color-burnt)]'}`}
+            aria-pressed={liked}
+            className={`flex items-center gap-1.5 rounded-sm px-2.5 py-2 min-h-[40px] min-w-[44px] justify-center transition-colors no-underline ${liked ? 'text-[var(--color-burnt)] cursor-default' : 'text-[var(--color-ink-faint)] hover:text-[var(--color-burnt)] hover:bg-[var(--color-paper)]'}`}
             title={liked ? 'Thanks for the love' : 'Like this tool'}
           >
-            {liked ? '♥' : '♡'} {likes}
+            <span aria-hidden="true" className="text-[1.1rem] leading-none">{liked ? '♥' : '♡'}</span>
+            <span>{likes}</span>
           </button>
         </div>
       </div>
