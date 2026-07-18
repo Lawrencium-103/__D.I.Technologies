@@ -36,7 +36,10 @@ export default function ReportBuilder() {
         const data = await res.json()
         setReport(data.report)
       } else if (res.status === 501) {
-        // Backend not configured: use client preview so the tool still works.
+        // Backend not configured / live generation failed: show the offline
+        // preview but surface the real reason so the issue is diagnosable.
+        const d = await res.json().catch(() => ({}))
+        setError(d.error || 'Live web data is unavailable — showing offline preview.')
         setReport(getMockReport(model.trim(), audience))
       } else {
         throw new Error('Report service returned an error.')
