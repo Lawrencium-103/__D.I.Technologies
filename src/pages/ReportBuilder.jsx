@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import ReportDocument from '../components/ReportDocument'
+import OmsfStats from '../components/OmsfStats'
 import { getMockReport } from '../data/reportMock'
 
 const AUDIENCES = [
@@ -79,6 +80,7 @@ export default function ReportBuilder() {
             Enter any AI model. We pull its license, weights, specs and benchmarks from the web, grade it on the
             Openness Ladder, and return a branded DIT report you can print to PDF. Free, instant, no sign-up.
           </p>
+          <OmsfStats />
         </ScrollReveal>
 
         <ScrollReveal>
