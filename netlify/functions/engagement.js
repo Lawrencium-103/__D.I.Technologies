@@ -12,21 +12,13 @@
 //   POST /api/report         -> { report }  (live OMSF synthesis via lib/omsf.js)
 
 import { getStore } from '@netlify/blobs'
-import { loadEnv, webSearch, getKnownModel, synthesizeWithFallback } from '../../lib/omsf.js'
 
-// Load local .env lazily on first request (no-op on Netlify where vars live
-// in the dashboard). Lazy so a .env read error can never crash module init and
-// 502 every route before a handler runs.
-let envLoaded = false
-function ensureEnv() {
-  if (envLoaded) return
-  envLoaded = true
-  try {
-    loadEnv()
-  } catch {
-    /* ignore */
-  }
-}
+// NOTE: lib/omsf.js (LLM + web search + report synthesis) is imported DYNAMICALLY
+// only inside the /api/report route below. Importing it at the top level pulls in
+// modelFacts.js and a module-level path computation that can throw during the
+// function's module initialization and 502 EVERY route — including the lightweight
+// /api/stats, /api/pdf and /api/like routes that don't need it. Keeping it lazy
+// keeps those routes alive even if the synthesis chain fails to load.
 
 const STORE = 'dit-engagement'
 // Baseline "reports generated" mirrors the pre-built report library on disk.
@@ -84,7 +76,6 @@ async function writeState(state) {
 }
 
 export default async (event) => {
-  ensureEnv()
   const url = new URL(event.rawUrl)
   const path = url.pathname
   const method = event.httpMethod
@@ -150,6 +141,12 @@ export default async (event) => {
     }
 
     if (path === '/api/report' && method === 'POST') {
+      // Load the synthesis chain only here, so a failure to import it can never
+      // take down the stats/pdf/like routes.
+      const { loadEnv, webSearch, getKnownModel, synthesizeWithFallback } = await import(
+        '../../lib/omsf.js'
+      )
+      loadEnv()
       const { model, audience } = safeBody(event.body)
       if (!model || !model.trim()) return json(400, { error: 'Model name is required' })
       try {
