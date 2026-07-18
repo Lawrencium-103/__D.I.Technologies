@@ -14,12 +14,25 @@
 import { getStore } from '@netlify/blobs'
 import { loadEnv, webSearch, getKnownModel, synthesizeWithFallback } from '../../lib/omsf.js'
 
-// Load local .env in dev (no-op on Netlify where vars live in the dashboard).
-loadEnv()
+// Load local .env lazily on first request (no-op on Netlify where vars live
+// in the dashboard). Lazy so a .env read error can never crash module init and
+// 502 every route before a handler runs.
+let envLoaded = false
+function ensureEnv() {
+  if (envLoaded) return
+  envLoaded = true
+  try {
+    loadEnv()
+  } catch {
+    /* ignore */
+  }
+}
 
 const STORE = 'dit-engagement'
 // Baseline "reports generated" mirrors the pre-built report library on disk.
 const SEED_GENERATED = 5
+
+const SEED_STATE = { generated: SEED_GENERATED, likes: {}, pdfs: {}, reportDownloads: {} }
 
 function json(status, body) {
   return {
@@ -42,25 +55,36 @@ function safeBody(body) {
 }
 
 async function readState() {
-  const store = getStore(STORE)
-  const raw = await store.get('state', { type: 'json' })
-  if (!raw || typeof raw !== 'object') {
-    return { generated: SEED_GENERATED, likes: {}, pdfs: {} }
-  }
-  return {
-    generated: typeof raw.generated === 'number' ? raw.generated : SEED_GENERATED,
-    likes: raw.likes && typeof raw.likes === 'object' ? raw.likes : {},
-    pdfs: raw.pdfs && typeof raw.pdfs === 'object' ? raw.pdfs : {},
-    reportDownloads: raw.reportDownloads && typeof raw.reportDownloads === 'object' ? raw.reportDownloads : {},
+  try {
+    const store = getStore(STORE)
+    const raw = await store.get('state', { type: 'json' })
+    if (!raw || typeof raw !== 'object') return { ...SEED_STATE }
+    return {
+      generated: typeof raw.generated === 'number' ? raw.generated : SEED_GENERATED,
+      likes: raw.likes && typeof raw.likes === 'object' ? raw.likes : {},
+      pdfs: raw.pdfs && typeof raw.pdfs === 'object' ? raw.pdfs : {},
+      reportDownloads:
+        raw.reportDownloads && typeof raw.reportDownloads === 'object' ? raw.reportDownloads : {},
+    }
+  } catch (e) {
+    // Blob store unreachable (missing binding, transient error): degrade to the
+    // in-memory seed instead of throwing and 502-ing the whole function.
+    console.warn('[engagement] readState failed, using seed:', String((e && e.message) || e))
+    return { ...SEED_STATE }
   }
 }
 
 async function writeState(state) {
-  const store = getStore(STORE)
-  await store.set('state', JSON.stringify(state))
+  try {
+    const store = getStore(STORE)
+    await store.set('state', JSON.stringify(state))
+  } catch (e) {
+    console.warn('[engagement] writeState failed:', String((e && e.message) || e))
+  }
 }
 
 export default async (event) => {
+  ensureEnv()
   const url = new URL(event.rawUrl)
   const path = url.pathname
   const method = event.httpMethod
@@ -102,7 +126,12 @@ export default async (event) => {
 
     if (path === '/api/stats' && method === 'GET') {
       const state = await readState()
-      return json(200, { generated: state.generated, likes: state.likes, reportDownloads: state.reportDownloads })
+      return json(200, {
+        generated: state.generated,
+        likes: state.likes,
+        reportDownloads: state.reportDownloads,
+        pdfs: state.pdfs,
+      })
     }
 
     if (path === '/api/like' && method === 'POST') {

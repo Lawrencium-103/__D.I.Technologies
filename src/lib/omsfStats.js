@@ -3,12 +3,19 @@
 // update instantly in the browser and persist in localStorage, then sync with
 // the backend via Math.max() so a reachable server (real, cross-user counts)
 // always wins and is never lost. Survives local dev where /api/* may be down.
+//
+// Resilience: we persist the LAST GOOD server payload separately and MERGE it
+// with the local optimistic store. That way a fresh browser (or a briefly
+// unreachable backend) still shows the real accumulated totals instead of
+// dropping to 0. The displayed number for any metric is max(local, server).
 
 const KEY = 'dit-omsf-stats'
-let cache = null
+const SERVER_KEY = 'dit-omsf-stats-server'
+let cache = null // local optimistic store
+let serverSnap = null // last good server payload
 const listeners = new Set()
 
-function load() {
+function loadLocal() {
   if (cache) return cache
   try {
     cache = JSON.parse(localStorage.getItem(KEY) || 'null')
@@ -20,12 +27,21 @@ function load() {
   }
   cache.likes = cache.likes || {}
   cache.reportDownloads = cache.reportDownloads || {}
-  // Publish a fresh reference so React state updates re-render.
   cache = { ...cache, likes: { ...cache.likes }, reportDownloads: { ...cache.reportDownloads } }
   return cache
 }
 
-function save() {
+function loadServer() {
+  if (serverSnap) return serverSnap
+  try {
+    serverSnap = JSON.parse(localStorage.getItem(SERVER_KEY) || 'null')
+  } catch {
+    serverSnap = null
+  }
+  return serverSnap
+}
+
+function saveLocal() {
   try {
     localStorage.setItem(KEY, JSON.stringify(cache))
   } catch {
@@ -33,46 +49,75 @@ function save() {
   }
 }
 
+function saveServer() {
+  try {
+    localStorage.setItem(SERVER_KEY, JSON.stringify(serverSnap))
+  } catch {
+    /* ignore */
+  }
+}
+
+// Display view: max(local, server) for every metric so we never show a stale 0
+// when the server holds the real accumulated total.
+function merged() {
+  const c = loadLocal()
+  const s = loadServer() || {}
+  const likes = { ...(s.likes || {}) }
+  for (const k of Object.keys(c.likes || {})) likes[k] = Math.max(likes[k] || 0, c.likes[k] || 0)
+  const rd = { ...(s.reportDownloads || {}) }
+  for (const k of Object.keys(c.reportDownloads || {})) rd[k] = Math.max(rd[k] || 0, c.reportDownloads[k] || 0)
+  return {
+    generated: Math.max(c.generated || 0, s.generated || 0),
+    likes,
+    reportDownloads: rd,
+    pdfs: s.pdfs || {},
+  }
+}
+
 function emit() {
-  // Hand each listener a new reference so React's setState re-renders.
-  const snapshot = { ...cache, likes: { ...cache.likes }, reportDownloads: { ...cache.reportDownloads } }
-  for (const l of listeners) l(snapshot)
+  const snap = merged()
+  for (const l of listeners) l(snap)
 }
 
 export function subscribe(fn) {
   listeners.add(fn)
+  fn(merged())
   return () => listeners.delete(fn)
 }
 
 export function getStats() {
-  return load()
+  return merged()
 }
 
 export function recordDownload(file) {
-  const c = load()
+  const c = loadLocal()
   c.reportDownloads = { ...c.reportDownloads, [file]: (c.reportDownloads[file] || 0) + 1 }
-  save()
+  saveLocal()
   emit()
 }
 
 export function recordLike(id) {
-  const c = load()
+  const c = loadLocal()
   c.likes = { ...c.likes, [id]: (c.likes[id] || 0) + 1 }
-  save()
+  saveLocal()
   emit()
 }
 
 export function recordGenerated() {
-  const c = load()
+  const c = loadLocal()
   c.generated = (c.generated || 0) + 1
-  save()
+  saveLocal()
   emit()
 }
 
-// Adopt the server's counts without ever decreasing what we already have.
+// Adopt the server's counts without ever decreasing what we already have. We
+// also cache the raw server payload so a later refresh / fresh load keeps the
+// real totals even if the backend is briefly unreachable.
 export function syncFromServer(server) {
   if (!server) return
-  const c = load()
+  serverSnap = server
+  saveServer()
+  const c = loadLocal()
   c.generated = Math.max(c.generated || 0, server.generated || 0)
   const ld = server.likes || {}
   const likes = { ...c.likes }
@@ -86,6 +131,6 @@ export function syncFromServer(server) {
     downloads[k] = Math.max(downloads[k] || 0, rd[k] || 0)
   }
   c.reportDownloads = downloads
-  save()
+  saveLocal()
   emit()
 }

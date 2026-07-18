@@ -5,6 +5,17 @@ function sum(obj) {
   return Object.values(obj || {}).reduce((a, b) => a + (b || 0), 0)
 }
 
+// The backend tracks report downloads/likes (reportDownloads / likes) AND
+// generic PDF downloads/likes (pdfs[file].downloads / .likes). Total both so
+// the impact band reflects all real engagement, not just one bucket.
+function pdfTotal(pdfs, key) {
+  return sum(
+    Object.fromEntries(
+      Object.entries(pdfs || {}).map(([k, v]) => [k, (v && v[key]) || 0])
+    )
+  )
+}
+
 // OMSF engagement impact band: reports generated, total downloads, community
 // likes (plus an optional "in the library" slot on the report-library page).
 // Reads from the local-first store so numbers move instantly and survive a
@@ -22,8 +33,8 @@ export default function OmsfStats({ libraryCount = null }) {
     return unsub
   }, [])
 
-  const totalLikes = sum(stats.likes)
-  const totalDownloads = sum(stats.reportDownloads)
+  const totalLikes = sum(stats.likes) + pdfTotal(stats.pdfs, 'likes')
+  const totalDownloads = sum(stats.reportDownloads) + pdfTotal(stats.pdfs, 'downloads')
 
   const cards = [
     { k: 'generated', eyebrow: 'Reports generated', value: stats.generated, note: 'DIT OpenModel reports', accent: true },
