@@ -51,6 +51,7 @@ async function readState() {
     generated: typeof raw.generated === 'number' ? raw.generated : SEED_GENERATED,
     likes: raw.likes && typeof raw.likes === 'object' ? raw.likes : {},
     pdfs: raw.pdfs && typeof raw.pdfs === 'object' ? raw.pdfs : {},
+    reportDownloads: raw.reportDownloads && typeof raw.reportDownloads === 'object' ? raw.reportDownloads : {},
   }
 }
 
@@ -90,9 +91,18 @@ export default async (event) => {
       return json(200, { file, ...state.pdfs[file] })
     }
 
+    if (path === '/api/report/download' && method === 'POST') {
+      const file = (safeBody(event.body).file || '').trim()
+      if (!file) return json(400, { error: 'Report file is required' })
+      const state = await readState()
+      state.reportDownloads[file] = (state.reportDownloads[file] || 0) + 1
+      await writeState(state)
+      return json(200, { file, downloads: state.reportDownloads[file] })
+    }
+
     if (path === '/api/stats' && method === 'GET') {
       const state = await readState()
-      return json(200, { generated: state.generated, likes: state.likes })
+      return json(200, { generated: state.generated, likes: state.likes, reportDownloads: state.reportDownloads })
     }
 
     if (path === '/api/like' && method === 'POST') {

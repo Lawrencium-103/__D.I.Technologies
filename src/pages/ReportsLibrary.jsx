@@ -7,7 +7,7 @@ import OmsfStats from '../components/OmsfStats'
 export default function ReportsLibrary() {
   const [items, setItems] = useState([])
   const [status, setStatus] = useState('loading')
-  const [stats, setStats] = useState({ generated: 0, likes: {} })
+  const [stats, setStats] = useState({ generated: 0, likes: {}, reportDownloads: {} })
   const [liked, setLiked] = useState({})
 
   useEffect(() => {
@@ -27,10 +27,22 @@ export default function ReportsLibrary() {
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((d) => active && setStats(d))
       .catch(() => {})
-    return () => {
-      active = false
-    }
   }, [])
+
+  const trackDownload = (file) => {
+    fetch('/api/report/download', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ file }),
+    })
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((d) => {
+        if (d && d.downloads != null) {
+          setStats((s) => ({ ...s, reportDownloads: { ...s.reportDownloads, [file]: d.downloads } }))
+        }
+      })
+      .catch(() => {})
+  }
 
   const audienceLabel = (a) =>
     ({ general: 'General', private: 'Private / individual', enterprise: 'Enterprise', nonprofit: 'Non-profit / public' }[a] || a)
@@ -88,8 +100,9 @@ export default function ReportsLibrary() {
         {status === 'ready' && (
           <div className="grid sm:grid-cols-2 gap-5 mb-14">
             {items.map((it) => {
-              const id = it.file
+               const id = it.file
               const count = stats.likes?.[id] || 0
+              const downloads = stats.reportDownloads?.[id] || 0
               const isLiked = !!liked[id]
               return (
                 <div key={id} className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-6 flex flex-col">
@@ -116,27 +129,31 @@ export default function ReportsLibrary() {
                     </span>
                   </div>
                   <div className="mt-auto flex flex-col gap-2">
-                    <a
-                      href={`/reports/${it.file}`}
-                      download
-                      className="btn btn-primary text-center no-underline"
-                    >
-                      Download PDF
-                    </a>
-                    <div className="flex items-center justify-between">
-                      <button
-                        onClick={() => like(id)}
-                        disabled={isLiked}
-                        aria-label={`Like ${it.model} report`}
-                        className={`inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.14em] px-3 py-2 border-2 transition-colors ${
-                          isLiked
-                            ? 'border-[var(--color-burnt)] text-[var(--color-burnt)] bg-[var(--color-burnt)]/10 cursor-default'
-                            : 'border-[var(--color-ink)] text-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)]'
-                        }`}
-                      >
-                        <Heart size={14} fill={isLiked ? 'currentColor' : 'none'} />
-                        {count} {count === 1 ? 'like' : 'likes'}
-                      </button>
+                     <a
+                       href={`/reports/${it.file}`}
+                       download
+                       onClick={() => trackDownload(it.file)}
+                       className="btn btn-primary text-center no-underline"
+                     >
+                       Download PDF
+                     </a>
+                     <div className="flex items-center justify-between">
+                       <button
+                         onClick={() => like(id)}
+                         disabled={isLiked}
+                         aria-label={`Like ${it.model} report`}
+                         className={`inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.14em] px-3 py-2 border-2 transition-colors ${
+                           isLiked
+                             ? 'border-[var(--color-burnt)] text-[var(--color-burnt)] bg-[var(--color-burnt)]/10 cursor-default'
+                             : 'border-[var(--color-ink)] text-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)]'
+                         }`}
+                       >
+                         <Heart size={14} fill={isLiked ? 'currentColor' : 'none'} />
+                         {count} {count === 1 ? 'like' : 'likes'}
+                       </button>
+                       <span className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.12em] text-[var(--color-ink-faint)]">
+                         {downloads} {downloads === 1 ? 'download' : 'downloads'}
+                       </span>
                       <p className="font-[var(--font-mono)] text-[0.6rem] text-[var(--color-ink-faint)] break-all max-w-[55%] text-right">
                         {it.file}
                       </p>
