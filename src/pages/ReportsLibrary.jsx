@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom'
 import { Heart } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import OmsfStats from '../components/OmsfStats'
+import { subscribe, getStats, recordDownload, recordLike, syncFromServer } from '../lib/omsfStats'
 
 export default function ReportsLibrary() {
   const [items, setItems] = useState([])
   const [status, setStatus] = useState('loading')
-  const [stats, setStats] = useState({ generated: 0, likes: {}, reportDownloads: {} })
+  const [stats, setStats] = useState(() => getStats())
   const [liked, setLiked] = useState({})
 
   useEffect(() => {
     let active = true
+    const unsub = subscribe(setStats)
     fetch('/reports/manifest.json')
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((data) => {
@@ -25,23 +27,22 @@ export default function ReportsLibrary() {
       })
     fetch('/api/stats')
       .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((d) => active && setStats(d))
+      .then((d) => active && syncFromServer(d))
       .catch(() => {})
+    return () => {
+      active = false
+      unsub()
+    }
   }, [])
 
   const trackDownload = (file) => {
-    fetch('/api/report/download', {
+    recordDownload(file)
+    const r = fetch('/api/report/download', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ file }),
     })
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((d) => {
-        if (d && d.downloads != null) {
-          setStats((s) => ({ ...s, reportDownloads: { ...s.reportDownloads, [file]: d.downloads } }))
-        }
-      })
-      .catch(() => {})
+    if (r && typeof r.then === 'function') r.catch(() => {})
   }
 
   const audienceLabel = (a) =>
@@ -50,15 +51,12 @@ export default function ReportsLibrary() {
   const like = (id) => {
     if (liked[id]) return
     setLiked((p) => ({ ...p, [id]: true }))
-    setStats((s) => ({ ...s, likes: { ...s.likes, [id]: (s.likes?.[id] || 0) + 1 } }))
+    recordLike(id)
     fetch('/api/like', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id }),
-    })
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((d) => { if (d && d.likes != null) setStats((s) => ({ ...s, likes: { ...s.likes, [id]: d.likes } })) })
-      .catch(() => {})
+    }).catch(() => {})
   }
 
   return (

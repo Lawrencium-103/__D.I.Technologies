@@ -4,6 +4,7 @@ import ScrollReveal from '../components/ScrollReveal'
 import ReportDocument from '../components/ReportDocument'
 import OmsfStats from '../components/OmsfStats'
 import { getMockReport } from '../data/reportMock'
+import { recordGenerated } from '../lib/omsfStats'
 
 const AUDIENCES = [
   { id: 'general', label: 'General / all readers' },
@@ -34,6 +35,7 @@ export default function ReportBuilder() {
       if (res.ok) {
         const data = await res.json()
         setReport(data.report)
+        recordGenerated()
       } else if (res.status === 501) {
         // Backend not configured: use client preview so the tool still works.
         setReport(getMockReport(model.trim(), audience))
