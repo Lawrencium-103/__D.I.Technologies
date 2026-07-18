@@ -20,6 +20,8 @@ function load() {
   }
   cache.likes = cache.likes || {}
   cache.reportDownloads = cache.reportDownloads || {}
+  // Publish a fresh reference so React state updates re-render.
+  cache = { ...cache, likes: { ...cache.likes }, reportDownloads: { ...cache.reportDownloads } }
   return cache
 }
 
@@ -32,7 +34,9 @@ function save() {
 }
 
 function emit() {
-  for (const l of listeners) l(cache)
+  // Hand each listener a new reference so React's setState re-renders.
+  const snapshot = { ...cache, likes: { ...cache.likes }, reportDownloads: { ...cache.reportDownloads } }
+  for (const l of listeners) l(snapshot)
 }
 
 export function subscribe(fn) {
@@ -45,22 +49,22 @@ export function getStats() {
 }
 
 export function recordDownload(file) {
-  load()
-  cache.reportDownloads[file] = (cache.reportDownloads[file] || 0) + 1
+  const c = load()
+  c.reportDownloads = { ...c.reportDownloads, [file]: (c.reportDownloads[file] || 0) + 1 }
   save()
   emit()
 }
 
 export function recordLike(id) {
-  load()
-  cache.likes[id] = (cache.likes[id] || 0) + 1
+  const c = load()
+  c.likes = { ...c.likes, [id]: (c.likes[id] || 0) + 1 }
   save()
   emit()
 }
 
 export function recordGenerated() {
-  load()
-  cache.generated = (cache.generated || 0) + 1
+  const c = load()
+  c.generated = (c.generated || 0) + 1
   save()
   emit()
 }
@@ -68,16 +72,20 @@ export function recordGenerated() {
 // Adopt the server's counts without ever decreasing what we already have.
 export function syncFromServer(server) {
   if (!server) return
-  load()
-  cache.generated = Math.max(cache.generated || 0, server.generated || 0)
+  const c = load()
+  c.generated = Math.max(c.generated || 0, server.generated || 0)
   const ld = server.likes || {}
+  const likes = { ...c.likes }
   for (const k of Object.keys(ld)) {
-    cache.likes[k] = Math.max(cache.likes[k] || 0, ld[k] || 0)
+    likes[k] = Math.max(likes[k] || 0, ld[k] || 0)
   }
+  c.likes = likes
   const rd = server.reportDownloads || {}
+  const downloads = { ...c.reportDownloads }
   for (const k of Object.keys(rd)) {
-    cache.reportDownloads[k] = Math.max(cache.reportDownloads[k] || 0, rd[k] || 0)
+    downloads[k] = Math.max(downloads[k] || 0, rd[k] || 0)
   }
+  c.reportDownloads = downloads
   save()
   emit()
 }
