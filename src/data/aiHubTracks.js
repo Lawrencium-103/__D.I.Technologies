@@ -7,7 +7,7 @@ export const tracks = [
     why: 'Manual creative work is slow and expensive. AI lets one person do the work of a full creative team.',
     how: 'Hands-on 2-day workshop with live project creation.',
     curriculum: [
-      { module: '1. Image Generation', topics: 'Prompt engineering, style direction, brand-consistent visuals', tool: 'Google image mode, GPT image 2, open-source models' },
+      { module: '1. Image Generation', topics: 'Prompt engineering, style direction, brand-consistent visuals', tool: 'Google image mode, GPT image 2, LMStudio, Ollama, open-source models (Llama, Mistral, Qwen, DeepSeek, GLM, Kimi K, Ternary Bonsai)' },
       { module: '2. Design Automation', topics: 'Layout generation, colour palettes, typography pairing', tool: 'Canva AI' },
       { module: '3. Presentations & Decks', topics: 'AI-built slides, one-pager concepts, storyboards', tool: 'Gamma, Canva AI' },
       { module: '4. Brand Identity', topics: 'Logo concepts, brand guidelines, visual identity systems', tool: 'Canva AI, Google image mode, GPT image 2' },
@@ -22,8 +22,8 @@ export const tracks = [
     why: 'Professional photography costs ₦200K+ per shoot. AI generates boardroom-quality images in minutes.',
     how: '1-day intensive with live brand asset creation.',
     curriculum: [
-      { module: '1. Corporate Headshots', topics: 'Professional AI headshots, consistent team photos', tool: 'Google image mode, GPT image 2' },
-      { module: '2. Product Photography', topics: 'Product shots, lifestyle images, e-commerce visuals', tool: 'Google image mode, GPT image 2, Canva AI' },
+      { module: '1. Corporate Headshots', topics: 'Professional AI headshots, consistent team photos', tool: 'Google image mode, GPT image 2, LMStudio, Ollama' },
+      { module: '2. Product Photography', topics: 'Product shots, lifestyle images, e-commerce visuals', tool: 'Google image mode, GPT image 2, Canva AI, LMStudio' },
       { module: '3. Brand Scenes', topics: 'Office environments, event coverage, team-building visuals', tool: 'Google image mode, GPT image 2' },
       { module: '4. Social Media Kits', topics: 'LinkedIn banners, Instagram grids, Twitter headers', tool: 'Canva AI, Gamma' },
     ],
@@ -67,8 +67,8 @@ export const tracks = [
     why: 'Writing is a bottleneck for most teams. AI turns rough notes into polished output.',
     how: '1-day intensive with live writing sprints.',
     curriculum: [
-      { module: '1. Long-form', topics: 'Blog posts, reports, white papers', tool: 'Claude, Groq, open-source models, prompt engineering' },
-      { module: '2. Conversion Copy', topics: 'Landing pages, ad scripts, CTAs', tool: 'Claude, Groq, Canva AI' },
+      { module: '1. Long-form', topics: 'Blog posts, reports, white papers', tool: 'Claude (Opus), Gemini, Groq, Kimi K, open-source models (Llama, Mistral, Qwen, DeepSeek, GLM), prompt engineering' },
+      { module: '2. Conversion Copy', topics: 'Landing pages, ad scripts, CTAs', tool: 'Claude, Gemini, Groq, Canva AI' },
       { module: '3. Technical Docs & Notes', topics: 'API docs, manuals, SOPs, knowledge bases', tool: 'Notion, Obsidian' },
       { module: '4. Editing & Polish', topics: 'Fact-checking, tone, human polish', tool: 'Notion, Obsidian, Claude' },
     ],
@@ -82,7 +82,7 @@ export const tracks = [
     why: 'You do not need to be a developer to ship software anymore. You need to know how to direct AI.',
     how: '2-day workshop building a working web app.',
     curriculum: [
-      { module: '1. Directing Code Models', topics: 'Clear specs, debugging, iteration, fine-tuning', tool: 'open-source models, Groq, Claude, Unsloth, prompt engineering' },
+      { module: '1. Directing Code Models', topics: 'Clear specs, debugging, iteration, fine-tuning', tool: 'Claude Code, Kimi Code, OpenCode, Cline, Cowork, Ollama, LMStudio (GGUF), open-source models (Llama, Mistral, DeepSeek, Qwen, GLM, Kimi K, Ternary Bonsai), Groq, Unsloth, prompt engineering' },
       { module: '2. Web Apps', topics: 'Frontend, backend, deployment', tool: 'Web dev framework, Neon, PostgreSQL' },
       { module: '3. Data & Auth', topics: 'Databases, SQL, user accounts, sessions', tool: 'SQLite, PostgreSQL, Neon, Clerk, SQL' },
       { module: '4. Shipping', topics: 'Version control, domain, hosting, launch', tool: 'Web dev framework, Neon, GitHub' },
@@ -112,10 +112,10 @@ export const tracks = [
     why: 'Agents and automation multiply a small team by doing the boring parts without supervision.',
     how: '2-day workshop building a working agent and workflow.',
     curriculum: [
-      { module: '1. Agent Design', topics: 'Goals, tools, guardrails, prompt engineering', tool: 'π agent harness, LangGraph' },
-      { module: '2. Tool Use & Orchestration', topics: 'Connecting APIs, memory, structured output', tool: 'LangChain, pydantic, π' },
+      { module: '1. Agent Design', topics: 'Goals, tools, guardrails, prompt engineering', tool: 'π agent harness, LangGraph, Gemini, Claude (Opus), Sakana Fugu, Tinker, Inkling' },
+      { module: '2. Tool Use & Orchestration', topics: 'Connecting APIs, memory, structured output', tool: 'LangChain, pydantic, π, Ollama, LMStudio (GGUF), open-source models (Llama, Mistral, DeepSeek, Qwen, GLM, Kimi K)' },
       { module: '3. Workflow Automation', topics: 'Triggers, integrations, scheduling', tool: 'n8n, Make, Activepieces' },
-      { module: '4. Deploy & Connect Data', topics: 'Live data, databases, monitoring', tool: 'Airtable, Google Sheets, Neon, PostgreSQL, Python' },
+      { module: '4. Deploy & Connect Data', topics: 'Live data, databases, monitoring', tool: 'Airtable, Google Sheets, Neon, PostgreSQL, Python, open-source models (Llama, Mistral, DeepSeek, Qwen, GLM, Kimi K, Ternary Bonsai)' },
     ],
     outcome: 'Leave with an agent and workflow running a real process.',
   },
