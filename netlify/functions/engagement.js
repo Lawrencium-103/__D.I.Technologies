@@ -12,7 +12,7 @@
 //   POST /api/report         -> { report }  (live OMSF synthesis via lib/omsf.js)
 
 import { getStore } from '@netlify/blobs'
-import { loadEnv, webSearch, getKnownModel, synthesizeWithFallback } from '../lib/omsf.js'
+import { loadEnv, webSearch, getKnownModel, synthesizeWithFallback } from '../../lib/omsf.js'
 
 // Load local .env in dev (no-op on Netlify where vars live in the dashboard).
 loadEnv()
