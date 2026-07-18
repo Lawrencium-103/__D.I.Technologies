@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Sun, WifiOff, ClipboardCheck, Target, Megaphone, Users } from 'lucide-react'
+import { ArrowRight, Sun, WifiOff, ClipboardCheck, Target, Megaphone, Users, Store, Banknote, Landmark } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import SmePdfCard from '../components/SmePdfCard'
 import { useSmePdfs } from '../lib/smePdf'
@@ -220,54 +220,77 @@ export default function SSME() {
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal>
             <span className="eyebrow">Standards Alignment Matrix</span>
-            <h2 className="mt-3 mb-3 max-w-[24ch]">Show funders and buyers you already comply.</h2>
-            <p className="text-[1.05rem] max-w-[64ch] mb-10">
-              One Excel workbook maps all 117 items in the DIT SME Toolkit to the frameworks that open doors -
-              IFC Performance Standards (PS1-PS8), EU ESRS, VSME, EU Taxonomy, and 14 Nigerian regulators
-              (CAC, FIRS, NESREA, SMEDAN/FRCN, BoI, DBN, CBN, REA). Each item is scored Full, Partial, Gap or
-              N/A, with a built-in How-to-use sheet.
+            <h2 className="mt-3 mb-4 max-w-[20ch]">The proof Nigerian SMEs hand to banks, regulators and donors.</h2>
+            <p className="text-[1.05rem] max-w-[62ch] mb-12">
+              117 items from the DIT SME Toolkit, each scored against the frameworks that open doors - IFC,
+              EU and Nigerian. Show compliance instead of promising it.
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6 items-stretch">
-            <ScrollReveal>
-              <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-8 h-full">
-                <h3 className="text-[1.3rem] mb-4 text-[var(--color-ink)]">Why this matrix sells your SME</h3>
-                <ul className="space-y-4">
-                  {[
-                    { t: 'Unlock Nigerian finance', d: 'BoI, DBN and CBN screen CAC status, tax clearance and governance first. The matrix shows what is covered and what to fix.' },
-                    { t: 'Pass EU checks', d: 'Map your toolkit to ESRS, VSME and the EU Deforestation Regulation in one view for EU lenders and buyers.' },
-                    { t: 'Win grants and tenders', d: 'Hand auditors and procurement a cross-reference instead of rebuilding it.' },
-                    { t: 'Close gaps early', d: 'Red and amber cells flag where the toolkit is silent, on your terms.' },
-                  ].map((x, i) => (
-                    <li key={i}>
-                      <span className="font-semibold text-[var(--color-burnt)]">{x.t}.</span>{' '}
-                      <span className="text-[var(--color-ink-soft)]">{x.d}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
+          <ScrollReveal>
+            <div className="grid grid-cols-2 lg:grid-cols-4 border-2 border-[var(--color-ink)]">
+              {[
+                { n: '117', l: 'items, individually scored' },
+                { n: '4', l: 'global standards frameworks' },
+                { n: '14', l: 'Nigerian regulators mapped' },
+                { n: 'PS1–8', l: 'IFC Performance Standards covered' },
+              ].map((s, i) => (
+                <div
+                  key={i}
+                  className={`p-6 ${i !== 0 ? 'border-l-2 border-[var(--color-ink)]' : ''} ${
+                    i >= 2 ? 'border-t-2 lg:border-t-0 border-[var(--color-ink)]' : ''
+                  }`}
+                >
+                  <div className="marker text-[2.2rem] leading-none mb-2">{s.n}</div>
+                  <div className="text-[0.85rem] text-[var(--color-ink-soft)]">{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
 
-            <ScrollReveal delay={0.1}>
-              <div className="bg-[var(--color-ink)] text-[var(--color-paper)] border-2 border-[var(--color-ink)] p-8 h-full flex flex-col">
-                <h3 className="text-[1.25rem] mb-3">{smeMatrix.label}</h3>
-                <p className="text-[0.95rem] text-[var(--color-paper)]/85 mb-6 flex-1">
-                  117 items mapped to IFC, EU and Nigerian standards, with a built-in How-to-use sheet.
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
+            {[
+              { icon: Store, tag: 'For SME owners', t: 'Walk into the bank pre-cleared.', d: 'BoI, DBN and CBN screen CAC status, tax clearance and governance before they lend. The matrix shows you pass - and what to fix first.' },
+              { icon: Banknote, tag: 'For funders & partners', t: 'One sheet for EU and impact diligence.', d: 'Map your toolkit to ESRS, VSME and the EU Deforestation Regulation in a single view. No consultant, no rebuild.' },
+              { icon: Landmark, tag: 'For government & regulators', t: 'Less back-and-forth, more compliance.', d: 'A ready cross-reference to national requirements (CAC, FIRS, NESREA, SMEDAN/FRCN) that speeds registration, licensing and reporting.' },
+            ].map((a, i) => (
+              <ScrollReveal key={i} delay={i * 0.06}>
+                <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-7 h-full">
+                  <div className="w-11 h-11 flex items-center justify-center bg-[var(--color-burnt)] mb-4">
+                    <a.icon size={22} className="text-[var(--color-paper)]" />
+                  </div>
+                  <span className="font-[var(--font-mono)] text-[0.68rem] uppercase tracking-[0.18em] text-[var(--color-ink-faint)]">{a.tag}</span>
+                  <h3 className="text-[1.2rem] mt-2 mb-2 text-[var(--color-ink)]">{a.t}</h3>
+                  <p className="text-[0.92rem] text-[var(--color-ink-soft)]">{a.d}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.1}>
+            <div className="bg-[var(--color-ink)] text-[var(--color-paper)] border-2 border-[var(--color-ink)] p-8 mt-6 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+              <div className="flex-1">
+                <h3 className="text-[1.35rem] mb-2">{smeMatrix.label}</h3>
+                <p className="text-[0.95rem] text-[var(--color-paper)]/85 max-w-[60ch]">
+                  117 items, individually scored as Full, Partial, Gap or N/A, with a built-in How-to-use
+                  sheet and the full Standards Legend.
                 </p>
+              </div>
+              <div className="shrink-0">
                 <a
                   href={smeMatrix.file}
                   download
-                  className="btn btn-primary w-full justify-center no-underline"
+                  onClick={() => download(smeMatrix.file)}
+                  className="btn btn-primary w-full md:w-auto justify-center no-underline"
                 >
                   Download the matrix (Excel) <ArrowRight size={18} />
                 </a>
-                <p className="text-[0.8rem] text-[var(--color-paper)]/70 mt-4">
+                <p className="text-[0.8rem] text-[var(--color-paper)]/70 mt-3">
                   Opens in Excel, Google Sheets or LibreOffice - no macros required.
                 </p>
               </div>
-            </ScrollReveal>
-          </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
