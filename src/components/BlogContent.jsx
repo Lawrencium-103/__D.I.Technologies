@@ -1,18 +1,46 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from './ScrollReveal'
 
+// Render plain text with embedded links written as [label](https://url).
+// Used so authors can inline-cite sources directly in the body copy.
+function renderRich(text) {
+  if (typeof text !== 'string') return text
+  const out = []
+  const re = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g
+  let last = 0
+  let m
+  let k = 0
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) out.push(text.slice(last, m.index))
+    out.push(
+      <a
+        key={k++}
+        href={m[2]}
+        target="_blank"
+        rel="noreferrer"
+        className="text-[var(--color-burnt)] underline underline-offset-2 decoration-[var(--color-burnt)] hover:text-[var(--color-ink)]"
+      >
+        {m[1]}
+      </a>
+    )
+    last = re.lastIndex
+  }
+  if (last < text.length) out.push(text.slice(last))
+  return out
+}
+
 function Block({ block }) {
   switch (block.type) {
     case 'lead':
       return (
         <p className="text-[1.3rem] leading-relaxed text-[var(--color-ink)] font-[var(--font-display)] font-medium max-w-[64ch] mb-10">
-          {block.text}
+          {renderRich(block.text)}
         </p>
       )
     case 'heading':
       return <h2 className="text-[1.8rem] mt-14 mb-5 text-[var(--color-ink)]">{block.text}</h2>
     case 'paragraph':
-      return <p className="text-[1.05rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[68ch] mb-6">{block.text}</p>
+      return <p className="text-[1.05rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[68ch] mb-6">{renderRich(block.text)}</p>
     case 'image':
       return (
         <figure className="my-12">
@@ -23,7 +51,7 @@ function Block({ block }) {
     case 'quote':
       return (
         <blockquote className="my-12 border-l-4 border-[var(--color-burnt)] pl-6 py-1">
-          <p className="text-[1.5rem] leading-snug font-[var(--font-display)] font-semibold text-[var(--color-ink)] max-w-[60ch]">{block.text}</p>
+          <p className="text-[1.5rem] leading-snug font-[var(--font-display)] font-semibold text-[var(--color-ink)] max-w-[60ch]">{renderRich(block.text)}</p>
           {block.cite && <cite className="block mt-3 font-[var(--font-mono)] text-[0.74rem] uppercase tracking-[0.14em] text-[var(--color-burnt)] not-italic">{block.cite}</cite>}
         </blockquote>
       )
@@ -33,7 +61,7 @@ function Block({ block }) {
           {block.items.map((it, i) => (
             <li key={i} className="flex items-start gap-3 text-[1.02rem] text-[var(--color-ink-soft)] leading-relaxed">
               <span className="marker text-[1.1rem] leading-7 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-              <span>{it}</span>
+              <span>{renderRich(it)}</span>
             </li>
           ))}
         </ul>
@@ -42,14 +70,14 @@ function Block({ block }) {
       return (
         <div className="my-10 bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-6 sm:p-7">
           {block.title && <h3 className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.18em] text-[var(--color-burnt)] mb-2">{block.title}</h3>}
-          <p className="text-[1.05rem] text-[var(--color-ink)] leading-relaxed">{block.text}</p>
+          <p className="text-[1.05rem] text-[var(--color-ink)] leading-relaxed">{renderRich(block.text)}</p>
         </div>
       )
     case 'tldr':
       return (
         <div className="my-10 border-2 border-[var(--color-ink)] bg-[var(--color-ink)] text-[var(--color-paper)] p-6 sm:p-7">
           <div className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.2em] text-[var(--color-burnt)] mb-3">TL;DR</div>
-          <p className="text-[1.05rem] leading-relaxed text-[var(--color-paper)]">{block.text}</p>
+          <p className="text-[1.05rem] leading-relaxed text-[var(--color-paper)]">{renderRich(block.text)}</p>
         </div>
       )
     case 'framework':
@@ -59,7 +87,7 @@ function Block({ block }) {
             <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-burnt)]">OMSF</span>
             <span className="h-px flex-1 bg-[var(--color-paper-faint)]"></span>
           </div>
-          <p className="text-[1rem] leading-relaxed text-[var(--color-paper-soft)]">{block.text}</p>
+          <p className="text-[1rem] leading-relaxed text-[var(--color-paper-soft)]">{renderRich(block.text)}</p>
           <Link
             to="/framework"
             className="inline-block mt-4 font-[var(--font-mono)] text-[0.74rem] uppercase tracking-[0.14em] text-[var(--color-paper)] border border-[var(--color-paper-faint)] px-4 py-2 hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors"

@@ -57,6 +57,10 @@ export const blogPosts = [
       { type: 'paragraph', text: 'The BLOOM project expanded the definition of what an open model could be. It proved that community collaboration and public compute can produce models on the scale of those built by large tech companies. It also proved that the question of openness is not just about the availability of weights. It is about the legal framework that governs their use.' },
       { type: 'paragraph', text: 'If you are building a local AI application, you have to decide how much legal friction you are willing to accept. A model with a fully permissive license gives you maximum freedom but no guarantees about how others might use the same model. A model with a RAIL license attempts to enforce ethics, but it complicates your legal compliance. How do you currently evaluate the behavioral restrictions attached to the open models you download?' },
     ],
+    references: [
+      "BigScience Workshop (2022) 'BLOOM: A 176B-Parameter Open-Access Multilingual Language Model'. arXiv. Available at: https://arxiv.org/abs/2211.05100 (Accessed: 19 July 2026).",
+      "Hugging Face (2022) 'BLOOM, a 176B-parameter open-access multilingual model'. Hugging Face Blog. Available at: https://huggingface.co/blog/bloom (Accessed: 19 July 2026).",
+    ],
   },
   {
     slug: 'history-open-local-private-ai-stable-diffusion',
@@ -104,6 +108,15 @@ export const blogPosts = [
       { type: 'heading', text: 'Where this leaves you' },
       { type: 'paragraph', text: 'The history of open, local, and private AI is a history of ownership. When you own the weights, you own the innovation pipeline. Stable Diffusion proved that when you give developers the raw materials, they will build things the original creators never imagined. When you lock those materials behind an API, you cap the potential of the ecosystem.' },
       { type: 'paragraph', text: 'If you are evaluating an AI strategy for your organization, you need to ask yourself what kind of ecosystem you want to participate in. Do you want to be a consumer of a closed API, waiting for the vendor to ship the features you need? Or do you want to be a builder, using open weights to create custom tools that fit your exact requirements? What is your current strategy for integrating community-built tools like LoRA and ControlNet into your internal workflows?' },
+    ],
+    references: [
+      "Rombach, R., Blattmann, A., Lorenz, D., Esser, P. and Ommer, B. (2022) 'High-Resolution Image Synthesis with Latent Diffusion Models'. arXiv. Available at: https://arxiv.org/abs/2112.10752 (Accessed: 19 July 2026).",
+      "Hugging Face (2022) 'Stable Diffusion is now available in Hugging Face'. Hugging Face Blog. Available at: https://huggingface.co/blog/stable_diffusion (Accessed: 19 July 2026).",
+    ],
+    references: [
+      "OpenAI (2019) 'Better language models and their implications'. OpenAI. Available at: https://openai.com/index/better-language-models/ (Accessed: 19 July 2026).",
+      "OpenAI (2019) 'GPT-2: 1.5B release'. OpenAI. Available at: https://openai.com/index/gpt-2-1-5b-release/ (Accessed: 19 July 2026).",
+      "Solaiman, I., Brundage, M., Clark, J., Askell, A., Herbert-Voss, A., Wu, J., Radford, A., Krueger, G., Kim, J.W., Kreps, S., McCain, M., Newhouse, A., Blazakis, J., McGuffie, K. and Wang, J. (2019) 'Release Strategies and the Social Impacts of Language Models'. arXiv. Available at: https://arxiv.org/abs/1908.09203 (Accessed: 19 July 2026).",
     ],
   },
   {
@@ -319,6 +332,10 @@ export const blogPosts = [
       { type: 'paragraph', text: 'The LLaMA leak is a warning. It shows that the market will force open access to capable models, one way or another. The question is whether that access will happen with or without safety documentation. Frameworks like OMSF provide the structure to make open release safe and compliant. A gated license without documentation is a liability. An open release with documentation is a responsible deployment.' },
       { type: 'paragraph', text: 'If you are building an AI strategy, you need to ensure your models come with the right documentation. Do not accept a gated license as a substitute for a risk assessment. What is your current process for verifying the safety documentation of the models you procure or deploy?' },
     ],
+    references: [
+      "Meta AI (2023) 'LLaMA: Open and Efficient Foundation Language Models'. arXiv. Available at: https://arxiv.org/abs/2302.13971 (Accessed: 19 July 2026).",
+      "Blumenthal, R. and Hawley, J. (2023) 'Blumenthal and Hawley demand answers, warn of misuse after leak of Meta's AI model'. United States Senate. Available at: https://www.blumenthal.senate.gov/newsroom/press/release/blumenthal-and-hawley-demand-answers_warn-of-misuse-after-leak-of-metas-ai-model (Accessed: 19 July 2026).",
+    ],
   },
   {
     slug: 'history-open-local-private-ai-mistral-open-sovereignty',
@@ -369,6 +386,9 @@ export const blogPosts = [
       { type: 'paragraph', text: 'The history of open, local, and private AI is a history of labs learning how to release models. OpenAI started with staged release. BigScience tried behavioral licenses. Stability AI proved the ecosystem multiplier effect. Meta proved the danger of gated access. Mistral proved the power of deliberate, permissive openness. This is the trajectory of the industry. The most successful open models are the ones that are released fully, with standard licenses, and without legal friction.' },
       { type: 'paragraph', text: 'If you are building an AI strategy for a government or an enterprise, you need to decide whether you are renting your intelligence infrastructure or owning it. The Mistral precedent shows that ownership is possible. You can download the weights, run them locally, and keep your data private. But you can only do this if you choose models with permissive licenses. What is your current strategy for ensuring your AI infrastructure is legally sovereign and locally controlled?' },
     ],
+    references: [
+      "Mistral AI (2023) 'Mistral 7B'. Mistral AI. Available at: https://mistral.ai/news/announcing-mistral-7b/ (Accessed: 19 July 2026).",
+    ],
   },
   {
     slug: 'history-open-local-private-ai-deepseek-r1',
@@ -412,6 +432,9 @@ export const blogPosts = [
       { type: 'paragraph', text: 'For enterprise legal teams and public sector procurement offices, this means the vendor landscape is expanding. You are no longer limited to buying APIs from three American companies. You can now evaluate open models built by efficient labs in Europe, Asia, and eventually Africa. The Open Model Safety Framework, or OMSF, provides the structure to evaluate these models. As the barrier to entry lowers, more models will enter the market. Procurement offices need a standardized way to verify that these models are safe, legally clear, and technically capable. OMSF does this. It separates the models that are merely cheap from the models that are genuinely ready for enterprise deployment.' },
       { type: 'heading', text: 'Where this leaves you' },
       { type: 'paragraph', text: 'The DeepSeek R1 release is a turning point. It proves that the future of AI is not solely determined by the size of a data center. It is determined by the efficiency of the algorithm and the openness of the weights. If you are funding or building AI infrastructure, you need to stop measuring success by compute scale. You need to start measuring success by algorithmic efficiency and local relevance. The capital moat is gone. The opportunity to build sovereign, local AI is here. How are you restructuring your AI strategy to prioritize efficiency over brute-force capital expenditure?' },
+    ],
+    references: [
+      "DeepSeek-AI (2025) 'DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning'. arXiv. Available at: https://arxiv.org/abs/2501.12948 (Accessed: 19 July 2026).",
     ],
   },
   {
@@ -459,6 +482,10 @@ export const blogPosts = [
       { type: 'heading', text: 'The end of the ambiguity era' },
       { type: 'paragraph', text: 'The history of open, local, and private AI is a history of measurement. The chaos of the early years proved that openness without definition is a liability. The academic response provided the definitions. Solaiman gave us the gradient. White et al. gave us the completeness rubric. Liesenfeld and Dingemanse gave us the warning about open washing. OMSF put these concepts to work for the buyer.' },
       { type: 'paragraph', text: 'The era of accepting the open label at face value is over. The tools to measure openness exist. The frameworks to evaluate risk are established. For any organization building an AI strategy today, the question is not whether a model is open. The question is where it sits on the measured gradient of openness. What is your current process for independently verifying the openness and completeness of the artificial intelligence you deploy?' },
+    ],
+    references: [
+      "Liesenfeld, A., Lopez, A. and Dingemanse, M. (2023) 'Opening up ChatGPT: Tracking openness, transparency, and accountability in instruction-tuned text generators'. arXiv. Available at: https://arxiv.org/abs/2307.05532 (Accessed: 19 July 2026).",
+      "Open Source Initiative (2024) 'The Open Source AI Definition'. Open Source Initiative. Available at: https://opensource.org/ai (Accessed: 19 July 2026).",
     ],
   },
   {
@@ -508,6 +535,11 @@ export const blogPosts = [
       { type: 'heading', text: 'Where this leaves you' },
       { type: 'paragraph', text: 'The era of self reported openness is over. In 2024, open source became a legal term with real consequences. If you are procuring AI systems, you can no longer rely on the vendor’s word. You must demand the full stack of data, code, and weights. You must verify that the license is truly permissive and not laden with hidden behavioral restrictions. If you do not have the internal expertise to audit these models, you need a framework to do it for you. What is your current process for ensuring your AI procurement meets the new legal definitions of open source?' },
     ],
+    references: [
+      "European Union (2024) 'Regulation (EU) 2024/1689 (Artificial Intelligence Act)'. Official Journal of the European Union. Available at: https://eur-lex.europa.eu/eli/reg/2024/1689/oj (Accessed: 19 July 2026).",
+      "Open Source Initiative (2024) 'The Open Source AI Definition'. Open Source Initiative. Available at: https://opensource.org/ai (Accessed: 19 July 2026).",
+      "Liesenfeld, A., Lopez, A. and Dingemanse, M. (2023) 'Opening up ChatGPT: Tracking openness, transparency, and accountability in instruction-tuned text generators'. arXiv. Available at: https://arxiv.org/abs/2307.05532 (Accessed: 19 July 2026).",
+    ],
   },
   {
     slug: 'history-open-local-private-ai-global-south',
@@ -555,6 +587,9 @@ export const blogPosts = [
       { type: 'heading', text: 'Where this leaves you' },
       { type: 'paragraph', text: 'The history of artificial intelligence is still being written. The chapter on the Global South is just starting. The Edo State pilot shows that the impact of open AI in regions with infrastructure deficits is not theoretical. It is measurable and immediate. The open weights movement is not just a debate among American and European labs. It is the foundation for a new model of technology deployment in the Global South. If you are a funder or a government partner, you have to decide whether you are building permanent local capacity or renting temporary access. What is your strategy for moving from closed API dependencies to open, locally controlled infrastructure?' },
     ],
+    references: [
+      "World Bank (2025) 'From Chalkboards to Chatbots: Evaluating the Impact of Generative AI on Learning Outcomes in Nigeria'. World Bank Group. Available at: https://documents.worldbank.org/en/publication/documents-reports/documentdetail/099548105192529324 (Accessed: 19 July 2026).",
+    ],
   },
   {
     slug: 'history-open-local-private-ai-closing-door',
@@ -592,6 +627,12 @@ export const blogPosts = [
       { type: 'paragraph', text: 'If the open weight frontier stalls, the models currently available become the foundation for the next decade of local AI. Their licenses, their safety documentation, and their hardware compatibility become permanent infrastructure. Frameworks like OMSF exist to ensure this infrastructure is solid. The history of open AI is still being written. The next chapter depends on how buyers choose to value the models they can actually own.' },
       { type: 'heading', text: 'Where this leaves you' },
       { type: 'paragraph', text: 'The era of taking open releases for granted is ending. If the labs pull back, the models you download today might be the ones you rely on for years. You need to ensure you are building on a foundation that is legally sound, technically safe, and fully documented. How are you preparing your AI infrastructure to function effectively if the open weight frontier stalls?' },
+    ],
+    references: [
+      "Meta AI (2023) 'LLaMA: Open and Efficient Foundation Language Models'. arXiv. Available at: https://arxiv.org/abs/2302.13971 (Accessed: 19 July 2026).",
+      "Mistral AI (2023) 'Mistral 7B'. Mistral AI. Available at: https://mistral.ai/news/announcing-mistral-7b/ (Accessed: 19 July 2026).",
+      "DeepSeek-AI (2025) 'DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning'. arXiv. Available at: https://arxiv.org/abs/2501.12948 (Accessed: 19 July 2026).",
+      "European Union (2024) 'Regulation (EU) 2024/1689 (Artificial Intelligence Act)'. Official Journal of the European Union. Available at: https://eur-lex.europa.eu/eli/reg/2024/1689/oj (Accessed: 19 July 2026).",
     ],
   },
   {

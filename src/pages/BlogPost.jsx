@@ -132,6 +132,22 @@ function Cover({ post }) {
   )
 }
 
+function References({ refs }) {
+  if (!refs || !refs.length) return null
+  return (
+    <section className="mt-14 pt-8 border-t border-[var(--color-line)]">
+      <h2 className="font-[var(--font-display)] text-[1.5rem] text-[var(--color-ink)] mb-6">References</h2>
+      <ul className="space-y-4 max-w-[74ch] list-none pl-0">
+        {refs.map((r, i) => (
+          <li key={i} className="text-[0.92rem] leading-relaxed text-[var(--color-ink-soft)] font-[var(--font-mono)]">
+            {r}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
 function PostFooter({ post }) {
   return (
     <div className="mt-14 pt-8 border-t border-[var(--color-line)]">
@@ -286,6 +302,7 @@ export default function BlogPost() {
         </div>
         <Cover post={post} />
         <BlogContent blocks={post.body} />
+        <References refs={post.references} />
         <PostFooter post={post} />
       </div>
     )
@@ -308,6 +325,7 @@ export default function BlogPost() {
         </ScrollReveal>
         <Cover post={post} />
         <BlogContent blocks={post.body} />
+        <References refs={post.references} />
         <PostFooter post={post} />
       </div>
     )

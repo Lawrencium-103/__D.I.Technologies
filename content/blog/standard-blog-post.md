@@ -18,6 +18,8 @@ template: standard   # standard | feature | field-note | deep-dive | briefing
 cover: ""
 coverAlt: ""
 excerpt: ""
+references:          # Harvard-formatted strings, mirrors blogPosts.js
+  - "Author (Year) 'Title'. Publisher. Available at: URL (Accessed: Day Month Year)."
 ---
 ```
 
@@ -35,6 +37,15 @@ excerpt: ""
   - P1 = the license text, model card, weights or paper (primary).
   - P2 = an independent benchmark or our own run (states hardware, quantization, date, runner).
   - P3 = community posts and vendor write-ups. Leads only, never the load-bearing fact.
+- **In-text links**: name the source and embed the link where it is first
+  mentioned. Syntax is `[label](https://full-url)`. Example:
+  `OpenAI staged the release [OpenAI, 2019](https://openai.com/index/better-language-models/)
+  before open-sourcing the weights.` Only link real P1/P2 sources.
+- **References**: add a `references` array (Harvard-formatted strings) to the
+  markdown frontmatter AND to the post's entry in `src/data/blogPosts.js`.
+  Every inline source must be listed, and every listed source must be cited
+  inline. Format: `Author (Year) 'Title'. Publisher. Available at: URL
+  (Accessed: Day Month Year).`
 
 ## Rules (from docs/blog-standard.md)
 - ONLY AI RELATED IMAGE IN THE BLOG POST

@@ -59,6 +59,59 @@ Every post must contain:
 4. An author byline (name + photo) rendered above the content.
 5. A length of 1,400 to 2,500 words where the topic needs it. Short field
    notes may run shorter; say so in the template blurb.
+6. In-text links: every named source is linked where it is first mentioned
+   in the body (see below).
+7. A References section in Harvard format (see below).
+
+## In-text links
+
+Name the source in the prose and embed the link there. Do not dump URLs at
+the end only; the reader should be able to click through from the sentence
+that makes the claim.
+
+- Syntax inside any text block (lead, paragraph, list item, callout, quote,
+  tldr): `[label](https://full-url)`.
+- Link the first mention of each source. Later mentions can be plain text.
+- Only link real, load-bearing sources (P1/P2). Do not link P3 leads unless
+  the post explicitly says it is a lead.
+- External links open in a new tab automatically.
+
+Example: `OpenAI staged the GPT-2 release in 2019 [OpenAI, 2019](https://openai.com/index/better-language-models/)
+before later open-sourcing the weights.`
+
+## References (Harvard format, required)
+
+Every post ends with a `References` section rendered from the `references`
+array on its entry in `src/data/blogPosts.js` (mirror the same array in the
+post's markdown frontmatter). The section lists, in Harvard format, every
+source a claim rests on.
+
+Harvard style used on this site:
+
+- Book / report / web source: `Author or Organisation (Year) 'Title'. Publisher
+  or Website. Available at: URL (Accessed: Day Month Year).`
+- Journal article / preprint: `Author(s) (Year) 'Title'. Journal or arXiv.
+  Available at: URL (Accessed: Day Month Year).`
+- For an organisation as author, use the organisation name (no "Anon").
+- List entries alphabetically by author (or by organisation when there is no
+  named author).
+- State the access date. Use the publish date for the year, not the access
+  date.
+- Every P1/P2 source cited inline must appear here. Every entry here must be
+  cited inline. No orphan references.
+
+Example entries:
+
+```text
+Liesenfeld, A. and Dingemanse, M. (2024) 'English arxiv:2402.01761'? No:
+'Opening up ChatGPT: Tracking openness, transparency, and reproducibility
+in instruction-tuned language models'. arXiv. Available at:
+https://arxiv.org/abs/2402.01761 (Accessed: 19 July 2026).
+
+OpenAI (2019) 'Better language models and their implications'. OpenAI.
+Available at: https://openai.com/index/better-language-models/
+(Accessed: 19 July 2026).
+```
 
 ## Source tiers
 
@@ -105,3 +158,6 @@ The five templates render differently in `src/pages/BlogPost.jsx`:
 - [ ] One of the five templates assigned.
 - [ ] No DIT or product mentions in the body (independence rule).
 - [ ] No "our product" / "our framework" / "our pilot" calls to action.
+- [ ] Every named source linked inline at first mention (`[label](url)`).
+- [ ] `References` array present in `blogPosts.js`, Harvard format, matches
+  inline citations (no orphans either direction).
