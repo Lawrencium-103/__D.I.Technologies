@@ -1,0 +1,12 @@
+# graphify code-only mode: skip semantic-only sources (docs/papers/images)
+# so the build needs no LLM and still yields the code-structure graph.
+*.md
+OMSF-Report-*.json
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+*.ico
+*.pdf

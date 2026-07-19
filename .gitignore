@@ -7,3 +7,8 @@ dist
 Thumbs.db
 .cache
 /data/
+
+graphify-out/
+.graphify_analysis.json
+.graphify_labels.json
+.graphify_labels.json.sig

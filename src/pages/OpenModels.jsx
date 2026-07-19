@@ -3,7 +3,7 @@ import { ExternalLink, Search, RefreshCw, Trophy, Database } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import snapshot from '../data/openModels.json'
 
-const LIVE_URL = 'https://lmmarketcap.com/api/models'
+  const LIVE_URL = '/.netlify/functions/livemodels'
 const SRC = 'https://lmmarketcap.com/open-source-ai-models'
 
 // Defensive live mapper — tolerates several plausible API shapes and drops anything invalid.
