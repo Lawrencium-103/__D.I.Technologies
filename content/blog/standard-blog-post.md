@@ -37,7 +37,7 @@ excerpt: ""
   - P3 = community posts and vendor write-ups. Leads only, never the load-bearing fact.
 
 ## Rules (from docs/blog-standard.md)
-
+- ONLY AI RELATED IMAGE IN THE BLOG POST
 - No banned hype words (game-changing, groundbreaking, revolutionary, cutting-edge,
   state-of-the-art, powerful, next-generation, unprecedented, disruptive,
   seamless, robust, unparalleled, best-in-class).
