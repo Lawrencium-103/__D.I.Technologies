@@ -40,13 +40,12 @@ export default async () => {
 }
 
 function json(status, body) {
-  return {
-    statusCode: status,
+  return new Response(JSON.stringify(body), {
+    status,
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Cache-Control': 'public, max-age=60',
     },
-    body: JSON.stringify(body),
-  }
+  })
 }

@@ -25,14 +25,13 @@ const SEED_GENERATED = 5
 const SEED_STATE = { generated: SEED_GENERATED, likes: {}, pdfs: {}, reportDownloads: {} }
 
 function json(status, body) {
-  return {
-    statusCode: status,
+  return new Response(JSON.stringify(body), {
+    status,
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
     },
-    body: JSON.stringify(body),
-  }
+  })
 }
 
 function safeBody(body) {
