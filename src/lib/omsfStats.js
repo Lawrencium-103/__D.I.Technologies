@@ -134,3 +134,21 @@ export function syncFromServer(server) {
   saveLocal()
   emit()
 }
+
+// Try the live backend first; if /api/stats is unreachable (e.g. 502), fall back
+// to a committed static baseline so the band always shows consistent, non-zero
+// community numbers instead of dropping to 0.
+export async function refreshFromServer() {
+  const tryUrl = async (url) => {
+    try {
+      const r = await fetch(url, { headers: { Accept: 'application/json' } })
+      if (!r.ok) return null
+      const d = await r.json()
+      return d && typeof d === 'object' ? d : null
+    } catch {
+      return null
+    }
+  }
+  const server = (await tryUrl('/api/stats')) || (await tryUrl('/omsf-community.json'))
+  if (server) syncFromServer(server)
+}

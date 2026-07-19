@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Heart } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import OmsfStats from '../components/OmsfStats'
-import { subscribe, getStats, recordDownload, recordLike, syncFromServer } from '../lib/omsfStats'
+import { subscribe, getStats, recordDownload, recordLike, refreshFromServer } from '../lib/omsfStats'
 
 export default function ReportsLibrary() {
   const [items, setItems] = useState([])
@@ -25,10 +25,7 @@ export default function ReportsLibrary() {
         if (!active) return
         setStatus('error')
       })
-    fetch('/api/stats')
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((d) => active && syncFromServer(d))
-      .catch(() => {})
+    refreshFromServer()
     return () => {
       active = false
       unsub()

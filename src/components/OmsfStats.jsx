@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { subscribe, getStats, syncFromServer } from '../lib/omsfStats'
+import { subscribe, getStats, refreshFromServer } from '../lib/omsfStats'
 
 function sum(obj) {
   return Object.values(obj || {}).reduce((a, b) => a + (b || 0), 0)
@@ -26,10 +26,7 @@ export default function OmsfStats({ libraryCount = null }) {
 
   useEffect(() => {
     const unsub = subscribe(setStats)
-    fetch('/api/stats')
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((d) => syncFromServer(d))
-      .catch(() => {})
+    refreshFromServer()
     return unsub
   }, [])
 
