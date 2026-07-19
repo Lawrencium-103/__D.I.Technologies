@@ -11,18 +11,12 @@
 //   GET  /api/likes/:id      -> { id, likes }
 //   POST /api/report         -> { report }  (live OMSF synthesis via lib/omsf.js)
 
-// NOTE: lib/omsf.js (LLM + web search + report synthesis) is imported DYNAMICALLY
-// only inside the /api/report route below. Importing it at the top level pulls in
-// modelFacts.js and a module-level path computation that can throw during the
-// function's module initialization and 502 EVERY route — including the lightweight
-// /api/stats, /api/pdf and /api/like routes that don't need it. Keeping it lazy
-// keeps those routes alive even if the synthesis chain fails to load.
-//
-// The @netlify/blobs client is likewise imported lazily inside readState/
-// writeState: the function module therefore has NO external top-level imports, so
-// it can never fail to initialize (a 502 with an empty body on every route is the
-// classic symptom of a module-load crash). Any blob error becomes a runtime error
-// we catch and degrade from.
+// lib/omsf.js (LLM + web search + report synthesis) is imported statically like
+// the originally-working build. Its module-level path computation (`__omdir`) is
+// fully guarded so it can never throw at module init (that was the prior 502).
+// The @netlify/blobs client is likewise imported statically.
+import { getStore } from '@netlify/blobs'
+import { loadEnv, webSearch, getKnownModel, synthesizeWithFallback } from '../../lib/omsf.js'
 
 const STORE = 'dit-engagement'
 // Baseline "reports generated" mirrors the pre-built report library on disk.
@@ -147,11 +141,6 @@ export default async (event) => {
     }
 
     if (path === '/api/report' && method === 'POST') {
-      // Load the synthesis chain only here, so a failure to import it can never
-      // take down the stats/pdf/like routes.
-      const { loadEnv, webSearch, getKnownModel, synthesizeWithFallback } = await import(
-        '../../lib/omsf.js'
-      )
       loadEnv()
       const { model, audience } = safeBody(event.body)
       if (!model || !model.trim()) return json(400, { error: 'Model name is required' })
