@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ArrowLeft, ArrowUpRight, Mail, Volume2, Pause } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import BlogContent from '../components/BlogContent'
@@ -55,14 +55,39 @@ function TemplateChip({ label }) {
   )
 }
 
+const FEMALE_VOICE_HINTS = [
+  'samantha', 'victoria', 'zira', 'aria', 'jenny', 'female',
+  'karen', 'moira', 'tessa', 'susan', 'libby', 'natasha', 'google us english',
+  'google uk english female', 'google australian english', 'ariaonline',
+]
+
+function pickFemaleVoice() {
+  if (typeof window === 'undefined' || !window.speechSynthesis) return null
+  const voices = window.speechSynthesis.getVoices()
+  if (!voices.length) return null
+  const lower = voices.map((v) => v.name.toLowerCase())
+  for (const hint of FEMALE_VOICE_HINTS) {
+    const idx = lower.findIndex((n) => n.includes(hint))
+    if (idx >= 0) return voices[idx]
+  }
+  return voices.find((v) => v.lang && v.lang.toLowerCase().startsWith('en')) || voices[0]
+}
+
 function ListenButton({ text }) {
   const [speaking, setSpeaking] = useState(false)
+  const voiceRef = useRef(null)
 
   useEffect(() => {
+    const synth = typeof window !== 'undefined' ? window.speechSynthesis : null
+    if (!synth) return
+    const load = () => {
+      voiceRef.current = pickFemaleVoice()
+    }
+    load()
+    synth.addEventListener('voiceschanged', load)
     return () => {
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        window.speechSynthesis.cancel()
-      }
+      synth.removeEventListener('voiceschanged', load)
+      synth.cancel()
     }
   }, [])
 
@@ -76,6 +101,8 @@ function ListenButton({ text }) {
     }
     const u = new SpeechSynthesisUtterance(text)
     u.rate = 0.98
+    u.pitch = 1.1
+    if (voiceRef.current) u.voice = voiceRef.current
     u.onend = () => setSpeaking(false)
     u.onerror = () => setSpeaking(false)
     synth.speak(u)
