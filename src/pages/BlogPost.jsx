@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { ArrowLeft, ArrowUpRight, Mail, Volume2, Pause } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import BlogContent from '../components/BlogContent'
+import LikeButton from '../components/LikeButton'
 import { blogPosts } from '../data/blogPosts'
 
 function formatDate(d) {
@@ -106,14 +107,17 @@ function Cover({ post }) {
 
 function PostFooter({ post }) {
   return (
-    <div className="mt-14 pt-8 border-t border-[var(--color-line)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
-      <AuthorBox author={post.author} />
-      <a
-        href={`mailto:oladeji.lawrence@gmail.com?subject=${encodeURIComponent('Re: ' + post.title)}`}
-        className="btn btn-ghost !py-2.5 !px-5 !text-sm"
-      >
-        <Mail size={15} /> Discuss this
-      </a>
+    <div className="mt-14 pt-8 border-t border-[var(--color-line)]">
+      <LikeButton id={post.slug} />
+      <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+        <AuthorBox author={post.author} />
+        <a
+          href={`mailto:oladeji.lawrence@gmail.com?subject=${encodeURIComponent('Re: ' + post.title)}`}
+          className="btn btn-ghost !py-2.5 !px-5 !text-sm"
+        >
+          <Mail size={15} /> Discuss this
+        </a>
+      </div>
     </div>
   )
 }
