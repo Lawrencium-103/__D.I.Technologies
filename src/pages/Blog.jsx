@@ -45,17 +45,21 @@ export default function Blog() {
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal>
             <span className="eyebrow">The DIT Blog</span>
-            <h1 className="mt-3 max-w-[16ch]">Notes on open models, local infrastructure and practical AI.</h1>
-            <p className="text-[1.1rem] max-w-[60ch] mt-5">
-              Written by Lawrence Oladeji. Plain language, no hype. Built to help schools, businesses and
-              governments make decisions they can actually own.
+            <h1 className="mt-3 max-w-[18ch]">Notes on open models, local infrastructure and practical AI.</h1>
+            <p className="text-[1.1rem] max-w-[52ch] mt-5">
+              Written by Lawrence Oladeji. Plain language, no hype.
             </p>
-            <Link
-              to="/framework"
-              className="inline-flex items-center gap-2 mt-6 font-[var(--font-mono)] text-[0.74rem] uppercase tracking-[0.14em] text-[var(--color-ink)] border-2 border-[var(--color-ink)] px-4 py-2 hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)] transition-colors no-underline"
-            >
-              Read the OpenModel Synthesis Framework <ArrowUpRight size={15} />
-            </Link>
+            <div className="mt-7">
+              <p className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.14em] text-[var(--color-ink-faint)] mb-3">
+                How we grade open models
+              </p>
+              <Link
+                to="/framework"
+                className="inline-flex items-center gap-2 font-[var(--font-display)] font-semibold text-[0.82rem] uppercase tracking-[0.1em] text-[var(--color-paper)] bg-[var(--color-burnt)] border-2 border-[var(--color-burnt)] px-5 py-3 hover:bg-[var(--color-ink)] hover:border-[var(--color-ink)] transition-colors no-underline"
+              >
+                OpenModel Synthesis Framework (OMSF) <ArrowUpRight size={16} />
+              </Link>
+            </div>
           </ScrollReveal>
         </div>
       </section>
