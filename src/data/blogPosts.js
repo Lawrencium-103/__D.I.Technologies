@@ -514,7 +514,7 @@ export const blogPosts = [
     title: 'The Global South chapter and the reality of local AI',
     excerpt:
       'How a World Bank-backed pilot in Nigeria proves that local AI deployment solves fundamental infrastructure gaps where cloud APIs fail.',
-    date: '2026-08-01',
+    date: '2026-07-08',
     author: blogAuthor,
     category: 'History',
     readingTime: '15 min',
@@ -561,7 +561,7 @@ export const blogPosts = [
     title: 'The closing door: does openness survive 2026?',
     excerpt:
       'As signals suggest the lab that catalyzed the open weight movement might pull back, the industry faces a live question about the future of open AI.',
-    date: '2026-09-01',
+    date: '2026-07-22',
     author: blogAuthor,
     category: 'History',
     readingTime: '15 min',

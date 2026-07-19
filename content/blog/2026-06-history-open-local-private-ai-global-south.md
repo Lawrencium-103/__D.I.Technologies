@@ -1,7 +1,7 @@
 ---
 title: "The Global South chapter and the reality of local AI"
 slug: "history-open-local-private-ai-global-south"
-date: 2026-08-01
+date: 2026-07-08
 author: Lawrence Oladeji
 category: "History"
 readingTime: "15 min"

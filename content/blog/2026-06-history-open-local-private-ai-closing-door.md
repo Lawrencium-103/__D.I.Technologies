@@ -1,7 +1,7 @@
 ---
 title: "The closing door: does openness survive 2026?"
 slug: "history-open-local-private-ai-closing-door"
-date: 2026-09-01
+date: 2026-07-22
 author: Lawrence Oladeji
 category: "History"
 readingTime: "15 min"
