@@ -12,7 +12,7 @@ export const blogPosts = [
     title: 'Community-built giants: BLOOM and the RAIL license',
     excerpt:
       'How the BigScience workshop proved massive open models could be built by communities, while introducing the complications of use-based licensing.',
-    date: '2026-06-15',
+    date: '2026-01-15',
     author: blogAuthor,
     category: 'History',
     readingTime: '11 min',
@@ -63,7 +63,7 @@ export const blogPosts = [
     title: 'Stable Diffusion and proof that open weights create ecosystems',
     excerpt:
       'How the August 2022 release of Stable Diffusion proved that open model weights trigger rapid ecosystem innovation that closed APIs cannot match.',
-    date: '2026-06-15',
+    date: '2026-02-15',
     author: blogAuthor,
     category: 'History',
     readingTime: '12 min',
@@ -111,7 +111,7 @@ export const blogPosts = [
     title: 'The precedent: GPT-2 and the beginning of staged AI release',
     excerpt:
       'How OpenAI’s 2019 decision to withhold GPT-2 turned model release from an engineering afterthought into a primary policy debate.',
-    date: '2026-06-15',
+    date: '2025-12-15',
     author: blogAuthor,
     category: 'History',
     readingTime: '12 min',

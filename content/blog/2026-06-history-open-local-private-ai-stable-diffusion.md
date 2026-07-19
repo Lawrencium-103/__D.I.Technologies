@@ -1,7 +1,7 @@
 ---
 title: "Stable Diffusion and proof that open weights create ecosystems"
 slug: "history-open-local-private-ai-stable-diffusion"
-date: 2026-06-15
+date: 2026-02-15
 author: Lawrence Oladeji
 category: "History"
 readingTime: "12 min"

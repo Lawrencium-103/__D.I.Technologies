@@ -1,7 +1,7 @@
 ---
 title: "The precedent: GPT-2 and the beginning of staged AI release"
 slug: "history-open-local-private-ai-gpt2-staged-release"
-date: 2026-06-15
+date: 2025-12-15
 author: Lawrence Oladeji
 category: "History"
 readingTime: "12 min"

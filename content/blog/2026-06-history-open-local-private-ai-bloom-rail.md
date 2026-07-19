@@ -1,7 +1,7 @@
 ---
 title: "Community-built giants: BLOOM and the RAIL license"
 slug: "history-open-local-private-ai-bloom-rail"
-date: 2026-06-15
+date: 2026-01-15
 author: Lawrence Oladeji
 category: "History"
 readingTime: "11 min"
