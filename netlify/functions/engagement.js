@@ -74,10 +74,24 @@ async function writeState(state) {
   }
 }
 
-export default async (event) => {
-  const url = new URL(event.rawUrl)
-  const path = url.pathname
-  const method = event.httpMethod
+export default async (request) => {
+  let bodyText = ''
+  try {
+    bodyText = await request.text()
+  } catch {
+    bodyText = ''
+  }
+  const url = new URL(request.url)
+  let path = url.pathname
+  // Under Functions 2.0 the function is invoked at /.netlify/functions/engagement/<splat>;
+  // reconstruct the original /api/* logical path the route table matches on.
+  const fnPrefix = '/.netlify/functions/engagement'
+  if (path.startsWith(fnPrefix)) {
+    const splat = path.slice(fnPrefix.length) || '/'
+    path = '/api' + (splat === '/' ? '' : splat)
+  }
+  const method = request.method
+  const body = safeBody(bodyText)
 
   try {
     if (path === '/api/pdf' && method === 'GET') {
@@ -86,7 +100,7 @@ export default async (event) => {
     }
 
     if (path === '/api/pdf/download' && method === 'POST') {
-      const file = (safeBody(event.body).file || '').trim()
+      const file = (body.file || '').trim()
       if (!file) return json(400, { error: 'PDF file is required' })
       const state = await readState()
       state.pdfs[file] = state.pdfs[file] || { downloads: 0, likes: 0 }
@@ -96,7 +110,7 @@ export default async (event) => {
     }
 
     if (path === '/api/pdf/like' && method === 'POST') {
-      const file = (safeBody(event.body).file || '').trim()
+      const file = (body.file || '').trim()
       if (!file) return json(400, { error: 'PDF file is required' })
       const state = await readState()
       state.pdfs[file] = state.pdfs[file] || { downloads: 0, likes: 0 }
@@ -106,7 +120,7 @@ export default async (event) => {
     }
 
     if (path === '/api/report/download' && method === 'POST') {
-      const file = (safeBody(event.body).file || '').trim()
+      const file = (body.file || '').trim()
       if (!file) return json(400, { error: 'Report file is required' })
       const state = await readState()
       state.reportDownloads[file] = (state.reportDownloads[file] || 0) + 1
@@ -125,7 +139,7 @@ export default async (event) => {
     }
 
     if (path === '/api/like' && method === 'POST') {
-      const id = (safeBody(event.body).id || '').trim()
+      const id = (body.id || '').trim()
       if (!id) return json(400, { error: 'Report id is required' })
       const state = await readState()
       state.likes[id] = (state.likes[id] || 0) + 1
@@ -141,7 +155,7 @@ export default async (event) => {
 
     if (path === '/api/report' && method === 'POST') {
       loadEnv()
-      const { model, audience } = safeBody(event.body)
+      const { model, audience } = body
       if (!model || !model.trim()) return json(400, { error: 'Model name is required' })
       try {
         const known = getKnownModel(model.trim())
