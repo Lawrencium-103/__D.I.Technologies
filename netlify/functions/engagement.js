@@ -11,14 +11,18 @@
 //   GET  /api/likes/:id      -> { id, likes }
 //   POST /api/report         -> { report }  (live OMSF synthesis via lib/omsf.js)
 
-import { getStore } from '@netlify/blobs'
-
 // NOTE: lib/omsf.js (LLM + web search + report synthesis) is imported DYNAMICALLY
 // only inside the /api/report route below. Importing it at the top level pulls in
 // modelFacts.js and a module-level path computation that can throw during the
 // function's module initialization and 502 EVERY route — including the lightweight
 // /api/stats, /api/pdf and /api/like routes that don't need it. Keeping it lazy
 // keeps those routes alive even if the synthesis chain fails to load.
+//
+// The @netlify/blobs client is likewise imported lazily inside readState/
+// writeState: the function module therefore has NO external top-level imports, so
+// it can never fail to initialize (a 502 with an empty body on every route is the
+// classic symptom of a module-load crash). Any blob error becomes a runtime error
+// we catch and degrade from.
 
 const STORE = 'dit-engagement'
 // Baseline "reports generated" mirrors the pre-built report library on disk.
@@ -48,6 +52,7 @@ function safeBody(body) {
 
 async function readState() {
   try {
+    const { getStore } = await import('@netlify/blobs')
     const store = getStore(STORE)
     const raw = await store.get('state', { type: 'json' })
     if (!raw || typeof raw !== 'object') return { ...SEED_STATE }
@@ -68,6 +73,7 @@ async function readState() {
 
 async function writeState(state) {
   try {
+    const { getStore } = await import('@netlify/blobs')
     const store = getStore(STORE)
     await store.set('state', JSON.stringify(state))
   } catch (e) {
