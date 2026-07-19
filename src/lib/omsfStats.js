@@ -149,6 +149,15 @@ export async function refreshFromServer() {
       return null
     }
   }
-  const server = (await tryUrl('/api/stats')) || (await tryUrl('/omsf-community.json'))
-  if (server) syncFromServer(server)
+  const nonEmpty = (o) => o && typeof o === 'object' && Object.keys(o).length > 0
+  const baseline = await tryUrl('/omsf-community.json')
+  const server = await tryUrl('/api/stats')
+  // Prefer the live server only when it carries real (non-seed) data. The
+  // engagement store starts from a seed of 5 with empty maps, so when it has
+  // nothing accumulated yet we keep the committed community baseline as the floor.
+  const hasReal =
+    server &&
+    (server.generated > 5 || nonEmpty(server.likes) || nonEmpty(server.reportDownloads) || nonEmpty(server.pdfs))
+  const effective = hasReal ? server : baseline
+  if (effective) syncFromServer(effective)
 }
