@@ -86,7 +86,49 @@ export default function Research() {
             and says plainly where OMSF’s own contribution begins and ends.
           </p>
 
-          <OmsfStats />
+          <div className="mb-12">
+            <OmsfStats />
+          </div>
+
+          {/* DIT Original Research Paper Section */}
+          <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-7 sm:p-9 mb-14 shadow-[8px_8px_0px_#1A1712]">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-4 border-b border-[var(--color-line)] pb-3">
+              <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.16em] text-[var(--color-burnt)] font-bold">
+                [ DIT ORIGINAL ACADEMIC PREPRINT ]
+              </span>
+              <span className="font-[var(--font-mono)] text-[0.68rem] uppercase tracking-[0.12em] bg-[var(--color-ink)] text-[var(--color-paper)] px-2.5 py-1">
+                Target: arXiv cs.AI / cs.CY · Zenodo DOI
+              </span>
+            </div>
+
+            <h2 className="text-[1.8rem] font-[var(--font-display)] font-bold leading-tight mb-3">
+              The Model Openness Synthesis Framework (OMSF): Operationalizing Composite Openness for Procurement and Edge Deployment in Resource-Constrained Environments
+            </h2>
+
+            <p className="font-[var(--font-mono)] text-[0.8rem] text-[var(--color-ink-faint)] mb-4">
+              <strong>Authors:</strong> Dara Initiative Technology (DIT) Research Group &nbsp;|&nbsp; <strong>Date:</strong> July 2026
+            </p>
+
+            <div className="bg-[var(--color-paper)] border border-[var(--color-line-strong)] p-5 mb-5 font-sans">
+              <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.14em] text-[var(--color-burnt)] font-bold block mb-2">
+                Abstract
+              </span>
+              <p className="text-[0.98rem] leading-relaxed text-[var(--color-ink-soft)]">
+                While recent benchmarks evaluate Artificial Intelligence (AI) model openness from a producer-side release perspective (e.g. White et al. 2024 MOF, OSI 2024 Definition), enterprise buyers, public sector agencies, and educational institutions in resource-constrained environments lack an empirical, buyer-side evaluation taxonomy. We present the <strong>OpenModel Synthesis Framework (OMSF)</strong>, a composite evaluation methodology that operationalizes model openness across three novel dimensions: (1) a 6-rung legal usage and licensing ladder ($L0$--$L5$), (2) a three-tier provenance verification protocol ($P1$--$P3$), and (3) an African Edge &amp; Sovereign Infrastructure (AESI) metric measuring zero-egress data compliance and 4-bit/8-bit quantization efficiency under low-power hardware constraints.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4 mb-6 font-[var(--font-mono)] text-[0.82rem]">
+              <div className="border border-[var(--color-line)] p-4 bg-[var(--color-paper)]">
+                <span className="text-[var(--color-burnt)] font-bold block mb-1">Composite Openness Formula (COSA)</span>
+                <code>S_OMSF = w1·L_rung + w2·P_tier + w3·E_quant</code>
+              </div>
+              <div className="border border-[var(--color-line)] p-4 bg-[var(--color-paper)]">
+                <span className="text-[var(--color-burnt)] font-bold block mb-1">Keywords</span>
+                <span className="text-[var(--color-ink-soft)]">AI Governance, Model Openness, Data Sovereignty, Edge AI, Quantization</span>
+              </div>
+            </div>
+          </div>
 
           {/* Provenance rule */}
           <div className="bg-[var(--color-ink)] text-[var(--color-paper)] p-6 sm:p-8 mb-14 border-l-[6px] border-[var(--color-burnt)]">
