@@ -18,12 +18,10 @@ const ReportBuilder = lazy(() => import('./pages/ReportBuilder'))
 const ReportsLibrary = lazy(() => import('./pages/ReportsLibrary'))
 const OpenModels = lazy(() => import('./pages/OpenModels'))
 
+import DITLoader from './components/DITLoader'
+
 function RouteFallback() {
-  return (
-    <div className="min-h-[60vh] flex items-center justify-center bg-cream">
-      <span className="eyebrow animate-pulse">Loading…</span>
-    </div>
-  )
+  return <DITLoader isFullPage={true} />
 }
 
 export default function App() {

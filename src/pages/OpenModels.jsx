@@ -3,10 +3,9 @@ import { ExternalLink, Search, RefreshCw, Trophy, Database } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import snapshot from '../data/openModels.json'
 
-  const LIVE_URL = '/.netlify/functions/livemodels'
+const LIVE_URL = '/.netlify/functions/livemodels'
 const SRC = 'https://lmmarketcap.com/open-source-ai-models'
 
-// Defensive live mapper — tolerates several plausible API shapes and drops anything invalid.
 function parseCtx(s) {
   if (!s || s === '-') return null
   const m = String(s).match(/([\d.]+)\s*([KM])?/i)
@@ -17,60 +16,96 @@ function parseCtx(s) {
   return n
 }
 
+// Open-model detection patterns for live API streams lacking explicit openSource flags
+const OPEN_PATTERNS = [
+  /llama/i, /qwen/i, /deepseek/i, /gemma/i, /mistral/i, /mixtral/i, /phi/i,
+  /starcoder/i, /codellama/i, /command-r/i, /nemotron/i, /glm/i, /yi-/i,
+  /falcon/i, /vicuna/i, /zephyr/i, /stable-diffusion/i, /flux/i, /smollm/i,
+  /olmo/i, /granite/i, /internlm/i, /baichuan/i, /step-/i, /mimo/i, /kimi/i
+]
+
+function isOpenModel(m) {
+  const openFlag = m.openSource ?? m.open_source ?? m.openWeights ?? m.open_weights ?? m.is_open_source ?? m.isOpenSource
+  if (openFlag === true) return true
+  if (openFlag === false) return false
+
+  const name = String(m.name || m.model || m.id || m.slug || '')
+  return OPEN_PATTERNS.some((pat) => pat.test(name))
+}
+
 function mapLiveApi(data) {
   const arr = Array.isArray(data) ? data : data?.models || data?.data || []
   if (!Array.isArray(arr)) return []
   const out = []
+
   for (const m of arr) {
-    const provider = m.provider || m.org || m.organization || ''
-    const open = m.openSource ?? m.open_source ?? m.openWeights ?? m.open_weights
-    if (open === false) continue
-    const name = m.name || m.model || m.id || ''
-    const score = Number(m.score ?? m.lmcScore ?? m.lmc_score ?? null)
-    const rank = Number(m.rank ?? m.lmcRank ?? m.lmc_rank ?? null)
+    if (!m || typeof m !== 'object') continue
+    if (!isOpenModel(m)) continue
+
+    const rawProv = m.provider || m.org || m.organization || ''
+    const provider =
+      typeof rawProv === 'string'
+        ? rawProv
+        : String(rawProv?.name || rawProv?.slug || 'Unknown')
+    const name = String(m.name || m.model || m.id || m.slug || '')
     if (!name || !provider) continue
+
+    const score = Number(m.score ?? m.lmcScore ?? m.lmc_score ?? null)
+    const rank = Number(m.rank ?? m.quality_rank ?? m.lmcRank ?? m.lmc_rank ?? null)
     if (Number.isNaN(score) && Number.isNaN(rank)) continue
+
     const ctx = m.contextWindow ?? m.context_window ?? m.context ?? null
-    const input = Number(m.pricing?.input ?? m.pricing?.prompt ?? null)
-    const output = Number(m.pricing?.output ?? m.pricing?.completion ?? null)
+    const input = m.pricing?.input ?? m.pricing?.prompt
+    const output = m.pricing?.output ?? m.pricing?.completion
+    const inputN = input == null ? null : Number(input)
+    const outputN = output == null ? null : Number(output)
+
+    const cleanScore = Number.isNaN(score) || score == null ? 0 : Math.round(score)
+    const cleanRank = Number.isNaN(rank) || rank == null ? 9999 : rank
+
     out.push({
-      id: m.id || name.toLowerCase().replace(/\s+/g, '-'),
-      rank: Number.isNaN(rank) ? 9999 : rank,
+      id: String(m.id || m.slug || name.toLowerCase().replace(/\s+/g, '-')),
+      rank: cleanRank,
       name,
       provider,
-      score: Number.isNaN(score) ? 0 : score,
+      score: cleanScore,
       context: ctx == null ? '-' : String(ctx),
       contextTokens: typeof ctx === 'number' ? ctx : parseCtx(String(ctx)),
-      input: input == null ? '-' : '$' + input,
-      output: output == null ? '-' : '$' + output,
-      inputPerM: Number.isNaN(input) ? 0 : input,
-      outputPerM: Number.isNaN(output) ? 0 : output,
-      free: Boolean(m.free ?? m.freeTier ?? m.free_tier),
+      input: inputN == null || Number.isNaN(inputN) ? '-' : '$' + inputN,
+      output: outputN == null || Number.isNaN(outputN) ? '-' : '$' + outputN,
+      inputPerM: inputN == null || Number.isNaN(inputN) ? 0 : inputN,
+      outputPerM: outputN == null || Number.isNaN(outputN) ? 0 : outputN,
+      free: Boolean((m.free ?? m.freeTier ?? m.free_tier) || inputN === 0),
     })
   }
+
   return out
 }
 
 function fmtTokens(n) {
-  if (n == null) return '-'
-  if (n >= 1e6) return (n / 1e6).toFixed(n % 1e6 === 0 ? 0 : 1) + 'M'
-  if (n >= 1e3) return Math.round(n / 1e3) + 'K'
-  return String(n)
+  if (n == null || Number.isNaN(Number(n)) || !Number.isFinite(Number(n))) return '-'
+  const num = Number(n)
+  if (num >= 1e6) return (num / 1e6).toFixed(num % 1e6 === 0 ? 0 : 1) + 'M'
+  if (num >= 1e3) return Math.round(num / 1e3) + 'K'
+  return String(num)
 }
 
 const SORTERS = {
-  rank: (a, b) => a.rank - b.rank,
-  name: (a, b) => a.name.localeCompare(b.name),
-  provider: (a, b) => a.provider.localeCompare(b.provider),
-  score: (a, b) => b.score - a.score,
-  contextTokens: (a, b) => (b.contextTokens || 0) - (a.contextTokens || 0),
-  inputPerM: (a, b) => a.inputPerM - b.inputPerM,
-  outputPerM: (a, b) => a.outputPerM - b.outputPerM,
+  rank: (a, b) => (Number(a.rank) || 9999) - (Number(b.rank) || 9999),
+  name: (a, b) => String(a.name || '').localeCompare(String(b.name || '')),
+  provider: (a, b) => String(a.provider || '').localeCompare(String(b.provider || '')),
+  score: (a, b) => (Number(b.score) || 0) - (Number(a.score) || 0),
+  contextTokens: (a, b) => (Number(b.contextTokens) || 0) - (Number(a.contextTokens) || 0),
+  inputPerM: (a, b) => (Number(a.inputPerM) || 0) - (Number(b.inputPerM) || 0),
+  outputPerM: (a, b) => (Number(a.outputPerM) || 0) - (Number(b.outputPerM) || 0),
 }
 
 export default function OpenModels() {
-  const [models, setModels] = useState(snapshot.models)
-  const [status, setStatus] = useState({ kind: 'snapshot', at: snapshot.fetchedAt })
+  const initialModels = Array.isArray(snapshot?.models) ? snapshot.models : []
+  const initialFetchedAt = snapshot?.fetchedAt || new Date().toISOString()
+
+  const [models, setModels] = useState(initialModels)
+  const [status, setStatus] = useState({ kind: 'snapshot', at: initialFetchedAt })
   const [query, setQuery] = useState('')
   const [provider, setProvider] = useState('all')
   const [freeOnly, setFreeOnly] = useState(false)
@@ -85,55 +120,69 @@ export default function OpenModels() {
       if (!res.ok) throw new Error('HTTP ' + res.status)
       const data = await res.json()
       const mapped = mapLiveApi(data)
-      const valid = mapped.filter((m) => m.score > 0)
-      if (valid.length >= 20) {
+      const valid = mapped.filter((m) => m && m.score > 0)
+      if (valid.length >= 5) {
         const sorted = [...valid].sort((a, b) => a.rank - b.rank)
         setModels(sorted)
         setStatus({ kind: 'live', at: new Date().toISOString() })
       } else {
-        setStatus({ kind: 'snapshot', at: snapshot.fetchedAt, note: 'Live format unrecognized — showing snapshot.' })
+        setStatus({ kind: 'snapshot', at: initialFetchedAt, note: 'Live format unrecognized — showing snapshot.' })
       }
     } catch {
-      setStatus({ kind: 'snapshot', at: snapshot.fetchedAt, note: 'Live update unavailable — showing latest snapshot.' })
+      setStatus({ kind: 'snapshot', at: initialFetchedAt, note: 'Live update unavailable — showing latest snapshot.' })
     } finally {
       setLoading(false)
     }
   }
 
-  useEffect(() => { loadLive() /* attempt live on mount; safe fallback to snapshot */ }, [])
+  useEffect(() => { loadLive() }, [])
 
   const providers = useMemo(() => {
-    const set = new Set(models.map((m) => m.provider))
+    const list = Array.isArray(models) ? models : []
+    const set = new Set(list.map((m) => m?.provider).filter(Boolean))
     return [...set].sort((a, b) => a.localeCompare(b))
   }, [models])
 
   const filtered = useMemo(() => {
-    let list = models
+    let list = Array.isArray(models) ? models : []
     if (query.trim()) {
       const q = query.toLowerCase()
-      list = list.filter((m) => m.name.toLowerCase().includes(q) || m.provider.toLowerCase().includes(q))
+      list = list.filter(
+        (m) =>
+          String(m?.name || '').toLowerCase().includes(q) ||
+          String(m?.provider || '').toLowerCase().includes(q)
+      )
     }
-    if (provider !== 'all') list = list.filter((m) => m.provider === provider)
-    if (freeOnly) list = list.filter((m) => m.free)
+    if (provider !== 'all') list = list.filter((m) => m?.provider === provider)
+    if (freeOnly) list = list.filter((m) => Boolean(m?.free))
     const dir = sortDir === 'asc' ? 1 : -1
-    return [...list].sort((a, b) => SORTERS[sortKey](a, b) * dir)
+    const sorter = SORTERS[sortKey] || SORTERS.rank
+    return [...list].sort((a, b) => sorter(a, b) * dir)
   }, [models, query, provider, freeOnly, sortKey, sortDir])
 
   const stats = useMemo(() => {
-    const scores = models.map((m) => m.score)
-    const avg = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
-    const free = models.filter((m) => m.free).length
-    const maxCtx = Math.max(...models.map((m) => m.contextTokens || 0))
-    const paid = models.filter((m) => !m.free && m.inputPerM != null)
-    const cheapest = paid.length ? Math.min(...paid.map((m) => m.inputPerM)) : 0
-    return { total: models.length, avg, free, providers: providers.length, maxCtx, cheapest }
+    const list = Array.isArray(models) ? models : []
+    if (list.length === 0) {
+      return { total: 0, avg: 0, free: 0, providers: 0, maxCtx: 0, cheapest: 0 }
+    }
+    const scores = list.map((m) => Number(m?.score) || 0)
+    const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0
+    const free = list.filter((m) => Boolean(m?.free)).length
+    const maxCtx = Math.max(0, ...list.map((m) => Number(m?.contextTokens) || 0))
+    const paid = list.filter((m) => !m?.free && m?.inputPerM != null && !Number.isNaN(Number(m.inputPerM)))
+    const cheapest = paid.length ? Math.min(...paid.map((m) => Number(m.inputPerM) || 0)) : 0
+    return { total: list.length, avg, free, providers: providers.length, maxCtx, cheapest }
   }, [models, providers])
 
-  const top10 = useMemo(
-    () => [...filtered].sort((a, b) => b.score - a.score).slice(0, 10),
-    [filtered]
-  )
-  const maxScore = useMemo(() => Math.max(...models.map((m) => m.score), 1), [models])
+  const top10 = useMemo(() => {
+    return [...filtered].sort((a, b) => (Number(b?.score) || 0) - (Number(a?.score) || 0)).slice(0, 10)
+  }, [filtered])
+
+  const maxScore = useMemo(() => {
+    const list = Array.isArray(models) ? models : []
+    if (list.length === 0) return 100
+    return Math.max(1, ...list.map((m) => Number(m?.score) || 0))
+  }, [models])
 
   const toggleSort = (key) => {
     if (sortKey === key) setSortDir((d) => (d === 'asc' ? 'desc' : 'asc'))
@@ -145,10 +194,19 @@ export default function OpenModels() {
       <span className="ml-1 inline-block text-[var(--color-burnt)]">{sortDir === 'asc' ? '▲' : '▼'}</span>
     ) : null
 
+  const formattedDate = useMemo(() => {
+    try {
+      const d = new Date(status.at)
+      return isNaN(d.getTime()) ? '' : d.toLocaleDateString()
+    } catch {
+      return ''
+    }
+  }, [status.at])
+
   const statusLabel =
     status.kind === 'live'
       ? 'Live · lmmarketcap API'
-      : `Snapshot · ${new Date(status.at).toLocaleDateString()}`
+      : `Snapshot · ${formattedDate}`
 
   return (
     <>
@@ -214,7 +272,7 @@ export default function OpenModels() {
           </ScrollReveal>
           <div className="border-t-2 border-[var(--color-ink)]">
             {top10.map((m, i) => (
-              <div key={m.id} className="flex items-center gap-4 py-3 border-b border-[var(--color-line)]">
+              <div key={m.id || i} className="flex items-center gap-4 py-3 border-b border-[var(--color-line)]">
                 <span className="marker w-7 text-right text-[0.95rem]">{i + 1}</span>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-baseline gap-2">
@@ -222,7 +280,7 @@ export default function OpenModels() {
                     <span className="font-[var(--font-mono)] text-[0.7rem] text-[var(--color-ink-faint)] shrink-0">{m.provider}</span>
                   </div>
                   <div className="h-2 mt-1.5 bg-[var(--color-paper-2)] border border-[var(--color-line)]">
-                    <div className="h-full bg-[var(--color-burnt)]" style={{ width: `${(m.score / maxScore) * 100}%` }} />
+                    <div className="h-full bg-[var(--color-burnt)]" style={{ width: `${Math.min(100, Math.max(0, (m.score / maxScore) * 100))}%` }} />
                   </div>
                 </div>
                 <span className="font-[var(--font-display)] font-bold text-[var(--color-ink)] tabular-nums w-10 text-right text-[1.15rem]">{m.score}</span>
@@ -316,7 +374,7 @@ export default function OpenModels() {
                       <div className="flex items-center gap-2">
                         <span className="font-[var(--font-display)] font-bold tabular-nums text-[var(--color-ink)]">{m.score}</span>
                         <span className="h-1.5 w-12 bg-[var(--color-paper-2)] border border-[var(--color-line)] hidden sm:inline-block">
-                          <span className="block h-full bg-[var(--color-burnt)]" style={{ width: `${(m.score / maxScore) * 100}%` }} />
+                          <span className="block h-full bg-[var(--color-burnt)]" style={{ width: `${Math.min(100, Math.max(0, (m.score / maxScore) * 100))}%` }} />
                         </span>
                       </div>
                     </td>
