@@ -225,6 +225,61 @@ export default function Research() {
           </ul>
         </ScrollReveal>
 
+        {/* African Sovereign AI & Low-Connectivity Deployment Matrix */}
+        <ScrollReveal>
+          <h2 className="text-[1.9rem] mt-16 mb-4">African Data Sovereignty &amp; Offline Edge Matrix</h2>
+          <p className="text-[1.05rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[66ch] mb-6">
+            Global AI literature evaluates models based on hyper-scale cloud availability. DIT operationalizes OMSF specifically for African schools, SMEs, and public institutions operating under strict data localization laws (e.g. Nigeria NDPR, Ghana Data Protection Act, Kenya DPA) and low-bandwidth local hardware constraints.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-5 mb-14">
+            <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-6">
+              <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.14em] text-[var(--color-burnt)] font-bold">
+                1. Data Sovereignty &amp; Local On-Prem
+              </span>
+              <h3 className="font-[var(--font-display)] font-semibold text-lg mt-2 mb-2">Zero Foreign Data Egress</h3>
+              <p className="text-[0.96rem] leading-relaxed text-[var(--color-ink-soft)]">
+                Models graded L2 or higher (permissive open-weight) allow 100% air-gapped local deployment. No telemetry or prompt metadata leaves national borders or enterprise data centers.
+              </p>
+            </div>
+            <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-6">
+              <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.14em] text-[var(--color-burnt)] font-bold">
+                2. Bandwidth &amp; Local Edge Inference
+              </span>
+              <h3 className="font-[var(--font-display)] font-semibold text-lg mt-2 mb-2">Quantized Local Execution</h3>
+              <p className="text-[0.96rem] leading-relaxed text-[var(--color-ink-soft)]">
+                Evaluates 4-bit and 8-bit quantized weights (GGUF/AWQ) capable of running locally on consumer hardware or low-power solar appliances (like SomaBox) without live internet.
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Academic & Policy Citation Box */}
+        <ScrollReveal>
+          <h2 className="text-[1.9rem] mt-16 mb-4">Citing DIT &amp; OMSF in Research or Policy</h2>
+          <p className="text-[1.05rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[66ch] mb-6">
+            If you are using the OpenModel Synthesis Framework in policy documentation, government RFPs, or academic publications, use the standard BibTeX or APA citation formats below:
+          </p>
+
+          <div className="bg-[var(--color-ink)] text-[var(--color-paper)] p-6 font-[var(--font-mono)] text-[0.8rem] border-l-4 border-[var(--color-amber)] mb-6 overflow-x-auto select-all">
+            <span className="text-[var(--color-amber)] uppercase tracking-[0.14em] text-[0.7rem] block mb-2">BibTeX Citation</span>
+            <pre className="whitespace-pre-wrap leading-relaxed text-[var(--color-paper)]/90">{`@techreport{DIT_OMSF_2026,
+  author      = {Dara Initiative Technology (DIT)},
+  title       = {The OpenModel Synthesis Framework (OMSF): Operationalizing Model Openness for African Enterprise & Public Deployment},
+  institution = {Dara Initiative Technology},
+  year        = {2026},
+  type        = {Technical Report & Deployment Methodology v1.0},
+  url         = {https://ditechnology.netlify.app/framework}
+}`}</pre>
+          </div>
+
+          <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-5 font-[var(--font-mono)] text-[0.82rem] mb-12">
+            <span className="text-[var(--color-burnt)] uppercase tracking-[0.14em] text-[0.7rem] font-bold block mb-2">APA Citation</span>
+            <p className="text-[var(--color-ink)] leading-relaxed">
+              Dara Initiative Technology. (2026). <em>The OpenModel Synthesis Framework (OMSF): Operationalizing Model Openness for African Enterprise &amp; Public Deployment</em> (v1.0). DIT Technology Standards. https://ditechnology.netlify.app/framework
+            </p>
+          </div>
+        </ScrollReveal>
+
         {/* Further reading */}
         <ScrollReveal>
           <h2 className="text-[1.9rem] mt-16 mb-4">Further reading</h2>

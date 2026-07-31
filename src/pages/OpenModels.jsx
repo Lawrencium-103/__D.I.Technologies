@@ -100,6 +100,16 @@ const SORTERS = {
   outputPerM: (a, b) => (Number(a.outputPerM) || 0) - (Number(b.outputPerM) || 0),
 }
 
+// Helper to estimate VRAM requirements based on model name / parameters
+function estimateVram(name) {
+  const n = String(name || '').toLowerCase()
+  if (/405b|397b|235b|120b\+/.test(n)) return { label: 'Multi-GPU (8x 80GB)', vram: 640, tier: 'cluster' }
+  if (/122b|70b|72b|67b/.test(n)) return { label: 'Enterprise (80GB VRAM)', vram: 80, tier: 'enterprise' }
+  if (/35b|34b|32b|31b|30b|27b|26b/.test(n)) return { label: 'Workstation (24GB VRAM)', vram: 24, tier: 'workstation' }
+  if (/14b|12b|9b|8b|7b/.test(n)) return { label: 'Desktop / Mac (16GB)', vram: 16, tier: 'desktop' }
+  return { label: 'Edge / CPU (8GB VRAM)', vram: 8, tier: 'edge' }
+}
+
 export default function OpenModels() {
   const initialModels = Array.isArray(snapshot?.models) ? snapshot.models : []
   const initialFetchedAt = snapshot?.fetchedAt || new Date().toISOString()
@@ -108,10 +118,13 @@ export default function OpenModels() {
   const [status, setStatus] = useState({ kind: 'snapshot', at: initialFetchedAt })
   const [query, setQuery] = useState('')
   const [provider, setProvider] = useState('all')
+  const [hardwareFilter, setHardwareFilter] = useState('all')
   const [freeOnly, setFreeOnly] = useState(false)
   const [sortKey, setSortKey] = useState('rank')
   const [sortDir, setSortDir] = useState('asc')
   const [loading, setLoading] = useState(false)
+  const [compareList, setCompareList] = useState([])
+  const [showCompareModal, setShowCompareModal] = useState(false)
 
   const loadLive = async () => {
     setLoading(true)
@@ -154,11 +167,14 @@ export default function OpenModels() {
       )
     }
     if (provider !== 'all') list = list.filter((m) => m?.provider === provider)
+    if (hardwareFilter !== 'all') {
+      list = list.filter((m) => estimateVram(m.name).tier === hardwareFilter)
+    }
     if (freeOnly) list = list.filter((m) => Boolean(m?.free))
     const dir = sortDir === 'asc' ? 1 : -1
     const sorter = SORTERS[sortKey] || SORTERS.rank
     return [...list].sort((a, b) => sorter(a, b) * dir)
-  }, [models, query, provider, freeOnly, sortKey, sortDir])
+  }, [models, query, provider, hardwareFilter, freeOnly, sortKey, sortDir])
 
   const stats = useMemo(() => {
     const list = Array.isArray(models) ? models : []
@@ -189,6 +205,38 @@ export default function OpenModels() {
     else { setSortKey(key); setSortDir(key === 'name' || key === 'provider' ? 'asc' : 'desc') }
   }
 
+  const toggleCompare = (model) => {
+    setCompareList((prev) => {
+      const exists = prev.some((item) => item.id === model.id)
+      if (exists) return prev.filter((item) => item.id !== model.id)
+      if (prev.length >= 3) return prev
+      return [...prev, model]
+    })
+  }
+
+  const exportCsv = () => {
+    const headers = ['Rank', 'Model Name', 'Provider', 'Score', 'Context', 'Input / 1M', 'Output / 1M', 'Estimated VRAM', 'Free Tier']
+    const rows = filtered.map((m) => [
+      m.rank,
+      `"${m.name.replace(/"/g, '""')}"`,
+      `"${m.provider.replace(/"/g, '""')}"`,
+      m.score,
+      m.context,
+      m.input,
+      m.output,
+      `"${estimateVram(m.name).label}"`,
+      m.free ? 'Yes' : 'No'
+    ])
+    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map((e) => e.join(','))].join('\n')
+    const encodedUri = encodeURI(csvContent)
+    const link = document.createElement('a')
+    link.setAttribute('href', encodedUri)
+    link.setAttribute('download', `DIT_Open_Models_Leaderboard_${new Date().toISOString().slice(0, 10)}.csv`)
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   const Arrow = ({ k }) =>
     sortKey === k ? (
       <span className="ml-1 inline-block text-[var(--color-burnt)]">{sortDir === 'asc' ? '▲' : '▼'}</span>
@@ -215,14 +263,14 @@ export default function OpenModels() {
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal>
             <p className="font-[var(--font-mono)] text-[0.78rem] uppercase tracking-[0.18em] text-[var(--color-ink-faint)] mb-6">
-              <span className="hover:text-[var(--color-burnt)]">Open Intelligence</span> / Open Model Leaderboard
+              <span className="hover:text-[var(--color-burnt)]">Open Intelligence</span> / Open Model Leaderboard & Deployment Index
             </p>
             <h1 className="max-w-[20ch]">
               The open model <span className="text-[var(--color-burnt)]">leaderboard.</span>
             </h1>
             <p className="text-[1.1rem] max-w-[62ch] mt-5">
               Every ranked open-weight model you can self-host, fine-tune and deploy without vendor lock-in —
-              scored, priced and sorted so you can pick the right model in seconds.
+              scored, priced, hardware-estimated and sorted for enterprise &amp; African deployment.
             </p>
             <div className="flex flex-wrap items-center gap-3 mt-7">
               <span className="inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.14em] px-3 py-1.5 border-2 border-[var(--color-ink)] bg-[var(--color-paper)]">
@@ -231,6 +279,9 @@ export default function OpenModels() {
               </span>
               <button onClick={loadLive} disabled={loading} className="btn btn-ghost !py-2 !px-4 !text-sm inline-flex items-center gap-2">
                 <RefreshCw size={15} className={loading ? 'animate-spin' : ''} /> {loading ? 'Refreshing…' : 'Refresh'}
+              </button>
+              <button onClick={exportCsv} className="btn btn-ghost !py-2 !px-4 !text-sm inline-flex items-center gap-2">
+                Download CSV
               </button>
               <a href={SRC} target="_blank" rel="noreferrer" className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.14em] text-[var(--color-ink-faint)] hover:text-[var(--color-burnt)] inline-flex items-center gap-1 no-underline">
                 Source: lmmarketcap <ExternalLink size={13} />
@@ -278,6 +329,9 @@ export default function OpenModels() {
                   <div className="flex items-baseline gap-2">
                     <span className="font-medium text-[var(--color-ink)] truncate">{m.name}</span>
                     <span className="font-[var(--font-mono)] text-[0.7rem] text-[var(--color-ink-faint)] shrink-0">{m.provider}</span>
+                    <span className="font-[var(--font-mono)] text-[0.65rem] uppercase tracking-[0.08em] px-1.5 py-0.5 bg-[var(--color-paper)] border border-[var(--color-line)] text-[var(--color-burnt)] hidden sm:inline-block">
+                      {estimateVram(m.name).label}
+                    </span>
                   </div>
                   <div className="h-2 mt-1.5 bg-[var(--color-paper-2)] border border-[var(--color-line)]">
                     <div className="h-full bg-[var(--color-burnt)]" style={{ width: `${Math.min(100, Math.max(0, (m.score / maxScore) * 100))}%` }} />
@@ -296,9 +350,9 @@ export default function OpenModels() {
           <ScrollReveal>
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-7">
               <div>
-                <span className="eyebrow">Full ranking</span>
+                <span className="eyebrow">Full ranking &amp; deployment specs</span>
                 <h2 className="mt-3 mb-1">All {models.length} open models</h2>
-                <p className="text-[0.95rem] text-[var(--color-ink-soft)]">{filtered.length} shown · click any column to sort</p>
+                <p className="text-[0.95rem] text-[var(--color-ink-soft)]">{filtered.length} shown · click any column to sort · select models to compare side-by-side</p>
               </div>
               <div className="flex flex-wrap items-center gap-3">
                 <div className="relative">
@@ -307,7 +361,7 @@ export default function OpenModels() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search model or provider…"
-                    className="pl-9 pr-3 py-2.5 w-[230px] max-w-full bg-[var(--color-paper)] border-2 border-[var(--color-ink)] text-[var(--color-ink)] text-sm outline-none focus:border-[var(--color-burnt)]"
+                    className="pl-9 pr-3 py-2.5 w-[210px] max-w-full bg-[var(--color-paper)] border-2 border-[var(--color-ink)] text-[var(--color-ink)] text-sm outline-none focus:border-[var(--color-burnt)]"
                   />
                 </div>
                 <select
@@ -320,6 +374,18 @@ export default function OpenModels() {
                     <option key={p} value={p}>{p}</option>
                   ))}
                 </select>
+                <select
+                  value={hardwareFilter}
+                  onChange={(e) => setHardwareFilter(e.target.value)}
+                  className="py-2.5 px-3 bg-[var(--color-paper)] border-2 border-[var(--color-ink)] text-[var(--color-ink)] text-sm outline-none focus:border-[var(--color-burnt)]"
+                >
+                  <option value="all">All Hardware Tiers</option>
+                  <option value="edge">Edge / Local CPU (8GB VRAM)</option>
+                  <option value="desktop">Desktop / Mac (16GB VRAM)</option>
+                  <option value="workstation">Workstation (24GB VRAM)</option>
+                  <option value="enterprise">Enterprise (80GB VRAM)</option>
+                  <option value="cluster">Multi-GPU Cluster</option>
+                </select>
                 <button
                   onClick={() => setFreeOnly((v) => !v)}
                   className={`py-2.5 px-3 border-2 text-sm font-[var(--font-mono)] uppercase tracking-[0.08em] transition-colors ${
@@ -328,69 +394,96 @@ export default function OpenModels() {
                 >
                   Free only
                 </button>
+                {compareList.length > 0 && (
+                  <button
+                    onClick={() => setShowCompareModal(true)}
+                    className="py-2.5 px-4 bg-[var(--color-burnt)] text-white font-[var(--font-mono)] uppercase tracking-[0.1em] text-sm border-2 border-[var(--color-ink)] shadow-[2px_2px_0px_#1A1712]"
+                  >
+                    Compare ({compareList.length}/3)
+                  </button>
+                )}
               </div>
             </div>
           </ScrollReveal>
 
           <div className="border-2 border-[var(--color-ink)] overflow-x-auto">
-            <table className="w-full text-[0.92rem] border-collapse min-w-[760px]">
+            <table className="w-full text-[0.92rem] border-collapse min-w-[840px]">
               <thead>
                 <tr className="bg-[var(--color-paper-2)] text-left">
+                  <th className="px-3 py-3 w-10 text-center font-[var(--font-mono)] text-[0.7rem] uppercase text-[var(--color-ink-faint)]">Compare</th>
                   {[
                     { k: 'rank', label: '#', cls: 'w-12' },
                     { k: 'name', label: 'Model' },
-                    { k: 'provider', label: 'Provider', cls: 'w-36' },
+                    { k: 'provider', label: 'Provider', cls: 'w-32' },
                     { k: 'score', label: 'Score', cls: 'w-24' },
                     { k: 'contextTokens', label: 'Context', cls: 'w-24' },
+                    { k: 'vram', label: 'Hardware Spec', cls: 'w-36' },
                     { k: 'inputPerM', label: 'In /1M', cls: 'w-24' },
                     { k: 'outputPerM', label: 'Out /1M', cls: 'w-24' },
                   ].map((c) => (
                     <th
                       key={c.k}
-                      onClick={() => toggleSort(c.k)}
-                      className={`px-4 py-3 font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.12em] text-[var(--color-ink-faint)] cursor-pointer select-none hover:text-[var(--color-burnt)] ${c.cls || ''}`}
+                      onClick={() => c.k !== 'vram' && toggleSort(c.k)}
+                      className={`px-4 py-3 font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.12em] text-[var(--color-ink-faint)] select-none ${c.k !== 'vram' ? 'cursor-pointer hover:text-[var(--color-burnt)]' : ''} ${c.cls || ''}`}
                     >
                       {c.label}
                       <Arrow k={c.k} />
                     </th>
                   ))}
-                  <th className="px-4 py-3 w-20" />
+                  <th className="px-4 py-3 w-16" />
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((m) => (
-                  <tr key={m.id} className="border-t border-[var(--color-line)] hover:bg-[var(--color-paper-2)] transition-colors">
-                    <td className="px-4 py-3 font-[var(--font-mono)] text-[var(--color-ink-faint)] tabular-nums">{m.rank}</td>
-                    <td className="px-4 py-3">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-[var(--color-ink)]">{m.name}</span>
-                        {m.free && (
-                          <span className="font-[var(--font-mono)] text-[0.6rem] uppercase tracking-[0.1em] px-1.5 py-0.5 bg-[var(--color-success)] text-white">Free</span>
-                        )}
-                      </div>
-                    </td>
-                    <td className="px-4 py-3 text-[var(--color-ink-soft)]">{m.provider}</td>
-                    <td className="px-4 py-3">
-                      <div className="flex items-center gap-2">
-                        <span className="font-[var(--font-display)] font-bold tabular-nums text-[var(--color-ink)]">{m.score}</span>
-                        <span className="h-1.5 w-12 bg-[var(--color-paper-2)] border border-[var(--color-line)] hidden sm:inline-block">
-                          <span className="block h-full bg-[var(--color-burnt)]" style={{ width: `${Math.min(100, Math.max(0, (m.score / maxScore) * 100))}%` }} />
+                {filtered.map((m) => {
+                  const isSelected = compareList.some((item) => item.id === m.id)
+                  const vramSpec = estimateVram(m.name)
+                  return (
+                    <tr key={m.id} className={`border-t border-[var(--color-line)] transition-colors ${isSelected ? 'bg-[var(--color-paper-2)]' : 'hover:bg-[var(--color-paper-2)]/60'}`}>
+                      <td className="px-3 py-3 text-center">
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => toggleCompare(m)}
+                          className="w-4 h-4 accent-[var(--color-burnt)] cursor-pointer"
+                        />
+                      </td>
+                      <td className="px-4 py-3 font-[var(--font-mono)] text-[var(--color-ink-faint)] tabular-nums">{m.rank}</td>
+                      <td className="px-4 py-3">
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium text-[var(--color-ink)]">{m.name}</span>
+                          {m.free && (
+                            <span className="font-[var(--font-mono)] text-[0.6rem] uppercase tracking-[0.1em] px-1.5 py-0.5 bg-[var(--color-success)] text-white">Free</span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 text-[var(--color-ink-soft)]">{m.provider}</td>
+                      <td className="px-4 py-3">
+                        <div className="flex items-center gap-2">
+                          <span className="font-[var(--font-display)] font-bold tabular-nums text-[var(--color-ink)]">{m.score}</span>
+                          <span className="h-1.5 w-10 bg-[var(--color-paper-2)] border border-[var(--color-line)] hidden sm:inline-block">
+                            <span className="block h-full bg-[var(--color-burnt)]" style={{ width: `${Math.min(100, Math.max(0, (m.score / maxScore) * 100))}%` }} />
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 font-[var(--font-mono)] tabular-nums text-[var(--color-ink-soft)]">{m.context}</td>
+                      <td className="px-4 py-3 font-[var(--font-mono)] text-[0.72rem] text-[var(--color-ink-soft)]">
+                        <span className="px-2 py-0.5 border border-[var(--color-line-strong)] bg-[var(--color-paper)]">
+                          {vramSpec.label}
                         </span>
-                      </div>
-                    </td>
-                    <td className="px-4 py-3 font-[var(--font-mono)] tabular-nums text-[var(--color-ink-soft)]">{m.context}</td>
-                    <td className="px-4 py-3 font-[var(--font-mono)] tabular-nums text-[var(--color-ink-soft)]">{m.input}</td>
-                    <td className="px-4 py-3 font-[var(--font-mono)] tabular-nums text-[var(--color-ink-soft)]">{m.output}</td>
-                    <td className="px-4 py-3 text-right">
-                      <a href={`https://lmmarketcap.com/model/${m.id}`} target="_blank" rel="noreferrer" className="text-[var(--color-ink-faint)] hover:text-[var(--color-burnt)] inline-flex" aria-label="Open on lmmarketcap">
-                        <ExternalLink size={15} />
-                      </a>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td className="px-4 py-3 font-[var(--font-mono)] tabular-nums text-[var(--color-ink-soft)]">{m.input}</td>
+                      <td className="px-4 py-3 font-[var(--font-mono)] tabular-nums text-[var(--color-ink-soft)]">{m.output}</td>
+                      <td className="px-4 py-3 text-right">
+                        <a href={`https://lmmarketcap.com/model/${m.id}`} target="_blank" rel="noreferrer" className="text-[var(--color-ink-faint)] hover:text-[var(--color-burnt)] inline-flex" aria-label="Open on lmmarketcap">
+                          <ExternalLink size={15} />
+                        </a>
+                      </td>
+                    </tr>
+                  )
+                })}
                 {filtered.length === 0 && (
                   <tr>
-                    <td colSpan={8} className="px-4 py-10 text-center text-[var(--color-ink-faint)]">No models match your filters.</td>
+                    <td colSpan={10} className="px-4 py-10 text-center text-[var(--color-ink-faint)]">No models match your filters.</td>
                   </tr>
                 )}
               </tbody>
@@ -399,10 +492,76 @@ export default function OpenModels() {
 
           <p className="text-[0.8rem] text-[var(--color-ink-faint)] mt-5 leading-relaxed">
             Data sourced from <a href={SRC} target="_blank" rel="noreferrer" className="no-underline hover:underline">lmmarketcap.com</a> · scores are the LMC composite (0–100), blending benchmarks, pricing, context and recency.
-            Open-weight models only. Verify specifics on the source before production decisions.
+            Open-weight models only. Hardware requirements estimated for 4-bit/8-bit precision deployment.
           </p>
         </div>
       </section>
+
+      {/* SIDE-BY-SIDE COMPARISON MODAL */}
+      {showCompareModal && (
+        <div className="fixed inset-0 z-50 bg-[#1A1712]/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-[var(--color-paper)] border-2 border-[var(--color-ink)] max-w-[900px] w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto shadow-[12px_12px_0px_#1A1712]">
+            <div className="flex items-center justify-between border-b-2 border-[var(--color-ink)] pb-4 mb-6">
+              <div>
+                <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.2em] text-[var(--color-burnt)]">Side-by-Side Model Comparison</span>
+                <h3 className="text-2xl font-[var(--font-display)] font-bold">Comparing {compareList.length} Selected Models</h3>
+              </div>
+              <button
+                onClick={() => setShowCompareModal(false)}
+                className="font-[var(--font-mono)] text-sm uppercase px-3 py-1.5 border-2 border-[var(--color-ink)] hover:bg-[var(--color-burnt)] hover:text-white"
+              >
+                Close [✕]
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {compareList.map((m) => {
+                const spec = estimateVram(m.name)
+                return (
+                  <div key={m.id} className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-5 flex flex-col justify-between">
+                    <div>
+                      <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.14em] text-[var(--color-burnt)]">Rank #{m.rank}</span>
+                      <h4 className="text-xl font-[var(--font-display)] font-bold mt-1 mb-1">{m.name}</h4>
+                      <p className="font-[var(--font-mono)] text-[0.78rem] text-[var(--color-ink-faint)] mb-4">{m.provider}</p>
+
+                      <div className="space-y-3 font-[var(--font-mono)] text-sm border-t border-[var(--color-line)] pt-3">
+                        <div>
+                          <span className="text-[0.7rem] uppercase text-[var(--color-ink-faint)] block">Composite Score</span>
+                          <span className="font-bold text-lg text-[var(--color-ink)]">{m.score}/100</span>
+                        </div>
+                        <div>
+                          <span className="text-[0.7rem] uppercase text-[var(--color-ink-faint)] block">Context Window</span>
+                          <span className="font-bold text-[var(--color-ink)]">{m.context}</span>
+                        </div>
+                        <div>
+                          <span className="text-[0.7rem] uppercase text-[var(--color-ink-faint)] block">Hardware / VRAM Req</span>
+                          <span className="font-bold text-[var(--color-burnt)]">{spec.label}</span>
+                        </div>
+                        <div>
+                          <span className="text-[0.7rem] uppercase text-[var(--color-ink-faint)] block">Input / Output per 1M</span>
+                          <span className="font-bold text-[var(--color-ink)]">{m.input} / {m.output}</span>
+                        </div>
+                        <div>
+                          <span className="text-[0.7rem] uppercase text-[var(--color-ink-faint)] block">License &amp; Access</span>
+                          <span className="font-bold text-[var(--color-ink)]">{m.free ? 'Free / Open Weight' : 'Commercial API'}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => toggleCompare(m)}
+                      className="mt-6 w-full py-2 border border-[var(--color-ink)] font-[var(--font-mono)] text-xs uppercase hover:bg-[var(--color-danger)] hover:text-white"
+                    >
+                      Remove from comparison
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
+

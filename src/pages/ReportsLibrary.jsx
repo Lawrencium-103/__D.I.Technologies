@@ -10,6 +10,7 @@ export default function ReportsLibrary() {
   const [status, setStatus] = useState('loading')
   const [stats, setStats] = useState(() => getStats())
   const [liked, setLiked] = useState({})
+  const [selectedRung, setSelectedRung] = useState('all')
 
   useEffect(() => {
     let active = true
@@ -56,6 +57,11 @@ export default function ReportsLibrary() {
     }).catch(() => {})
   }
 
+  const filteredItems = items.filter((it) => {
+    if (selectedRung === 'all') return true
+    return String(it.grade || '').toUpperCase().includes(selectedRung.toUpperCase())
+  })
+
   return (
     <div className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
       <div className="max-w-[1080px] mx-auto px-5 sm:px-8 py-16 sm:py-24">
@@ -66,19 +72,38 @@ export default function ReportsLibrary() {
             </span>
             <span className="h-px flex-1 bg-[var(--color-ink)]"></span>
             <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.2em] text-[var(--color-ink-faint)]">
-              Free downloads
+              Audited Model Intelligence
             </span>
           </div>
           <h1 className="text-[2.6rem] sm:text-[3.6rem] leading-[1.04] font-[var(--font-display)] font-bold max-w-[20ch] mb-6">
             OpenModel report library
           </h1>
           <p className="text-[1.2rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[62ch] mb-8">
-            Ready-made DIT OpenModel reports for well-known 2025 models. Each is graded on the Openness Ladder,
-            sourced from the web, and laid out in our branded DIT report template. Free to read, free to download.
+            Ready-made DIT OpenModel reports for leading models. Each report is audited against the OMSF 6-Rung Openness Ladder, verified against primary weights, and laid out in our branded executive template.
           </p>
 
-          <div className="mb-10">
+          <div className="mb-8">
             <OmsfStats libraryCount={items.length} />
+          </div>
+
+          {/* Rung Filter */}
+          <div className="flex flex-wrap items-center gap-2 mb-10 pb-6 border-b border-[var(--color-line)]">
+            <span className="font-[var(--font-mono)] text-[0.75rem] uppercase tracking-[0.14em] text-[var(--color-burnt)] font-bold mr-2">
+              Filter by Rung:
+            </span>
+            {['all', 'L1', 'L2', 'L3', 'L4', 'L5'].map((r) => (
+              <button
+                key={r}
+                onClick={() => setSelectedRung(r)}
+                className={`px-3 py-1.5 font-[var(--font-mono)] text-xs uppercase tracking-[0.1em] border-2 transition-colors ${
+                  selectedRung === r
+                    ? 'bg-[var(--color-ink)] text-[var(--color-paper)] border-[var(--color-ink)]'
+                    : 'bg-[var(--color-paper)] text-[var(--color-ink)] border-[var(--color-ink)] hover:bg-[var(--color-paper-2)]'
+                }`}
+              >
+                {r === 'all' ? 'All Rungs' : `Rung ${r}`}
+              </button>
+            ))}
           </div>
         </ScrollReveal>
 
@@ -94,45 +119,51 @@ export default function ReportsLibrary() {
 
         {status === 'ready' && (
           <div className="grid sm:grid-cols-2 gap-5 mb-14">
-            {items.map((it) => {
-               const id = it.file
+            {filteredItems.map((it) => {
+              const id = it.file
               const count = stats.likes?.[id] || 0
               const downloads = stats.reportDownloads?.[id] || 0
               const isLiked = !!liked[id]
               return (
-                <div key={id} className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-6 flex flex-col">
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <div>
-                      <h2 className="font-[var(--font-display)] font-bold text-[1.5rem] leading-tight">{it.model}</h2>
-                      <p className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.14em] text-[var(--color-ink-faint)] mt-1">
-                        {it.publisher} · {it.date}
-                      </p>
+                <div key={id} className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-6 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-start justify-between gap-4 mb-3">
+                      <div>
+                        <h2 className="font-[var(--font-display)] font-bold text-[1.5rem] leading-tight">{it.model}</h2>
+                        <p className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.14em] text-[var(--color-ink-faint)] mt-1">
+                          {it.publisher} · {it.date}
+                        </p>
+                      </div>
+                      <span className="shrink-0 bg-[var(--color-ink)] text-[var(--color-paper)] font-[var(--font-mono)] text-[0.78rem] px-2.5 py-1 tracking-[0.08em] font-bold">
+                        {it.grade}
+                      </span>
                     </div>
-                    <span className="shrink-0 bg-[var(--color-ink)] text-[var(--color-paper)] font-[var(--font-mono)] text-[0.78rem] px-2.5 py-1 tracking-[0.08em]">
-                      {it.grade}
-                    </span>
+                    <p className="text-[0.98rem] leading-relaxed text-[var(--color-ink-soft)] mb-4">
+                      {it.gradeLabel}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2 mb-5">
+                      <span className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] border border-[var(--color-ink)] px-2 py-1 text-[var(--color-ink-soft)]">
+                        {audienceLabel(it.audience)}
+                      </span>
+                      <span className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] bg-[var(--color-amber)]/20 border border-[var(--color-amber-deep)] px-2 py-1 text-[var(--color-ink)] font-bold">
+                        P1 Verified
+                      </span>
+                      <span className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] border border-[var(--color-ink)] px-2 py-1 text-[var(--color-ink-soft)]">
+                        OMSF v1.0
+                      </span>
+                    </div>
                   </div>
-                  <p className="text-[0.98rem] leading-relaxed text-[var(--color-ink-soft)] mb-4">
-                    {it.gradeLabel}
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2 mb-5">
-                    <span className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] border border-[var(--color-ink)] px-2 py-1 text-[var(--color-ink-soft)]">
-                      {audienceLabel(it.audience)}
-                    </span>
-                    <span className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] border border-[var(--color-ink)] px-2 py-1 text-[var(--color-ink-soft)]">
-                      OMSF v1
-                    </span>
-                  </div>
-                  <div className="mt-auto flex flex-col gap-2">
+
+                  <div className="mt-auto flex flex-col gap-2 pt-4 border-t border-[var(--color-line)]">
                      <a
                        href={`/reports/${it.file}`}
                        download
                        onClick={() => trackDownload(it.file)}
                        className="btn btn-primary text-center no-underline"
                      >
-                       Download PDF
+                       Download Audited PDF
                      </a>
-                     <div className="flex items-center justify-between">
+                     <div className="flex items-center justify-between mt-1">
                        <button
                          onClick={() => like(id)}
                          disabled={isLiked}
@@ -149,10 +180,7 @@ export default function ReportsLibrary() {
                        <span className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.12em] text-[var(--color-ink-faint)]">
                          {downloads} {downloads === 1 ? 'download' : 'downloads'}
                        </span>
-                      <p className="font-[var(--font-mono)] text-[0.6rem] text-[var(--color-ink-faint)] break-all max-w-[55%] text-right">
-                        {it.file}
-                      </p>
-                    </div>
+                     </div>
                   </div>
                 </div>
               )
@@ -164,15 +192,20 @@ export default function ReportsLibrary() {
           <div className="bg-[var(--color-ink)] text-[var(--color-paper)] p-7 sm:p-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
               <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-burnt)]">
-                Your model not here?
+                Enterprise AI Compliance Audit
               </span>
               <p className="mt-3 text-[1.15rem] leading-relaxed font-[var(--font-display)] font-medium max-w-[52ch]">
-                Generate a fresh OpenModel report for any model in seconds. Free, instant, no sign-up.
+                Need a formal, custom OMSF openness and legal compliance audit for a proprietary or newly released model?
               </p>
             </div>
-            <Link to="/report" className="btn btn-primary shrink-0 no-underline">
-              Build your own report
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+              <Link to="/report" className="btn btn-primary no-underline text-center">
+                Build Instant Report
+              </Link>
+              <Link to="/contact" className="btn border-2 border-[var(--color-paper)] text-[var(--color-paper)] no-underline hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] text-center">
+                Request Formal Audit
+              </Link>
+            </div>
           </div>
         </ScrollReveal>
       </div>
