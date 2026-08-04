@@ -4,8 +4,14 @@ import { Heart } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import OmsfStats from '../components/OmsfStats'
 import { subscribe, getStats, recordDownload, recordLike, refreshFromServer } from '../lib/omsfStats'
+import { useSEO } from '../lib/seo'
 
 export default function ReportsLibrary() {
+  useSEO({
+    title: 'DIT OpenModel Reports Library',
+    description:
+      'Ready-made DIT OpenModel reports for leading models, audited against the OMSF 6-Rung Openness Ladder and verified against primary weights.',
+  })
   const [items, setItems] = useState([])
   const [status, setStatus] = useState('loading')
   const [stats, setStats] = useState(() => getStats())

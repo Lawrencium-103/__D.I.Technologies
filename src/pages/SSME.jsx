@@ -5,6 +5,7 @@ import SmePdfCard from '../components/SmePdfCard'
 import SmeStats from '../components/SmeStats'
 import { useSmePdfs } from '../lib/smePdf'
 import { smePdfDownloads, smeMatrix } from '../data/smeToolkit'
+import { useSEO } from '../lib/seo'
 
 const pressures = [
   { title: 'Power you cannot trust', desc: 'Diesel and grid costs eat margin, and outages stop trade.' },
@@ -37,6 +38,11 @@ const useCases = [
 ]
 
 export default function SSME() {
+  useSEO({
+    title: 'S-SME — Sustainable SMEs, green energy & offline inventory',
+    description:
+      'DIT S-SME helps Nigerian SMEs cut power costs with solar, digitise inventory offline, stay audit-ready for e-invoicing and grow with evidence. Case studies and a 117-item toolkit included.',
+  })
   const { counts, download, like } = useSmePdfs()
   return (
     <>

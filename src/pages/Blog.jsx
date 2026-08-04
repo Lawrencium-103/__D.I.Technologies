@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import { blogPosts } from '../data/blogPosts'
+import { useSEO } from '../lib/seo'
 
 function formatDate(d) {
   return new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
@@ -12,6 +13,11 @@ const categories = ['All', ...Array.from(new Set(blogPosts.map((p) => p.category
 const years = ['All', ...Array.from(new Set(blogPosts.map((p) => new Date(p.date).getFullYear().toString()))).sort((a, b) => b.localeCompare(a))]
 
 export default function Blog() {
+  useSEO({
+    title: 'The DIT Blog — open models, local infrastructure & practical AI',
+    description:
+      'Notes on open models, local infrastructure and practical AI, written by Lawrence Oladeji. Plain language, no hype.',
+  })
   const [activeCat, setActiveCat] = useState('All')
   const [activeYear, setActiveYear] = useState('All')
 

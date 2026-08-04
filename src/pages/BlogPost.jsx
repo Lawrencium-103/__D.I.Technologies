@@ -5,6 +5,7 @@ import ScrollReveal from '../components/ScrollReveal'
 import BlogContent from '../components/BlogContent'
 import LikeButton from '../components/LikeButton'
 import { blogPosts } from '../data/blogPosts'
+import { useSEO, SITE_URL, SITE_NAME, breadcrumbJsonLd } from '../lib/seo'
 
 function formatDate(d) {
   return new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
@@ -173,9 +174,101 @@ const TEMPLATE_META = {
   briefing: { label: 'Briefing' },
 }
 
+function RelatedPosts({ post }) {
+  const sameCat = blogPosts
+    .filter((p) => p.slug !== post.slug && p.category === post.category)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+  const others = blogPosts
+    .filter((p) => p.slug !== post.slug && p.category !== post.category)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+  const related = [...sameCat, ...others].slice(0, 3)
+  if (!related.length) return null
+
+  return (
+    <section className="max-w-[1200px] mx-auto px-6 mt-16">
+      <h2 className="font-[var(--font-display)] text-[1.6rem] text-[var(--color-ink)] mb-6">Related reading</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {related.map((p) => (
+          <Link
+            key={p.slug}
+            to={`/blog/${p.slug}`}
+            className="group block bg-[var(--color-paper)] border-2 border-[var(--color-ink)] h-full hover:shadow-[8px_8px_0_var(--color-burnt)] transition-all no-underline"
+          >
+            <div className="aspect-[16/9] overflow-hidden border-b-2 border-[var(--color-ink)]">
+              <img
+                src={p.cover}
+                alt={p.coverAlt || p.title}
+                loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+              />
+            </div>
+            <div className="p-5">
+              <div className="flex items-center gap-3 font-[var(--font-mono)] text-[0.68rem] uppercase tracking-[0.14em] text-[var(--color-ink-faint)] mb-2">
+                <span className="text-[var(--color-burnt)]">{p.category}</span>
+                <span>{formatDate(p.date)}</span>
+              </div>
+              <h3 className="text-[1.05rem] leading-snug text-[var(--color-ink)] group-hover:text-[var(--color-burnt)] transition-colors">
+                {p.title}
+              </h3>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 export default function BlogPost() {
   const { slug } = useParams()
   const post = blogPosts.find(p => p.slug === slug)
+
+  useSEO(
+    post
+      ? {
+          title: post.title,
+          description: post.excerpt,
+          path: `/blog/${post.slug}`,
+          type: 'article',
+          image: post.cover,
+          imageAlt: post.coverAlt,
+          jsonLd: [
+            {
+              '@context': 'https://schema.org',
+              '@type': 'BlogPosting',
+              headline: post.title,
+              description: post.excerpt,
+              datePublished: post.date,
+              dateModified: post.date,
+              articleSection: post.category,
+              image: post.cover,
+              author: {
+                '@type': 'Person',
+                name: 'Lawrence Oladeji',
+                url: `${SITE_URL}/about`,
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: SITE_NAME,
+                url: SITE_URL,
+                logo: {
+                  '@type': 'ImageObject',
+                  url: `${SITE_URL}/favicon.svg`,
+                },
+              },
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': `${SITE_URL}/blog/${post.slug}`,
+              },
+            },
+            breadcrumbJsonLd([
+              { name: 'Home', path: '/' },
+              { name: 'Blog', path: '/blog' },
+              { name: post.title, path: `/blog/${post.slug}` },
+            ]),
+          ],
+        }
+      : { title: 'Post not found', path: `/blog/${slug}`, noindex: true }
+  )
 
   if (!post) {
     return (
@@ -342,6 +435,9 @@ export default function BlogPost() {
 
         {layout}
       </div>
+
+      {/* Related posts */}
+      <RelatedPosts post={post} />
 
       {/* Footer CTA */}
       <div className="max-w-[1200px] mx-auto px-6 mt-20">

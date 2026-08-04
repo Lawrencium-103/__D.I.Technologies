@@ -2,8 +2,14 @@ import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import OmsfStats from '../components/OmsfStats'
 import framework from '../data/contentFramework'
+import { useSEO } from '../lib/seo'
 
 export default function Framework() {
+  useSEO({
+    title: 'The OpenModel Synthesis Framework (OMSF)',
+    description:
+      'OMSF is the six-rung Openness Ladder for grading open AI models for African enterprise and public deployment. Read the full framework, its position and how it differs.',
+  })
   const f = framework
   return (
     <div className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">

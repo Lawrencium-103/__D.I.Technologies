@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
+import { useSEO } from '../lib/seo'
 
 const pillars = [
   {
@@ -74,6 +75,11 @@ const pillars = [
 ]
 
 export default function SsmeEvidence() {
+  useSEO({
+    title: 'S-SME Evidence — the numbers behind the toolkit',
+    description:
+      'The published sources behind DIT S-SME: solar economics for Nigerian SMEs, offline inventory gains, and Nigeria e-invoicing compliance timelines.',
+  })
   return (
     <div className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
       <div className="max-w-[900px] mx-auto px-5 sm:px-8 py-16 sm:py-24">

@@ -1,12 +1,9 @@
-export const blogAuthor = {
-  name: 'Lawrence Oladeji',
-  role: 'Co-Founder & Lead Developer, DIT Dara Initiative Tech',
-  initials: 'LO',
-  avatar: '/Lawrence.png',
-  bio: 'Lawrence writes about open models, local infrastructure and practical AI for organisations that need to own their stack. He focuses on systems that run where connectivity and power are uncertain.',
-}
+import { blogAuthor } from './blogAuthor.js'
+import { generatedPosts } from './generatedPosts.js'
 
-export const blogPosts = [
+export { blogAuthor }
+
+const manualPosts = [
   {
     slug: 'history-open-local-private-ai-bloom-rail',
     title: 'Community-built giants: BLOOM and the RAIL license',
@@ -897,5 +894,10 @@ export const blogPosts = [
       },
     ],
   },
+]
+
+export const blogPosts = [
+  ...manualPosts,
+  ...generatedPosts.filter((g) => !manualPosts.some((m) => m.slug === g.slug)),
 ]
 

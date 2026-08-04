@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronRight, Users, GraduationCap, BookOpen, CheckCircle2 } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import { tracks } from '../data/aiHubTracks'
+import { useSEO } from '../lib/seo'
 
 const audiences = [
   { label: 'Corporate Teams', desc: 'Upskill staff in practical AI workflows.', icon: Users },
@@ -12,6 +13,11 @@ const audiences = [
 ]
 
 export default function AIHub() {
+  useSEO({
+    title: 'Dara AI Training Hub — AI skills for Nigeria',
+    description:
+      'Hands-on AI training in Nigeria across 9 tracks for corporate teams, creatives, students and educators. Practical skills you can use tomorrow, not lectures about AI.',
+  })
   const [active, setActive] = useState(null)
   const indexOf = (id) => tracks.findIndex(t => t.id === id) + 1
 

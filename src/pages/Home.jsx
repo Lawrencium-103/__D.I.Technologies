@@ -3,8 +3,10 @@ import { ArrowRight, WifiOff, BookOpen, Users, ArrowUpRight } from 'lucide-react
 import ScrollReveal from '../components/ScrollReveal'
 import StatsBar from '../components/StatsBar'
 import Marquee from '../components/Marquee'
+import { useSEO, organizationJsonLd } from '../lib/seo'
 
 export default function Home() {
+  useSEO({ title: 'Open models, offline AI & EdTech for Africa', jsonLd: organizationJsonLd() })
   return (
     <>
       {/* HERO */}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import SmePdfCard from '../components/SmePdfCard'
 import { useSmePdfs } from '../lib/smePdf'
+import { useSEO } from '../lib/seo'
 import {
   ratingScale,
   ratingStatus,
@@ -379,6 +380,11 @@ function ComplianceCalendar({ calendar, setCalendar }) {
 }
 
 export default function SsmeToolkit() {
+  useSEO({
+    title: 'S-SME Toolkit — score your business, open doors',
+    description:
+      '117 items from the DIT SME Toolkit, each scored against the frameworks that open doors: IFC, SMEDAN and more. Interactive scoring, ratings and fillable DIT PDFs.',
+  })
   const [state, setState] = useState(loadState)
   const { counts, download, like } = useSmePdfs()
 

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
+import { useSEO } from '../lib/seo'
 
 const needs = [
   'AI Training Hub (individual)',
@@ -13,6 +14,11 @@ const needs = [
 ]
 
 export default function Contact() {
+  useSEO({
+    title: 'Contact DIT Dara Initiative Tech',
+    description:
+      'Talk to DIT about SomaBox for your school, AI training for your team, an S-SME sustainability audit or a partnership. Based in Oyo State, Nigeria.',
+  })
   const [form, setForm] = useState({ name: '', org: '', email: '', need: needs[0], message: '' })
   const [status, setStatus] = useState('idle')
 

@@ -1,0 +1,41 @@
+# DIT Dara Initiative Tech (DIT)
+
+> Dara Initiative Technology builds open models, offline-first AI and EdTech for communities where connectivity and power are uncertain. Based in Oyo State, Nigeria. All technical claims in our writing trace to primary sources (P1), independent benchmarks (P2) or clearly-labelled community leads (P3).
+
+## Key pages
+
+- [Home](https://dintechnologies.com/): Dara Initiative Technology: open models, offline AI and EdTech for Africa
+- [Blog](https://dintechnologies.com/blog): Notes on open models, local infrastructure and practical AI
+- [OpenModel Synthesis Framework (OMSF)](https://dintechnologies.com/framework): The six-rung Openness Ladder for grading open AI models
+- [Open Model Leaderboard](https://dintechnologies.com/open-models): Leading open models graded on the OMSF ladder
+- [Reports Library](https://dintechnologies.com/reports): Ready-made OMSF-audited model reports
+- [Research](https://dintechnologies.com/research): Academic and industry sources behind OMSF
+- [EduTech / SomaBox](https://dintechnologies.com/edutech): Offline AI tutor for schools, zero internet required
+- [AI Training Hub](https://dintechnologies.com/ai-hub): Hands-on AI training in Nigeria
+- [S-SME](https://dintechnologies.com/s-sme): Sustainable SME services: green energy, offline inventory, compliance
+- [S-SME Toolkit](https://dintechnologies.com/s-sme/toolkit): 117-item scored toolkit with fillable PDFs
+- [S-SME Evidence](https://dintechnologies.com/s-sme/evidence): Published sources behind the S-SME numbers
+- [About](https://dintechnologies.com/about): Mission, ecosystem and team of Dara Initiative Technology
+- [Contact](https://dintechnologies.com/contact): Reach DIT
+
+## Blog posts
+
+- [Community-built giants: BLOOM and the RAIL license](https://dintechnologies.com/blog/history-open-local-private-ai-bloom-rail): How the BigScience workshop proved massive open models could be built by communities, while introducing the complications of use-based licensing.
+- [Stable Diffusion and proof that open weights create ecosystems](https://dintechnologies.com/blog/history-open-local-private-ai-stable-diffusion): How the August 2022 release of Stable Diffusion proved that open model weights trigger rapid ecosystem innovation that closed APIs cannot match.
+- [The precedent: GPT-2 and the beginning of staged AI release](https://dintechnologies.com/blog/history-open-local-private-ai-gpt2-staged-release): How OpenAI’s 2019 decision to withhold GPT-2 turned model release from an engineering afterthought into a primary policy debate.
+- [Offline-first parent-teacher portals: what they are and why they matter](https://dintechnologies.com/blog/offline-first-parent-teacher-portals): Most parent-teacher portals go dark the moment the connection drops. For families who rely on them most, offline-first design is the difference between a tool that works and one that does not.
+- [What "open-source AI" means after the 2025 license shifts](https://dintechnologies.com/blog/what-open-source-ai-means-after-2025-license-shifts): In 2025 several models were called open while their licenses said otherwise. For any organisation that wants to self-host, that gap decides who sees your data, what you pay, and whether the system keeps running.
+- [The LLaMA leak and an accidental case study in risk](https://dintechnologies.com/blog/history-open-local-private-ai-llama-leak): How the March 2023 leak of Meta’s LLaMA model provided a documented case study of what happens when AI is released without proper risk review.
+- [Mistral and the deliberate-open counter-move](https://dintechnologies.com/blog/history-open-local-private-ai-mistral-open-sovereignty): How Mistral AI used a permissive Apache 2.0 release to make a strategic argument for European AI sovereignty, setting a precedent for global public sector procurement.
+- [DeepSeek R1 and the compute-efficiency shock](https://dintechnologies.com/blog/history-open-local-private-ai-deepseek-r1): How a January 2025 model release trained under chip export restrictions proved that frontier AI development does not require Silicon Valley capital.
+- [The measurement problem: from gradient to framework](https://dintechnologies.com/blog/history-open-local-private-ai-measurement-framework): How the chaos of staged releases and accidental leaks forced academics to build real measurement systems for open artificial intelligence.
+- [Regulation catches up: defining open source AI](https://dintechnologies.com/blog/history-open-local-private-ai-regulation-catches-up): How the 2024 EU AI Act and the Open Source AI Definition forced legal teams to treat open model licenses as serious compliance risks.
+- [The Global South chapter and the reality of local AI](https://dintechnologies.com/blog/history-open-local-private-ai-global-south): How a World Bank-backed pilot in Nigeria proves that local AI deployment solves fundamental infrastructure gaps where cloud APIs fail.
+- [The closing door: does openness survive 2026?](https://dintechnologies.com/blog/history-open-local-private-ai-closing-door): As signals suggest the lab that catalyzed the open weight movement might pull back, the industry faces a live question about the future of open AI.
+- [Mid-year reality check: what open models actually cost to run](https://dintechnologies.com/blog/mid-year-cost-reality-check): Running an open model on your own hardware trades a fixed cost for a variable one. Whether that saves money depends on your volume, and the honest answer is contested. Here is the mid-year check, with the hardware and license claims checked against named sources.
+- [Open-source models: what they are, and why they belong in your stack](https://dintechnologies.com/blog/what-are-open-source-models): Most AI you use today is rented, not owned. Open-source models change that. Here is what they are, who should care, and why the conversation matters now.
+- [Why we build offline-first, not cloud-first](https://dintechnologies.com/blog/why-we-build-offline-first): The cloud is treated as a given. For much of the world it is not. Here is the engineering and moral case for designing without it.
+- [The quiet cost of vendor lock-in](https://dintechnologies.com/blog/the-quiet-cost-of-vendor-lock-in): Lock-in is rarely a dramatic event. It is a slow tax on every decision. A short field note on why ownership beats rental.
+- [The Openness Ladder: why "open source AI" is four different things](https://dintechnologies.com/blog/the-openness-ladder): The label "open source" now covers at least four different things. If you cannot place a model on a ladder, you cannot make a safe decision about it. We built one.
+- [Running open models privately: a technical deployment guide](https://dintechnologies.com/blog/running-open-models-privately): You can run a capable model on hardware you own, with no API and no data leaving the building. Here is the technical path, with the 2025 tooling.
+- [Open models for the public sector and non-profits](https://dintechnologies.com/blog/open-models-public-sector): For governments and non-profits, openness is not ideology. It is procurement law, data sovereignty and the ability to serve people the cloud forgot.

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, BookOpen, GraduationCap, Building2, Shield, Eye, Zap, Users, Target, MapPin, Mail } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
+import { useSEO } from '../lib/seo'
 
 const pillars = [
   { icon: BookOpen, title: 'EduTech', subtitle: 'SomaBox', desc: ['Offline AI tutor', '60+ NERDC textbooks', '26 slash commands', 'Zero internet required'], link: '/edutech', tone: 'burnt' },
@@ -26,6 +27,11 @@ const pledges = [
 ]
 
 export default function About() {
+  useSEO({
+    title: 'About Dara Initiative Technology',
+    description:
+      'DIT exists because 10.5 million Nigerian children deserve the same quality of education that internet-connected students take for granted — delivered through offline-first AI tutoring, hands-on AI training and sustainable SME tools.',
+  })
   return (
     <>
       {/* HERO */}

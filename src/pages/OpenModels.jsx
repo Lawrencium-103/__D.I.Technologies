@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { ExternalLink, Search, RefreshCw, Trophy, Database } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import snapshot from '../data/openModels.json'
+import { useSEO } from '../lib/seo'
 
 const LIVE_URL = '/.netlify/functions/livemodels'
 const SRC = 'https://lmmarketcap.com/open-source-ai-models'
@@ -111,6 +112,11 @@ function estimateVram(name) {
 }
 
 export default function OpenModels() {
+  useSEO({
+    title: 'Open Model Leaderboard — graded on the OMSF ladder',
+    description:
+      'The DIT open model leaderboard: leading open models graded on the OMSF 6-Rung Openness Ladder, with verified release details and CSV export.',
+  })
   const initialModels = Array.isArray(snapshot?.models) ? snapshot.models : []
   const initialFetchedAt = snapshot?.fetchedAt || new Date().toISOString()
 

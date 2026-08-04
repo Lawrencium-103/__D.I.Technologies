@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "predev": "node scripts/build-posts.mjs",
+    "build": "node scripts/build-posts.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-llms.mjs && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
     "start": "node server.js"

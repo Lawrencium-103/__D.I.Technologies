@@ -5,6 +5,7 @@ import ReportDocument from '../components/ReportDocument'
 import OmsfStats from '../components/OmsfStats'
 import { getMockReport } from '../data/reportMock'
 import { recordGenerated } from '../lib/omsfStats'
+import { useSEO } from '../lib/seo'
 
 const AUDIENCES = [
   { id: 'general', label: 'General / all readers' },
@@ -14,6 +15,11 @@ const AUDIENCES = [
 ]
 
 export default function ReportBuilder() {
+  useSEO({
+    title: 'DIT OpenModel Report Builder',
+    description:
+      'Grade any AI model against the OMSF 6-Rung Openness Ladder and return a branded DIT report you can print to PDF. Free, instant, no sign-up.',
+  })
   const [model, setModel] = useState('')
   const [audience, setAudience] = useState('general')
   const [loading, setLoading] = useState(false)

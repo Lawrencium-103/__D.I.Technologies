@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Terminal, WifiOff, Cpu, BookOpen, Zap, Users, Play, ArrowRight } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
+import { useSEO } from '../lib/seo'
 
 const commands = [
   '/explain - AI tutor that simplifies any topic',
@@ -91,6 +92,12 @@ export default function EduTech() {
   const [demoLines, setDemoLines] = useState(terminalLines)
   const [currentInput, setCurrentInput] = useState('')
   const termRef = useRef(null)
+
+  useSEO({
+    title: 'SomaBox — Offline AI Tutor for Schools',
+    description:
+      'SomaBox is an offline AI tutor in a single box: 60+ NERDC textbooks, 26 slash commands, zero internet required. AI tutoring for schools where connectivity and power are uncertain.',
+  })
 
   const runCommand = (cmd) => {
     const newLines = [...terminalLines]

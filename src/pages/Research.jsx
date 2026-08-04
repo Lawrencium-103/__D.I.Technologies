@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
 import OmsfStats from '../components/OmsfStats'
+import { useSEO } from '../lib/seo'
 
 const academic = [
   {
@@ -64,6 +65,11 @@ const industry = [
 ]
 
 export default function Research() {
+  useSEO({
+    title: 'Research — the sources behind OMSF',
+    description:
+      'The academic and industry sources behind the OpenModel Synthesis Framework: Solaiman, the Model Openness Framework, open-washing research, and how to cite DIT and OMSF.',
+  })
   return (
     <div className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
       <div className="max-w-[900px] mx-auto px-5 sm:px-8 py-16 sm:py-24">
@@ -90,43 +96,36 @@ export default function Research() {
             <OmsfStats />
           </div>
 
-          {/* DIT Original Research Paper Section */}
-          <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-7 sm:p-9 mb-14 shadow-[8px_8px_0px_#1A1712]">
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-4 border-b border-[var(--color-line)] pb-3">
+          {/* Academic Integrity & Research Roadmap */}
+          <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-7 sm:p-8 mb-14 shadow-[6px_6px_0px_#1A1712]">
+            <div className="flex items-center justify-between gap-3 mb-4 border-b border-[var(--color-line)] pb-3">
               <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.16em] text-[var(--color-burnt)] font-bold">
-                [ DIT ORIGINAL ACADEMIC PREPRINT ]
+                [ ACADEMIC POSITION &amp; RESEARCH ROADMAP ]
               </span>
-              <span className="font-[var(--font-mono)] text-[0.68rem] uppercase tracking-[0.12em] bg-[var(--color-ink)] text-[var(--color-paper)] px-2.5 py-1">
-                Target: arXiv cs.AI / cs.CY · Zenodo DOI
+              <span className="font-[var(--font-mono)] text-[0.68rem] uppercase tracking-[0.12em] bg-[var(--color-paper)] border border-[var(--color-ink)] px-2 py-0.5">
+                Practitioner Framework
               </span>
             </div>
 
-            <h2 className="text-[1.8rem] font-[var(--font-display)] font-bold leading-tight mb-3">
-              The Model Openness Synthesis Framework (OMSF): Operationalizing Composite Openness for Procurement and Edge Deployment in Resource-Constrained Environments
+            <h2 className="text-[1.6rem] font-[var(--font-display)] font-bold leading-tight mb-3">
+              Our Academic Standing: Honest Synthesis, Seeking Empirical Partners
             </h2>
 
-            <p className="font-[var(--font-mono)] text-[0.8rem] text-[var(--color-ink-faint)] mb-4">
-              <strong>Authors:</strong> Dara Initiative Technology (DIT) Research Group &nbsp;|&nbsp; <strong>Date:</strong> July 2026
+            <p className="text-[1rem] leading-relaxed text-[var(--color-ink-soft)] mb-4">
+              We do not claim to have authored peer-reviewed literature or published an arXiv preprint yet. OMSF is a <strong>practitioner synthesis tool</strong> built directly on top of established research by Solaiman (2023), White et al. (2024), and Liesenfeld &amp; Dingemanse (2024).
             </p>
 
-            <div className="bg-[var(--color-paper)] border border-[var(--color-line-strong)] p-5 mb-5 font-sans">
-              <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.14em] text-[var(--color-burnt)] font-bold block mb-2">
-                Abstract
-              </span>
-              <p className="text-[0.98rem] leading-relaxed text-[var(--color-ink-soft)]">
-                While recent benchmarks evaluate Artificial Intelligence (AI) model openness from a producer-side release perspective (e.g. White et al. 2024 MOF, OSI 2024 Definition), enterprise buyers, public sector agencies, and educational institutions in resource-constrained environments lack an empirical, buyer-side evaluation taxonomy. We present the <strong>OpenModel Synthesis Framework (OMSF)</strong>, a composite evaluation methodology that operationalizes model openness across three novel dimensions: (1) a 6-rung legal usage and licensing ladder ($L0$--$L5$), (2) a three-tier provenance verification protocol ($P1$--$P3$), and (3) an African Edge &amp; Sovereign Infrastructure (AESI) metric measuring zero-egress data compliance and 4-bit/8-bit quantization efficiency under low-power hardware constraints.
-              </p>
-            </div>
+            <p className="text-[1rem] leading-relaxed text-[var(--color-ink-soft)] mb-5">
+              To turn OMSF from an operational framework into a formally cited academic standard, DIT is actively preparing empirical research protocols on <em>Local LLM Quantization Loss in Solar-Powered Off-Grid Deployments</em>. We welcome academic co-authors, university CS departments, and AI policy labs to collaborate with us.
+            </p>
 
-            <div className="grid sm:grid-cols-2 gap-4 mb-6 font-[var(--font-mono)] text-[0.82rem]">
-              <div className="border border-[var(--color-line)] p-4 bg-[var(--color-paper)]">
-                <span className="text-[var(--color-burnt)] font-bold block mb-1">Composite Openness Formula (COSA)</span>
-                <code>S_OMSF = w1·L_rung + w2·P_tier + w3·E_quant</code>
-              </div>
-              <div className="border border-[var(--color-line)] p-4 bg-[var(--color-paper)]">
-                <span className="text-[var(--color-burnt)] font-bold block mb-1">Keywords</span>
-                <span className="text-[var(--color-ink-soft)]">AI Governance, Model Openness, Data Sovereignty, Edge AI, Quantization</span>
-              </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link to="/contact" className="btn btn-primary !py-2.5 !px-4 !text-xs uppercase tracking-wider no-underline">
+                Partner on Academic Research
+              </Link>
+              <a href="#citations" className="font-[var(--font-mono)] text-[0.75rem] uppercase tracking-[0.12em] text-[var(--color-ink-faint)] hover:text-[var(--color-burnt)]">
+                Review Literature Citations Below ↓
+              </a>
             </div>
           </div>
 
