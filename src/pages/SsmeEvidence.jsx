@@ -108,7 +108,7 @@ export default function SsmeEvidence() {
             <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-amber)]">
               Why this matters at scale
             </span>
-            <p className="mt-3 text-[1.05rem] leading-relaxed">
+            <p className="mt-3 text-[1.05rem] leading-relaxed text-[var(--color-paper)]">
               Small businesses matter at national scale here: SMEs contribute almost half of Nigeria’s GDP and employ
               more than 60 million people. Getting the basics right for one shop is a small thing. Getting it right for
               the sector is not.

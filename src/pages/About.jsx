@@ -94,7 +94,7 @@ export default function About() {
       <section className="bg-burnt py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal>
-            <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-paper)]/80">DIT Ecosystem</span>
+            <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-paper)]/80">DIT's three products</span>
             <h2 className="mt-3 mb-12 text-[var(--color-paper)]">Three pillars. One mission.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -159,7 +159,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ScrollReveal delay={0.1}>
               <div className="bg-[var(--color-paper)] border-2 border-[var(--color-ink)] p-8 h-full">
-                <h3 className="text-[1.4rem] mb-3 text-[var(--color-ink)]">Three-year horizon</h3>
+                <h3 className="text-[1.4rem] mb-3 text-[var(--color-ink)]">Three-year target</h3>
                 <p className="text-[0.98rem]">SomaBox in 100+ schools across Oyo, Osun and Ogun; verifiable outcome data from thousands of students; a published impact report; academic advisors from Nigerian universities.</p>
               </div>
             </ScrollReveal>

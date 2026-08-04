@@ -80,6 +80,30 @@
   .bg-burnt-deep { background: var(--color-burnt-deep); color: var(--color-paper); }
   .bg-ink { background: var(--color-ink); color: var(--color-paper); }
 
+  /* ── Dark-surface text fix ──────────────────────────────────────────────
+     The global `p { color: ink-soft }` rule (dark brown) wins over the
+     container's inherited light color. Force all inline/block text
+     elements on dark backgrounds to use the paper (cream) colour so
+     nothing is invisible regardless of which page uses these sections.   */
+  .bg-ink p,  .bg-ink li,  .bg-ink span,  .bg-ink label,
+  .bg-ink dt, .bg-ink dd,  .bg-ink td,    .bg-ink th,
+  .bg-ink blockquote, .bg-ink figcaption {
+    color: var(--color-paper);
+  }
+  .bg-ink p   { opacity: 0.88; } /* slight soften for readability */
+
+  .bg-burnt p,  .bg-burnt li,  .bg-burnt span,  .bg-burnt label,
+  .bg-burnt dt, .bg-burnt dd,  .bg-burnt td,    .bg-burnt th,
+  .bg-burnt blockquote, .bg-burnt figcaption {
+    color: var(--color-paper);
+  }
+  .bg-burnt p { opacity: 0.92; }
+
+  .bg-burnt-deep p,  .bg-burnt-deep li,  .bg-burnt-deep span,
+  .bg-burnt-deep label, .bg-burnt-deep dt, .bg-burnt-deep dd {
+    color: var(--color-paper);
+  }
+
   /* Eyebrow — used sparingly (taste rule: max 1 per 3 sections) */
   .eyebrow {
     font-family: var(--font-mono);

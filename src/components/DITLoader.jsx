@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const STATUS_MESSAGES = [
   'INITIALIZING DIT PLATFORM CORE...',
-  'CONNECTING OPEN INTELLIGENCE PIPELINE...',
-  'LOADING SECTOR RESEARCH & DATA...',
-  'ESTABLISHING SECURE SYSTEM LINK...',
+  'LOADING SOMABOX CURRICULUM DATA...',
+  'LOADING SECTOR RESEARCH & REPORTS...',
+  'ESTABLISHING SYSTEM LINK...',
 ]
 
 export default function DITLoader({ isFullPage = true, onComplete }) {
@@ -103,7 +103,7 @@ export default function DITLoader({ isFullPage = true, onComplete }) {
           DARA INITIATIVE <span className="text-[#CC8800]">TECH</span>
         </h2>
         <p className="font-[var(--font-mono)] text-[0.72rem] tracking-[0.25em] text-[#FBF7EF]/60 uppercase mt-1">
-          Open Intelligence & Ecosystem OS
+          Open Model Research · Offline AI · S-SME
         </p>
       </div>
 

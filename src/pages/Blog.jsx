@@ -14,9 +14,9 @@ const years = ['All', ...Array.from(new Set(blogPosts.map((p) => new Date(p.date
 
 export default function Blog() {
   useSEO({
-    title: 'The DIT Blog — open models, local infrastructure & practical AI',
+    title: 'The DIT Blog — open model grades, offline deployment & field research',
     description:
-      'Notes on open models, local infrastructure and practical AI, written by Lawrence Oladeji. Plain language, no hype.',
+      'Research notes from Lawrence Oladeji at DIT: how we grade open-source AI models for African deployment, what we learned building SomaBox, and the evidence behind S-SME.',
   })
   const [activeCat, setActiveCat] = useState('All')
   const [activeYear, setActiveYear] = useState('All')
@@ -51,9 +51,9 @@ export default function Blog() {
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal>
             <span className="eyebrow">The DIT Blog</span>
-            <h1 className="mt-3 max-w-[18ch]">Notes on open models, local infrastructure and practical AI.</h1>
-            <p className="text-[1.1rem] max-w-[52ch] mt-5">
-              Written by Lawrence Oladeji. Plain language, no hype.
+            <h1 className="mt-3 max-w-[22ch]">Open model grades, offline deployment, and what DIT learned in the field.</h1>
+            <p className="text-[1.1rem] max-w-[54ch] mt-5">
+              Research notes from Lawrence Oladeji. What we built, what the evidence shows, and how we grade open-source AI models for African deployment.
             </p>
             <div className="mt-7">
               <p className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.14em] text-[var(--color-ink-faint)] mb-3">

@@ -40,7 +40,7 @@ export default function Framework() {
             <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-burnt)]">
               Our position
             </span>
-            <p className="mt-4 text-[1.2rem] leading-relaxed font-[var(--font-display)] font-medium max-w-[62ch]">
+            <p className="mt-4 text-[1.2rem] leading-relaxed font-[var(--font-display)] font-medium max-w-[62ch] text-[var(--color-paper)]">
               {f.position}
             </p>
           </div>
@@ -181,7 +181,7 @@ export default function Framework() {
               Consultancy
             </span>
             <h2 className="mt-4 text-[1.9rem] font-[var(--font-display)] font-bold mb-4">{f.consultancy.title}</h2>
-            <p className="text-[1.1rem] leading-relaxed text-[var(--color-paper-soft)] max-w-[62ch] mb-7">
+            <p className="text-[1.1rem] leading-relaxed text-[var(--color-paper)]/80 max-w-[62ch] mb-7">
               {f.consultancy.body}
             </p>
             <Link

@@ -113,7 +113,7 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal>
             <span className="eyebrow">What we build</span>
-            <h2 className="mt-3 mb-12">One initiative. Every sector.</h2>
+            <h2 className="mt-3 mb-12">Three products. One mission.</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ScrollReveal delay={0.1}>
@@ -126,10 +126,10 @@ export default function Home() {
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <Link to="/about" className="group block bg-[var(--color-ink)] border-2 border-[var(--color-ink)] p-8 h-full hover:shadow-[10px_10px_0_var(--color-amber)] transition-all no-underline">
-                <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-amber)]">Health · Agriculture · Next</span>
-                <h3 className="text-[1.8rem] mt-3 mb-3 text-[var(--color-paper)]">New sectors on the horizon</h3>
-                <p className="text-[0.98rem] max-w-[40ch] mb-6 text-[var(--color-paper)]/75">The same offline-first model, extended to the communities DIT serves next.</p>
-                <span className="inline-flex items-center gap-2 font-[var(--font-display)] font-semibold text-[var(--color-amber)]">Our vision <ArrowUpRight size={18} /></span>
+                <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-amber)]">Health · Agriculture · Planned</span>
+                <h3 className="text-[1.8rem] mt-3 mb-3 text-[var(--color-paper)]">Where DIT goes next.</h3>
+                <p className="text-[0.98rem] max-w-[40ch] mb-6 text-[var(--color-paper)]/75">SomaBox and S-SME establish the offline-first model. Health and agriculture are the next sectors DIT is scoping for the same treatment.</p>
+                <span className="inline-flex items-center gap-2 font-[var(--font-display)] font-semibold text-[var(--color-amber)]">Our mission <ArrowUpRight size={18} /></span>
               </Link>
             </ScrollReveal>
           </div>

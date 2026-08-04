@@ -16,7 +16,7 @@ export default function AIHub() {
   useSEO({
     title: 'Dara AI Training Hub — AI skills for Nigeria',
     description:
-      'Hands-on AI training in Nigeria across 9 tracks for corporate teams, creatives, students and educators. Practical skills you can use tomorrow, not lectures about AI.',
+      'Hands-on AI training in Nigeria across 9 tracks for corporate teams, creatives, students and educators. Every session ends with a real output — an automation, agent, dashboard or content system you built.',
   })
   const [active, setActive] = useState(null)
   const indexOf = (id) => tracks.findIndex(t => t.id === id) + 1
@@ -32,8 +32,8 @@ export default function AIHub() {
             </p>
             <h1 className="max-w-[18ch]">Dara AI Training Hub: <span className="text-[var(--color-burnt)]">AI skills for Nigeria.</span></h1>
             <p className="text-[1.1rem] max-w-[58ch] mt-5">
-              Not lectures about AI. Real, hands-on training that gives you AI skills you can use tomorrow, in your
-              workplace, your business, your classroom.
+              Training built around real outputs — automations, agents, dashboards, content systems — that
+              you build in the session and take straight into your workplace, business or classroom.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>

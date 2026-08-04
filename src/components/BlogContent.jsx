@@ -85,12 +85,12 @@ function Block({ block }) {
         <div className="my-12 bg-[var(--color-ink)] text-[var(--color-paper)] border-2 border-[var(--color-ink)] p-6 sm:p-8">
           <div className="flex items-center gap-3 mb-3">
             <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-burnt)]">OMSF</span>
-            <span className="h-px flex-1 bg-[var(--color-paper-faint)]"></span>
+            <span className="h-px flex-1 bg-[var(--color-paper)]/20"></span>
           </div>
-          <p className="text-[1rem] leading-relaxed text-[var(--color-paper-soft)]">{renderRich(block.text)}</p>
+          <p className="text-[1rem] leading-relaxed text-[var(--color-paper)]/85">{renderRich(block.text)}</p>
           <Link
             to="/framework"
-            className="inline-block mt-4 font-[var(--font-mono)] text-[0.74rem] uppercase tracking-[0.14em] text-[var(--color-paper)] border border-[var(--color-paper-faint)] px-4 py-2 hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors"
+            className="inline-block mt-4 font-[var(--font-mono)] text-[0.74rem] uppercase tracking-[0.14em] text-[var(--color-paper)] border border-[var(--color-paper)]/40 px-4 py-2 hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)] transition-colors"
           >
             Read the framework
           </Link>

@@ -134,7 +134,7 @@ export default function Research() {
             <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-amber)]">
               The provenance rule
             </span>
-            <p className="mt-3 text-[1.05rem] leading-relaxed">
+            <p className="mt-3 text-[1.05rem] leading-relaxed text-[var(--color-paper)]">
               If a claim on this page can’t be traced to a citation below, we don’t want it on the site. That’s the
               same provenance rule OMSF applies to every model report, applied to ourselves.
             </p>
