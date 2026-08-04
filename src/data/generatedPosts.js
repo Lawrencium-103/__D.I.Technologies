@@ -6,7 +6,7 @@ export const generatedPosts = [
     slug: "2026-open-weight-model-landscape-quality-gap",
     title: "The 2026 Open-Weight Model Landscape: Architectures, Hardware Floors, and Licensing",
     excerpt: "An evaluation of 2026 open-weight model families including DeepSeek V4, Qwen3.6, Llama 4, and Gemma 4, analyzing Mixture-of-Experts active parameter ratios, hardware VRAM floors, and commercial license constraints.",
-    date: "2026-08-04",
+    date: "2026-08-01",
     author: blogAuthor,
     category: "Open Models",
     readingTime: "9 min",
