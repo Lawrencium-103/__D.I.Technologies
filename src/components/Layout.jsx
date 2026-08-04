@@ -7,20 +7,22 @@ import DITLoader from './DITLoader'
 
 export default function Layout() {
   const { pathname } = useLocation()
-  const [pageLoading, setPageLoading] = useState(true)
+  const [initialLoad, setInitialLoad] = useState(true)
 
+  // Only show the loader on the very first visit
+  useEffect(() => {
+    const timer = setTimeout(() => setInitialLoad(false), 1400)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Restore scroll position instantly on route change
   useEffect(() => {
     window.scrollTo(0, 0)
-    setPageLoading(true)
-    const timer = setTimeout(() => {
-      setPageLoading(false)
-    }, 450)
-    return () => clearTimeout(timer)
   }, [pathname])
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      {pageLoading && <DITLoader isFullPage={true} />}
+      {initialLoad && <DITLoader isFullPage={true} />}
       <Navbar />
       <main className="flex-1"><Outlet /></main>
       <Footer />
