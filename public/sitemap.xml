@@ -21,6 +21,36 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dintechnologies.com/blog/2026-edge-on-device-ai-ai-pcs</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/2026-hardware-tiers-local-ai-inference</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/2026-inference-runtimes-local-ai-tooling-maturity</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/2026-open-weight-model-landscape-quality-gap</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/2026-quantization-moe-efficiency-memory-optimization</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-bloom-rail</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>yearly</changefreq>
