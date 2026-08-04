@@ -108,11 +108,17 @@ export default function Research() {
             </div>
 
             <h2 className="text-[1.6rem] font-[var(--font-display)] font-bold leading-tight mb-3">
-              Our Academic Standing: Honest Synthesis, Seeking Empirical Partners
+              Our Academic Standing: Under Review &amp; Seeking Empirical Partners
             </h2>
 
+            <div className="bg-[var(--color-ink)]/5 border-l-4 border-[var(--color-burnt)] p-4 mb-5">
+              <p className="text-[0.95rem] leading-relaxed text-[var(--color-ink)]">
+                <span className="font-bold text-[var(--color-burnt)]">Update:</span> DIT’s primary research on the OpenModel Synthesis Framework has been officially submitted and is currently <strong>under review on Zenodo</strong>. We are actively transitioning from practitioner synthesis into formal academic peer review.
+              </p>
+            </div>
+
             <p className="text-[1rem] leading-relaxed text-[var(--color-ink-soft)] mb-4">
-              We do not claim to have authored peer-reviewed literature or published an arXiv preprint yet. OMSF is a <strong>practitioner synthesis tool</strong> built directly on top of established research by Solaiman (2023), White et al. (2024), and Liesenfeld &amp; Dingemanse (2024).
+              While awaiting final publication, OMSF functions as a <strong>practitioner synthesis tool</strong> built directly on top of established research by Solaiman (2023), White et al. (2024), and Liesenfeld &amp; Dingemanse (2024).
             </p>
 
             <p className="text-[1rem] leading-relaxed text-[var(--color-ink-soft)] mb-5">
@@ -245,8 +251,7 @@ export default function Research() {
             <li className="flex gap-3 text-[1.02rem] leading-relaxed text-[var(--color-ink-soft)]">
               <span className="text-[var(--color-burnt)] font-[var(--font-mono)]">—</span>
               <span>
-                OMSF is not itself a peer-reviewed publication. It has not been through academic review, and its
-                per-model reports are advisory content, not research findings.
+                OMSF per-model reports are advisory content and synthesis, not formal research findings (though our methodology paper is currently under peer review).
               </span>
             </li>
             <li className="flex gap-3 text-[1.02rem] leading-relaxed text-[var(--color-ink-soft)]">
