@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import ScrollReveal from './ScrollReveal'
 
-function Counter({ target, suffix = '' }) {
+function Counter({ target, suffix = '', compact = false }) {
   const [val, setVal] = useState(0)
   const ref = useRef(null)
   const started = useRef(false)
@@ -25,15 +25,24 @@ function Counter({ target, suffix = '' }) {
     return () => obs.disconnect()
   }, [target])
 
+  const formatValue = (v) => {
+    if (compact) {
+      if (v >= 1_000_000) return (v / 1_000_000).toFixed(1) + 'M'
+      if (v >= 1_000) return Math.floor(v / 1_000) + 'K'
+      return v.toString()
+    }
+    return v.toLocaleString()
+  }
+
   return (
     <span ref={ref} className="font-[var(--font-display)] font-bold text-[clamp(2.4rem,5vw,3.6rem)] text-[var(--color-amber)] leading-none tracking-tight tabular-nums">
-      {val.toLocaleString()}{suffix}
+      {formatValue(val)}{suffix}
     </span>
   )
 }
 
 const stats = [
-  { target: 10500000, suffix: '+', label: 'Nigerian children out of school' },
+  { target: 10500000, suffix: '+', label: 'Nigerian children out of school', compact: true },
   { target: 60, suffix: '+', label: 'NERDC textbooks in the box' },
   { target: 0, suffix: '', label: 'Internet required' },
   { target: 26, suffix: '', label: 'Slash commands teachers use' },
@@ -48,7 +57,7 @@ export default function StatsBar() {
             key={i}
             className={`text-center px-5 py-12 ${i !== 0 ? 'md:border-l border-[var(--color-paper)]/25' : ''} ${i === 2 || i === 3 ? 'border-t md:border-t-0 border-[var(--color-paper)]/25' : ''}`}
           >
-            <Counter target={s.target} suffix={s.suffix} />
+            <Counter target={s.target} suffix={s.suffix} compact={s.compact} />
             <span className="block text-[var(--color-paper)]/80 text-[0.85rem] mt-3 leading-snug max-w-[22ch] mx-auto">{s.label}</span>
           </div>
         ))}
