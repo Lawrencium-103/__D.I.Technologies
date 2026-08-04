@@ -22,7 +22,8 @@ const OPEN_PATTERNS = [
   /llama/i, /qwen/i, /deepseek/i, /gemma/i, /mistral/i, /mixtral/i, /phi/i,
   /starcoder/i, /codellama/i, /command-r/i, /nemotron/i, /glm/i, /yi-/i,
   /falcon/i, /vicuna/i, /zephyr/i, /stable-diffusion/i, /flux/i, /smollm/i,
-  /olmo/i, /granite/i, /internlm/i, /baichuan/i, /step-/i, /mimo/i, /kimi/i
+  /olmo/i, /granite/i, /internlm/i, /baichuan/i, /step-/i, /mimo/i, /kimi/i,
+  /wan/i, /cogvideo/i, /sdxl/i, /hunyuan/i
 ]
 
 function isOpenModel(m) {

@@ -9,7 +9,7 @@
 // Response is cached in-memory for ~5 minutes to avoid hammering the upstream
 // and to keep page loads fast. This is deliberately a pure proxy (no @netlify/
 // blobs, no lib/omsf import) so it stays trivial to build and deploy.
-const UPSTREAM = 'https://lmmarketcap.com/api/models'
+const UPSTREAM = 'https://lmmarketcap.com/api/models?limit=100'
 const TTL_MS = 5 * 60 * 1000
 
 let cache = { at: 0, body: null }
