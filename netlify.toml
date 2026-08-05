@@ -10,6 +10,155 @@
   to = "/.netlify/functions/engagement/:splat"
   status = 200
 
+# Prerendered static pages (SEO/GEO: serve real HTML with per-route meta tags)
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+[[redirects]]
+  from = "/framework"
+  to = "/framework.html"
+  status = 200
+[[redirects]]
+  from = "/open-models"
+  to = "/open-models.html"
+  status = 200
+[[redirects]]
+  from = "/reports"
+  to = "/reports.html"
+  status = 200
+[[redirects]]
+  from = "/research"
+  to = "/research.html"
+  status = 200
+[[redirects]]
+  from = "/edutech"
+  to = "/edutech.html"
+  status = 200
+[[redirects]]
+  from = "/ai-hub"
+  to = "/ai-hub.html"
+  status = 200
+[[redirects]]
+  from = "/s-sme"
+  to = "/s-sme.html"
+  status = 200
+[[redirects]]
+  from = "/s-sme/toolkit"
+  to = "/s-sme/toolkit.html"
+  status = 200
+[[redirects]]
+  from = "/s-sme/evidence"
+  to = "/s-sme/evidence.html"
+  status = 200
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+# Prerendered blog posts (SEO/GEO: serve real HTML with per-post meta tags)
+[[redirects]]
+  from = "/blog/2026-edge-on-device-ai-ai-pcs"
+  to = "/blog/2026-edge-on-device-ai-ai-pcs.html"
+  status = 200
+[[redirects]]
+  from = "/blog/2026-hardware-tiers-local-ai-inference"
+  to = "/blog/2026-hardware-tiers-local-ai-inference.html"
+  status = 200
+[[redirects]]
+  from = "/blog/2026-inference-runtimes-local-ai-tooling-maturity"
+  to = "/blog/2026-inference-runtimes-local-ai-tooling-maturity.html"
+  status = 200
+[[redirects]]
+  from = "/blog/2026-open-weight-model-landscape-quality-gap"
+  to = "/blog/2026-open-weight-model-landscape-quality-gap.html"
+  status = 200
+[[redirects]]
+  from = "/blog/2026-quantization-moe-efficiency-memory-optimization"
+  to = "/blog/2026-quantization-moe-efficiency-memory-optimization.html"
+  status = 200
+[[redirects]]
+  from = "/blog/history-open-local-private-ai-bloom-rail"
+  to = "/blog/history-open-local-private-ai-bloom-rail.html"
+  status = 200
+[[redirects]]
+  from = "/blog/history-open-local-private-ai-closing-door"
+  to = "/blog/history-open-local-private-ai-closing-door.html"
+  status = 200
+[[redirects]]
+  from = "/blog/history-open-local-private-ai-deepseek-r1"
+  to = "/blog/history-open-local-private-ai-deepseek-r1.html"
+  status = 200
+[[redirects]]
+  from = "/blog/history-open-local-private-ai-global-south"
+  to = "/blog/history-open-local-private-ai-global-south.html"
+  status = 200
+[[redirects]]
+  from = "/blog/history-open-local-private-ai-gpt2-staged-release"
+  to = "/blog/history-open-local-private-ai-gpt2-staged-release.html"
+  status = 200
+[[redirects]]
+  from = "/blog/history-open-local-private-ai-llama-leak"
+  to = "/blog/history-open-local-private-ai-llama-leak.html"
+  status = 200
+[[redirects]]
+  from = "/blog/history-open-local-private-ai-measurement-framework"
+  to = "/blog/history-open-local-private-ai-measurement-framework.html"
+  status = 200
+[[redirects]]
+  from = "/blog/history-open-local-private-ai-mistral-open-sovereignty"
+  to = "/blog/history-open-local-private-ai-mistral-open-sovereignty.html"
+  status = 200
+[[redirects]]
+  from = "/blog/history-open-local-private-ai-regulation-catches-up"
+  to = "/blog/history-open-local-private-ai-regulation-catches-up.html"
+  status = 200
+[[redirects]]
+  from = "/blog/history-open-local-private-ai-stable-diffusion"
+  to = "/blog/history-open-local-private-ai-stable-diffusion.html"
+  status = 200
+[[redirects]]
+  from = "/blog/mid-year-cost-reality-check"
+  to = "/blog/mid-year-cost-reality-check.html"
+  status = 200
+[[redirects]]
+  from = "/blog/offline-first-parent-teacher-portals"
+  to = "/blog/offline-first-parent-teacher-portals.html"
+  status = 200
+[[redirects]]
+  from = "/blog/open-models-public-sector"
+  to = "/blog/open-models-public-sector.html"
+  status = 200
+[[redirects]]
+  from = "/blog/running-open-models-privately"
+  to = "/blog/running-open-models-privately.html"
+  status = 200
+[[redirects]]
+  from = "/blog/the-openness-ladder"
+  to = "/blog/the-openness-ladder.html"
+  status = 200
+[[redirects]]
+  from = "/blog/the-quiet-cost-of-vendor-lock-in"
+  to = "/blog/the-quiet-cost-of-vendor-lock-in.html"
+  status = 200
+[[redirects]]
+  from = "/blog/what-are-open-source-models"
+  to = "/blog/what-are-open-source-models.html"
+  status = 200
+[[redirects]]
+  from = "/blog/what-open-source-ai-means-after-2025-license-shifts"
+  to = "/blog/what-open-source-ai-means-after-2025-license-shifts.html"
+  status = 200
+[[redirects]]
+  from = "/blog/why-we-build-offline-first"
+  to = "/blog/why-we-build-offline-first.html"
+  status = 200
+
+# SPA fallback (client-side routing for any other route)
 [[redirects]]
   from = "/*"
   to = "/index.html"
