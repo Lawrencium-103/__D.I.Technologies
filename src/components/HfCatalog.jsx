@@ -22,6 +22,18 @@ const fmtDate = (iso) => {
   return isNaN(d.getTime()) ? '—' : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 
+const timeAgo = (iso) => {
+  if (!iso) return null
+  const ts = Date.parse(iso)
+  if (isNaN(ts)) return null
+  const mins = Math.max(0, Math.round((Date.now() - ts) / 60000))
+  if (mins < 1) return 'just now'
+  if (mins < 60) return `${mins}m old`
+  const h = Math.floor(mins / 60)
+  if (h < 24) return `${h}h old`
+  return `${Math.floor(h / 24)}d old`
+}
+
 const LICENSE_BUCKETS = {
   permissive: { label: 'Permissive', color: 'var(--color-success)' },
   restricted: { label: 'Restricted', color: 'var(--color-danger)' },
@@ -345,6 +357,9 @@ export default function HfCatalog() {
     } catch { return '' }
   }, [data?.fetchedAt])
 
+  const age = data?.fetchedAt ? timeAgo(data.fetchedAt) : null
+  const stale = data?.fetchedAt ? Date.now() - Date.parse(data.fetchedAt) > 48 * 3600000 : false
+
   const Arrow = ({ k }) =>
     sortKey === k ? (
       <span className="ml-1 inline-block text-[var(--color-burnt)]">{sortDir === 'asc' ? '▲' : '▼'}</span>
@@ -395,9 +410,14 @@ export default function HfCatalog() {
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.14em] px-3 py-1.5 border-2 border-[var(--color-ink)] bg-[var(--color-paper)]">
-                {status.kind === 'ready' ? <Database size={13} className="text-[var(--color-success)]" /> : <Database size={13} />}
-                {status.kind === 'loading' ? 'Loading catalog…' : status.kind === 'error' ? 'Catalog unavailable' : status.live ? `Live HF sync · ${formattedDate}` : `Snapshot · ${formattedDate}`}
+                {status.kind === 'ready' ? <Database size={13} className={stale ? 'text-[var(--color-warning)]' : 'text-[var(--color-success)]'} /> : <Database size={13} />}
+                {status.kind === 'loading' ? 'Loading catalog…' : status.kind === 'error' ? 'Catalog unavailable' : `${status.live ? 'Live HF sync' : 'Snapshot'} · ${formattedDate}${age ? ` · ${age}` : ''}`}
               </span>
+              {status.kind === 'ready' && stale && (
+                <span className="inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.14em] px-3 py-1.5 border-2 border-[var(--color-warning)] text-[var(--color-warning)] bg-[var(--color-paper)]">
+                  Data is {age} — daily HF sync may have failed
+                </span>
+              )}
               <button onClick={load} className="btn btn-ghost !py-2 !px-4 !text-sm inline-flex items-center gap-2">
                 <RefreshCw size={15} className={status.kind === 'loading' ? 'animate-spin' : ''} /> Refresh
               </button>
