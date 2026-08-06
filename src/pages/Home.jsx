@@ -136,11 +136,11 @@ export default function Home() {
                     Sixty NERDC textbooks, 26 slash commands and a personal AI tutor that never sleeps — running
                     entirely offline on a single box. One box, a keyboard and a screen: an entire classroom learns.
                   </p>
-                  <div className="grid grid-cols-2 gap-x-8 gap-y-5 mb-9">
-                    <div className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)] text-[1.7rem]">18.3M</span><span className="text-[0.88rem] text-[var(--color-paper)]/75">out-of-school children (UNICEF, 2024)</span></div>
-                    <div className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)] text-[1.7rem]">60+</span><span className="text-[0.88rem] text-[var(--color-paper)]/75">NERDC textbooks, all offline</span></div>
-                    <div className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)] text-[1.7rem]">2 yrs</span><span className="text-[0.88rem] text-[var(--color-paper)]/75">learning gain in 6 weeks — World Bank RCT, Edo State</span></div>
-                    <div className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)] text-[1.7rem]">+34%</span><span className="text-[0.88rem] text-[var(--color-paper)]/75">math scores at Odo Oba (our own result)</span></div>
+                  <div className="grid grid-cols-2 gap-x-8 gap-y-6 mb-9">
+                    <div><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)] text-[1.7rem] leading-none block">18.3M</span><span className="block text-[0.88rem] text-[var(--color-paper)]/75 mt-1.5 leading-snug">out-of-school children (UNICEF, 2024)</span></div>
+                    <div><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)] text-[1.7rem] leading-none block">60+</span><span className="block text-[0.88rem] text-[var(--color-paper)]/75 mt-1.5 leading-snug">NERDC textbooks, all offline</span></div>
+                    <div><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)] text-[1.7rem] leading-none block">2 yrs</span><span className="block text-[0.88rem] text-[var(--color-paper)]/75 mt-1.5 leading-snug">learning gain in 6 weeks — World Bank RCT, Edo State</span></div>
+                    <div><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)] text-[1.7rem] leading-none block">+34%</span><span className="block text-[0.88rem] text-[var(--color-paper)]/75 mt-1.5 leading-snug">math scores at Odo Oba (our own result)</span></div>
                   </div>
                   <div className="flex flex-wrap gap-4">
                     <Link to="/edutech" className="btn btn-primary">View SomaBox <ArrowUpRight size={18} /></Link>
@@ -185,11 +185,11 @@ export default function Home() {
             <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-8 sm:p-12 mt-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
                 <div className="order-2 lg:order-1">
-                  <div className="grid grid-cols-2 gap-x-8 gap-y-5 mb-9">
-                    <div className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)] text-[1.7rem]">~50%</span><span className="text-[0.88rem] text-[var(--color-ink-soft)]">of GDP, ~85% of workforce (SMEDAN / IFC)</span></div>
-                    <div className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)] text-[1.7rem]">68%</span><span className="text-[0.88rem] text-[var(--color-ink-soft)]">of small businesses unaware of the e-invoicing mandate (Lagos survey)</span></div>
-                    <div className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)] text-[1.7rem]">r=0.76</span><span className="text-[0.88rem] text-[var(--color-ink-soft)]">record-keeping ↔ business success — 156 SME owners, Kampala</span></div>
-                    <div className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)] text-[1.7rem]">−28%</span><span className="text-[0.88rem] text-[var(--color-ink-soft)]">stock waste at Mama Tunde (our own result, 3 months)</span></div>
+                  <div className="grid grid-cols-2 gap-x-8 gap-y-6 mb-9">
+                    <div><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)] text-[1.7rem] leading-none block">~50%</span><span className="block text-[0.88rem] text-[var(--color-ink-soft)] mt-1.5 leading-snug">of GDP, ~85% of workforce (SMEDAN / IFC)</span></div>
+                    <div><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)] text-[1.7rem] leading-none block">68%</span><span className="block text-[0.88rem] text-[var(--color-ink-soft)] mt-1.5 leading-snug">of small businesses unaware of the e-invoicing mandate (Lagos survey)</span></div>
+                    <div><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)] text-[1.7rem] leading-none block">r=0.76</span><span className="block text-[0.88rem] text-[var(--color-ink-soft)] mt-1.5 leading-snug">record-keeping ↔ business success — 156 SME owners, Kampala</span></div>
+                    <div><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)] text-[1.7rem] leading-none block">−28%</span><span className="block text-[0.88rem] text-[var(--color-ink-soft)] mt-1.5 leading-snug">stock waste at Mama Tunde (our own result, 3 months)</span></div>
                   </div>
                   <div className="flex flex-wrap gap-2 mb-9">
                     {['Solar layouts', 'Offline inventory', 'Compliance & reporting', 'AI decision support'].map((t, i) => (
