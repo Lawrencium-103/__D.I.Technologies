@@ -161,19 +161,19 @@ export default function Home() {
                 <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-ink-faint)]">Agritech · Pending · No DIT results yet</span>
                 <h3 className="text-[1.8rem] mt-3 mb-3 text-[var(--color-ink)]">The next frontier, honestly.</h3>
                 <p className="text-[0.98rem] max-w-[42ch] mb-6 text-[var(--color-ink-soft)]">
-                  We have not shipped agriculture products yet, so we will not quote DIT results. The opportunity itself is real, verified, and matches our offline-first model.
+                  We have not shipped agriculture products yet, so we will not quote DIT results. The market is real, verified, and being validated by government right now — over basic phones, where connectivity is weakest.
                 </p>
                 <ul className="space-y-2 text-[0.92rem] mb-6 text-[var(--color-ink)]">
                   <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">80%</span> of Nigerian farmers are smallholders producing ~90% of food</li>
                   <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">$10.7B</span> digital-agriculture market; 1,000+ solutions reach only ~10% of smallholder households</li>
-                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">20k</span> farmers already served by Nigeria's govt voice-first DPAE platform (2025–26)</li>
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">20k</span> farmers served by Nigeria's govt voice-first DPAE platform — scaling to 100k+ in 2026</li>
                 </ul>
                 <Link to="/about" className="mt-auto inline-flex items-center gap-2 font-[var(--font-display)] font-semibold text-[var(--color-ink-faint)] no-underline">Where DIT goes next <ArrowUpRight size={18} /></Link>
               </div>
             </ScrollReveal>
           </div>
           <p className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] text-[var(--color-ink-faint)] mt-8">
-            Sources: UNICEF Nigeria (2024) · DRPC 2026 Budget Analysis · World Bank Policy Research Working Paper 11125 · SMEDAN/IFC · BusinessDay Lagos survey · PxD/ACReSAL DPAE (2026). "Our own result" = DIT-reported, not independently audited.
+            Sources: UNICEF Nigeria (2024) · DRPC 2026 Budget Analysis · World Bank Policy Research Working Paper 11125 · SMEDAN/IFC · BusinessDay Lagos survey · 60 Decibels / DALI (2025) · US Commercial Service · PxD/ACReSAL DPAE (2026). "Our own result" = DIT-reported, not independently audited.
           </p>
         </div>
       </section>
