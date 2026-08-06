@@ -31,7 +31,7 @@ export default function Contact() {
     e.preventDefault()
     const subject = encodeURIComponent(`Dara Initiative: ${form.need}`)
     const body = encodeURIComponent(`Name: ${form.name}\nOrganisation: ${form.org}\nEmail: ${form.email}\nInterest: ${form.need}\n\nMessage:\n${form.message}`)
-    window.location.href = `mailto:oladeji.lawrence@gmail.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:contact@dintechnologies.com?subject=${subject}&body=${body}`
     setStatus('sent')
   }
 
@@ -106,7 +106,7 @@ export default function Contact() {
           <ScrollReveal delay={0.1}>
             <div className="space-y-5">
               {[
-                { icon: Mail, label: 'Email', value: 'Email Address', href: 'mailto:oladeji.lawrence@gmail.com' },
+                { icon: Mail, label: 'Email', value: 'contact@dintechnologies.com', href: 'mailto:contact@dintechnologies.com' },
                 { icon: Phone, label: 'Phone / WhatsApp', value: '+234 903 881 9790', href: 'tel:+2349038819790' },
                 { icon: MapPin, label: 'Based in', value: 'Oyo State, Nigeria', href: null },
               ].map((c, i) => (

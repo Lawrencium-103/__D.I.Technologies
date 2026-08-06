@@ -210,7 +210,7 @@ export default function ReportDocument({ report }) {
             </ul>
           )}
           <a
-            href="mailto:oladeji.lawrence@gmail.com?subject=OMSF%20model%20review"
+            href="mailto:contact@dintechnologies.com?subject=OMSF%20model%20review"
             className="inline-block font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.12em] text-[var(--color-paper)] bg-[var(--color-burnt)] border-2 border-[var(--color-ink)] px-4 py-2 no-underline"
           >
             Book a review

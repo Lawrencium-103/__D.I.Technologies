@@ -10,27 +10,27 @@ const pillars = [
 ]
 
 const timeline = [
-  { num: '01', title: 'Deploy', desc: 'Install SomaBox with zero internet; train two teachers in 15 minutes.', outcome: 'Students gain an AI tutor aligned to NERDC.' },
-  { num: '02', title: 'Engage', desc: 'Students use it daily for homework, revision, quizzes.', outcome: 'A culture of self-directed learning takes root.' },
-  { num: '03', title: 'Improve', desc: 'Track scores and command usage every term.', outcome: 'Measurably higher exam performance.' },
-  { num: '04', title: 'Scale', desc: 'Use results for grants, SUBEB approval, partnerships.', outcome: 'From 5 pilot schools to 50, then 500.' },
-  { num: '05', title: 'Sustain', desc: 'Train local technicians; build a maintenance pipeline.', outcome: 'Schools run SomaBox independently.' },
+  { num: '01', title: 'Build', desc: 'One offline-first engine: open-weight models, local inference, edge hardware.', outcome: 'A single platform that runs in any sector — no cloud, no data plan.' },
+  { num: '02', title: 'Apply', desc: 'Ship it where the need is greatest — first classrooms, then SMEs, then farms.', outcome: 'Real deployments in places cloud AI cannot reach.' },
+  { num: '03', title: 'Measure', desc: 'Track outcomes per deployment every cycle — learning, stock, yield.', outcome: 'Verifiable impact, not anecdote.' },
+  { num: '04', title: 'Scale', desc: 'Use the results to expand within a region and across sectors.', outcome: 'From pilot schools to districts; from shops to value chains.' },
+  { num: '05', title: 'Sustain', desc: 'Train local technicians and build maintenance pipelines.', outcome: 'Communities run DIT tools independently.' },
 ]
 
 const pledges = [
   { icon: Shield, title: 'Hardware reliability', desc: 'Every unit tested 48 hours before deployment; Lawrence signs off on each shipped box.' },
-  { icon: GraduationCap, title: 'Teacher training', desc: 'At least two hours in-person training plus a printed quick-reference guide.' },
-  { icon: Eye, title: 'Data transparency', desc: 'Usage and performance data shared with schools every term.' },
-  { icon: Zap, title: 'Software updates', desc: 'At least one update per term, with new features and curriculum content.' },
+  { icon: GraduationCap, title: 'Training', desc: 'At least two hours in-person training per deployment plus a printed quick-reference guide.' },
+  { icon: Eye, title: 'Data transparency', desc: 'Usage and performance data shared with partners every term.' },
+  { icon: Zap, title: 'Updates', desc: 'At least one update per term, with new features and content.' },
   { icon: Users, title: 'Support', desc: 'Any technical issue gets a response within 48 hours.' },
-  { icon: Target, title: 'No abandoned deployments', desc: 'If a school cannot continue, the box is retrieved and redeployed.' },
+  { icon: Target, title: 'No abandoned deployments', desc: 'If a partner cannot continue, our hardware is retrieved and redeployed.' },
 ]
 
 export default function About() {
   useSEO({
     title: 'About Dara Initiative Technology',
     description:
-      'DIT exists because 18.3 million Nigerian children deserve the same quality of education that internet-connected students take for granted — delivered through offline-first AI tutoring, hands-on AI training and sustainable SME tools.',
+      'Dara Initiative Technology builds open-weight, offline-first AI that runs without internet — applied to education (SomaBox), sustainable SMEs (S-SME) and agriculture, starting in Nigeria.',
   })
   return (
     <>
@@ -43,8 +43,9 @@ export default function About() {
             </p>
             <h1 className="max-w-[18ch]">About <span className="text-[var(--color-burnt)]">Dara Initiative Technology</span></h1>
             <p className="text-[1.1rem] max-w-[60ch] mt-5">
-              We exist because 18.3 million Nigerian children deserve the same quality of education that
-              internet-connected students take for granted, and we refused to wait for the internet to arrive.
+              We build open, offline AI that runs where the internet hasn't arrived — then we point it at
+              the biggest gaps: classrooms, small businesses and farms. We exist because the places with the
+              greatest need are the places the internet has not reached.
             </p>
           </ScrollReveal>
         </div>
@@ -57,17 +58,17 @@ export default function About() {
             <ScrollReveal>
               <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-amber)]">Our mission</span>
               <p className="text-[var(--color-paper)] text-[1.4rem] leading-relaxed mt-4 font-[var(--font-display)] font-medium">
-                To deliver AI-powered, curriculum-aligned education to every underserved school in Nigeria through
-                affordable, offline-first technology that requires zero internet.
+                To put AI to work where the internet doesn't reach — classrooms, small businesses and farms —
+                using open-weight models that run entirely on offline, low-power hardware.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-amber)]">Our purpose</span>
               <p className="text-[var(--color-paper)]/80 text-[1.05rem] leading-relaxed mt-4">
-                To prove the digital divide in education is a priority problem, not a technology problem. The
-                technology exists. The curriculum exists. The need is undeniable. What was missing was an
-                organisation willing to build the bridge between what AI can do and what rural Nigerian schools
-                actually need. Dara Initiative Technology is that bridge.
+                To prove the connectivity divide is a priority problem, not a technology problem. The models
+                exist. The hardware exists. The need is undeniable. What was missing was an organisation
+                willing to build the bridge between what AI can do and what disconnected communities actually
+                need. Dara Initiative Technology is that bridge.
               </p>
             </ScrollReveal>
           </div>
@@ -83,8 +84,8 @@ export default function About() {
             <p className="text-[1.1rem] max-w-[64ch]">
               &ldquo;Dara&rdquo; means <span className="text-[var(--color-burnt)] font-semibold">it is good</span>. It is not an acronym and not a foreign word repackaged.
               When a mother tastes food and says &ldquo;dara,&rdquo; she means this is right, this is what should be.
-              That is the standard we hold ourselves to: if it is not genuinely good for the students and teachers
-              we serve, we do not do it.
+              That is the standard we hold ourselves to: if it is not genuinely good for the people we serve,
+              we do not do it.
             </p>
           </ScrollReveal>
         </div>
@@ -125,12 +126,12 @@ export default function About() {
         </div>
       </section>
 
-      {/* THEORY OF CHANGE */}
+      {/* HOW WE WORK */}
       <section className="bg-cream-2 py-24">
         <div className="max-w-[820px] mx-auto px-6">
           <ScrollReveal>
-            <span className="eyebrow">Theory of change</span>
-            <h2 className="mt-3 mb-14">From a small box to systemic improvement.</h2>
+            <span className="eyebrow">How we work</span>
+            <h2 className="mt-3 mb-14">One engine. Every sector. Systemic change.</h2>
           </ScrollReveal>
           <div className="space-y-px">
             {timeline.map((s, i) => (
@@ -160,13 +161,13 @@ export default function About() {
             <ScrollReveal delay={0.1}>
               <div className="bg-[var(--color-paper)] border-2 border-[var(--color-ink)] p-8 h-full">
                 <h3 className="text-[1.4rem] mb-3 text-[var(--color-ink)]">Three-year target</h3>
-                <p className="text-[0.98rem]">SomaBox in 100+ schools across Oyo, Osun and Ogun; verifiable outcome data from thousands of students; a published impact report; academic advisors from Nigerian universities.</p>
+                <p className="text-[0.98rem]">Offline AI in 100+ schools across Oyo, Osun and Ogun, S-SME toolkits deployed with small businesses, verifiable outcome data across sectors and a published impact report.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
               <div className="bg-[var(--color-ink)] border-2 border-[var(--color-ink)] p-8 h-full">
                 <h3 className="text-[1.4rem] mb-3 text-[var(--color-paper)]">Ten-year vision</h3>
-                <p className="text-[0.98rem] text-[var(--color-paper)]/80">No rural Nigerian school without AI tutoring. A SomaBox Academy trains local technicians in every state, so DIT becomes unnecessary by building local capacity that runs without us.</p>
+                <p className="text-[0.98rem] text-[var(--color-paper)]/80">No rural Nigerian classroom, shop or farm without local AI. DIT academies train local technicians in every state, so DIT becomes unnecessary by building capacity that runs without us.</p>
               </div>
             </ScrollReveal>
           </div>
@@ -186,13 +187,13 @@ export default function About() {
                 name: 'Lawrence Oladeji',
                 role: 'Co-Founder & Lead Developer',
                 img: '/Lawrence.png',
-                bio: 'Lawrence holds a B.Eng in Mechanical Engineering from FUNAAB and an M.Sc in Mechanical Engineering from the University of Ibadan (2024). His route into education technology runs through the classroom: he taught Mathematics and Physics as a PTA teacher, trained and practised as a Solar Engineer, and now works as a Data Associate and Junior AI Engineer, building the machine-learning systems behind SomaBox.',
+                bio: 'Lawrence holds a B.Eng in Mechanical Engineering from FUNAAB and an M.Sc in Mechanical Engineering from the University of Ibadan (2024). His route into education technology runs through the classroom: he taught Mathematics and Physics as a PTA teacher, trained and practised as a Solar Engineer, and now works as a Data Associate and Junior AI Engineer, building the machine-learning systems behind DIT\'s offline AI products.',
               },
               {
                 name: 'Esther Opeyemi Adekanmbi',
                 role: 'Co-Founder & Teacher',
                 img: '/Esther.jpeg',
-                bio: 'A certified Nigerian teacher, Esther graduated from Olabisi Onabanjo University with a degree in Child Education and brings over four years of classroom experience. She knows overcrowded, under-resourced classrooms first-hand, and makes sure every SomaBox feature serves a teacher instead of adding to their load. Her classroom authority gives her the final say to veto any feature that complicates a teacher’s day.',
+                bio: 'A certified Nigerian teacher, Esther graduated from Olabisi Onabanjo University with a degree in Child Education and brings over four years of classroom experience. She knows overcrowded, under-resourced classrooms first-hand, and makes sure every DIT learning product serves a teacher instead of adding to their load. Her classroom authority gives her the final say to veto any feature that complicates a teacher\'s day.',
               },
             ].map((f, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
@@ -233,8 +234,8 @@ export default function About() {
           <ScrollReveal delay={0.4}>
             <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6">
               <p className="text-[var(--color-paper)]/75 text-[1rem] max-w-[52ch]">
-                Lawrence and Esther put their personal reputations behind every SomaBox. If a school is unhappy,
-                it deals with the founders directly, not a call centre.
+                Lawrence and Esther put their personal reputations behind every deployment. If a partner is
+                unhappy, it deals with the founders directly, not a call centre.
               </p>
               <Link to="/edutech" className="btn btn-primary shrink-0">See what we build <ArrowRight size={18} /></Link>
             </div>
@@ -275,7 +276,7 @@ export default function About() {
                   Drop us a line from anywhere. Messages go straight to the founders and are answered within 48 hours.
                 </p>
                 <a
-                  href="mailto:oladeji.lawrence@gmail.com?subject=DIT%20Dara%20Initiative%20Tech%20enquiry&body=Hello%20DIT%2C%0A%0AMy%20name%20is%20%5Byour%20name%5D%20and%20I%20am%20writing%20from%20%5Blocation%5D.%0A%0AI%20would%20like%20to%20talk%20about%3A%0A"
+                  href="mailto:contact@dintechnologies.com?subject=DIT%20Dara%20Initiative%20Tech%20enquiry&body=Hello%20DIT%2C%0A%0AMy%20name%20is%20%5Byour%20name%5D%20and%20I%20am%20writing%20from%20%5Blocation%5D.%0A%0AI%20would%20like%20to%20talk%20about%3A%0A"
                   className="btn btn-primary w-full justify-center mt-auto"
                 >
                   <Mail size={18} /> Send us a message

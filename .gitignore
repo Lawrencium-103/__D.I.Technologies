@@ -12,3 +12,9 @@ graphify-out/
 .graphify_analysis.json
 .graphify_labels.json
 .graphify_labels.json.sig
+
+# Sensitive / local data
+cookies.txt
+crawl.json
+LibreCrawl/
+measure.cjs

@@ -156,7 +156,7 @@ function PostFooter({ post }) {
       <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
         <AuthorBox author={post.author} />
         <a
-          href={`mailto:oladeji.lawrence@gmail.com?subject=${encodeURIComponent('Re: ' + post.title)}`}
+          href={`mailto:contact@dintechnologies.com?subject=${encodeURIComponent('Re: ' + post.title)}`}
           className="btn btn-ghost !py-2.5 !px-5 !text-sm"
         >
           <Mail size={15} /> Discuss this
@@ -284,7 +284,7 @@ export default function BlogPost() {
   const template = TEMPLATE_META[post.template] ? post.template : 'standard'
   const meta = TEMPLATE_META[template]
   const text = getPostText(post.body)
-  const discussHref = `mailto:oladeji.lawrence@gmail.com?subject=${encodeURIComponent('Re: ' + post.title)}`
+  const discussHref = `mailto:contact@dintechnologies.com?subject=${encodeURIComponent('Re: ' + post.title)}`
   const metaRow = (
     <span className="font-[var(--font-mono)] text-[0.74rem] uppercase tracking-[0.12em] text-[var(--color-ink-faint)]">
       {formatDate(post.date)} · {post.readingTime}
