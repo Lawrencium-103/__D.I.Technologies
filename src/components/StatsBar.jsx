@@ -42,10 +42,10 @@ function Counter({ target, suffix = '', compact = false }) {
 }
 
 const stats = [
-  { target: 18300000, suffix: '+', label: 'Nigerian children out of school (UNICEF, 2024)', compact: true },
-  { target: 50, suffix: '%', label: 'of Nigeria\u2019s GDP from MSMEs (SMEDAN)', compact: false },
-  { target: 80, suffix: '%', label: 'of farmers are smallholders \u2014 90% of food produced by them', compact: false },
-  { target: 0, suffix: '', label: 'Internet required. Offline-first by design.' },
+  { target: 18300000, suffix: '+', label: 'Nigerian children out of school', source: 'UNICEF Nigeria, 2024', compact: true },
+  { target: 50, suffix: '%', label: 'of Nigeria\u2019s GDP from MSMEs', source: 'SMEDAN National MSME Survey', compact: false },
+  { target: 80, suffix: '%', label: 'of farmers are smallholders \u2014 90% of food produced by them', source: 'US Commercial Service / NBS NASS', compact: false },
+  { target: 0, suffix: '', label: 'Internet required. Offline-first by design.', source: null, compact: false },
 ]
 
 export default function StatsBar() {
@@ -55,16 +55,16 @@ export default function StatsBar() {
         {stats.map((s, i) => (
           <div
             key={i}
-            className={`text-center px-5 py-12 ${i !== 0 ? 'md:border-l border-[var(--color-paper)]/25' : ''} ${i === 2 || i === 3 ? 'border-t md:border-t-0 border-[var(--color-paper)]/25' : ''}`}
+            className={`text-center px-5 py-10 md:py-12 ${i !== 0 ? 'md:border-l border-[var(--color-paper)]/25' : ''} ${i === 2 || i === 3 ? 'border-t md:border-t-0 border-[var(--color-paper)]/25' : ''}`}
           >
             <Counter target={s.target} suffix={s.suffix} compact={s.compact} />
             <span className="block text-[var(--color-paper)]/80 text-[0.85rem] mt-3 leading-snug max-w-[24ch] mx-auto">{s.label}</span>
+            {s.source && (
+              <span className="block font-[var(--font-mono)] text-[0.6rem] uppercase tracking-[0.12em] text-[var(--color-paper)]/55 mt-3 max-w-[26ch] mx-auto leading-snug">{s.source}</span>
+            )}
           </div>
         ))}
       </div>
-      <p className="max-w-[1200px] mx-auto px-6 pb-4 font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] text-[var(--color-paper)]/60">
-        Sources: UNICEF Nigeria (2024) {'\u00b7'} SMEDAN National MSME Survey (2017/2020) {'\u00b7'} US Commercial Service / NBS NASS
-      </p>
     </ScrollReveal>
   )
 }
