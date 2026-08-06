@@ -4,8 +4,8 @@ import { Menu, X, ChevronDown } from 'lucide-react'
 
 const solutions = [
   { to: '/edutech', label: 'SomaBox (EduTech)', desc: 'Offline AI tutor for schools' },
-  { to: '/ai-hub', label: 'AI Training Hub', desc: 'Hands-on AI skills' },
   { to: '/s-sme', label: 'S-SME', desc: 'Sustainable SMEs' },
+  { to: '/ai-hub', label: 'AI Training Hub', desc: 'Hands-on AI skills' },
 ]
 
 const topLinks = [
