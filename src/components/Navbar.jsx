@@ -1,20 +1,26 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 
-const links = [
+const solutions = [
+  { to: '/edutech', label: 'SomaBox (EduTech)', desc: 'Offline AI tutor for schools' },
+  { to: '/ai-hub', label: 'AI Training Hub', desc: 'Hands-on AI skills' },
+  { to: '/s-sme', label: 'S-SME', desc: 'Sustainable SMEs' },
+]
+
+const topLinks = [
   { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
-  { to: '/edutech', label: 'EduTech' },
-  { to: '/ai-hub', label: 'AI Training Hub' },
-  { to: '/s-sme', label: 'S-SME' },
   { to: '/blog', label: 'Blog' },
   { to: '/research', label: 'Research' },
   { to: '/open-models', label: 'Open Models' },
+  { to: '/about', label: 'About' },
 ]
+
+const isSolutionPath = (pathname) => solutions.some((s) => pathname === s.to || pathname.startsWith(s.to + '/'))
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [solOpen, setSolOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { pathname } = useLocation()
 
@@ -24,7 +30,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => { setOpen(false) }, [pathname])
+  useEffect(() => { setOpen(false); setSolOpen(false) }, [pathname])
 
   return (
     <>
@@ -43,7 +49,49 @@ export default function Navbar() {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-1">
-            {links.map(l => (
+            <Link
+              to="/"
+              className={`px-3.5 py-2 text-[0.95rem] font-medium transition-colors no-underline ${
+                pathname === '/' ? 'text-[var(--color-burnt)]' : 'text-[var(--color-ink)] hover:text-[var(--color-burnt)]'
+              }`}
+            >
+              Home
+            </Link>
+
+            {/* Solutions dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setSolOpen(true)}
+              onMouseLeave={() => setSolOpen(false)}
+            >
+              <button
+                onClick={() => setSolOpen(!solOpen)}
+                aria-expanded={solOpen}
+                className={`flex items-center gap-1 px-3.5 py-2 text-[0.95rem] font-medium transition-colors cursor-pointer ${
+                  isSolutionPath(pathname) || solOpen ? 'text-[var(--color-burnt)]' : 'text-[var(--color-ink)] hover:text-[var(--color-burnt)]'
+                }`}
+              >
+                Solutions <ChevronDown size={15} className={`transition-transform ${solOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <div className={`absolute top-full left-0 mt-1 w-60 bg-[var(--color-paper)] border-2 border-[var(--color-ink)] shadow-[6px_6px_0_var(--color-ink)] p-2 flex flex-col gap-1 transition-all duration-200 ${
+                solOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1 pointer-events-none'
+              }`}>
+                {solutions.map((s) => (
+                  <Link
+                    key={s.to}
+                    to={s.to}
+                    className={`px-3 py-2.5 no-underline group ${
+                      pathname === s.to ? 'bg-[var(--color-paper-2)]' : ''
+                    }`}
+                  >
+                    <span className={`block text-[0.95rem] font-medium ${pathname === s.to ? 'text-[var(--color-burnt)]' : 'text-[var(--color-ink)] group-hover:text-[var(--color-burnt)]'}`}>{s.label}</span>
+                    <span className="block text-[0.75rem] text-[var(--color-ink-faint)]">{s.desc}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {topLinks.slice(1).map(l => (
               <Link
                 key={l.to}
                 to={l.to}
@@ -71,8 +119,41 @@ export default function Navbar() {
       {/* Mobile panel */}
       <div className={`fixed inset-0 z-40 md:hidden transition-opacity duration-300 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="absolute inset-0 bg-[var(--color-ink)]/40 backdrop-blur-sm" onClick={() => setOpen(false)} />
-        <div className={`absolute top-0 right-0 w-[80%] max-w-[300px] h-dvh bg-[var(--color-paper)] border-l border-[var(--color-line)] flex flex-col pt-20 pb-8 px-6 gap-1 transition-transform duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
-          {links.map(l => (
+        <div className={`absolute top-0 right-0 w-[80%] max-w-[300px] h-dvh bg-[var(--color-paper)] border-l border-[var(--color-line)] flex flex-col pt-20 pb-8 px-6 gap-1 overflow-y-auto transition-transform duration-300 ${open ? 'translate-x-0' : 'translate-x-full'}`}>
+          <Link
+            to="/"
+            className={`px-3 py-3 text-[1.1rem] font-medium no-underline ${pathname === '/' ? 'text-[var(--color-burnt)]' : 'text-[var(--color-ink)]'}`}
+          >
+            Home
+          </Link>
+
+          {/* Mobile Solutions expander */}
+          <button
+            onClick={() => setSolOpen(!solOpen)}
+            aria-expanded={solOpen}
+            className={`flex items-center justify-between w-full px-3 py-3 text-[1.1rem] font-medium text-left cursor-pointer ${
+              isSolutionPath(pathname) || solOpen ? 'text-[var(--color-burnt)]' : 'text-[var(--color-ink)]'
+            }`}
+          >
+            Solutions <ChevronDown size={18} className={`transition-transform ${solOpen ? 'rotate-180' : ''}`} />
+          </button>
+          {solOpen && (
+            <div className="flex flex-col gap-1 pb-1">
+              {solutions.map(s => (
+                <Link
+                  key={s.to}
+                  to={s.to}
+                  className={`px-6 py-2.5 text-[1rem] font-medium no-underline ${
+                    pathname === s.to ? 'text-[var(--color-burnt)]' : 'text-[var(--color-ink)]'
+                  }`}
+                >
+                  {s.label}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          {topLinks.slice(1).map(l => (
             <Link
               key={l.to}
               to={l.to}
@@ -83,7 +164,6 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link to="/research" className="px-3 py-3 text-[1.1rem] font-medium no-underline text-[var(--color-ink)]">Research</Link>
           <Link to="/contact" className="btn btn-primary mt-4 justify-center">Book a Call</Link>
         </div>
       </div>
