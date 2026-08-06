@@ -42,10 +42,10 @@ function Counter({ target, suffix = '', compact = false }) {
 }
 
 const stats = [
-  { target: 10500000, suffix: '+', label: 'Nigerian children out of school', compact: true },
-  { target: 60, suffix: '+', label: 'NERDC textbooks in the box' },
-  { target: 0, suffix: '', label: 'Internet required' },
-  { target: 26, suffix: '', label: 'Slash commands teachers use' },
+  { target: 18300000, suffix: '+', label: 'Nigerian children out of school (UNICEF, 2024)', compact: true },
+  { target: 50, suffix: '%', label: 'of Nigeria\u2019s GDP from MSMEs (SMEDAN)', compact: false },
+  { target: 80, suffix: '%', label: 'of farmers are smallholders \u2014 90% of food produced by them', compact: false },
+  { target: 0, suffix: '', label: 'Internet required. Offline-first by design.' },
 ]
 
 export default function StatsBar() {
@@ -58,10 +58,13 @@ export default function StatsBar() {
             className={`text-center px-5 py-12 ${i !== 0 ? 'md:border-l border-[var(--color-paper)]/25' : ''} ${i === 2 || i === 3 ? 'border-t md:border-t-0 border-[var(--color-paper)]/25' : ''}`}
           >
             <Counter target={s.target} suffix={s.suffix} compact={s.compact} />
-            <span className="block text-[var(--color-paper)]/80 text-[0.85rem] mt-3 leading-snug max-w-[22ch] mx-auto">{s.label}</span>
+            <span className="block text-[var(--color-paper)]/80 text-[0.85rem] mt-3 leading-snug max-w-[24ch] mx-auto">{s.label}</span>
           </div>
         ))}
       </div>
+      <p className="max-w-[1200px] mx-auto px-6 pb-4 font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] text-[var(--color-paper)]/60">
+        Sources: UNICEF Nigeria (2024) {'\u00b7'} SMEDAN National MSME Survey (2017/2020) {'\u00b7'} US Commercial Service / NBS NASS
+      </p>
     </ScrollReveal>
   )
 }

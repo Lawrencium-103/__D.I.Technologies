@@ -30,7 +30,7 @@ export default function About() {
   useSEO({
     title: 'About Dara Initiative Technology',
     description:
-      'DIT exists because 10.5 million Nigerian children deserve the same quality of education that internet-connected students take for granted — delivered through offline-first AI tutoring, hands-on AI training and sustainable SME tools.',
+      'DIT exists because 18.3 million Nigerian children deserve the same quality of education that internet-connected students take for granted — delivered through offline-first AI tutoring, hands-on AI training and sustainable SME tools.',
   })
   return (
     <>
@@ -43,7 +43,7 @@ export default function About() {
             </p>
             <h1 className="max-w-[18ch]">About <span className="text-[var(--color-burnt)]">Dara Initiative Technology</span></h1>
             <p className="text-[1.1rem] max-w-[60ch] mt-5">
-              We exist because 10.5 million Nigerian children deserve the same quality of education that
+              We exist because 18.3 million Nigerian children deserve the same quality of education that
               internet-connected students take for granted, and we refused to wait for the internet to arrive.
             </p>
           </ScrollReveal>

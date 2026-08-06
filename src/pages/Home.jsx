@@ -108,31 +108,73 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRODUCTS TEASER */}
+      {/* PILLARS */}
       <section className="bg-cream py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <ScrollReveal>
-            <span className="eyebrow">What we build</span>
-            <h2 className="mt-3 mb-12">Three products. One mission.</h2>
+            <span className="eyebrow">Where we build</span>
+            <h2 className="mt-3 mb-4">Three sectors. One offline-first engine.</h2>
+            <p className="text-[1.05rem] max-w-[70ch] mb-12 text-[var(--color-ink-soft)]">
+              Every DIT product is the same bet: the places with the greatest need are the places the internet has not reached. The data below is what that bet is built on.
+            </p>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ScrollReveal delay={0.1}>
-              <Link to="/edutech" className="group block bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-8 h-full hover:shadow-[10px_10px_0_var(--color-burnt)] transition-all no-underline">
-                <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-burnt)]">EduTech · Live</span>
-                <h3 className="text-[1.8rem] mt-3 mb-3 text-[var(--color-ink)]">SomaBox</h3>
-                <p className="text-[0.98rem] max-w-[40ch] mb-6">The offline AI tutor turning any classroom into a personalised learning environment.</p>
-                <span className="inline-flex items-center gap-2 font-[var(--font-display)] font-semibold text-[var(--color-burnt)]">View product <ArrowUpRight size={18} /></span>
-              </Link>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            {/* EduTech */}
+            <ScrollReveal delay={0.05}>
+              <div className="h-full bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-8 flex flex-col">
+                <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-burnt)]">EduTech · SomaBox · Live</span>
+                <h3 className="text-[1.8rem] mt-3 mb-3 text-[var(--color-ink)]">18.3M children out of school.</h3>
+                <p className="text-[0.98rem] max-w-[42ch] mb-6 text-[var(--color-ink-soft)]">
+                  The highest of any country on earth. ~66% of them are in the North-West and North-East — where connectivity and power are weakest, and where an offline box is the only option that works.
+                </p>
+                <ul className="space-y-2 text-[0.92rem] mb-6 text-[var(--color-ink)]">
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">18.3M</span> out-of-school children (UNICEF, 2024)</li>
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">6.1%</span> of 2026 federal budget to education — below UNESCO's 15–20%</li>
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">2 yrs</span> learning gain in 6 weeks — World Bank RCT, Edo State</li>
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">+34%</span> math scores at Odo Oba (our own result, one term)</li>
+                </ul>
+                <Link to="/edutech" className="mt-auto inline-flex items-center gap-2 font-[var(--font-display)] font-semibold text-[var(--color-burnt)] no-underline">View SomaBox <ArrowUpRight size={18} /></Link>
+              </div>
             </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <Link to="/about" className="group block bg-[var(--color-ink)] border-2 border-[var(--color-ink)] p-8 h-full hover:shadow-[10px_10px_0_var(--color-amber)] transition-all no-underline">
-                <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-amber)]">Health · Agriculture · Planned</span>
-                <h3 className="text-[1.8rem] mt-3 mb-3 text-[var(--color-paper)]">Where DIT goes next.</h3>
-                <p className="text-[0.98rem] max-w-[40ch] mb-6 text-[var(--color-paper)]/75">SomaBox and S-SME establish the offline-first model. Health and agriculture are the next sectors DIT is scoping for the same treatment.</p>
-                <span className="inline-flex items-center gap-2 font-[var(--font-display)] font-semibold text-[var(--color-amber)]">Our mission <ArrowUpRight size={18} /></span>
-              </Link>
+
+            {/* S-SME */}
+            <ScrollReveal delay={0.15}>
+              <div className="h-full bg-[var(--color-ink)] border-2 border-[var(--color-ink)] p-8 flex flex-col">
+                <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-amber)]">S-SME · Sustainable SMEs · Live</span>
+                <h3 className="text-[1.8rem] mt-3 mb-3 text-[var(--color-paper)]">~50% of GDP. 60M+ workers.</h3>
+                <p className="text-[0.98rem] max-w-[42ch] mb-6 text-[var(--color-paper)]/75">
+                  Nigeria's MSMEs are the economy — and they run on notebooks. E-invoicing is coming to them over 2026–2027, and 68% don't know it yet. That gap is a product.
+                </p>
+                <ul className="space-y-2 text-[0.92rem] mb-6 text-[var(--color-paper)]">
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)]">~50%</span> of GDP, ~85% of workforce (SMEDAN / IFC)</li>
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)]">68%</span> of small businesses unaware of the e-invoicing mandate (Lagos survey)</li>
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)]">r=0.76</span> record-keeping ↔ business success — 156 SME owners, Kampala (Kawempe)</li>
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-amber)]">−28%</span> stock waste at Mama Tunde (our own result, 3 months)</li>
+                </ul>
+                <Link to="/s-sme" className="mt-auto inline-flex items-center gap-2 font-[var(--font-display)] font-semibold text-[var(--color-amber)] no-underline">View S-SME <ArrowUpRight size={18} /></Link>
+              </div>
+            </ScrollReveal>
+
+            {/* Agritech */}
+            <ScrollReveal delay={0.25}>
+              <div className="h-full bg-[var(--color-paper)] border-2 border-dashed border-[var(--color-ink)] p-8 flex flex-col">
+                <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.2em] text-[var(--color-ink-faint)]">Agritech · Pending · No DIT results yet</span>
+                <h3 className="text-[1.8rem] mt-3 mb-3 text-[var(--color-ink)]">The next frontier, honestly.</h3>
+                <p className="text-[0.98rem] max-w-[42ch] mb-6 text-[var(--color-ink-soft)]">
+                  We have not shipped agriculture products yet, so we will not quote DIT results. The opportunity itself is real, verified, and matches our offline-first model.
+                </p>
+                <ul className="space-y-2 text-[0.92rem] mb-6 text-[var(--color-ink)]">
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">80%</span> of Nigerian farmers are smallholders producing ~90% of food</li>
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">$10.7B</span> digital-agriculture market; 1,000+ solutions reach only ~10% of smallholder households</li>
+                  <li className="flex gap-2 items-baseline"><span className="font-[var(--font-display)] font-bold text-[var(--color-burnt)]">20k</span> farmers already served by Nigeria's govt voice-first DPAE platform (2025–26)</li>
+                </ul>
+                <Link to="/about" className="mt-auto inline-flex items-center gap-2 font-[var(--font-display)] font-semibold text-[var(--color-ink-faint)] no-underline">Where DIT goes next <ArrowUpRight size={18} /></Link>
+              </div>
             </ScrollReveal>
           </div>
+          <p className="font-[var(--font-mono)] text-[0.66rem] uppercase tracking-[0.14em] text-[var(--color-ink-faint)] mt-8">
+            Sources: UNICEF Nigeria (2024) · DRPC 2026 Budget Analysis · World Bank Policy Research Working Paper 11125 · SMEDAN/IFC · BusinessDay Lagos survey · PxD/ACReSAL DPAE (2026). "Our own result" = DIT-reported, not independently audited.
+          </p>
         </div>
       </section>
 
