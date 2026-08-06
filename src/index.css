@@ -217,6 +217,10 @@
 .animate-marquee { animation: marquee 28s linear infinite; }
 .marquee-paused:hover .animate-marquee { animation-play-state: paused; }
 
+/* Terminal cursor */
+@keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.blinking-cursor { animation: blink 1s step-end infinite; }
+
 /* Reduced motion — keep unlayered so it always beats utility animations */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
