@@ -185,6 +185,28 @@ async function main() {
     { path: '/contact', title: 'Contact', description: 'Reach DIT Dara Initiative Tech. Get in touch about open models, offline AI and EdTech.' },
   ]
 
+  // Static contact form markup so Netlify's deploy-time detector finds the
+  // form (the SPA renders it client-side, which the detector cannot see).
+  const contactFormHtml = `
+    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact" />
+      <p><label>Name <input type="text" name="name" required /></label></p>
+      <p><label>Organisation <input type="text" name="org" /></label></p>
+      <p><label>Email <input type="email" name="email" required /></label></p>
+      <p><label>What do you need?
+        <select name="need">
+          <option>AI Training Hub (individual)</option>
+          <option>AI Training Hub (corporate)</option>
+          <option>SomaBox for my school</option>
+          <option>S-SME sustainability audit</option>
+          <option>Partnership / Collaboration</option>
+          <option>General enquiry</option>
+        </select>
+      </label></p>
+      <p><label>Message <textarea name="message" required></textarea></label></p>
+      <p><button type="submit">Send message</button></p>
+    </form>`
+
   for (const page of staticPages) {
     routes.push({
       path: page.path,
@@ -195,6 +217,7 @@ async function main() {
         path: page.path,
         headAssets: assetLinks,
         entryScripts: scriptTags,
+        body: page.path === '/contact' ? contactFormHtml : '',
         jsonLd: [
           {
             '@context': 'https://schema.org',

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, CheckCircle2, TriangleAlert } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import { useSEO } from '../lib/seo'
 
@@ -27,12 +27,29 @@ export default function Contact() {
     setForm((f) => ({ ...f, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Dara Initiative: ${form.need}`)
-    const body = encodeURIComponent(`Name: ${form.name}\nOrganisation: ${form.org}\nEmail: ${form.email}\nInterest: ${form.need}\n\nMessage:\n${form.message}`)
-    window.location.href = `mailto:contact@dintechnologies.com?subject=${subject}&body=${body}`
-    setStatus('sent')
+    setStatus('sending')
+    const data = new URLSearchParams({
+      'form-name': 'contact',
+      'bot-field': '',
+      name: form.name,
+      org: form.org || '',
+      email: form.email,
+      need: form.need,
+      message: form.message,
+    })
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data.toString(),
+      })
+      if (!res.ok) throw new Error('Form submission rejected')
+      setStatus('sent')
+    } catch {
+      setStatus('error')
+    }
   }
 
   const fieldBase = 'w-full px-4 py-3 bg-[var(--color-paper)] border-2 border-[var(--color-ink)] text-[var(--color-ink)] placeholder-[var(--color-ink-faint)] focus:outline-none focus:border-[var(--color-burnt)] rounded-none transition-colors'
@@ -61,17 +78,38 @@ export default function Contact() {
           {/* FORM */}
           <ScrollReveal>
             <div className="bg-[var(--color-paper)] border-2 border-[var(--color-ink)] p-8 shadow-[8px_8px_0_rgba(26,23,18,0.1)]">
-              {status === 'sent' ? (
+              {status === 'sending' ? (
+                <div className="text-center py-12">
+                  <Send size={56} className="text-[var(--color-burnt)] mx-auto mb-4 animate-pulse" />
+                  <h3 className="text-[1.5rem] mb-2 text-[var(--color-ink)]">Sending your message…</h3>
+                  <p className="text-[0.95rem] max-w-[40ch] mx-auto mb-6 text-[var(--color-ink-soft)]">
+                    Please wait a moment.
+                  </p>
+                </div>
+              ) : status === 'error' ? (
+                <div className="text-center py-12">
+                  <TriangleAlert size={56} className="text-[var(--color-burnt)] mx-auto mb-4" />
+                  <h3 className="text-[1.5rem] mb-2 text-[var(--color-ink)]">Message not sent.</h3>
+                  <p className="text-[0.95rem] max-w-[44ch] mx-auto mb-6 text-[var(--color-ink-soft)]">
+                    Something went wrong. Email us directly at{' '}
+                    <a href="mailto:contact@dintechnologies.com" className="text-[var(--color-burnt)] underline">contact@dintechnologies.com</a>{' '}
+                    or try again.
+                  </p>
+                  <button onClick={() => setStatus('idle')} className="btn btn-ghost">Try again</button>
+                </div>
+              ) : status === 'sent' ? (
                 <div className="text-center py-12">
                   <CheckCircle2 size={56} className="text-[var(--color-burnt)] mx-auto mb-4" />
-                  <h3 className="text-[1.5rem] mb-2 text-[var(--color-ink)]">Your email is ready to send.</h3>
-                  <p className="text-[0.95rem] max-w-[40ch] mx-auto mb-6 text-[var(--color-ink-soft)]">
-                     Your mail app should have opened with a pre-filled message. Just hit send.
+                  <h3 className="text-[1.5rem] mb-2 text-[var(--color-ink)]">Message sent.</h3>
+                  <p className="text-[0.95rem] max-w-[44ch] mx-auto mb-6 text-[var(--color-ink-soft)]">
+                    Thanks{form.name ? `, ${form.name}` : ''}. We&rsquo;ll get back to you at {form.email} within 48 hours.
                   </p>
                   <button onClick={() => setStatus('idle')} className="btn btn-ghost">Write another message</button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} name="contact" data-netlify="true" data-netlify-honeypot="bot-field" className="space-y-5">
+                  <input type="hidden" name="form-name" value="contact" />
+                  <input type="hidden" name="bot-field" />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="name" className={labelBase}>Name</label>
@@ -96,7 +134,7 @@ export default function Contact() {
                     <label htmlFor="message" className={labelBase}>Message</label>
                     <textarea id="message" name="message" rows={5} required value={form.message} onChange={handleChange} className={`${fieldBase} resize-none`} placeholder="Tell us what you are working on..." />
                   </div>
-                  <button type="submit" className="btn btn-primary w-full md:w-auto"><Send size={18} /> Send message</button>
+                  <button type="submit" disabled={status === 'sending'} className="btn btn-primary w-full md:w-auto disabled:opacity-60"><Send size={18} /> {status === 'sending' ? 'Sending…' : 'Send message'}</button>
                 </form>
               )}
             </div>
