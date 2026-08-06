@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { lazy, Suspense, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Layout from './components/Layout'
 
 const Home = lazy(() => import('./pages/Home'))
@@ -24,9 +24,23 @@ function RouteFallback() {
   return <DITLoader isFullPage={true} />
 }
 
+function GATracker() {
+  const location = useLocation()
+  useEffect(() => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_path: location.pathname + location.search,
+        page_title: document.title,
+      })
+    }
+  }, [location])
+  return null
+}
+
 export default function App() {
   return (
     <BrowserRouter>
+      <GATracker />
       <Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route element={<Layout />}>
