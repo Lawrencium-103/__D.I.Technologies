@@ -167,7 +167,7 @@ async function main() {
   const staticPages = [
     { path: '/blog', title: 'Blog', description: 'Notes on open models, local infrastructure and practical AI from DIT Dara Initiative Tech.' },
     { path: '/framework', title: 'OpenModel Synthesis Framework (OMSF)', description: 'The six-rung Openness Ladder for grading open AI models. A structured framework for evaluating how open an AI model really is.' },
-    { path: '/open-models', title: 'Open Model Leaderboard', description: 'Leading open models graded on the OMSF ladder. Compare openness, licensing, and capability.' },
+    { path: '/open-models', title: 'Open Model Leaderboard', description: 'Leading open models graded on the OMSF ladder, plus the full HuggingFace catalog with computed VRAM estimates, license and access analysis.' },
     { path: '/reports', title: 'Reports Library', description: 'Ready-made OMSF-audited model reports. Download PDF reports on open AI models.' },
     { path: '/research', title: 'Research', description: 'Academic and industry sources behind OMSF. The evidence base for open model evaluation.' },
     { path: '/edutech', title: 'EduTech / SomaBox', description: 'Offline AI tutor for schools, zero internet required. SomaBox brings AI tutoring to classrooms without connectivity.' },

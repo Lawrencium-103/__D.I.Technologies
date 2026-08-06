@@ -5,6 +5,11 @@
   [build.environment]
     NODE_VERSION = "22"
 
+# Daily HF catalog delta sync (lib/hfCatalog.js -> "hfcatalog" blob store)
+[[scheduled.functions]]
+  name = "hfcatalog-sync"
+  schedule = "0 6 * * *"
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/engagement/:splat"

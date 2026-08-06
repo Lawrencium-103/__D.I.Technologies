@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ExternalLink, Search, RefreshCw, Trophy, Database } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
+import HfCatalog from '../components/HfCatalog'
 import snapshot from '../data/openModels.json'
 import { useSEO } from '../lib/seo'
 
@@ -116,7 +117,7 @@ export default function OpenModels() {
   useSEO({
     title: 'Open Model Leaderboard — graded on the OMSF ladder',
     description:
-      'The DIT open model leaderboard: leading open models graded on the OMSF 6-Rung Openness Ladder, with verified release details and CSV export.',
+      'The DIT open model leaderboard: leading open models graded on the OMSF 6-Rung Openness Ladder, plus the full HuggingFace catalog with computed VRAM estimates, license and access analysis.',
   })
   const initialModels = Array.isArray(snapshot?.models) ? snapshot.models : []
   const initialFetchedAt = snapshot?.fetchedAt || new Date().toISOString()
@@ -503,6 +504,9 @@ export default function OpenModels() {
           </p>
         </div>
       </section>
+
+      {/* HUGGINGFACE HUB CATALOG — full catalog, computed estimates */}
+      <HfCatalog />
 
       {/* SIDE-BY-SIDE COMPARISON MODAL */}
       {showCompareModal && (
