@@ -108,6 +108,12 @@ function buildHtml({ title, description, path, type = 'website', image = SITE_DE
         y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
       })(window, document, "clarity", "script", "xx6md1g9dn");
     </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-EQ0LZQGJNF');
+    </script>
   </head>
   <body>
     <div id="root">${body}</div>
