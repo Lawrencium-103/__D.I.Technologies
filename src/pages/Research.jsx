@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
+import OmsfStats from '../components/OmsfStats'
 import { useSEO } from '../lib/seo'
 
 const academic = [
@@ -90,6 +91,10 @@ export default function Research() {
             industry frameworks that already exist. This page names them directly, says what each one contributes,
             and says plainly where OMSF’s own contribution begins and ends.
           </p>
+
+          <div className="mb-12">
+            <OmsfStats />
+          </div>
 
           {/* Academic Integrity & Research Roadmap */}
           <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-7 sm:p-8 mb-14 shadow-[6px_6px_0px_#1A1712]">
