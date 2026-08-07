@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import ScrollReveal from '../components/ScrollReveal'
-import OmsfStats from '../components/OmsfStats'
 import { useSEO } from '../lib/seo'
 
 const academic = [
@@ -92,10 +91,6 @@ export default function Research() {
             and says plainly where OMSF’s own contribution begins and ends.
           </p>
 
-          <div className="mb-12">
-            <OmsfStats />
-          </div>
-
           {/* Academic Integrity & Research Roadmap */}
           <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-7 sm:p-8 mb-14 shadow-[6px_6px_0px_#1A1712]">
             <div className="flex items-center justify-between gap-3 mb-4 border-b border-[var(--color-line)] pb-3">
@@ -108,27 +103,24 @@ export default function Research() {
             </div>
 
             <h2 className="text-[1.6rem] font-[var(--font-display)] font-bold leading-tight mb-3">
-              Our Academic Standing: Under Review &amp; Seeking Empirical Partners
+              Current research: a preprint on Zenodo, not yet peer-reviewed
             </h2>
 
             <div className="bg-[var(--color-ink)]/5 border-l-4 border-[var(--color-burnt)] p-4 mb-5">
               <p className="text-[0.95rem] leading-relaxed text-[var(--color-ink)]">
-                <span className="font-bold text-[var(--color-burnt)]">Update:</span> DIT’s primary research on the OpenModel Synthesis Framework has been officially submitted and is currently <strong>under review on Zenodo</strong>. We are actively transitioning from practitioner synthesis into formal academic peer review.
+                <span className="font-bold text-[var(--color-burnt)]">Current work:</span> DIT’s methodology paper is deposited as an open preprint on Zenodo — <em>The OpenModel Synthesis Framework (OMSF): A Buyer-Side Taxonomy for Evaluating AI Model Openness in Resource-Constrained and Sovereignty-Critical Deployments</em>. Zenodo is a repository, not a peer-review venue: the paper has been assigned a DOI and made public, but it has not been submitted to or reviewed by any peer-reviewed journal or conference. Cross-listing on arXiv and submission to a peer-reviewed venue (FAccT / EACL) are the next steps.
               </p>
             </div>
 
             <p className="text-[1rem] leading-relaxed text-[var(--color-ink-soft)] mb-4">
-              While awaiting final publication, OMSF functions as a <strong>practitioner synthesis tool</strong> built directly on top of established research by Solaiman (2023), White et al. (2024), and Liesenfeld &amp; Dingemanse (2024).
+              While that process runs, OMSF functions as a <strong>practitioner synthesis tool</strong> built directly on top of established research by Solaiman (2023), White et al. (2024), and Liesenfeld &amp; Dingemanse (2024).
             </p>
 
             <p className="text-[1rem] leading-relaxed text-[var(--color-ink-soft)] mb-5">
-              To turn OMSF from an operational framework into a formally cited academic standard, DIT is actively preparing empirical research protocols on <em>Local LLM Quantization Loss in Solar-Powered Off-Grid Deployments</em>. We welcome academic co-authors, university CS departments, and AI policy labs to collaborate with us.
+              The direction is deliberately international, not Africa-only. Every institution that has to procure or deploy AI — a European ministry working under the EU AI Act, a hospital, a sovereign-cloud operator, a public-sector buyer in the Global South — faces the same gap: existing openness frameworks tell model producers what to release, not buyers what to verify. OMSF is the buyer-side answer: a taxonomy for evaluating how open a model really is before you adopt, license, and run it under your own resource, regulatory, and sovereignty constraints.
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
-              <Link to="/contact" className="btn btn-primary !py-2.5 !px-4 !text-xs uppercase tracking-wider no-underline">
-                Partner on Academic Research
-              </Link>
               <a href="#citations" className="font-[var(--font-mono)] text-[0.75rem] uppercase tracking-[0.12em] text-[var(--color-ink-faint)] hover:text-[var(--color-burnt)]">
                 Review Literature Citations Below ↓
               </a>
@@ -251,7 +243,7 @@ export default function Research() {
             <li className="flex gap-3 text-[1.02rem] leading-relaxed text-[var(--color-ink-soft)]">
               <span className="text-[var(--color-burnt)] font-[var(--font-mono)]">—</span>
               <span>
-                OMSF per-model reports are advisory content and synthesis, not formal research findings (though our methodology paper is currently under peer review).
+                OMSF per-model reports are advisory content and synthesis, not formal research findings. OMSF itself is not a peer-reviewed publication and has not been through academic peer review.
               </span>
             </li>
             <li className="flex gap-3 text-[1.02rem] leading-relaxed text-[var(--color-ink-soft)]">
@@ -284,7 +276,7 @@ export default function Research() {
               </span>
               <h3 className="font-[var(--font-display)] font-semibold text-lg mt-2 mb-2">Zero Foreign Data Egress</h3>
               <p className="text-[0.96rem] leading-relaxed text-[var(--color-ink-soft)]">
-                Models graded L2 or higher (permissive open-weight) allow 100% air-gapped local deployment. No telemetry or prompt metadata leaves national borders or enterprise data centers.
+                Models graded L2 or higher (permissive open-weight) can be deployed fully air-gapped, with no telemetry or prompt metadata leaving national borders or enterprise data centers. Local inference alone does not constitute total data-protection compliance — consent management, data-subject rights, and storage security remain separate obligations under laws such as the NDPR.
               </p>
             </div>
             <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-6">
@@ -301,27 +293,26 @@ export default function Research() {
 
         {/* Academic & Policy Citation Box */}
         <ScrollReveal>
-          <h2 className="text-[1.9rem] mt-16 mb-4">Citing DIT &amp; OMSF in Research or Policy</h2>
+          <h2 id="citations" className="text-[1.9rem] mt-16 mb-4">Citing DIT &amp; OMSF in Research or Policy</h2>
           <p className="text-[1.05rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[66ch] mb-6">
-            If you are using the OpenModel Synthesis Framework in policy documentation, government RFPs, or academic publications, use the standard BibTeX or APA citation formats below:
+            If you are using the OpenModel Synthesis Framework in policy documentation, government RFPs, or academic publications, cite the Zenodo preprint below — that record, by Lawrence Oladeji, is the version of record. The DOI will be added here as soon as the record is fully public.
           </p>
 
           <div className="bg-[var(--color-ink)] text-[var(--color-paper)] p-6 font-[var(--font-mono)] text-[0.8rem] border-l-4 border-[var(--color-amber)] mb-6 overflow-x-auto select-all">
             <span className="text-[var(--color-amber)] uppercase tracking-[0.14em] text-[0.7rem] block mb-2">BibTeX Citation</span>
-            <pre className="whitespace-pre-wrap leading-relaxed text-[var(--color-paper)]/90">{`@techreport{DIT_OMSF_2026,
-  author      = {Dara Initiative Technology (DIT)},
-  title       = {The OpenModel Synthesis Framework (OMSF): Operationalizing Model Openness for African Enterprise & Public Deployment},
-  institution = {Dara Initiative Technology},
+            <pre className="whitespace-pre-wrap leading-relaxed text-[var(--color-paper)]/90">{`@misc{oladeji2026omsf,
+  author      = {Oladeji, Lawrence},
+  title       = {The OpenModel Synthesis Framework (OMSF): A Buyer-Side Taxonomy for Evaluating AI Model Openness in Resource-Constrained and Sovereignty-Critical Deployments},
   year        = {2026},
-  type        = {Technical Report & Deployment Methodology v1.0},
-  url         = {https://ditechnology.netlify.app/framework}
+  howpublished = {Zenodo preprint},
+  note        = {DOI to be added on publication}
 }`}</pre>
           </div>
 
           <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-5 font-[var(--font-mono)] text-[0.82rem] mb-12">
             <span className="text-[var(--color-burnt)] uppercase tracking-[0.14em] text-[0.7rem] font-bold block mb-2">APA Citation</span>
             <p className="text-[var(--color-ink)] leading-relaxed">
-              Dara Initiative Technology. (2026). <em>The OpenModel Synthesis Framework (OMSF): Operationalizing Model Openness for African Enterprise &amp; Public Deployment</em> (v1.0). DIT Technology Standards. https://ditechnology.netlify.app/framework
+              Oladeji, L. (2026). <em>The OpenModel Synthesis Framework (OMSF): A Buyer-Side Taxonomy for Evaluating AI Model Openness in Resource-Constrained and Sovereignty-Critical Deployments</em> (Zenodo preprint). DOI to be added on publication.
             </p>
           </div>
         </ScrollReveal>
