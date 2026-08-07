@@ -153,23 +153,6 @@ export default async (request) => {
       return json(200, { id, likes: state.likes[id] || 0 })
     }
 
-    // TEMPORARY: one-shot data correction route. Removed after the live blob
-    // store is reconciled with the committed community baseline.
-    if (path === '/api/stats/set' && method === 'POST') {
-      if ((request.headers.get('x-dit-admin') || '').trim() !== 'dit-admin-2026') {
-        return json(403, { error: 'Forbidden' })
-      }
-      const next = {
-        generated: typeof body.generated === 'number' ? body.generated : SEED_GENERATED,
-        likes: body.likes && typeof body.likes === 'object' ? body.likes : {},
-        reportDownloads:
-          body.reportDownloads && typeof body.reportDownloads === 'object' ? body.reportDownloads : {},
-        pdfs: body.pdfs && typeof body.pdfs === 'object' ? body.pdfs : {},
-      }
-      await writeState(next)
-      return json(200, next)
-    }
-
     if (path === '/api/report' && method === 'POST') {
       loadEnv()
       const { model, audience } = body
