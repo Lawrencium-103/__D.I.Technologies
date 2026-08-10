@@ -1,0 +1,8 @@
+/*.html
+  X-Robots-Tag: noindex, nofollow
+
+/blog/*.html
+  X-Robots-Tag: noindex, nofollow
+
+/s-sme/*.html
+  X-Robots-Tag: noindex, nofollow

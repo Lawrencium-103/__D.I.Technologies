@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found — DIT Dara Initiative Tech</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="This page could not be found on DIT Dara Initiative Tech." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://dintechnologies.com/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --font-display: 'Chakra Petch', system-ui, sans-serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+        --color-paper: #FBF7EF;
+        --color-paper-2: #F3EAD9;
+        --color-ink: #1A1712;
+        --color-ink-soft: #43392F;
+        --color-ink-faint: #6E6356;
+        --color-amber: #CC8800;
+        --color-amber-deep: #A66E00;
+        --color-burnt: #C55221;
+        --color-burnt-deep: #A8431A;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        font-family: var(--font-display);
+        background: var(--color-paper);
+        color: var(--color-ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .card { max-width: 560px; width: 100%; text-align: center; }
+      .code {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--color-burnt);
+        margin-bottom: 1.25rem;
+      }
+      h1 {
+        font-family: var(--font-display);
+        font-size: clamp(2.4rem, 8vw, 4rem);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        margin-bottom: 1.25rem;
+      }
+      h1 span { color: var(--color-burnt); }
+      p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: var(--color-ink-soft);
+        margin-bottom: 2rem;
+      }
+      .actions { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
+      a.btn {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.9rem 1.5rem;
+        border: 2px solid var(--color-ink);
+        color: var(--color-ink);
+        background: var(--color-amber);
+        box-shadow: 4px 4px 0 var(--color-ink);
+        transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+      }
+      a.btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--color-ink); }
+      a.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--color-ink); }
+      a.btn.ghost { background: transparent; color: var(--color-ink); }
+      a.btn.ghost:hover { background: var(--color-ink); color: var(--color-paper); }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="code">DIT / Error 404</div>
+      <h1>This page is <span>offline.</span></h1>
+      <p>
+        The page you&rsquo;re looking for doesn&rsquo;t exist or has moved.
+        Head back to the homepage, or get in touch if you expected to find something here.
+      </p>
+      <div class="actions">
+        <a class="btn" href="/">Back to homepage</a>
+        <a class="btn ghost" href="/contact">Contact us</a>
+      </div>
+    </div>
+  </body>
+</html>

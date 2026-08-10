@@ -163,8 +163,14 @@
   to = "/blog/why-we-build-offline-first.html"
   status = 200
 
-# SPA fallback (client-side routing for any other route)
+# ReportBuilder is the only route without a prerendered HTML file; it needs the SPA shell.
 [[redirects]]
-  from = "/*"
+  from = "/report"
   to = "/index.html"
   status = 200
+
+# NOTE: there is deliberately NO "/* -> /index.html" SPA fallback anymore. Unknown
+# paths previously returned the homepage with HTTP 200, so Google "discovered"
+# near-duplicate homepage copies (Search Console: "Discovered - currently not
+# indexed"). Netlify now serves dist/404.html with a true 404 for anything that
+# does not match a file or a rule above.

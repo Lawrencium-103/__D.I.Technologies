@@ -47,6 +47,12 @@ export default function Contact() {
       })
       if (!res.ok) throw new Error('Form submission rejected')
       setStatus('sent')
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', {
+          need: form.need,
+          page_path: window.location.pathname,
+        })
+      }
     } catch {
       setStatus('error')
     }
