@@ -53,7 +53,14 @@ Do not use these. If a source uses one, quote it and then check it.
 Every post must contain:
 
 1. A TL;DR block (one to four short points, skimmable).
-2. At least one image (cover counts; add in-body images where they help).
+2. At least one image (cover counts; add in-body images where they help). Every
+   image must be AI- or infrastructure-themed AND related to the post's specific
+   subject. A distributed-inference post should show servers, nodes, or a network; a
+   privacy post should show isolation or data flows; a model-landscape post may use a
+   neural-net illustration. No generic stock photography of people or offices, and no
+   picsum placeholder images in a published post. Cover images use the in-repo
+   AI-themed photo set (Unsplash tech/AI photos, Pexels Google DeepMind "Visualising
+   AI" set) or a real AI-generated image that matches the topic.
 3. A clear body using the block types in `src/components/BlogContent.jsx`:
    lead, heading, paragraph, image, quote, list, callout, tldr.
 4. An author byline (name + photo) rendered above the content.
@@ -157,6 +164,7 @@ The five templates render differently in `src/pages/BlogPost.jsx`:
 - [ ] Length 1,400 to 2,500 words where needed.
 - [ ] One of the five templates assigned.
 - [ ] No DIT or product mentions in the body (independence rule).
+- [ ] Every image (cover and in-body) is on-topic and AI/infrastructure-themed, not a generic or picsum image.
 - [ ] No "our product" / "our framework" / "our pilot" calls to action.
 - [ ] Every named source linked inline at first mention (`[label](url)`).
 - [ ] `References` array present in `blogPosts.js`, Harvard format, matches

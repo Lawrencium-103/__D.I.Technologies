@@ -30,6 +30,14 @@ references:          # Harvard-formatted strings, mirrors blogPosts.js
 - **Headings**: use `##` only, sentence case. No em dashes anywhere in the body.
 - **Paragraphs**: plain text. One idea per paragraph.
 - **Images**: `![alt text](url)` on its own line. At least one image per post (the cover counts).
+- **Topic-relevant images (required)**: every image in a post, cover included, must be
+  AI- or infrastructure-themed AND directly related to the post's subject. For an
+  infrastructure post that means server clusters, distributed nodes, networks, chips,
+  GPUs, or data-flow / AI-generated art that matches the argument (for example, a
+  split-across-nodes diagram for a distributed-inference post). A generic neural-net
+  picture on a networking post fails this rule. No generic stock photos of people or
+  offices, and never ship a picsum placeholder. The image must illustrate the topic,
+  not just "AI" in general.
 - **Quotes**: `> quote text` then the attribution on the next line as `> (Name)`. Do not use em dashes for attribution.
 - **Lists**: `-` bullets.
 - **Callouts**: `> [callout: Title] body text` on one line.
@@ -48,7 +56,11 @@ references:          # Harvard-formatted strings, mirrors blogPosts.js
   (Accessed: Day Month Year).`
 
 ## Rules (from docs/blog-standard.md)
-- ONLY AI RELATED IMAGE IN THE BLOG POST
+- IMAGES MUST BE TOPIC-RELEVANT. This is mandatory, not a preference. Every image
+  (cover and in-body) must be AI- or infrastructure-themed AND directly related to what
+  the post actually discusses. A generic neural-net picture on a distributed-inference
+  or privacy post fails this rule. Never ship generic stock photography or a picsum
+  placeholder in a published post.
 - No banned hype words (game-changing, groundbreaking, revolutionary, cutting-edge,
   state-of-the-art, powerful, next-generation, unprecedented, disruptive,
   seamless, robust, unparalleled, best-in-class).

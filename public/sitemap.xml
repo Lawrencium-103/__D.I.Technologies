@@ -21,6 +21,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dintechnologies.com/blog/2026-distributed-inference-privacy-reality</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://dintechnologies.com/blog/2026-edge-on-device-ai-ai-pcs</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>yearly</changefreq>
@@ -47,6 +53,12 @@
   <url>
     <loc>https://dintechnologies.com/blog/2026-quantization-moe-efficiency-memory-optimization</loc>
     <lastmod>2026-06-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/2026-running-open-weights-on-school-hardware</loc>
+    <lastmod>2026-08-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
