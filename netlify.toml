@@ -15,6 +15,15 @@
   to = "/.netlify/functions/engagement/:splat"
   status = 200
 
+# Redirect the default Netlify subdomain to the primary custom domain so
+# authority consolidates on dintechnologies.com. Without this, the auto-generated
+# ditechnology.netlify.app serves a duplicate copy of every page.
+[[redirects]]
+  from = "https://ditechnology.netlify.app/*"
+  to = "https://dintechnologies.com/:splat"
+  status = 301
+  force = true
+
 # Prerendered static pages (SEO/GEO: serve real HTML with per-route meta tags)
 [[redirects]]
   from = "/blog"
