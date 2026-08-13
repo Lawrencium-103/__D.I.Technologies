@@ -1,8 +1,6 @@
-/*.html
-  X-Robots-Tag: noindex, nofollow
-
-/blog/*.html
-  X-Robots-Tag: noindex, nofollow
-
-/s-sme/*.html
+# Prerendered pages are served via Netlify rewrites to *.html files, so an
+# X-Robots-Tag here would noindex the real /about, /blog, etc. pages. Per-route
+# <link rel="canonical"> in each prerendered file handles duplicate suppression
+# instead. Only the 404 page is kept out of the index.
+/404.html
   X-Robots-Tag: noindex, nofollow
