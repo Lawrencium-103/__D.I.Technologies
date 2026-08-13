@@ -9,15 +9,16 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { blogPosts } from '../src/data/blogPosts.js'
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_DEFAULT_TITLE,
+  SITE_DEFAULT_DESCRIPTION,
+  SITE_DEFAULT_IMAGE,
+} from '../src/lib/seo.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const DIST = join(__dirname, '..', 'dist')
-const SITE_URL = 'https://dintechnologies.com'
-const SITE_NAME = 'DIT Dara Initiative Tech'
-const SITE_DEFAULT_TITLE = 'DIT Dara Initiative Tech — Open models, offline AI & EdTech for Africa'
-const SITE_DEFAULT_DESCRIPTION =
-  'Dara Initiative Tech (DIT) builds open models, offline-first AI and EdTech for communities where connectivity and power are uncertain. OMSF framework, S-SME toolkit, AI training and more.'
-const SITE_DEFAULT_IMAGE = `${SITE_URL}/Lawrence.png`
 
 function esc(s) {
   const A = String.fromCharCode(38) // ampersand
@@ -99,13 +100,6 @@ function buildHtml({ title, description, path, type = 'website', image = SITE_DE
         c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
         t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
         y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "xozkj2kou0");
-    </script>
-    <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
       })(window, document, "clarity", "script", "xx6md1g9dn");
     </script>
     <script>
@@ -156,6 +150,18 @@ async function main() {
       path: '/',
       headAssets: assetLinks,
       entryScripts: scriptTags,
+      body: `<h1>AI that works where the internet doesn&rsquo;t.</h1>
+<p>Dara Initiative Technology builds open, local AI that runs entirely on offline hardware &mdash; open-weight models, on-device inference, edge hardware powered by solar, grid or hybrid. No internet. No cloud.</p>
+<ul>
+  <li><a href="/edutech">SomaBox &mdash; offline AI tutor for schools</a></li>
+  <li><a href="/open-models">Open Model Leaderboard</a></li>
+  <li><a href="/s-sme">S-SME sustainable SME services</a></li>
+  <li><a href="/ai-hub">AI Training Hub</a></li>
+  <li><a href="/framework">OpenModel Synthesis Framework (OMSF)</a></li>
+  <li><a href="/blog">Blog</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/contact">Contact</a></li>
+</ul>`,
       jsonLd: [
         {
           '@context': 'https://schema.org',
@@ -169,16 +175,48 @@ async function main() {
     }),
   })
 
-  // Static pages
+  // Static pages. `body` is static, crawler-visible HTML injected into
+  // <div id="root"> so search engines and non-JS AI crawlers (e.g. Perplexity)
+  // see real H1 + copy + internal links instead of an empty SPA shell. The
+  // client SPA (createRoot, not hydrateRoot) replaces this on load, so it is
+  // purely for indexing/discovery and never causes a hydration mismatch.
   const staticPages = [
     { path: '/blog', title: 'Blog', description: 'Notes on open models, local infrastructure and practical AI from DIT Dara Initiative Tech.' },
     { path: '/framework', title: 'OpenModel Synthesis Framework (OMSF)', description: 'The six-rung Openness Ladder for grading open AI models. A structured framework for evaluating how open an AI model really is.' },
-    { path: '/open-models', title: 'Open Model Leaderboard', description: 'Leading open models graded on the OMSF ladder, plus the full HuggingFace catalog with computed VRAM estimates, license and access analysis.' },
+    {
+      path: '/open-models',
+      title: 'Open Model Leaderboard',
+      description: 'Leading open models graded on the OMSF ladder, plus the full HuggingFace catalog with computed VRAM estimates, license and access analysis.',
+      body: `<h1>Open Model Leaderboard</h1>
+<p>Leading open models graded on the OMSF Openness Ladder, plus the full Hugging Face catalog with computed VRAM estimates, license and access analysis.</p>
+<p><a href="/framework">Read the OMSF framework</a> &middot; <a href="/reports">OMSF Reports Library</a> &middot; <a href="/blog">Blog</a></p>`,
+    },
     { path: '/reports', title: 'Reports Library', description: 'Ready-made OMSF-audited model reports. Download PDF reports on open AI models.' },
     { path: '/research', title: 'Research', description: 'Academic and industry sources behind OMSF. The evidence base for open model evaluation.' },
-    { path: '/edutech', title: 'EduTech / SomaBox', description: 'Offline AI tutor for schools, zero internet required. SomaBox brings AI tutoring to classrooms without connectivity.' },
-    { path: '/ai-hub', title: 'AI Training Hub', description: 'Hands-on AI training in Nigeria. Practical skills for building and deploying AI locally.' },
-    { path: '/s-sme', title: 'S-SME', description: 'Sustainable SME services: green energy, offline inventory, compliance. Tools for small businesses.' },
+    {
+      path: '/edutech',
+      title: 'EduTech / SomaBox',
+      description: 'Offline AI tutor for schools, zero internet required. SomaBox brings AI tutoring to classrooms without connectivity.',
+      body: `<h1>SomaBox &mdash; Offline AI Tutor for Schools</h1>
+<p>SomaBox brings AI tutoring to classrooms without connectivity &mdash; zero internet required. Offline-first EdTech for Nigerian schools.</p>
+<p><a href="/contact">Request SomaBox for my school</a> &middot; <a href="/about">About DIT</a> &middot; <a href="/blog">Blog</a></p>`,
+    },
+    {
+      path: '/ai-hub',
+      title: 'AI Training Hub',
+      description: 'Hands-on AI training in Nigeria. Practical skills for building and deploying AI locally.',
+      body: `<h1>AI Training Hub &mdash; AI skills for Nigeria</h1>
+<p>Hands-on AI training in Nigeria. Practical skills for building and deploying AI locally and offline.</p>
+<p><a href="/contact">Enquire about training</a> &middot; <a href="/about">About</a> &middot; <a href="/blog">Blog</a></p>`,
+    },
+    {
+      path: '/s-sme',
+      title: 'S-SME',
+      description: 'Sustainable SME services: green energy, offline inventory, compliance. Tools for small businesses.',
+      body: `<h1>S-SME &mdash; Sustainable SME services</h1>
+<p>Sustainable SME services: green energy, offline inventory, compliance tools for small businesses in Nigeria.</p>
+<p><a href="/s-sme/toolkit">S-SME Toolkit</a> &middot; <a href="/s-sme/evidence">Evidence base</a> &middot; <a href="/contact">Contact</a></p>`,
+    },
     { path: '/s-sme/toolkit', title: 'S-SME Toolkit', description: '117-item scored toolkit with fillable PDFs for sustainable SME assessment.' },
     { path: '/s-sme/evidence', title: 'S-SME Evidence', description: 'Published sources behind the S-SME numbers. Evidence base for sustainable SME standards.' },
     { path: '/about', title: 'About', description: 'Mission, ecosystem and team of Dara Initiative Technology. Open models, offline AI and EdTech for Africa.' },
@@ -217,7 +255,7 @@ async function main() {
         path: page.path,
         headAssets: assetLinks,
         entryScripts: scriptTags,
-        body: page.path === '/contact' ? contactFormHtml : '',
+        body: page.path === '/contact' ? contactFormHtml : (page.body || ''),
         jsonLd: [
           {
             '@context': 'https://schema.org',
