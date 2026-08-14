@@ -181,14 +181,19 @@
 # Collapse literal .html variants onto clean URLs so the /about, /blog, etc.
 # pages cannot be indexed separately as duplicates (canonical still points to
 # the clean URL, but a 301 removes the duplicate surface entirely).
+# force = true is required: the prerendered files (dist/about.html, index.html,
+# etc.) exist on disk, and Netlify serves an existing file ahead of a redirect
+# rule unless the rule is forced.
 [[redirects]]
   from = "/index.html"
   to = "/"
   status = 301
+  force = true
 [[redirects]]
   from = "/*.html"
   to = "/:splat"
   status = 301
+  force = true
 
 # NOTE: there is deliberately NO "/* -> /index.html" SPA fallback anymore. Unknown
 # paths previously returned the homepage with HTTP 200, so Google "discovered"
