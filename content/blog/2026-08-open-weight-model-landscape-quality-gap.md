@@ -1,5 +1,5 @@
 ---
-title: "The 2026 open-weight model landscape: architectures, hardware floors, and licensing"
+title: "The 2026 open-weight model landscape"
 slug: "2026-open-weight-model-landscape-quality-gap"
 date: "2026-08-01"
 author: Lawrence Oladeji

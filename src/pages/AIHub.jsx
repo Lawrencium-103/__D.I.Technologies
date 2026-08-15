@@ -14,7 +14,7 @@ const audiences = [
 
 export default function AIHub() {
   useSEO({
-    title: 'Dara AI Training Hub — AI skills for Nigeria',
+    title: 'Dara AI Training Hub for Nigeria',
     description:
       'Hands-on AI training in Nigeria across 9 tracks for corporate teams, creatives, students and educators. Every session ends with a real output — an automation, agent, dashboard or content system you built.',
   })

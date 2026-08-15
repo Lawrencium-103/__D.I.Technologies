@@ -2,11 +2,30 @@ import { useEffect } from 'react'
 
 export const SITE_URL = 'https://dintechnologies.com'
 export const SITE_NAME = 'DIT Dara Initiative Tech'
-export const SITE_DEFAULT_TITLE = 'DIT Dara Initiative Tech — Open models, offline AI & EdTech for Africa'
+export const SITE_DEFAULT_TITLE = 'Open models, offline AI & EdTech for Africa — DIT'
 export const SITE_DEFAULT_DESCRIPTION =
   'Dara Initiative Tech (DIT) builds open models, offline-first AI and EdTech for communities where connectivity and power are uncertain. OMSF framework, S-SME toolkit, AI training and more.'
 export const SITE_DEFAULT_IMAGE = `${SITE_URL}/Lawrence.png`
 export const SITE_LOCALE = 'en_US'
+
+// Keep <title> under ~60 chars so search engines render the full headline
+// instead of truncating it. Append the brand suffix only when it fits, fall
+// back to a compact "DIT" suffix, then to the bare title, and only truncate
+// the headline itself as a last resort.
+const TITLE_BRAND = 'DIT Dara Initiative Tech'
+const TITLE_BRAND_SHORT = 'DIT'
+const TITLE_MAX = 60
+
+export function buildFullTitle(title) {
+  if (!title) return SITE_DEFAULT_TITLE
+  const full = `${title} — ${TITLE_BRAND}`
+  if (full.length <= TITLE_MAX) return full
+  const short = `${title} — ${TITLE_BRAND_SHORT}`
+  if (short.length <= TITLE_MAX) return short
+  if (title.length <= TITLE_MAX) return title
+  const trimmed = title.slice(0, TITLE_MAX - 1).replace(/\s+\S*$/, '')
+  return `${trimmed || title.slice(0, TITLE_MAX - 1)}…`
+}
 
 const SEO_ATTR = 'data-seo'
 
@@ -64,7 +83,7 @@ export function useSEO({
   useEffect(() => {
     const prevTitle = document.title
     const url = `${SITE_URL}${path}`
-    const fullTitle = title ? `${title} — DIT Dara Initiative Tech` : SITE_DEFAULT_TITLE
+    const fullTitle = buildFullTitle(title)
 
     clearSeoTags()
 

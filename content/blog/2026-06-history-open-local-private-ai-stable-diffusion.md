@@ -1,12 +1,12 @@
 ---
-title: "Stable Diffusion and proof that open weights create ecosystems"
+title: "Stable Diffusion: open weights build AI ecosystems"
 slug: "history-open-local-private-ai-stable-diffusion"
 date: 2026-02-15
 author: Lawrence Oladeji
 category: "History"
 readingTime: "12 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-diffusion-art/1600/900"
+cover: "/images/blog/ai-diffusion-art/1600/900"
 coverAlt: "An abstract visualization of a diffusion process turning random noise into a structured image"
 excerpt: "How the August 2022 release of Stable Diffusion proved that open model weights trigger rapid ecosystem innovation that closed APIs cannot match."
 ---

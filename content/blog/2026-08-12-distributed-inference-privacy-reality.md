@@ -1,5 +1,5 @@
 ---
-title: "Production-ready local AI in 2026: the privacy reality and the distributed option"
+title: "Local AI privacy in 2026: the distributed option"
 slug: "2026-distributed-inference-privacy-reality"
 date: "2026-08-12"
 author: Lawrence Oladeji

@@ -14,7 +14,7 @@ const years = ['All', ...Array.from(new Set(blogPosts.map((p) => new Date(p.date
 
 export default function Blog() {
   useSEO({
-    title: 'The DIT Blog — open model grades, offline deployment & field research',
+    title: 'Open models, offline AI & EdTech field notes',
     description:
       'Research notes from Lawrence Oladeji at DIT: how we grade open-source AI models for African deployment, what we learned building SomaBox, and the evidence behind S-SME.',
   })

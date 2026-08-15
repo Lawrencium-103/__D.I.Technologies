@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "History"
 readingTime: "11 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-bloom-network/1600/900"
+cover: "/images/blog/ai-bloom-network/1600/900"
 coverAlt: "An abstract visualization of interconnected global nodes branching out into multiple language paths representing a multilingual AI model"
 excerpt: "How the BigScience workshop proved massive open models could be built by communities, while introducing the complications of use-based licensing."
 ---

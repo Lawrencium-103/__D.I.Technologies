@@ -1,5 +1,5 @@
 ---
-title: "Edge and on-device AI: AI PCs, NPUs, and the small models that run on them"
+title: "Edge and on-device AI, explained"
 slug: "2026-edge-on-device-ai-ai-pcs"
 date: "2026-08-05"
 author: Lawrence Oladeji

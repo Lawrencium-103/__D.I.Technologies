@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "History"
 readingTime: "14 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-regulation-compliance/1600/900"
+cover: "/images/blog/ai-regulation-compliance/1600/900"
 coverAlt: "An abstract representation of a legal scale balancing a glowing neural network against a stack of regulatory documents"
 excerpt: "How the 2024 EU AI Act and the Open Source AI Definition forced legal teams to treat open model licenses as serious compliance risks."
 ---

@@ -29,9 +29,49 @@ servants. It is not a channel for DIT or its products.
 - If a post reads like a case study about DIT, rewrite it as guidance for the
   reader before it publishes.
 
-## Banned
+## Titles (SEO & GEO standard)
 
-Do not use these. If a source uses one, quote it and then check it.
+Titles are the post&#39;s primary on-page ranking signal and the first thing a
+searcher or an AI answer sees. Follow this standard so every title is short,
+specific, and readable both in Google results and in generative-AI (GEO) answers.
+
+**Hard rules**
+
+- **Keep the final title under ~60 characters.** Google and most AI engines
+  truncate longer titles. The build automatically appends &quot; — DIT&quot; (or the full
+  brand when it fits), so aim for the title text itself to be &le; 50 characters.
+- **Exactly one idea.** If the title reads like two titles joined by a colon, cut
+  the second half. (e.g. prefer &quot;Offline-first parent-teacher portals, explained&quot;
+  over &quot;Offline-first parent-teacher portals: what they are and why they matter&quot;.)
+- **No dates in past-deployed posts.** &quot;What open-source AI means after 2025&quot; is
+  fine; &quot;Mid-year reality check&quot; goes stale and never gets clicked again.
+- **Banned phrasing**: &quot;The AI landscape&quot;, &quot;The future of X&quot;, &quot;Why we need to
+  think about X&quot;, &quot;Here&#39;s what you need to know&quot;, rhetorical-question hooks. These
+  read as filler to both Google and AI crawlers.
+
+**Click-worthiness**
+
+- Put the concrete subject first, and state what the reader gets: model names,
+  tools, frameworks, and outcomes work well (&quot;BLOOM&quot;, &quot;GPT-2&quot;, &quot;Ollama&quot;,
+  &quot;deployment guide&quot;).
+- Be specific, not clever. A title is a promise; the post must keep it.
+- No promotional tone. No exclamation marks or &quot;utterly&quot;/&quot;totally&quot; intensifiers.
+
+**GEO (generative-engine optimization)**
+
+- Use the exact plain-language phrase a person would type or an AI would quote.
+  Match the post&#39;s primary keyword and answer-verb where natural
+  (&quot;explained&quot;, &quot;compared&quot;, &quot;the costs&quot;).
+- Keep the subject noun present in the first 3&ndash;5 words so an AI citation and a
+  search snippet both name the topic immediately.
+
+**Checklist before publish**
+
+- [ ] Title &le; ~50 characters (so the built title stays under 60 with the brand).
+- [ ] One idea, concrete subject first, no filler phrases, no stale dates.
+- [ ] Title matches the post&#39;s actual claim (no clickbait, no over-promise).
+- [ ] Same title in the post&#39;s `content/blog/*.md` frontmatter and (for legacy
+  posts) its entry in `src/data/blogPosts.js`.
 
 - Hype words: game-changing, groundbreaking, revolutionary, cutting-edge,
   state-of-the-art, powerful, next-generation, unprecedented, disruptive,

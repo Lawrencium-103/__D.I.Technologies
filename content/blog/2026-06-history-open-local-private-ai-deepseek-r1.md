@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "History"
 readingTime: "14 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-compute-efficiency/1600/900"
+cover: "/images/blog/ai-compute-efficiency/1600/900"
 coverAlt: "An abstract visualization of a highly optimized neural network routing data through a narrow, efficient pathway"
 excerpt: "How a January 2025 model release trained under chip export restrictions proved that frontier AI development does not require Silicon Valley capital."
 ---

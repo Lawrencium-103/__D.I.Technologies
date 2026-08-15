@@ -115,7 +115,7 @@ function estimateVram(name) {
 
 export default function OpenModels() {
   useSEO({
-    title: 'Open Model Leaderboard — graded on the OMSF ladder',
+    title: 'Open Model Leaderboard, OMSF-graded',
     description:
       'The DIT open model leaderboard: leading open models graded on the OMSF 6-Rung Openness Ladder, plus the full HuggingFace catalog with computed VRAM estimates, license and access analysis.',
   })

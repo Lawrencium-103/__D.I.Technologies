@@ -16,7 +16,7 @@ const AUDIENCES = [
 
 export default function ReportBuilder() {
   useSEO({
-    title: 'DIT OpenModel Report Builder',
+    title: 'OpenModel Report Builder',
     description:
       'Grade any AI model against the OMSF 6-Rung Openness Ladder and return a branded DIT report you can print to PDF. Free, instant, no sign-up.',
   })

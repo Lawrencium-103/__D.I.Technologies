@@ -1,5 +1,5 @@
 ---
-title: "Inference runtimes and local AI tooling: comparing Ollama, vLLM, LM Studio, and llama.cpp"
+title: "Local AI runtimes: Ollama, vLLM & llama.cpp"
 slug: "2026-inference-runtimes-local-ai-tooling-maturity"
 date: "2026-07-28"
 author: Lawrence Oladeji

@@ -8,7 +8,7 @@ import { useSEO } from '../lib/seo'
 
 export default function ReportsLibrary() {
   useSEO({
-    title: 'DIT OpenModel Reports Library',
+    title: 'OpenModel Reports Library',
     description:
       'Ready-made DIT OpenModel reports for leading models, audited against the OMSF 6-Rung Openness Ladder and verified against primary weights.',
   })

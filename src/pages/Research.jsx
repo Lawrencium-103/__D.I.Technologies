@@ -66,7 +66,7 @@ const industry = [
 
 export default function Research() {
   useSEO({
-    title: 'Research — the sources behind OMSF',
+    title: 'The research behind OMSF',
     description:
       'The academic and industry sources behind the OpenModel Synthesis Framework: Solaiman, the Model Openness Framework, open-washing research, and how to cite DIT and OMSF.',
   })

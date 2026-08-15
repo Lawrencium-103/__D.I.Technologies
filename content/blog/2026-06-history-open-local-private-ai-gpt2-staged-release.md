@@ -1,12 +1,12 @@
 ---
-title: "The precedent: GPT-2 and the beginning of staged AI release"
+title: "GPT-2 and the first staged AI release"
 slug: "history-open-local-private-ai-gpt2-staged-release"
 date: 2025-12-15
 author: Lawrence Oladeji
 category: "History"
 readingTime: "12 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-neural-network/1600/900"
+cover: "/images/blog/ai-neural-network/1600/900"
 coverAlt: "A visualization of a neural network architecture with glowing nodes representing AI model parameters"
 excerpt: "How OpenAI's 2019 decision to withhold GPT-2 turned model release from an engineering afterthought into a primary policy debate."
 ---

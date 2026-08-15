@@ -6,7 +6,7 @@ import Marquee from '../components/Marquee'
 import { useSEO, organizationJsonLd } from '../lib/seo'
 
 export default function Home() {
-  useSEO({ title: 'Open models, offline AI & EdTech for Africa', jsonLd: organizationJsonLd() })
+  useSEO({ jsonLd: organizationJsonLd() })
   return (
     <>
       {/* HERO */}

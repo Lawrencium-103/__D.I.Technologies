@@ -1,12 +1,12 @@
 ---
-title: "Offline-first parent-teacher portals: what they are and why they matter"
+title: "Offline-first parent-teacher portals, explained"
 slug: "offline-first-parent-teacher-portals"
 date: 2026-07-15
 author: Lawrence Oladeji
 category: "Engineering"
 readingTime: "9 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-portal-offline/1600/900"
+cover: "/images/blog/portal-offline/1600/900"
 coverAlt: "A school building with a small on-site server and a parent checking a phone over local wifi"
 excerpt: "Most parent-teacher portals go dark the moment the connection drops. For families who rely on them most, offline-first design is the difference between a tool that works and one that does not."
 ---

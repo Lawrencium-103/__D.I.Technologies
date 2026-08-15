@@ -63,6 +63,42 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dintechnologies.com/blog/deepseek-v4-flash-profile</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/deepseek-v4-pro-profile</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/gemma-4-31b-profile</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/glm-5-1-profile</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/glm-5-2-profile</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/gpt-oss-120b-profile</loc>
+    <lastmod>2025-08-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-bloom-rail</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>yearly</changefreq>
@@ -123,8 +159,56 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dintechnologies.com/blog/kimi-k2-6-profile</loc>
+    <lastmod>2025-11-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/kimi-k3-profile</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/llama-4-maverick-profile</loc>
+    <lastmod>2025-04-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/llama-4-scout-profile</loc>
+    <lastmod>2025-04-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://dintechnologies.com/blog/mid-year-cost-reality-check</loc>
     <lastmod>2026-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/mimo-v2-5-profile</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/minimax-m3-profile</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/mistral-small-4-medium-3-5-profile</loc>
+    <lastmod>2025-11-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/nemotron-3-profile</loc>
+    <lastmod>2025-10-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -141,8 +225,38 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dintechnologies.com/blog/phi-4-profile</loc>
+    <lastmod>2024-12-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/qwen-3-5-397b-profile</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/qwen-3-6-profile</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/qwen3-8-max-profile</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://dintechnologies.com/blog/running-open-models-privately</loc>
     <lastmod>2025-09-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/tencent-hy3-profile</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -155,6 +269,12 @@
   <url>
     <loc>https://dintechnologies.com/blog/the-quiet-cost-of-vendor-lock-in</loc>
     <lastmod>2025-03-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dintechnologies.com/blog/thinking-machines-inkling-profile</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>

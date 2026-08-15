@@ -1,12 +1,12 @@
 ---
-title: "Mid-year reality check: what open models actually cost to run"
+title: "What open models actually cost to run"
 slug: "mid-year-cost-reality-check"
 date: 2026-06-30
 author: Lawrence Oladeji
 category: "Cost and Infrastructure"
 readingTime: "11 min"
 template: deep-dive
-cover: "https://picsum.photos/seed/dit-cost-reality/1600/900"
+cover: "/images/blog/cost-reality/1600/900"
 coverAlt: "A single GPU workstation on a desk next to a laptop, representing local inference hardware"
 excerpt: "Running an open model on your own hardware trades a fixed cost for a variable one. Whether that saves money depends on your volume, and the honest answer is contested. Here is the mid-year check, with the hardware and license claims checked against named sources."
 ---

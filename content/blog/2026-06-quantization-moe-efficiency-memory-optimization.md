@@ -1,5 +1,5 @@
 ---
-title: "Quantization, MoE architectures, and memory optimization: technical fundamentals"
+title: "Quantization and MoE: model efficiency, explained"
 slug: "2026-quantization-moe-efficiency-memory-optimization"
 date: "2026-06-18"
 author: Lawrence Oladeji

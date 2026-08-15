@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "History"
 readingTime: "15 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-closing-door/1600/900"
+cover: "/images/blog/ai-closing-door/1600/900"
 coverAlt: "An abstract visualization of a massive digital vault door slowly closing over a server rack"
 excerpt: "As signals suggest the lab that catalyzed the open weight movement might pull back, the industry faces a live question about the future of open AI."
 ---

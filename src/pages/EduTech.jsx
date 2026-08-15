@@ -94,7 +94,7 @@ export default function EduTech() {
   const termRef = useRef(null)
 
   useSEO({
-    title: 'SomaBox — Offline AI Tutor for Schools',
+    title: 'SomaBox: offline AI tutor for schools',
     description:
       'SomaBox is an offline AI tutor in a single box: 60+ NERDC textbooks, 26 slash commands, zero internet required. AI tutoring for schools where connectivity and power are uncertain.',
   })

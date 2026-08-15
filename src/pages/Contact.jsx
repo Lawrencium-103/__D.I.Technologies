@@ -15,7 +15,7 @@ const needs = [
 
 export default function Contact() {
   useSEO({
-    title: 'Contact DIT Dara Initiative Tech',
+    title: 'Contact us',
     description:
       'Talk to DIT about SomaBox for your school, AI training for your team, an S-SME sustainability audit or a partnership. Based in Oyo State, Nigeria.',
   })

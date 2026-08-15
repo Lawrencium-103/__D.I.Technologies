@@ -61,7 +61,7 @@ const manualPosts = [
   },
   {
     slug: 'history-open-local-private-ai-stable-diffusion',
-    title: 'Stable Diffusion and proof that open weights create ecosystems',
+    title: 'Stable Diffusion: open weights build AI ecosystems',
     excerpt:
       'How the August 2022 release of Stable Diffusion proved that open model weights trigger rapid ecosystem innovation that closed APIs cannot match.',
     date: '2026-02-15',
@@ -113,7 +113,7 @@ const manualPosts = [
   },
   {
     slug: 'history-open-local-private-ai-gpt2-staged-release',
-    title: 'The precedent: GPT-2 and the beginning of staged AI release',
+    title: 'GPT-2 and the first staged AI release',
     excerpt:
       'How OpenAI’s 2019 decision to withhold GPT-2 turned model release from an engineering afterthought into a primary policy debate.',
     date: '2025-12-15',
@@ -164,7 +164,7 @@ const manualPosts = [
   },
   {
     slug: 'offline-first-parent-teacher-portals',
-    title: 'Offline-first parent-teacher portals: what they are and why they matter',
+    title: 'Offline-first parent-teacher portals, explained',
     excerpt:
       'Most parent-teacher portals go dark the moment the connection drops. For families who rely on them most, offline-first design is the difference between a tool that works and one that does not.',
     date: '2026-07-15',
@@ -225,7 +225,7 @@ const manualPosts = [
   },
   {
     slug: 'what-open-source-ai-means-after-2025-license-shifts',
-    title: 'What "open-source AI" means after the 2025 license shifts',
+    title: 'What "open-source AI" means after 2025',
     excerpt:
       'In 2025 several models were called open while their licenses said otherwise. For any organisation that wants to self-host, that gap decides who sees your data, what you pay, and whether the system keeps running.',
     date: '2025-11-12',
@@ -634,7 +634,7 @@ const manualPosts = [
   },
   {
     slug: 'mid-year-cost-reality-check',
-    title: 'Mid-year reality check: what open models actually cost to run',
+    title: 'What open models actually cost to run',
     excerpt:
       'Running an open model on your own hardware trades a fixed cost for a variable one. Whether that saves money depends on your volume, and the honest answer is contested. Here is the mid-year check, with the hardware and license claims checked against named sources.',
     date: '2026-06-30',
@@ -692,7 +692,7 @@ const manualPosts = [
   },
   {
     slug: 'what-are-open-source-models',
-    title: 'Open-source models: what they are, and why they belong in your stack',
+    title: 'What open-source models are (and when to use them)',
     excerpt:
       'Most AI you use today is rented, not owned. Open-source models change that. Here is what they are, who should care, and why the conversation matters now.',
     date: '2025-07-16',
@@ -782,7 +782,7 @@ const manualPosts = [
   },
   {
     slug: 'the-openness-ladder',
-    title: 'The Openness Ladder: why "open source AI" is four different things',
+    title: 'The Openness Ladder: 4 levels of open-source AI',
     excerpt:
       'The label "open source" now covers at least four different things. If you cannot place a model on a ladder, you cannot make a safe decision about it. We built one.',
     date: '2025-08-14',
@@ -821,7 +821,7 @@ const manualPosts = [
   },
   {
     slug: 'running-open-models-privately',
-    title: 'Running open models privately: a technical deployment guide',
+    title: 'Running open models privately: a deployment guide',
     excerpt:
       'You can run a capable model on hardware you own, with no API and no data leaving the building. Here is the technical path, with the 2025 tooling.',
     date: '2025-09-22',

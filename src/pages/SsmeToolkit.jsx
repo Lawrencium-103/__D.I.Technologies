@@ -381,7 +381,7 @@ function ComplianceCalendar({ calendar, setCalendar }) {
 
 export default function SsmeToolkit() {
   useSEO({
-    title: 'S-SME Toolkit — score your business, open doors',
+    title: 'S-SME Toolkit: score your business',
     description:
       '117 items from the DIT SME Toolkit, each scored against the frameworks that open doors: IFC, SMEDAN and more. Interactive scoring, ratings and fillable DIT PDFs.',
   })

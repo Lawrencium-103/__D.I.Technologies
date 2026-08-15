@@ -1,5 +1,5 @@
 ---
-title: "Hardware tiers for local AI inference: memory floors, unified architectures, and edge deployment"
+title: "Hardware tiers for running local AI"
 slug: "2026-hardware-tiers-local-ai-inference"
 date: "2026-06-25"
 author: Lawrence Oladeji

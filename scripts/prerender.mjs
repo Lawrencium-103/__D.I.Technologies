@@ -15,6 +15,7 @@ import {
   SITE_DEFAULT_TITLE,
   SITE_DEFAULT_DESCRIPTION,
   SITE_DEFAULT_IMAGE,
+  buildFullTitle,
 } from '../src/lib/seo.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -63,7 +64,7 @@ function blocksToHtml(blocks = []) {
 
 function buildHtml({ title, description, path, type = 'website', image = SITE_DEFAULT_IMAGE, imageAlt = '', jsonLd = null, body = '', headAssets = '', entryScripts = '' }) {
   const url = `${SITE_URL}${path}`
-  const fullTitle = title ? `${title} — DIT Dara Initiative Tech` : SITE_DEFAULT_TITLE
+  const fullTitle = buildFullTitle(title)
   const jsonLdScript = jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''
   // Preserve the production-built CSS/link assets and JS entry bundles so the
   // prerendered page hydrates and works exactly like the built SPA.
@@ -181,46 +182,117 @@ async function main() {
   // client SPA (createRoot, not hydrateRoot) replaces this on load, so it is
   // purely for indexing/discovery and never causes a hydration mismatch.
   const staticPages = [
-    { path: '/blog', title: 'Blog', description: 'Notes on open models, local infrastructure and practical AI from DIT Dara Initiative Tech.' },
-    { path: '/framework', title: 'OpenModel Synthesis Framework (OMSF)', description: 'The six-rung Openness Ladder for grading open AI models. A structured framework for evaluating how open an AI model really is.' },
+    {
+      path: '/blog',
+      title: 'Open models, offline AI & EdTech field notes',
+      description: 'Notes on open models, local infrastructure and practical AI from DIT Dara Initiative Tech.',
+      body: `<h1>DIT Blog — open models, offline AI &amp; EdTech</h1>
+<p>Practical, source-backed notes from Dara Initiative Technology on building and running AI where the internet does not always work. We cover open-weight models, on-device inference, edge hardware, and offline-first tools for schools and small businesses across Africa.</p>
+<p>Popular reads: <a href="/blog/the-quiet-cost-of-vendor-lock-in">The quiet cost of vendor lock-in</a> &middot; <a href="/blog/offline-first-parent-teacher-portals">Offline-first parent-teacher portals</a> &middot; <a href="/blog/running-open-models-privately">Running open models privately</a> &middot; <a href="/blog/the-openness-ladder">The Openness Ladder</a></p>
+<p>New here? Start with the <a href="/open-models">Open Model Leaderboard</a>, the <a href="/framework">OMSF framework</a>, or read <a href="/about">about DIT</a>.</p>`,
+    },
+    {
+      path: '/framework',
+      title: 'OpenModel Synthesis Framework (OMSF)',
+      description: 'The six-rung Openness Ladder for grading open AI models. A structured framework for evaluating how open an AI model really is.',
+      body: `<h1>OpenModel Synthesis Framework (OMSF)</h1>
+<p>OMSF is DIT&rsquo;s structured framework for grading how open an AI model really is. It answers a question that the phrase &ldquo;open source AI&rdquo; often blurs: can you actually inspect it, run it, modify it, and ship it without asking anyone&rsquo;s permission?</p>
+<p>The heart of OMSF is the six-rung Openness Ladder, which scores a model on weights, code, training data, license terms, documentation and deployment freedom. A model can be freely downloadable yet still locked by its license &mdash; the Ladder makes that visible at a glance.</p>
+<p>Browse the <a href="/open-models">graded Open Model Leaderboard</a>, download ready-made <a href="/reports">OMSF audit reports</a>, or read the <a href="/research">research behind the framework</a>.</p>`,
+    },
     {
       path: '/open-models',
-      title: 'Open Model Leaderboard',
+      title: 'Open Model Leaderboard, OMSF-graded',
       description: 'Leading open models graded on the OMSF ladder, plus the full HuggingFace catalog with computed VRAM estimates, license and access analysis.',
       body: `<h1>Open Model Leaderboard</h1>
 <p>Leading open models graded on the OMSF Openness Ladder, plus the full Hugging Face catalog with computed VRAM estimates, license and access analysis.</p>
+<p>The Leaderboard is built for one decision: given your hardware and your needs, which open-weight model should you actually deploy? Each entry carries an OMSF openness grade, an estimated VRAM footprint for common quantization levels, and a plain-language read on its license and access restrictions.</p>
+<p>The model catalog syncs daily from Hugging Face, so the list stays current without manual updates. If a model you need is missing a grade, the <a href="/reports">Reports Library</a> holds full OMSF audit reports and the <a href="/blog">blog</a> explains the reasoning behind the grades.</p>
 <p><a href="/framework">Read the OMSF framework</a> &middot; <a href="/reports">OMSF Reports Library</a> &middot; <a href="/blog">Blog</a></p>`,
     },
-    { path: '/reports', title: 'Reports Library', description: 'Ready-made OMSF-audited model reports. Download PDF reports on open AI models.' },
-    { path: '/research', title: 'Research', description: 'Academic and industry sources behind OMSF. The evidence base for open model evaluation.' },
+    {
+      path: '/reports',
+      title: 'OpenModel Reports Library',
+      description: 'Ready-made OMSF-audited model reports. Download PDF reports on open AI models.',
+      body: `<h1>OMSF Reports Library</h1>
+<p>Ready-made OMSF audit reports for open AI models. Each report grades a model against the six-rung Openness Ladder, documents its license and access terms, estimates the hardware needed to run it, and gives a practical recommendation for schools, SMEs and public-sector teams.</p>
+<p>Reports are written to be acted on: if a report says a model is deployment-ready for your budget, the <a href="/open-models">Leaderboard</a> and the <a href="/blog">blog</a> show you how to run it. If you need a model audited that is not in the library, <a href="/contact">ask us</a>.</p>
+<p><a href="/framework">About OMSF</a> &middot; <a href="/open-models">Leaderboard</a> &middot; <a href="/contact">Request a report</a></p>`,
+    },
+    {
+      path: '/research',
+      title: 'The research behind OMSF',
+      description: 'Academic and industry sources behind OMSF. The evidence base for open model evaluation.',
+      body: `<h1>Research — the evidence behind OMSF</h1>
+<p>The academic and industry sources behind the OpenModel Synthesis Framework. OMSF is not a set of opinions &mdash; each rung of the Openness Ladder and every grade in the <a href="/reports">Reports Library</a> traces back to published work on open-source licensing, model evaluation and AI deployment.</p>
+<p>This page gathers that evidence base in one place: papers on open-weight licensing, industry analysis of model access, and technical documentation from the projects themselves. It is the same material the <a href="/open-models">Leaderboard</a> grades are built on.</p>
+<p><a href="/framework">The OMSF framework</a> &middot; <a href="/blog">Blog</a> &middot; <a href="/contact">Suggest a source</a></p>`,
+    },
     {
       path: '/edutech',
-      title: 'EduTech / SomaBox',
+      title: 'SomaBox: offline AI tutor for schools',
       description: 'Offline AI tutor for schools, zero internet required. SomaBox brings AI tutoring to classrooms without connectivity.',
-      body: `<h1>SomaBox &mdash; Offline AI Tutor for Schools</h1>
-<p>SomaBox brings AI tutoring to classrooms without connectivity &mdash; zero internet required. Offline-first EdTech for Nigerian schools.</p>
+      body: `<h1>SomaBox — Offline AI Tutor for Schools</h1>
+<p>SomaBox brings AI tutoring to classrooms without connectivity &mdash; zero internet required. Offline-first EdTech for Nigerian schools and schools across Africa where network access and electricity are unreliable.</p>
+<p>Because SomaBox runs entirely on local hardware, a classroom can keep learning through outages, expensive data plans and network bans. Lessons, practice and feedback run on-device, powered by solar, grid or hybrid energy where available.</p>
+<p>We work with schools, parent-teacher associations and state education agencies to pilot and scale deployments. Every deployment starts with the <a href="/blog/offline-first-parent-teacher-portals">offline-first portal</a> approach we document on the blog.</p>
 <p><a href="/contact">Request SomaBox for my school</a> &middot; <a href="/about">About DIT</a> &middot; <a href="/blog">Blog</a></p>`,
     },
     {
       path: '/ai-hub',
-      title: 'AI Training Hub',
+      title: 'Dara AI Training Hub for Nigeria',
       description: 'Hands-on AI training in Nigeria. Practical skills for building and deploying AI locally.',
-      body: `<h1>AI Training Hub &mdash; AI skills for Nigeria</h1>
-<p>Hands-on AI training in Nigeria. Practical skills for building and deploying AI locally and offline.</p>
+      body: `<h1>AI Training Hub — AI skills for Nigeria</h1>
+<p>Hands-on AI training in Nigeria. Practical skills for building and deploying AI locally and offline, not just prompting public chatbots.</p>
+<p>The Hub focuses on what actually matters on the ground: running open-weight models on available hardware, evaluating which model fits a budget, and deploying offline-first systems that keep working without the internet. Courses are available for individuals and for corporate teams, from introductory sessions to deeper deployment workshops.</p>
+<p>Training pairs directly with our other work &mdash; graduates leave ready to use the <a href="/open-models">Leaderboard</a>, follow <a href="/framework">OMSF</a> grades, and apply the <a href="/s-sme">S-SME</a> approach in their own projects.</p>
 <p><a href="/contact">Enquire about training</a> &middot; <a href="/about">About</a> &middot; <a href="/blog">Blog</a></p>`,
     },
     {
       path: '/s-sme',
-      title: 'S-SME',
+      title: 'S-SME: sustainable SME toolkit for Nigeria',
       description: 'Sustainable SME services: green energy, offline inventory, compliance. Tools for small businesses.',
-      body: `<h1>S-SME &mdash; Sustainable SME services</h1>
-<p>Sustainable SME services: green energy, offline inventory, compliance tools for small businesses in Nigeria.</p>
+      body: `<h1>S-SME — Sustainable SME services</h1>
+<p>Sustainable SME services: green energy, offline inventory and compliance tools for small businesses in Nigeria. S-SME helps growing businesses measure and improve how sustainable, resilient and audit-ready they are.</p>
+<p>The programme pairs a <a href="/s-sme/toolkit">117-item scored toolkit</a> with a published <a href="/s-sme/evidence">evidence base</a> behind every score, so the assessment is defensible when banks, investors or regulators ask.</p>
+<p>Businesses that complete the assessment walk away with a scored baseline, a prioritised improvement list and the paperwork to prove it &mdash; built to work offline in power- and connectivity-constrained environments.</p>
 <p><a href="/s-sme/toolkit">S-SME Toolkit</a> &middot; <a href="/s-sme/evidence">Evidence base</a> &middot; <a href="/contact">Contact</a></p>`,
     },
-    { path: '/s-sme/toolkit', title: 'S-SME Toolkit', description: '117-item scored toolkit with fillable PDFs for sustainable SME assessment.' },
-    { path: '/s-sme/evidence', title: 'S-SME Evidence', description: 'Published sources behind the S-SME numbers. Evidence base for sustainable SME standards.' },
-    { path: '/about', title: 'About', description: 'Mission, ecosystem and team of Dara Initiative Technology. Open models, offline AI and EdTech for Africa.' },
-    { path: '/contact', title: 'Contact', description: 'Reach DIT Dara Initiative Tech. Get in touch about open models, offline AI and EdTech.' },
+    {
+      path: '/s-sme/toolkit',
+      title: 'S-SME Toolkit: score your business',
+      description: '117-item scored toolkit with fillable PDFs for sustainable SME assessment.',
+      body: `<h1>S-SME Toolkit</h1>
+<p>The 117-item scored toolkit for sustainable SME assessment. Each item maps to the <a href="/s-sme/evidence">published evidence base</a> behind the S-SME standards, so every score means something specific rather than a vague &ldquo;good effort&rdquo;.</p>
+<p>The toolkit ships as fillable PDFs designed to work offline: a business can complete its assessment on paper or in a PDF reader without a stable connection, then submit results for a scored report.</p>
+<p>It covers green energy, offline inventory management, compliance and the operational basics that determine whether a small business can survive disruptions. The output is a scored baseline plus a prioritised list of improvements.</p>
+<p><a href="/s-sme">About S-SME</a> &middot; <a href="/s-sme/evidence">Evidence base</a> &middot; <a href="/contact">Get assessed</a></p>`,
+    },
+    {
+      path: '/s-sme/evidence',
+      title: 'S-SME evidence: the numbers that matter',
+      description: 'Published sources behind the S-SME numbers. Evidence base for sustainable SME standards.',
+      body: `<h1>S-SME Evidence Base</h1>
+<p>Published sources behind the S-SME numbers. Every score in the <a href="/s-sme/toolkit">S-SME Toolkit</a> is anchored to a source: development-bank guidance, energy-access studies, and SME resilience research, with the exact reference recorded.</p>
+<p>Keeping the evidence public matters for a simple reason: when a bank, investor or regulator reviews an S-SME assessment, the underlying claim can be checked rather than taken on trust. It is the same principle behind the <a href="/framework">OMSF</a> grading of open models.</p>
+<p><a href="/s-sme">About S-SME</a> &middot; <a href="/s-sme/toolkit">The toolkit</a> &middot; <a href="/contact">Contact</a></p>`,
+    },
+    {
+      path: '/about',
+      title: 'About us',
+      description: 'Mission, ecosystem and team of Dara Initiative Technology. Open models, offline AI and EdTech for Africa.',
+      body: `<h1>About DIT — Dara Initiative Technology</h1>
+<p>Dara Initiative Technology (DIT) builds open models, offline-first AI and EdTech for communities where connectivity and power are uncertain. We exist because most AI is built for always-online, always-powered environments &mdash; and much of the world is not that place.</p>
+<p>Our work spans the <a href="/open-models">Open Model Leaderboard</a> and <a href="/framework">OMSF framework</a> for choosing open models honestly, <a href="/edutech">SomaBox</a> for offline tutoring in schools, the <a href="/s-sme">S-SME</a> programme for sustainable SMEs, and the <a href="/ai-hub">AI Training Hub</a> for hands-on skills. Everything we publish is documented on the <a href="/blog">blog</a>.</p>
+<p>If our mission matches what you are trying to do &mdash; a school, a ministry, a business or a funder &mdash; <a href="/contact">get in touch</a>.</p>`,
+    },
+    {
+      path: '/contact',
+      title: 'Contact us',
+      description: 'Reach DIT Dara Initiative Tech. Get in touch about open models, offline AI and EdTech.',
+      body: `<h1>Contact DIT</h1>
+<p>Tell us what you are trying to build. Whether you want SomaBox in your school, an AI training programme for your team, an S-SME assessment, an OMSF audit of a model, or a partnership &mdash; start with the form below and we will get back to you.</p>`,
+    },
   ]
 
   // Static contact form markup so Netlify's deploy-time detector finds the
@@ -255,7 +327,7 @@ async function main() {
         path: page.path,
         headAssets: assetLinks,
         entryScripts: scriptTags,
-        body: page.path === '/contact' ? contactFormHtml : (page.body || ''),
+        body: page.path === '/contact' ? `${page.body || ''}\n${contactFormHtml}` : (page.body || ''),
         jsonLd: [
           {
             '@context': 'https://schema.org',

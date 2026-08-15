@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "History"
 readingTime: "14 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-measurement-matrix/1600/900"
+cover: "/images/blog/ai-measurement-matrix/1600/900"
 coverAlt: "An abstract 3D grid mapping different AI model components across axes of openness and access"
 excerpt: "How the chaos of staged releases and accidental leaks forced academics to build real measurement systems for open artificial intelligence."
 ---

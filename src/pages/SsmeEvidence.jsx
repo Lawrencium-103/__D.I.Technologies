@@ -76,7 +76,7 @@ const pillars = [
 
 export default function SsmeEvidence() {
   useSEO({
-    title: 'S-SME Evidence — the numbers behind the toolkit',
+    title: 'S-SME evidence: the numbers that matter',
     description:
       'The published sources behind DIT S-SME: solar economics for Nigerian SMEs, offline inventory gains, and Nigeria e-invoicing compliance timelines.',
   })
