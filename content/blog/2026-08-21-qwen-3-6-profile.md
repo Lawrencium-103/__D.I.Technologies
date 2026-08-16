@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "9 min"
 template: standard
-cover: "/images/blog/qwen36/1600/900"
+cover: "https://picsum.photos/seed/dit-qwen36/1600/900"
 coverAlt: "An abstract diagram of a compact 27B dense model and a 35B-A3B MoE sitting inside a single workstation, with code tokens flowing"
 excerpt: "Qwen3.6 (27B dense and 35B-A3B MoE) is the Apache 2.0 sweet spot for private coding assistants on modest hardware. This is what it is, what it needs, and what it takes to run."
 references:

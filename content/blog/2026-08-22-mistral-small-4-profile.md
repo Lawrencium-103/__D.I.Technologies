@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "9 min"
 template: standard
-cover: "/images/blog/mistral/1600/900"
+cover: "https://picsum.photos/seed/dit-mistral/1600/900"
 coverAlt: "An abstract diagram of two efficient European-language models with a data-residency shield and a compliance marker"
 excerpt: "Mistral Small 4 and Medium 3.5 are the efficient, Apache-leaning open models from Europe. This post covers what they are, why they fit EU data-residency requirements, and what they take to run."
 references:

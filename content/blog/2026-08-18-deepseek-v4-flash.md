@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "11 min"
 template: standard
-cover: "/images/blog/dsv4-flash/1600/900"
+cover: "https://picsum.photos/seed/dit-dsv4-flash/1600/900"
 coverAlt: "An abstract diagram showing a high-volume token stream flowing through a compact sparse-expert core with a long-context memory band"
 excerpt: "DeepSeek V4 Flash is the MIT-licensed high-volume workhorse of 2026: 284B total, 13B active, 1M context, and one of the best tokens-per-dollar profiles when self-hosted. Here is the full practical breakdown."
 references:

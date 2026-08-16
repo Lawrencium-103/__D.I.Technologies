@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "History"
 readingTime: "12 min"
 template: standard
-cover: "/images/blog/ai-diffusion-art/1600/900"
+cover: "https://picsum.photos/seed/dit-ai-diffusion-art/1600/900"
 coverAlt: "An abstract visualization of a diffusion process turning random noise into a structured image"
 excerpt: "How the August 2022 release of Stable Diffusion proved that open model weights trigger rapid ecosystem innovation that closed APIs cannot match."
 ---

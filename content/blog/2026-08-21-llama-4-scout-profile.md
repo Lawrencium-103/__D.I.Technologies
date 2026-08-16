@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "10 min"
 template: standard
-cover: "/images/blog/llama4-scout/1600/900"
+cover: "https://picsum.photos/seed/dit-llama4-scout/1600/900"
 coverAlt: "An abstract diagram of a long-context multimodal model holding a huge document band, labeled 10M tokens"
 excerpt: "Llama 4 Scout has the largest open context window at 10M tokens. Here is what the model is, what makes its context special, what the community license allows, and what it takes to run it."
 references:

@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "8 min"
 template: standard
-cover: "/images/blog/hy3/1600/900"
+cover: "https://picsum.photos/seed/dit-hy3/1600/900"
 coverAlt: "An abstract diagram of an expert-routed language model with a mid-length context band"
 excerpt: "Tencent Hy3 is the mid-tier open-weight model that keeps appearing on 2026 leaderboards. Here is what it is, what it needs, and what to check in its license before you adopt it."
 references:

@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "History"
 readingTime: "14 min"
 template: standard
-cover: "/images/blog/ai-mistral-sovereignty/1600/900"
+cover: "https://picsum.photos/seed/dit-ai-mistral-sovereignty/1600/900"
 coverAlt: "An abstract visualization of a digital map of Europe highlighting interconnected AI compute nodes"
 excerpt: "How Mistral AI used a permissive Apache 2.0 release to make a strategic argument for European AI sovereignty, setting a precedent for global public sector procurement."
 ---

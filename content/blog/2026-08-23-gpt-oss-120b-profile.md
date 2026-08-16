@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "8 min"
 template: standard
-cover: "/images/blog/gpt-oss/1600/900"
+cover: "https://picsum.photos/seed/dit-gpt-oss/1600/900"
 coverAlt: "An abstract diagram of a compact expert-routed model with the Apache 2.0 license mark beside it"
 excerpt: "gpt-oss-120b is OpenAI's fully open Apache 2.0 release: 117B total, 5.1B active, with a lower intelligence rank than 2026's Chinese flagships but a clean legal story. Here is the practical read."
 references:

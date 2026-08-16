@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "History"
 readingTime: "13 min"
 template: standard
-cover: "/images/blog/ai-data-leak/1600/900"
+cover: "https://picsum.photos/seed/dit-ai-data-leak/1600/900"
 coverAlt: "An abstract digital representation of a broken padlock with streams of binary code flowing out into a network"
 excerpt: "How the March 2023 leak of Meta's LLaMA model provided a documented case study of what happens when AI is released without proper risk review."
 ---

@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "11 min"
 template: standard
-cover: "/images/blog/kimi-k3/1600/900"
+cover: "https://picsum.photos/seed/dit-kimi-k3/1600/900"
 coverAlt: "An abstract diagram of a huge expert-routed model with a long-context memory band, showing text, image and video inputs entering"
 excerpt: "Kimi K3 by Moonshot AI is a 2.8T open-weight model with a 1M-token context and native multimodal input. This is the reader's guide: what it is, what it takes to run, and whether the custom license fits your use."
 references:

@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "8 min"
 template: standard
-cover: "/images/blog/mimo/1600/900"
+cover: "https://picsum.photos/seed/dit-mimo/1600/900"
 coverAlt: "An abstract diagram of a 1T-scale expert-routed model with a 1M context band and a code-stream icon set"
 excerpt: "MiMo V2.5 is Xiaomi's open-weight 1T-scale MoE with a 1M context and a strong coding-story, released under permissive terms. Here is the practical read on what it is and whether it belongs in your stack."
 references:

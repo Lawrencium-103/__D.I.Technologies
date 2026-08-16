@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "History"
 readingTime: "15 min"
 template: standard
-cover: "/images/blog/ai-global-south/1600/900"
+cover: "https://picsum.photos/seed/dit-ai-global-south/1600/900"
 coverAlt: "An abstract visualization of a digital neural network interconnected with a map of the African continent"
 excerpt: "How a World Bank-backed pilot in Nigeria proves that local AI deployment solves fundamental infrastructure gaps where cloud APIs fail."
 ---

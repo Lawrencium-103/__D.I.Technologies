@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "12 min"
 template: standard
-cover: "/images/blog/qwen3-max/1600/900"
+cover: "https://picsum.photos/seed/dit-qwen3-max/1600/900"
 coverAlt: "An abstract diagram of a very large open-weight model split across many connected GPU nodes, with a thin routing path per token"
 excerpt: "Qwen3.8 Max is one of the strongest open-weight models of 2026. This is the owner's manual: what it is, what hardware it needs, what the license allows, and what it actually takes to run it yourself."
 references:
