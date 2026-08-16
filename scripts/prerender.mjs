@@ -141,6 +141,14 @@ async function main() {
 
   const routes = []
 
+  // Full, crawlable index of every post so search/AI crawlers can reach each
+  // article via an internal link (sitemap-only posts end up "discovered but not
+  // crawled"). Sorted newest-first like the live blog listing.
+  const blogIndexItems = [...blogPosts]
+    .sort((a, b) => String(b.date).localeCompare(String(a.date)))
+    .map((p) => `    <li><a href="/blog/${esc(p.slug)}">${esc(p.title)}</a></li>`)
+    .join('\n')
+
   // Homepage
   routes.push({
     path: '/',
@@ -189,6 +197,10 @@ async function main() {
       body: `<h1>DIT Blog — open models, offline AI &amp; EdTech</h1>
 <p>Practical, source-backed notes from Dara Initiative Technology on building and running AI where the internet does not always work. We cover open-weight models, on-device inference, edge hardware, and offline-first tools for schools and small businesses across Africa.</p>
 <p>Popular reads: <a href="/blog/the-quiet-cost-of-vendor-lock-in">The quiet cost of vendor lock-in</a> &middot; <a href="/blog/offline-first-parent-teacher-portals">Offline-first parent-teacher portals</a> &middot; <a href="/blog/running-open-models-privately">Running open models privately</a> &middot; <a href="/blog/the-openness-ladder">The Openness Ladder</a></p>
+<h2>All posts</h2>
+<ul>
+${blogIndexItems}
+</ul>
 <p>New here? Start with the <a href="/open-models">Open Model Leaderboard</a>, the <a href="/framework">OMSF framework</a>, or read <a href="/about">about DIT</a>.</p>`,
     },
     {
