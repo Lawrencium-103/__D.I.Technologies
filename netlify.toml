@@ -200,3 +200,93 @@
 # near-duplicate homepage copies (Search Console: "Discovered - currently not
 # indexed"). Netlify now serves dist/404.html with a true 404 for anything that
 # does not match a file or a rule above.
+
+# Prerendered blog posts (complete list, kept in sync with src/data/blogPosts.js)
+[[redirects]]
+  from = "/blog/2026-distributed-inference-privacy-reality"
+  to = "/blog/2026-distributed-inference-privacy-reality.html"
+  status = 200
+[[redirects]]
+  from = "/blog/2026-running-open-weights-on-school-hardware"
+  to = "/blog/2026-running-open-weights-on-school-hardware.html"
+  status = 200
+[[redirects]]
+  from = "/blog/deepseek-v4-flash-profile"
+  to = "/blog/deepseek-v4-flash-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/deepseek-v4-pro-profile"
+  to = "/blog/deepseek-v4-pro-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/gemma-4-31b-profile"
+  to = "/blog/gemma-4-31b-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/glm-5-1-profile"
+  to = "/blog/glm-5-1-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/glm-5-2-profile"
+  to = "/blog/glm-5-2-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/gpt-oss-120b-profile"
+  to = "/blog/gpt-oss-120b-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/kimi-k2-6-profile"
+  to = "/blog/kimi-k2-6-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/kimi-k3-profile"
+  to = "/blog/kimi-k3-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/llama-4-maverick-profile"
+  to = "/blog/llama-4-maverick-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/llama-4-scout-profile"
+  to = "/blog/llama-4-scout-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/mimo-v2-5-profile"
+  to = "/blog/mimo-v2-5-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/minimax-m3-profile"
+  to = "/blog/minimax-m3-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/mistral-small-4-medium-3-5-profile"
+  to = "/blog/mistral-small-4-medium-3-5-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/nemotron-3-profile"
+  to = "/blog/nemotron-3-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/phi-4-profile"
+  to = "/blog/phi-4-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/qwen-3-5-397b-profile"
+  to = "/blog/qwen-3-5-397b-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/qwen-3-6-profile"
+  to = "/blog/qwen-3-6-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/qwen3-8-max-profile"
+  to = "/blog/qwen3-8-max-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/tencent-hy3-profile"
+  to = "/blog/tencent-hy3-profile.html"
+  status = 200
+[[redirects]]
+  from = "/blog/thinking-machines-inkling-profile"
+  to = "/blog/thinking-machines-inkling-profile.html"
+  status = 200
