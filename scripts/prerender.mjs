@@ -96,12 +96,29 @@ function buildHtml({ title, description, path, type = 'website', image = SITE_DE
     <meta name="twitter:description" content="${esc(description)}" />
     <meta name="twitter:image" content="${esc(image)}" />
     ${jsonLdScript}
+    <!-- Third-party analytics (GA4 + Clarity) load AFTER the page finishes so
+         they never compete with first paint or the load-window main thread. -->
     <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "xx6md1g9dn");
+      (function (w, d) {
+        function startAnalytics() {
+          var g = d.createElement('script'); g.async = true;
+          g.src = 'https://www.googletagmanager.com/gtag/js?id=G-EQ0LZQGJNF';
+          d.head.appendChild(g);
+          var c = d.createElement('script'); c.async = true;
+          c.src = 'https://www.clarity.ms/tag/xx6md1g9dn';
+          var y = d.getElementsByTagName('script')[0];
+          y.parentNode.insertBefore(c, y);
+        }
+        function defer() {
+          if (typeof w.requestIdleCallback === 'function') {
+            w.requestIdleCallback(startAnalytics, { timeout: 2500 });
+          } else {
+            setTimeout(startAnalytics, 0);
+          }
+        }
+        if (w.addEventListener) w.addEventListener('load', defer);
+        else w.attachEvent('onload', defer);
+      })(window, document);
     </script>
     <script>
       window.dataLayer = window.dataLayer || [];
