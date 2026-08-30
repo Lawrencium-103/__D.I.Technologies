@@ -383,6 +383,9 @@ ${blogIndexItems}
 <p>Practical workflows using <strong>Groq</strong> for fast text and idea generation, <strong>Gemini</strong> for multimodal planning, <strong>GPT Image 2</strong> and advanced image models for high-quality visuals, plus accessible video and design tools that work well on Nigerian networks and budgets.</p>
 <h2>How the training works</h2>
 <p>Short video lessons and tool walkthroughs, then a real client-style brief in every module. You deliver the actual work step by step &mdash; and keep the portfolio pieces to show employers, clients and your NYSC PPA.</p>
+<h2>Course materials</h2>
+<p>Read the brochure or download the pitch deck before you apply &mdash; both are free to download and share with whoever approves your training budget.</p>
+<p><a href="/downloads/dit-ai-creatives-training-brochure.pdf" download>Download the programme brochure (PDF, 8.5 MB)</a> &middot; <a href="/downloads/dit-ai-creatives-training-pitch-deck.pptx" download>Download the pitch deck (PPTX, 4.1 MB)</a></p>
 <p>Ready to start? <a href="/ai-creatives-training-nigeria#apply">Apply for the cohort below</a> &middot; <a href="/ai-hub">See the full AI Training Hub</a> &middot; <a href="/contact">Contact us</a></p>
 <h2>Apply for the AI Creatives Training cohort</h2>
 <form id="apply" name="aitraining" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
