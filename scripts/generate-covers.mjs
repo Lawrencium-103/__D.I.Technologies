@@ -14,7 +14,7 @@
 import { deflateSync } from 'node:zlib'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import { blogPosts } from '../src/data/blogPosts.js'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -106,17 +106,17 @@ function pngChunk(type, data) {
   return out
 }
 
-function encodePng(pixels) {
+function encodePng(pixels, w = W, h = H) {
   const ihdr = Buffer.alloc(13)
-  ihdr.writeUInt32BE(W, 0)
-  ihdr.writeUInt32BE(H, 4)
+  ihdr.writeUInt32BE(w, 0)
+  ihdr.writeUInt32BE(h, 4)
   ihdr[8] = 8 // bit depth
   ihdr[9] = 6 // color type RGBA
-  const raw = Buffer.alloc((W * 4 + 1) * H)
-  for (let y = 0; y < H; y++) {
-    const rowStart = y * (W * 4 + 1)
+  const raw = Buffer.alloc((w * 4 + 1) * h)
+  for (let y = 0; y < h; y++) {
+    const rowStart = y * (w * 4 + 1)
     raw[rowStart] = 0 // filter: none
-    pixels.copy(raw, rowStart + 1, y * W * 4, (y + 1) * W * 4)
+    pixels.copy(raw, rowStart + 1, y * w * 4, (y + 1) * w * 4)
   }
   return Buffer.concat([
     Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
@@ -125,6 +125,10 @@ function encodePng(pixels) {
     pngChunk('IEND', Buffer.alloc(0)),
   ])
 }
+
+// Exported so other asset generators (e.g. generate-ac-flyer.mjs) reuse the
+// same zero-dependency PNG encoder, bitmap font and palette.
+export { encodePng, pngChunk, crc32, FONT, THEMES, W, H }
 
 // ---------------------------------------------------------------------------
 // Drawing
@@ -221,7 +225,11 @@ function drawCover(post, theme, opts = {}) {
 
 // ---------------------------------------------------------------------------
 // Main: covers + inline figures for every post with placeholder images
+// (only when executed directly — importing this module must not generate)
 // ---------------------------------------------------------------------------
+const IS_MAIN = Boolean(process.argv[1]) && import.meta.url === pathToFileURL(process.argv[1]).href
+
+if (IS_MAIN) {
 const mdDir = join(ROOT, 'content', 'blog')
 const mdFiles = existsSync(mdDir)
   ? readdirSync(mdDir).filter((f) => f.endsWith('.md') && f !== 'standard-blog-post.md')
@@ -277,4 +285,5 @@ for (const post of targets) {
   if (total > 0) console.log(`  figs   ${post.slug}: ${total}`)
 }
 console.log(`Done. generated=${made} skipped(existing)=${skipped} total=${targets.length}`)
+}
 
