@@ -1,12 +1,12 @@
 ---
 title: "The measurement problem: from gradient to framework"
 slug: "history-open-local-private-ai-measurement-framework"
-date: 2026-06-01
+date: "2026-07-19"
 author: Lawrence Oladeji
 category: "History"
 readingTime: "14 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-measurement-matrix/1600/900"
+cover: "https://dintechnologies.com/images/blog/history-open-local-private-ai-measurement-framework/cover.png"
 coverAlt: "An abstract 3D grid mapping different AI model components across axes of openness and access"
 excerpt: "How the chaos of staged releases and accidental leaks forced academics to build real measurement systems for open artificial intelligence."
 ---
@@ -31,7 +31,7 @@ The first major academic response to this chaos came from Irene Solaiman. In 202
 
 This paper was the direct intellectual response to the GPT-2 staged release experiment she had observed at OpenAI. It formalized the idea that openness is a spectrum, not a switch. By mapping out the exact levels of access a lab can provide, the research provided the foundation for modern release frameworks. It allowed the conversation to move past marketing claims and into technical specifics. A lab could no longer just say a model was open. They had to specify if they were releasing the weights, the code, or just an API endpoint.
 
-![A digital diagram showing a continuous spectrum of AI access levels from fully closed to fully open](https://picsum.photos/seed/dit-ai-access-spectrum/1400/800)
+![A digital diagram showing a continuous spectrum of AI access levels from fully closed to fully open](/images/blog/history-open-local-private-ai-measurement-framework/fig-1.png)
 
 ## The Model Openness Framework
 
@@ -59,7 +59,7 @@ When an organization uses OMSF to grade a model, they are applying the gradient 
 
 The six-level release ladder in OMSF is a direct descendant of the gradient proposed by Solaiman. It forces a lab to declare exactly where their model sits on the spectrum. Are they releasing just the API? Are they releasing the weights but not the code? Are they releasing the full stack? The framework makes the lab declare their position, and then it grades that position against a standard.
 
-![A software interface showing an AI model safety compliance checklist with several categories graded on a scale](https://picsum.photos/seed/dit-ai-compliance-ui/1400/800)
+![A software interface showing an AI model safety compliance checklist with several categories graded on a scale](/images/blog/history-open-local-private-ai-measurement-framework/fig-2.png)
 
 ## Why buyers need frameworks, not labels
 

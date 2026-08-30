@@ -1,12 +1,12 @@
 ---
 title: "Hardware tiers for running local AI"
 slug: "2026-hardware-tiers-local-ai-inference"
-date: "2026-06-25"
+date: "2026-08-04"
 author: Lawrence Oladeji
 category: "Engineering"
 readingTime: "11 min"
 template: standard
-cover: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1600&q=80"
+cover: "https://dintechnologies.com/images/blog/2026-hardware-tiers-local-ai-inference/cover.png"
 coverAlt: "Hardware motherboard and GPU processor architecture"
 excerpt: "Local inference hardware has standardized into three tiers: edge devices for small models, workstations for mid-range models, and multi-GPU clusters for frontier architectures. Memory capacity and bandwidth, not raw FLOPS, set the binding constraint."
 references:
@@ -43,7 +43,7 @@ The workstation tier is the practical standard for small engineering teams and t
 
 Workstation hardware executes quantized 4-bit (Q4) 70B dense models and active-parameter-efficient Mixture-of-Experts (MoE) architectures at interactive speeds. A 70B model at Q4_K_M occupies approximately 40 GB of VRAM, which fits on a 48 GB workstation card or a 64 GB Mac with unified memory. A 27B model at Q4_K_M occupies approximately 16 GB, which fits on a standard 24 GB consumer GPU with headroom for context window storage.
 
-![A chart comparing VRAM requirements across the three hardware tiers with model size on one axis and memory footprint on the other](https://picsum.photos/seed/dit-hardware-tiers-chart/1400/800)
+![A chart comparing VRAM requirements across the three hardware tiers with model size on one axis and memory footprint on the other](/images/blog/2026-hardware-tiers-local-ai-inference/fig-1.png)
 
 The workstation tier is where most local AI deployment happens in 2026. The hardware is affordable (a 24 GB GPU workstation costs $2,000 to $4,000), the models are capable (27B to 70B parameter models handle most enterprise tasks), and the deployment is simple (a single machine, no cluster management). For a team building an internal tool or a small business running a specialized model, this tier is the default starting point.
 

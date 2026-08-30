@@ -1,12 +1,12 @@
 ---
 title: "Running open models on school hardware"
 slug: "2026-running-open-weights-on-school-hardware"
-date: "2026-08-10"
+date: "2026-08-15"
 author: Lawrence Oladeji
 category: "Engineering"
 readingTime: "9 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-open-weights-school/1600/900"
+cover: "https://dintechnologies.com/images/blog/2026-running-open-weights-on-school-hardware/cover.png"
 coverAlt: "An abstract diagram showing a small open-weight model fitting inside the memory of a modest desktop, with lesson material bundled beside it"
 excerpt: "Most local AI advice assumes new GPUs. In a school with one lab of refurbished machines and an unreliable network, the real question is which small open-weight model a device can hold in memory and run at a classroom-friendly speed. Here is how to answer it."
 references:

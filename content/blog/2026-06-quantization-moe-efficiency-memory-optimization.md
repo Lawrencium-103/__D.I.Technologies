@@ -1,12 +1,12 @@
 ---
 title: "Quantization and MoE: model efficiency, explained"
 slug: "2026-quantization-moe-efficiency-memory-optimization"
-date: "2026-06-18"
+date: "2026-08-04"
 author: Lawrence Oladeji
 category: "Engineering"
 readingTime: "11 min"
 template: standard
-cover: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1600&q=80"
+cover: "https://dintechnologies.com/images/blog/2026-quantization-moe-efficiency-memory-optimization/cover.png"
 coverAlt: "Matrix calculation and data memory optimization background"
 excerpt: "Quantization and Mixture-of-Experts routing are the two techniques that make large model inference feasible on consumer hardware. Here is how they work, what they cost in accuracy, and how to choose the right configuration."
 references:
@@ -49,7 +49,7 @@ In contrast, Mixture-of-Experts (MoE) architectures divide network layers into s
 
 For example, a 35B parameter MoE model might route each token through a gating network to activate only 3B parameters per forward pass (P1). This means the per-token compute requirement equals a small 3B model, delivering fast generation speeds. The total 35B weights preserve reasoning capability and factual knowledge, because the full parameter set is available across the expert pool. The model has the knowledge of a 35B system and the latency of a 3B system.
 
-![A diagram showing how a Mixture-of-Experts model routes a single token through a small subset of active experts while the remaining experts stay inactive](https://picsum.photos/seed/dit-moe-routing-diagram/1400/800)
+![A diagram showing how a Mixture-of-Experts model routes a single token through a small subset of active experts while the remaining experts stay inactive](/images/blog/2026-quantization-moe-efficiency-memory-optimization/fig-1.png)
 
 The tradeoff is in memory, not compute. Because any expert might be needed for any given token, all 35B total weights must remain loaded in VRAM. Memory capacity requirements are determined by the total parameter count, not the active parameter count. This is the core tension of MoE architectures: they trade compute efficiency for memory pressure.
 

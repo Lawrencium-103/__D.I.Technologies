@@ -5,7 +5,7 @@ export const SITE_NAME = 'DIT Dara Initiative Tech'
 export const SITE_DEFAULT_TITLE = 'Open models, offline AI & EdTech for Africa — DIT'
 export const SITE_DEFAULT_DESCRIPTION =
   'Dara Initiative Tech (DIT) builds open models, offline-first AI and EdTech for communities where connectivity and power are uncertain. OMSF framework, S-SME toolkit, AI training and more.'
-export const SITE_DEFAULT_IMAGE = `${SITE_URL}/Lawrence.png`
+export const SITE_DEFAULT_IMAGE = `${SITE_URL}/og-default.jpg`
 export const SITE_LOCALE = 'en_US'
 
 // Keep <title> under ~60 chars so search engines render the full headline

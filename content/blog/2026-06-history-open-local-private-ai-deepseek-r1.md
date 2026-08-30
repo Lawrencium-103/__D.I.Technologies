@@ -1,12 +1,12 @@
 ---
 title: "DeepSeek R1 and the compute-efficiency shock"
 slug: "history-open-local-private-ai-deepseek-r1"
-date: 2026-05-15
+date: "2026-07-19"
 author: Lawrence Oladeji
 category: "History"
 readingTime: "14 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-compute-efficiency/1600/900"
+cover: "https://dintechnologies.com/images/blog/history-open-local-private-ai-deepseek-r1/cover.png"
 coverAlt: "An abstract visualization of a highly optimized neural network routing data through a narrow, efficient pathway"
 excerpt: "How a January 2025 model release trained under chip export restrictions proved that frontier AI development does not require Silicon Valley capital."
 ---
@@ -37,7 +37,7 @@ The United States government implemented strict export controls on advanced AI c
 
 The research team redesigned the underlying architecture of the model to maximize memory efficiency and reduce communication overhead between chips (P1). They developed a technique called Multi-Head Latent Attention, which compresses the memory footprint required during inference. They also optimized their training pipeline to handle hardware failures without crashing the entire run. They did not have the luxury of simply adding more chips to solve a bottleneck. They had to rewrite the computational graph. The export controls intended to slow them down actually forced them to build a more efficient training pipeline. This constraint drove the innovation that led to the low training cost.
 
-![A schematic diagram showing data being compressed and routed efficiently through a constrained hardware cluster](https://picsum.photos/seed/dit-ai-constrained-cluster/1400/800)
+![A schematic diagram showing data being compressed and routed efficiently through a constrained hardware cluster](/images/blog/history-open-local-private-ai-deepseek-r1/fig-1.png)
 
 ## The compute efficiency shock
 
@@ -65,7 +65,7 @@ The weights for R1 were released openly, allowing developers to run the model lo
 
 The history of open, local, and private AI is a history of breaking down artificial barriers. OpenAI established the barrier of gated access. BLOOM established the barrier of legal friction. Meta established the barrier of accidental leaks. Mistral broke down the legal barrier with Apache 2.0. DeepSeek broke down the capital barrier with algorithmic efficiency. The narrative that frontier AI requires ten billion dollars and a hundred thousand GPUs is dead. The new narrative is that frontier-adjacent AI requires disciplined engineering, focused objectives, and efficient algorithms.
 
-![A graph showing a steep decline in the cost of training frontier-level AI models over a two year period](https://picsum.photos/seed/dit-ai-cost-decline/1400/800)
+![A graph showing a steep decline in the cost of training frontier-level AI models over a two year period](/images/blog/history-open-local-private-ai-deepseek-r1/fig-2.png)
 
 For enterprise legal teams and public sector procurement offices, this means the vendor landscape is expanding. You are no longer limited to buying APIs from three American companies. You can now evaluate open models built by efficient labs in Europe, Asia, and eventually Africa. The Open Model Safety Framework, or OMSF, provides the structure to evaluate these models. As the barrier to entry lowers, more models will enter the market. Procurement offices need a standardized way to verify that these models are safe, legally clear, and technically capable. OMSF does this. It separates the models that are merely cheap from the models that are genuinely ready for enterprise deployment.
 

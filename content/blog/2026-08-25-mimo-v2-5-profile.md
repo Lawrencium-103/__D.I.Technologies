@@ -1,12 +1,12 @@
 ---
 title: "Xiaomi MiMo V2.5: the coding value MoE"
 slug: "mimo-v2-5-profile"
-date: "2026-01-20"
+date: "2026-08-25"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "8 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-mimo/1600/900"
+cover: "https://dintechnologies.com/images/blog/mimo-v2-5-profile/cover.png"
 coverAlt: "An abstract diagram of a 1T-scale expert-routed model with a 1M context band and a code-stream icon set"
 excerpt: "MiMo V2.5 is Xiaomi's open-weight 1T-scale MoE with a 1M context and a strong coding-story, released under permissive terms. Here is the practical read on what it is and whether it belongs in your stack."
 references:

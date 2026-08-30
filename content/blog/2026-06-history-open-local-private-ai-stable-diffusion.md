@@ -1,12 +1,12 @@
 ---
 title: "Stable Diffusion: open weights build AI ecosystems"
 slug: "history-open-local-private-ai-stable-diffusion"
-date: 2026-02-15
+date: "2026-07-19"
 author: Lawrence Oladeji
 category: "History"
 readingTime: "12 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-diffusion-art/1600/900"
+cover: "https://dintechnologies.com/images/blog/history-open-local-private-ai-stable-diffusion/cover.png"
 coverAlt: "An abstract visualization of a diffusion process turning random noise into a structured image"
 excerpt: "How the August 2022 release of Stable Diffusion proved that open model weights trigger rapid ecosystem innovation that closed APIs cannot match."
 ---
@@ -29,7 +29,7 @@ This hardware accessibility was the first trigger. Suddenly, anyone with a decen
 
 Before the open source community could invent new architectural features, they needed better ways to interact with the base model. The initial interface provided by Stability AI was basic. Within weeks, developers released custom graphical user interfaces. Automatic1111 released a web-based interface that gave users granular control over every parameter of the diffusion process (P3). ComfyUI introduced a node-based interface that allowed users to wire together different components of the generation pipeline (P3).
 
-![A screenshot of a node-based AI image generation interface showing interconnected processing blocks](https://picsum.photos/seed/dit-sd-comfyui/1400/800)
+![A screenshot of a node-based AI image generation interface showing interconnected processing blocks](/images/blog/history-open-local-private-ai-stable-diffusion/fig-1.png)
 
 These interfaces were not just wrappers. They were environments for experimentation. ComfyUI allowed developers to intercept the image generation process at intermediate steps. You could apply a blur to the latent space, inject a different prompt halfway through, or mask certain regions for regeneration. This level of control is impossible with a closed API. The API gives you a black box. You send text in, you get an image out. The open weights gave developers the white box. They could see and manipulate the entire computational graph.
 
@@ -63,7 +63,7 @@ The Stable Diffusion ecosystem proves that open weights create a multiplier effe
 
 When a lab releases open weights, the pace of innovation is distributed. Thousands of developers can build custom interfaces. Researchers can invent new fine-tuning techniques. Creators can build modular plugins. The original team provides the foundation, but the community builds the rest. The Stable Diffusion ecosystem exploded with innovation precisely because there was no central authority restricting access to the weights. The multiplier effect is not just about the number of tools built. It is about the diversity of the tools. Automatic1111 was built for power users. ComfyUI was built for node programmers. LoRA was built for style enthusiasts. ControlNet was built for professional artists.
 
-![A diagram showing a single open AI model branching out into a diverse ecosystem of tools, plugins, and custom interfaces](https://picsum.photos/seed/dit-sd-ecosystem/1400/800)
+![A diagram showing a single open AI model branching out into a diverse ecosystem of tools, plugins, and custom interfaces](/images/blog/history-open-local-private-ai-stable-diffusion/fig-2.png)
 
 This diversity is structurally impossible in a closed API model. A closed API optimizes for the most common use cases to maximize revenue. It actively suppresses niche use cases that do not scale. Open weights optimize for nothing, which means they can be optimized for anything.
 

@@ -1,12 +1,12 @@
 ---
 title: "The Global South chapter and the reality of local AI"
 slug: "history-open-local-private-ai-global-south"
-date: 2026-07-08
+date: "2026-07-19"
 author: Lawrence Oladeji
 category: "History"
 readingTime: "15 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-global-south/1600/900"
+cover: "https://dintechnologies.com/images/blog/history-open-local-private-ai-global-south/cover.png"
 coverAlt: "An abstract visualization of a digital neural network interconnected with a map of the African continent"
 excerpt: "How a World Bank-backed pilot in Nigeria proves that local AI deployment solves fundamental infrastructure gaps where cloud APIs fail."
 ---
@@ -31,7 +31,7 @@ In 2024, a pilot program in Edo State, Nigeria tested an artificial intelligence
 
 The results were documented by the World Bank. Students who used the AI tutor gained roughly two years of learning in just six weeks (P1). This was not a marginal improvement. It was a structural acceleration of educational outcomes. The pilot proved that artificial intelligence can be a force multiplier in educational systems where teacher shortages and resource deficits are chronic.
 
-![A digital tablet displaying an interactive AI educational interface sitting on a school desk](https://picsum.photos/seed/dit-ai-edo-tablet/1400/800)
+![A digital tablet displaying an interactive AI educational interface sitting on a school desk](/images/blog/history-open-local-private-ai-global-south/fig-1.png)
 
 The success in Edo State did not happen in a vacuum. It was the direct result of the historical lineage of open AI. The ability to run a capable model offline, fine-tune it for a specific curriculum, and deploy it on available hardware is the exact promise of the open weights movement. The pilot is the realization of the multiplier effect first demonstrated by Stable Diffusion, applied to education.
 
@@ -55,7 +55,7 @@ The Edo State pilot is the proof point for any funder skeptical of African AI ca
 
 This also reframes the risk calculation. Funders often view open source AI as risky because it lacks the corporate backing of a closed lab. The Edo State pilot shows that the real risk is in the closed model. If you fund a closed API deployment, the project dies when the vendor raises prices or shuts down the endpoint. If you fund an open weights deployment, the project lives as long as the hardware runs. The investment builds permanent infrastructure that cannot be remotely deactivated by a foreign company.
 
-![A graph showing a steep increase in student learning outcomes over a six week period](https://picsum.photos/seed/dit-ai-learning-graph/1400/800)
+![A graph showing a steep increase in student learning outcomes over a six week period](/images/blog/history-open-local-private-ai-global-south/fig-2.png)
 
 ## The structural advantage of offline AI
 

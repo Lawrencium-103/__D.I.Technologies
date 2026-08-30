@@ -34,265 +34,265 @@
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/2026-hardware-tiers-local-ai-inference</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/2026-inference-runtimes-local-ai-tooling-maturity</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/2026-open-weight-model-landscape-quality-gap</loc>
-    <lastmod>2026-08-01</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/2026-quantization-moe-efficiency-memory-optimization</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/2026-running-open-weights-on-school-hardware</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/deepseek-v4-flash-profile</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/deepseek-v4-pro-profile</loc>
-    <lastmod>2026-04-24</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/gemma-4-31b-profile</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/glm-5-1-profile</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-08-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/glm-5-2-profile</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/gpt-oss-120b-profile</loc>
-    <lastmod>2025-08-05</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-bloom-rail</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-closing-door</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-deepseek-r1</loc>
-    <lastmod>2026-05-15</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-global-south</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-gpt2-staged-release</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-llama-leak</loc>
-    <lastmod>2026-03-15</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-measurement-framework</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-mistral-open-sovereignty</loc>
-    <lastmod>2026-04-15</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-regulation-catches-up</loc>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/history-open-local-private-ai-stable-diffusion</loc>
-    <lastmod>2026-02-15</lastmod>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/kimi-k2-6-profile</loc>
-    <lastmod>2025-11-07</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/kimi-k3-profile</loc>
-    <lastmod>2026-07-27</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/llama-4-maverick-profile</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/llama-4-scout-profile</loc>
-    <lastmod>2025-04-05</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/mid-year-cost-reality-check</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/mimo-v2-5-profile</loc>
-    <lastmod>2026-01-20</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/minimax-m3-profile</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/mistral-small-4-medium-3-5-profile</loc>
-    <lastmod>2025-11-15</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/nemotron-3-profile</loc>
-    <lastmod>2025-10-15</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/offline-first-parent-teacher-portals</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/open-models-public-sector</loc>
-    <lastmod>2025-11-05</lastmod>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/phi-4-profile</loc>
-    <lastmod>2024-12-12</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/qwen-3-5-397b-profile</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/qwen-3-6-profile</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/qwen3-8-max-profile</loc>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/running-open-models-privately</loc>
-    <lastmod>2025-09-22</lastmod>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/tencent-hy3-profile</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/the-openness-ladder</loc>
-    <lastmod>2025-08-14</lastmod>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/the-quiet-cost-of-vendor-lock-in</loc>
-    <lastmod>2025-03-02</lastmod>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/thinking-machines-inkling-profile</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/what-are-open-source-models</loc>
-    <lastmod>2025-07-16</lastmod>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/what-open-source-ai-means-after-2025-license-shifts</loc>
-    <lastmod>2025-11-12</lastmod>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dintechnologies.com/blog/why-we-build-offline-first</loc>
-    <lastmod>2025-04-10</lastmod>
+    <lastmod>2026-07-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>

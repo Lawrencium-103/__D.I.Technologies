@@ -1,12 +1,12 @@
 ---
 title: "Qwen3.8 Max: frontier AI you can run"
 slug: "qwen3-8-max-profile"
-date: "2026-08-12"
+date: "2026-08-15"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "12 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-qwen3-max/1600/900"
+cover: "https://dintechnologies.com/images/blog/qwen3-8-max-profile/cover.png"
 coverAlt: "An abstract diagram of a very large open-weight model split across many connected GPU nodes, with a thin routing path per token"
 excerpt: "Qwen3.8 Max is one of the strongest open-weight models of 2026. This is the owner's manual: what it is, what hardware it needs, what the license allows, and what it actually takes to run it yourself."
 references:

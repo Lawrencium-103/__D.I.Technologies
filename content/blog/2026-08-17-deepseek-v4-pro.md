@@ -1,12 +1,12 @@
 ---
 title: "DeepSeek V4 Pro: open MIT frontier AI"
 slug: "deepseek-v4-pro-profile"
-date: "2026-04-24"
+date: "2026-08-17"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "11 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-dsv4-pro/1600/900"
+cover: "https://dintechnologies.com/images/blog/deepseek-v4-pro-profile/cover.png"
 coverAlt: "An abstract diagram of a 1M-token context band feeding a sparse-expert reasoning core with mixed FP4 and FP8 weights"
 excerpt: "DeepSeek V4 Pro is the strongest MIT-licensed open model in 2026: 1.6T total parameters, 49B active, 1M context, no revenue gates. Here is what it is, what it runs on, and what it takes to self-host."
 references:

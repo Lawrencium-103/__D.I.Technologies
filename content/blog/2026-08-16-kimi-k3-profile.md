@@ -1,12 +1,12 @@
 ---
 title: "Kimi K3: open 1M-context multimodal AI"
 slug: "kimi-k3-profile"
-date: "2026-07-27"
+date: "2026-08-16"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "11 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-kimi-k3/1600/900"
+cover: "https://dintechnologies.com/images/blog/kimi-k3-profile/cover.png"
 coverAlt: "An abstract diagram of a huge expert-routed model with a long-context memory band, showing text, image and video inputs entering"
 excerpt: "Kimi K3 by Moonshot AI is a 2.8T open-weight model with a 1M-token context and native multimodal input. This is the reader's guide: what it is, what it takes to run, and whether the custom license fits your use."
 references:

@@ -1,12 +1,12 @@
 ---
 title: "Local AI runtimes: Ollama, vLLM & llama.cpp"
 slug: "2026-inference-runtimes-local-ai-tooling-maturity"
-date: "2026-07-28"
+date: "2026-08-04"
 author: Lawrence Oladeji
 category: "Engineering"
 readingTime: "11 min"
 template: standard
-cover: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
+cover: "https://dintechnologies.com/images/blog/2026-inference-runtimes-local-ai-tooling-maturity/cover.png"
 coverAlt: "Server rack network interface infrastructure"
 excerpt: "Local inference runtimes have split into clear categories: desktop tools for prototyping, production servers for concurrent throughput, and core engines for edge hardware. Here is how to choose between them."
 references:
@@ -57,7 +57,7 @@ Underneath higher-level developer tools sit specialized execution engines optimi
 
 The architectural significance of llama.cpp is its hardware portability. The same GGUF model file can run on an Intel CPU, an AMD GPU, an NVIDIA GPU, or an Apple Silicon Mac, with the runtime automatically selecting the best available backend. This portability is what makes local AI deployment practical across heterogeneous hardware environments. A team with a mix of Windows workstations, Linux servers, and Mac laptops can use the same model files across all of them.
 
-![A diagram showing the layering of inference tools from core engine to desktop GUI to production server](https://picsum.photos/seed/dit-runtime-stack/1400/800)
+![A diagram showing the layering of inference tools from core engine to desktop GUI to production server](/images/blog/2026-inference-runtimes-local-ai-tooling-maturity/fig-1.png)
 
 For Apple hardware, Apple's open-source MLX framework maximizes unified memory bandwidth, allowing 32 GB to 128 GB Mac workstations to execute quantized weights without discrete GPU overhead. The MLX framework exploits the unified memory architecture of Apple Silicon, where the CPU and GPU share a single memory pool with high bandwidth (up to 800 GB/s on top-tier configurations). This eliminates the data transfer bottleneck that occurs in discrete GPU setups where model weights must be copied across the PCIe bus.
 

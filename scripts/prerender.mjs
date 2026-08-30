@@ -124,7 +124,7 @@ function buildHtml({ title, description, path, type = 'website', image = SITE_DE
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', 'G-EQ0LZQGJNF');
+      gtag('config', 'G-EQ0LZQGJNF', { send_page_view: false });
     </script>
   </head>
   <body>

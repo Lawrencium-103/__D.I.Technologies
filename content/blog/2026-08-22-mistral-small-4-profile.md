@@ -1,12 +1,12 @@
 ---
 title: "Mistral Small 4 & Medium 3.5: EU AI"
 slug: "mistral-small-4-medium-3-5-profile"
-date: "2025-11-15"
+date: "2026-08-22"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "9 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-mistral/1600/900"
+cover: "https://dintechnologies.com/images/blog/mistral-small-4-medium-3-5-profile/cover.png"
 coverAlt: "An abstract diagram of two efficient European-language models with a data-residency shield and a compliance marker"
 excerpt: "Mistral Small 4 and Medium 3.5 are the efficient, Apache-leaning open models from Europe. This post covers what they are, why they fit EU data-residency requirements, and what they take to run."
 references:

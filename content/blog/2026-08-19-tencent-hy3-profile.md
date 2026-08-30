@@ -1,12 +1,12 @@
 ---
 title: "Tencent Hy3: open model worth evaluating"
 slug: "tencent-hy3-profile"
-date: "2026-06-25"
+date: "2026-08-19"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "8 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-hy3/1600/900"
+cover: "https://dintechnologies.com/images/blog/tencent-hy3-profile/cover.png"
 coverAlt: "An abstract diagram of an expert-routed language model with a mid-length context band"
 excerpt: "Tencent Hy3 is the mid-tier open-weight model that keeps appearing on 2026 leaderboards. Here is what it is, what it needs, and what to check in its license before you adopt it."
 references:

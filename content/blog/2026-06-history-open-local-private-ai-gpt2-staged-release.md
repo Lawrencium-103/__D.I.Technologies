@@ -1,12 +1,12 @@
 ---
 title: "GPT-2 and the first staged AI release"
 slug: "history-open-local-private-ai-gpt2-staged-release"
-date: 2025-12-15
+date: "2026-07-19"
 author: Lawrence Oladeji
 category: "History"
 readingTime: "12 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-neural-network/1600/900"
+cover: "https://dintechnologies.com/images/blog/history-open-local-private-ai-gpt2-staged-release/cover.png"
 coverAlt: "A visualization of a neural network architecture with glowing nodes representing AI model parameters"
 excerpt: "How OpenAI's 2019 decision to withhold GPT-2 turned model release from an engineering afterthought into a primary policy debate."
 ---
@@ -25,7 +25,7 @@ In February 2019, OpenAI announced the creation of a large transformer-based lan
 
 The lab cited concerns about malicious applications. They specifically pointed to the risk of generating deceptive news, impersonating others, and automating abuse or spam (P1). Instead of releasing the 1.5 billion parameter model, OpenAI released a much smaller version containing 117 million parameters. They framed this as an experiment in responsible disclosure. They wanted to give the community time to build detection tools and discuss the societal implications of synthetic text before the full model was public.
 
-![A terminal screen displaying Python code for loading AI model weights with a red access denied warning](https://picsum.photos/seed/dit-gpt2-access-denied/1400/800)
+![A terminal screen displaying Python code for loading AI model weights with a red access denied warning](/images/blog/history-open-local-private-ai-gpt2-staged-release/fig-1.png)
 
 This decision immediately sparked controversy. Some researchers praised the caution. Others criticized the move as a marketing tactic designed to hype the model while avoiding the standard scientific practice of releasing work for peer review and replication. Regardless of the motivation, the announcement established a new norm. A lab could unilaterally decide that the public was not responsible enough to see the weights of a model built on public data and public research.
 
@@ -61,7 +61,7 @@ In 2023, Solaiman published "The Gradient of Generative AI Release" at the FAccT
 
 Solaiman's work gave the industry a precise vocabulary. It allowed researchers to distinguish between fully open models, gated API access, and staged release structures. The paper systematically evaluated the societal impacts and security considerations of each tier. By mapping out the exact levels of access a lab can provide, the research provided a foundation for modern release frameworks. The six-level release gradient that underpins structures like the OMSF ladder traces its direct lineage to this academic effort to make sense of the GPT-2 experiment.
 
-![A schematic diagram comparing closed API cloud access versus local open-source AI model deployment on hardware](https://picsum.photos/seed/dit-api-vs-local/1400/800)
+![A schematic diagram comparing closed API cloud access versus local open-source AI model deployment on hardware](/images/blog/history-open-local-private-ai-gpt2-staged-release/fig-2.png)
 
 ## Implications for local and private AI
 

@@ -1,12 +1,12 @@
 ---
 title: "MiniMax M3: 1M-context open AI"
 slug: "minimax-m3-profile"
-date: "2026-06-20"
+date: "2026-08-19"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "9 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-minimax-m3/1600/900"
+cover: "https://dintechnologies.com/images/blog/minimax-m3-profile/cover.png"
 coverAlt: "An abstract diagram of a mid-size expert-routed model with a long-context band and multimodal input paths"
 excerpt: "MiniMax M3 is a 428B open-weight MoE with a 1M context and multimodal capability, competitive on generalist leaderboards. This is the practical guide to what it is and whether it fits your stack."
 references:

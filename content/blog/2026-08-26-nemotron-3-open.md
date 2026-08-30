@@ -1,12 +1,12 @@
 ---
 title: "NVIDIA Nemotron 3: CUDA-first open AI"
 slug: "nemotron-3-profile"
-date: "2025-10-15"
+date: "2026-08-26"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "8 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-nemotron3/1600/900"
+cover: "https://dintechnologies.com/images/blog/nemotron-3-profile/cover.png"
 coverAlt: "An abstract diagram of a large expert-routed model optimized for a CUDA GPU stack with a long-context band"
 excerpt: "Nemotron 3 Ultra and Super are NVIDIA's open-weight CUDA-first models: around 550B and smaller, with long context and heavy NVIDIA optimizations. This post covers what they are and what they take to run."
 references:

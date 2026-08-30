@@ -1,12 +1,12 @@
 ---
 title: "The 2026 open-weight model landscape"
 slug: "2026-open-weight-model-landscape-quality-gap"
-date: "2026-08-01"
+date: "2026-08-04"
 author: Lawrence Oladeji
 category: "Open Models"
 readingTime: "11 min"
 template: standard
-cover: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=80"
+cover: "https://dintechnologies.com/images/blog/2026-open-weight-model-landscape-quality-gap/cover.png"
 coverAlt: "Abstract visualization of neural network architecture parameters"
 excerpt: "An evaluation of 2026 open-weight model families including DeepSeek V4, Qwen3.6, Llama 4, and Gemma 4, analyzing Mixture-of-Experts active parameter ratios, hardware VRAM floors, and commercial license constraints."
 references:
@@ -52,7 +52,7 @@ In a Mixture-of-Experts design, only a fraction of total parameters (the active 
 
 For local workstation execution, 4-bit (Q4_K_M) quantization enables 27B to 35B class models to run within standard 16 GB to 24 GB hardware constraints. A 27B dense model at Q4_K_M occupies approximately 16 GB of VRAM, leaving headroom for key-value cache and context window storage on a 24 GB card. The 35B-A3B MoE variant at Q4_K_M occupies approximately 20 GB, which also fits within a 24 GB envelope but with less headroom for extended context.
 
-![A diagram showing the relationship between total parameters, active parameters, and VRAM requirements across different model architectures](https://picsum.photos/seed/dit-moe-vram-chart/1400/800)
+![A diagram showing the relationship between total parameters, active parameters, and VRAM requirements across different model architectures](/images/blog/2026-open-weight-model-landscape-quality-gap/fig-1.png)
 
 Larger MoE configurations like Llama 4 Scout (109B total) or DeepSeek V4-Flash (284B total) require multi-GPU setups. At Q4_K_M quantization, Scout requires approximately 64 GB of VRAM, which can be served by two 32 GB GPUs or a single 80 GB data center card. V4-Flash requires approximately 160 GB, which demands a four-GPU server configuration.
 

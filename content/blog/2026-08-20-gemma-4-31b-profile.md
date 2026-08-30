@@ -1,12 +1,12 @@
 ---
 title: "Gemma 4 31B: one-GPU open multimodal"
 slug: "gemma-4-31b-profile"
-date: "2026-04-02"
+date: "2026-08-20"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "10 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-gemma4/1600/900"
+cover: "https://dintechnologies.com/images/blog/gemma-4-31b-profile/cover.png"
 coverAlt: "An abstract diagram of a dense 31B model fitting inside the marked memory of a single high-end GPU, with text and image input shown"
 excerpt: "Gemma 4 31B is Google DeepMind's Apache 2.0 model that fits on one high-end GPU: strong code and reasoning, native multimodal, and the cleanest license in its size class. This is the full practical guide."
 references:

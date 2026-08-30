@@ -1,12 +1,12 @@
 ---
 title: "The LLaMA leak and an accidental case study in risk"
 slug: "history-open-local-private-ai-llama-leak"
-date: 2026-03-15
+date: "2026-07-19"
 author: Lawrence Oladeji
 category: "History"
 readingTime: "13 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-data-leak/1600/900"
+cover: "https://dintechnologies.com/images/blog/history-open-local-private-ai-llama-leak/cover.png"
 coverAlt: "An abstract digital representation of a broken padlock with streams of binary code flowing out into a network"
 excerpt: "How the March 2023 leak of Meta's LLaMA model provided a documented case study of what happens when AI is released without proper risk review."
 ---
@@ -31,7 +31,7 @@ Nine days after the official announcement, the restrictive access model failed c
 
 The technical reality of artificial intelligence weights makes them impossible to recall once leaked. A model weight file is just a large array of numbers. Once it is downloaded to a user's local machine, the central lab has no remote kill switch. The file does not phone home. It does not require an active internet connection to run inference. The gated access model relies entirely on legal and social pressure. Once the file is on a decentralized torrent network, legal pressure becomes practically unenforceable against individual downloaders.
 
-![A screenshot of a terminal downloading a large AI model file via a command line torrent client](https://picsum.photos/seed/dit-ai-torrent/1400/800)
+![A screenshot of a terminal downloading a large AI model file via a command line torrent client](/images/blog/history-open-local-private-ai-llama-leak/fig-1.png)
 
 The leak demonstrated a fundamental vulnerability of the gated release strategy. If you give a model to hundreds of individual researchers, the probability of a leak approaches certainty. All it takes is one researcher to share the file, intentionally or accidentally. Meta's assumption that the academic community could act as a secure distribution channel was proven false in less than two weeks.
 
@@ -63,7 +63,7 @@ For enterprise legal teams, the LLaMA leak is a cautionary tale. If you are proc
 
 The Open Model Safety Framework, or OMSF, exists to solve this problem. It provides a structured way to evaluate the risk profile of a model before it is deployed. It forces the lab to document the risk assessment, the capability evaluations, and the safety mitigations. If a vendor cannot provide documentation that meets the OMSF standard, they are operating like Meta did in February 2023. They are relying on a legal gate instead of a safety process.
 
-![A compliance checklist showing required AI risk assessment steps with several boxes left unchecked](https://picsum.photos/seed/dit-ai-compliance/1400/800)
+![A compliance checklist showing required AI risk assessment steps with several boxes left unchecked](/images/blog/history-open-local-private-ai-llama-leak/fig-2.png)
 
 When you evaluate a vendor, you need to ask specific questions. Did they red-team the model before release? Did they document the failure modes? Did they evaluate the model for capability acquisition? If the vendor points to their gated license as their primary safety mechanism, they are not doing the work. The Blumenthal letter makes it clear that regulators view this as a failure.
 

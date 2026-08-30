@@ -1,12 +1,12 @@
 ---
 title: "Mistral and the deliberate-open counter-move"
 slug: "history-open-local-private-ai-mistral-open-sovereignty"
-date: 2026-04-15
+date: "2026-07-19"
 author: Lawrence Oladeji
 category: "History"
 readingTime: "14 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-mistral-sovereignty/1600/900"
+cover: "https://dintechnologies.com/images/blog/history-open-local-private-ai-mistral-open-sovereignty/cover.png"
 coverAlt: "An abstract visualization of a digital map of Europe highlighting interconnected AI compute nodes"
 excerpt: "How Mistral AI used a permissive Apache 2.0 release to make a strategic argument for European AI sovereignty, setting a precedent for global public sector procurement."
 ---
@@ -41,7 +41,7 @@ The decision to use Apache 2.0 was not just a technical choice. It was a soverei
 
 When a European enterprise uses Mistral 7B under Apache 2.0, they own the model. They can download the weights, host them on local European servers, and run inference without an internet connection. They can modify the model to suit their specific linguistic or cultural context. They are not dependent on a foreign vendor. This is the core of the AI sovereignty argument. You cannot be sovereign if your intelligence infrastructure is rented. You can only be sovereign if you own the weights.
 
-![A diagram showing a national border with data flowing locally inside it, contrasted with data crossing the border to a foreign API server](https://picsum.photos/seed/dit-ai-sovereignty-map/1400/800)
+![A diagram showing a national border with data flowing locally inside it, contrasted with data crossing the border to a foreign API server](/images/blog/history-open-local-private-ai-mistral-open-sovereignty/fig-1.png)
 
 Mistral's founders understood that building a European ecosystem required giving developers the raw materials to build local applications. By choosing Apache 2.0, they removed the legal friction that slows down enterprise adoption. A French bank or a German hospital can download Mistral 7B, run it internally, and be confident that their legal team has already cleared the license. This accelerates the development of local AI applications and builds a native European AI ecosystem that does not rely on American APIs.
 

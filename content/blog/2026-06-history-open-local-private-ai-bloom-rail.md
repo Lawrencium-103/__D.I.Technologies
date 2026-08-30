@@ -1,12 +1,12 @@
 ---
 title: "Community-built giants: BLOOM and the RAIL license"
 slug: "history-open-local-private-ai-bloom-rail"
-date: 2026-01-15
+date: "2026-07-19"
 author: Lawrence Oladeji
 category: "History"
 readingTime: "11 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-bloom-network/1600/900"
+cover: "https://dintechnologies.com/images/blog/history-open-local-private-ai-bloom-rail/cover.png"
 coverAlt: "An abstract visualization of interconnected global nodes branching out into multiple language paths representing a multilingual AI model"
 excerpt: "How the BigScience workshop proved massive open models could be built by communities, while introducing the complications of use-based licensing."
 ---
@@ -33,7 +33,7 @@ On July 12, 2022, the BigScience workshop released BLOOM. The model contained 17
 
 The inclusion of forty-six languages was a deliberate choice to address the linguistic imbalance in artificial intelligence. African languages like Swahili, Yoruba, and Amharic were included alongside European and Asian languages. This was a milestone for local AI development in non-English speaking regions. It meant that researchers and developers in Africa could access a foundation model that had some understanding of their local context without having to train one from scratch.
 
-![A terminal screen displaying Python code for loading multilingual AI model weights and checking language tokens](https://picsum.photos/seed/dit-bloom-terminal/1400/800)
+![A terminal screen displaying Python code for loading multilingual AI model weights and checking language tokens](/images/blog/history-open-local-private-ai-bloom-rail/fig-1.png)
 
 The weights were released publicly on Hugging Face. Anyone with an internet connection could download them. This was the realization of the open model dream. A massive, capable model built by the community, for the community, available to anyone. However, the technical achievement was quickly overshadowed by the legal framework attached to the download.
 
@@ -71,7 +71,7 @@ The first pillar was distributed organization. The working groups allowed expert
 
 These pillars are replicable. A grant-funded consortium today can use the BigScience model to build specialized models for specific domains. They can organize working groups, secure public compute, and release the weights openly. The remaining challenge is the license.
 
-![A schematic diagram showing a multi-institution AI research network collaborating on a single large language model architecture](https://picsum.photos/seed/dit-bloom-consortium/1400/800)
+![A schematic diagram showing a multi-institution AI research network collaborating on a single large language model architecture](/images/blog/history-open-local-private-ai-bloom-rail/fig-2.png)
 
 ## How OMSF grades this problem
 

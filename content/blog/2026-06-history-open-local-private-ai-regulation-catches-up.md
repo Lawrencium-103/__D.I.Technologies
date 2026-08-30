@@ -1,12 +1,12 @@
 ---
 title: "Regulation catches up: defining open source AI"
 slug: "history-open-local-private-ai-regulation-catches-up"
-date: 2026-07-01
+date: "2026-07-19"
 author: Lawrence Oladeji
 category: "History"
 readingTime: "14 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-ai-regulation-compliance/1600/900"
+cover: "https://dintechnologies.com/images/blog/history-open-local-private-ai-regulation-catches-up/cover.png"
 coverAlt: "An abstract representation of a legal scale balancing a glowing neural network against a stack of regulatory documents"
 excerpt: "How the 2024 EU AI Act and the Open Source AI Definition forced legal teams to treat open model licenses as serious compliance risks."
 ---
@@ -43,7 +43,7 @@ The definition is strict. It requires that an open source AI system be available
 
 This definition sets a high bar. It explicitly rejects the idea that releasing only model weights under a permissive license constitutes open source. The OSI argues that without the training data and code, the community cannot independently audit, replicate, or improve the model. The model remains a black box. The v1.0 definition provides the exact standard that the EU AI Act lacked.
 
-![A diagram showing the required components of an open source AI system including data, code, and weights](https://picsum.photos/seed/dit-ai-osi-components/1400/800)
+![A diagram showing the required components of an open source AI system including data, code, and weights](/images/blog/history-open-local-private-ai-regulation-catches-up/fig-1.png)
 
 ## The compliance burden for enterprise legal teams
 

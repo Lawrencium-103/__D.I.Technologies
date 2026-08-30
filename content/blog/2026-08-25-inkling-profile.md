@@ -1,12 +1,12 @@
 ---
 title: "Inkling: Thinking Machines' open 1M model"
 slug: "thinking-machines-inkling-profile"
-date: "2026-07-15"
+date: "2026-08-25"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "9 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-inkling/1600/900"
+cover: "https://dintechnologies.com/images/blog/thinking-machines-inkling-profile/cover.png"
 coverAlt: "An abstract diagram of a large expert-routed model with a 1M-token context band and a research-lab marking"
 excerpt: "Inkling from Thinking Machines Lab is the ~975B open-weight entrant with a 1M context: competitive mid-to-high ranks, built for long-context research and agents. Here is what it is and what it takes to run."
 references:

@@ -1,12 +1,12 @@
 ---
 title: "Llama 4 Maverick: Meta's open flagship"
 slug: "llama-4-maverick-profile"
-date: "2025-04-05"
+date: "2026-08-22"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "10 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-llama4-maverick/1600/900"
+cover: "https://dintechnologies.com/images/blog/llama-4-maverick-profile/cover.png"
 coverAlt: "An abstract diagram of a 400B expert-routed multimodal model with a 1M context band and a large tooling ecosystem ring"
 excerpt: "Llama 4 Maverick pairs a 400B open-weight MoE with a 1M context and native multimodality, inside Meta's deep tooling ecosystem. Here is what it is, what its license allows, and what it takes to run it."
 references:

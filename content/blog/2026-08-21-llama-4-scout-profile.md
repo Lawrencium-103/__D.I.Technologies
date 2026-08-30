@@ -1,12 +1,12 @@
 ---
 title: "Llama 4 Scout: open model, 10M context"
 slug: "llama-4-scout-profile"
-date: "2025-04-05"
+date: "2026-08-21"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "10 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-llama4-scout/1600/900"
+cover: "https://dintechnologies.com/images/blog/llama-4-scout-profile/cover.png"
 coverAlt: "An abstract diagram of a long-context multimodal model holding a huge document band, labeled 10M tokens"
 excerpt: "Llama 4 Scout has the largest open context window at 10M tokens. Here is what the model is, what makes its context special, what the community license allows, and what it takes to run it."
 references:

@@ -6,7 +6,7 @@ author: Lawrence Oladeji
 category: "Edge AI"
 readingTime: "11 min"
 template: standard
-cover: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
+cover: "https://dintechnologies.com/images/blog/2026-edge-on-device-ai-ai-pcs/cover.png"
 coverAlt: "A close-up of a computer processor chip with circuit traces, representing on-device AI compute"
 excerpt: "About half of new PCs shipping in 2026 are projected to be AI PCs with dedicated neural processing units. Here is what the TOPS numbers mean, which small models run on them, and why on-device AI changes the privacy and offline story."
 references:
@@ -36,7 +36,7 @@ The defining metric is TOPS, which stands for trillions of operations per second
 
 The 2026 leaders go well past the floor. The Qualcomm Snapdragon X2 Elite reaches roughly 80 to 85 TOPS, AMD Ryzen AI 400 sits around 60, and the Intel Core Ultra series lands at 48 to 50 (P1). These numbers matter because they determine which model class the device can run at interactive speed. A 40 TOPS NPU comfortably runs a 1 to 3B parameter model. An 80 TOPS NPU can push toward larger small language models and lighter multimodal workloads.
 
-![A chart comparing the TOPS ratings of the 2026 leading AI PC NPUs, from the 40 TOPS Copilot+ floor up to the 85 TOPS Snapdragon X2 Elite](https://picsum.photos/seed/dit-ai-pc-tops/1400/800)
+![A chart comparing the TOPS ratings of the 2026 leading AI PC NPUs, from the 40 TOPS Copilot+ floor up to the 85 TOPS Snapdragon X2 Elite](/images/blog/2026-edge-on-device-ai-ai-pcs/fig-1.png)
 
 ## The small models that run on-device
 

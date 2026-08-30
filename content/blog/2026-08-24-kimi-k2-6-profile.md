@@ -1,12 +1,12 @@
 ---
 title: "Kimi K2.6: the open coding specialist"
 slug: "kimi-k2-6-profile"
-date: "2025-11-07"
+date: "2026-08-24"
 author: Lawrence Oladeji
 category: "Model Profiles"
 readingTime: "8 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-kimi-k26/1600/900"
+cover: "https://dintechnologies.com/images/blog/kimi-k2-6-profile/cover.png"
 coverAlt: "An abstract diagram of a 1T expert-routed coding model streaming repository files and terminal output"
 excerpt: "Kimi K2.6 is Moonshot's previous-generation 1T open model and the proven coding and agentic specialist that still ships in production. This is the practical guide to what it is and when to choose it."
 references:

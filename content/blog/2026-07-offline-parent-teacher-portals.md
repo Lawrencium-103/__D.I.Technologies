@@ -1,12 +1,12 @@
 ---
 title: "Offline-first parent-teacher portals, explained"
 slug: "offline-first-parent-teacher-portals"
-date: 2026-07-15
+date: "2026-07-17"
 author: Lawrence Oladeji
 category: "Engineering"
 readingTime: "9 min"
 template: standard
-cover: "https://picsum.photos/seed/dit-portal-offline/1600/900"
+cover: "https://dintechnologies.com/images/blog/offline-first-parent-teacher-portals/cover.png"
 coverAlt: "A school building with a small on-site server and a parent checking a phone over local wifi"
 excerpt: "Most parent-teacher portals go dark the moment the connection drops. For families who rely on them most, offline-first design is the difference between a tool that works and one that does not."
 ---
@@ -48,7 +48,7 @@ For parents who do not own a smartphone or cannot afford data, the same local re
 
 A local model can sit on that same server to draft translations, summarise a term of notes for a parent, or turn a teacher's bullet points into a plain-language message. The model runs on the school's hardware, so no child's record leaves the building to be processed (P2: mature local runtimes such as llama.cpp and Ollama are documented for this; verify on your own hardware before you rely on a specific model).
 
-![A small school server connected only to the local network, with phones and a kiosk reaching it over wifi](https://picsum.photos/seed/dit-portal-local/1400/800)
+![A small school server connected only to the local network, with phones and a kiosk reaching it over wifi](/images/blog/offline-first-parent-teacher-portals/fig-1.png)
 
 > [callout: The sensible rule] Build the offline path first. If the portal needs the internet to be useful, it was not built for the families who need it most.
 
