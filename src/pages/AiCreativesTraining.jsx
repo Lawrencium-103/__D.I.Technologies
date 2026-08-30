@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react'
+import { ArrowRight, CheckCircle2, ChevronDown, Download, FileText, Presentation } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import { useSEO, SITE_NAME } from '../lib/seo.js'
 
@@ -214,6 +214,62 @@ function AiCreativesTraining() {
               Built for NYSC corps members, freelancers and young professionals
             </p>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* COURSE MATERIALS — downloads */}
+      <section id="downloads" className="bg-ink py-16">
+        <div className="max-w-[1000px] mx-auto px-6">
+          <ScrollReveal>
+            <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.22em] text-[var(--color-amber)]">
+              Course materials
+            </span>
+            <h2 className="mt-3 mb-3 text-[var(--color-paper)] max-w-[26ch]">
+              Read the brochure. See the pitch deck.
+            </h2>
+            <p className="text-[var(--color-paper-2)] max-w-[66ch] mb-10">
+              Everything you need before applying — free to download and share with anyone planning your training
+              budget or approval.
+            </p>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {[
+              {
+                icon: <FileText size={22} />,
+                ext: 'PDF',
+                size: '8.5 MB',
+                title: 'AI Creatives Training Brochure',
+                desc: 'The full programme in one document: the 5 modules, the tools, the job simulations and what you leave with.',
+                path: '/downloads/dit-ai-creatives-training-brochure.pdf',
+              },
+              {
+                icon: <Presentation size={22} />,
+                ext: 'PPTX',
+                size: '4.1 MB',
+                title: 'AI Creatives Pitch Deck',
+                desc: 'A ready-to-present overview for schools, employers, churches and partners who want to run or fund a cohort.',
+                path: '/downloads/dit-ai-creatives-training-pitch-deck.pptx',
+              },
+            ].map((d) => (
+              <ScrollReveal key={d.path} delay={0.05}>
+                <div className="bg-[var(--color-paper)] border-0 p-7 flex flex-col h-full">
+                  <div className="flex items-center gap-4 mb-5">
+                    <span className="inline-flex items-center justify-center w-12 h-12 bg-[var(--color-ink)] text-[var(--color-amber)]">
+                      {d.icon}
+                    </span>
+                    <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.18em] text-[var(--color-ink-faint)]">
+                      {d.ext} &middot; {d.size}
+                    </span>
+                  </div>
+                  <h3 className="text-[1.1rem] text-[var(--color-ink)] mb-2">{d.title}</h3>
+                  <p className="text-[0.95rem] text-[var(--color-ink-soft)] flex-1 mb-7">{d.desc}</p>
+                  <a href={d.path} download className="btn btn-primary mt-auto">
+                    Download {d.ext} <Download size={18} />
+                  </a>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
