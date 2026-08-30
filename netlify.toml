@@ -73,6 +73,10 @@
   from = "/contact"
   to = "/contact.html"
   status = 200
+[[redirects]]
+  from = "/ai-creatives-training-nigeria"
+  to = "/ai-creatives-training-nigeria.html"
+  status = 200
 
 # Prerendered blog posts (SEO/GEO: serve real HTML with per-post meta tags)
 [[redirects]]

@@ -274,6 +274,8 @@ ${blogIndexItems}
       body: `<h1>AI Training Hub — AI skills for Nigeria</h1>
 <p>Hands-on AI training in Nigeria. Practical skills for building and deploying AI locally and offline, not just prompting public chatbots.</p>
 <p>The Hub focuses on what actually matters on the ground: running open-weight models on available hardware, evaluating which model fits a budget, and deploying offline-first systems that keep working without the internet. Courses are available for individuals and for corporate teams, from introductory sessions to deeper deployment workshops.</p>
+<h2>Flagship programme: AI Creatives Training for Nigerian Organisations</h2>
+<p>Our most popular track is the <a href="/ai-creatives-training-nigeria">AI Creatives Training for Nigerian Organisations</a> &mdash; a hands-on, portfolio-first programme where you master AI image generation, flyer and poster design, social media content packs and short AI videos by completing real client-style briefs for Nigerian brands, churches, NGOs, fintechs and startups. Built for youth, NYSC corps members and teams in <strong>Lagos, Abuja, Port Harcourt and beyond</strong>, with tools like Groq, Gemini and GPT Image 2. Every module ends with a deliverable you keep in your portfolio.</p>
 <p>Training pairs directly with our other work &mdash; graduates leave ready to use the <a href="/open-models">Leaderboard</a>, follow <a href="/framework">OMSF</a> grades, and apply the <a href="/s-sme">S-SME</a> approach in their own projects.</p>
 <p><a href="/contact">Enquire about training</a> &middot; <a href="/about">About</a> &middot; <a href="/blog">Blog</a></p>`,
     },
@@ -314,6 +316,89 @@ ${blogIndexItems}
 <p>Dara Initiative Technology (DIT) builds open models, offline-first AI and EdTech for communities where connectivity and power are uncertain. We exist because most AI is built for always-online, always-powered environments &mdash; and much of the world is not that place.</p>
 <p>Our work spans the <a href="/open-models">Open Model Leaderboard</a> and <a href="/framework">OMSF framework</a> for choosing open models honestly, <a href="/edutech">SomaBox</a> for offline tutoring in schools, the <a href="/s-sme">S-SME</a> programme for sustainable SMEs, and the <a href="/ai-hub">AI Training Hub</a> for hands-on skills. Everything we publish is documented on the <a href="/blog">blog</a>.</p>
 <p>If our mission matches what you are trying to do &mdash; a school, a ministry, a business or a funder &mdash; <a href="/contact">get in touch</a>.</p>`,
+    },
+    {
+      path: '/ai-creatives-training-nigeria',
+      title: 'AI Creatives Training for Nigerian Organisations',
+      description:
+        'Learn practical AI creatives for Nigerian organisations in Lagos, Abuja and beyond: AI images, flyers, social content and short videos with Groq, Gemini and GPT Image 2. Built for youth, corps members and teams. Apply now.',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Course',
+          name: 'AI Creatives Training for Nigerian Organisations',
+          description:
+            'Practical, portfolio-first training in AI image generation, flyer design, social media content packs and short AI videos for Nigerian brands, churches, NGOs and startups. Built for youth and NYSC corps members in Lagos, Abuja and across Nigeria.',
+          provider: { '@type': 'Organization', name: 'DIT Dara Initiative Tech', url: 'https://dintechnologies.com' },
+          courseMode: 'online',
+          inLanguage: 'en-NG',
+          offers: { '@type': 'Offer', category: 'Paid training', availability: 'https://schema.org/InStock' },
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: [
+            { '@type': 'Question', name: 'Can complete beginners learn AI creatives?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The training starts from zero: no design degree, no coding and no prior AI experience required. Every module follows the same pattern: understand the brief, follow the step-by-step workflow, deliver the work. If you can use WhatsApp and a web browser, you can finish this training.' } },
+            { '@type': 'Question', name: 'Do I need a powerful laptop?', acceptedAnswer: { '@type': 'Answer', text: 'No. The workflows are built around tools that run in the browser or on modest hardware, including options that work well on Nigerian data plans. If your laptop can run a video call, it can run this training.' } },
+            { '@type': 'Question', name: 'Is this useful for NYSC corps members?', acceptedAnswer: { '@type': 'Answer', text: 'That is exactly who it is built for. Corps members finish with a portfolio of real client-style deliverables that businesses, churches, NGOs and startups in Lagos, Abuja and beyond pay for. Many learners use it to earn freelance income during and after service.' } },
+            { '@type': 'Question', name: 'What kind of organisations need these skills in Nigeria?', acceptedAnswer: { '@type': 'Answer', text: 'Supermarkets, fintechs, churches, schools, NGOs, restaurants, real estate firms and startups need weekly content: images, flyers, Reels and social posts. Most cannot afford an agency, which is why one skilled AI creator is in demand.' } },
+            { '@type': 'Question', name: 'What will I walk away with?', acceptedAnswer: { '@type': 'Answer', text: 'A portfolio. Every module ends with a job simulation based on a realistic Nigerian business brief, and the capstone is a complete multi-platform campaign. You leave with the exact artefacts employers and clients ask to see.' } },
+            { '@type': 'Question', name: 'Which AI tools will I use?', acceptedAnswer: { '@type': 'Answer', text: 'Groq for fast text and idea generation, Gemini for multimodal planning, GPT Image 2 for high-quality visuals, Google Flow for generative video, CapCut for editing and Canva AI for layout and resizing. We teach workflows, not just buttons.' } },
+          ],
+        },
+      ],
+      body: `<h1>AI Creatives Training for Nigerian Organisations</h1>
+<p>Create the professional images, flyers, videos and social posts that brands, churches, NGOs, fintechs and startups across Nigeria actually pay for &mdash; no design degree needed. A hands-on programme from <a href="/">DIT Dara Initiative Tech</a> for youth, NYSC corps members and teams in <strong>Lagos, Abuja, Port Harcourt and beyond</strong>.</p>
+<h2>Why learn AI creatives in Nigeria?</h2>
+<p>Organisations across Nigeria need professional content every week but cannot always afford big agencies. One skilled AI creator can deliver what used to take a whole team &mdash; which is why freelance, remote and in-house demand keeps growing.</p>
+<h2>What you will master</h2>
+<ul>
+<li><a href="#module-images">Module 1: AI image generation for Nigerian brands</a></li>
+<li><a href="#module-flyers">Module 2: Flyer &amp; poster design with AI</a></li>
+<li><a href="#module-social">Module 3: Social media content packs &amp; scheduling</a></li>
+<li><a href="#module-video">Module 4: Short AI videos &amp; Reels</a></li>
+<li><a href="#module-campaign">Module 5: Full campaign pack (capstone)</a></li>
+</ul>
+<section id="module-images">
+<h2>Module 1: AI image generation for Nigerian brands</h2>
+<p>Lifestyle product shots, event images and brand visuals that look local, warm and premium. Client simulation: <strong>FreshMart Nigeria</strong> (supermarket chain in Ikeja, Lekki and Abuja) &mdash; the &ldquo;Farm Fresh Sundays&rdquo; campaign pack.</p>
+</section>
+<section id="module-flyers">
+<h2>Module 2: Flyer &amp; poster design with AI</h2>
+<p>Event, church and campaign flyers in every size &mdash; Instagram, WhatsApp Status and printable A4/A5. Client simulation: <strong>Dominion City Church, Port Harcourt</strong> &mdash; Youth Career &amp; Entrepreneurship Summit 2026.</p>
+</section>
+<section id="module-social">
+<h2>Module 3: Social media content packs &amp; scheduling</h2>
+<p>Carousels, single posts, story sets and a full week of on-brand content with captions and a posting schedule. Client simulation: <strong>PayLater NG</strong> (Lagos fintech for market women) &mdash; the &ldquo;Market Queen&rdquo; loan campaign.</p>
+</section>
+<section id="module-video">
+<h2>Module 4: Short AI videos &amp; Reels</h2>
+<p>15&ndash;45 second promotional videos: script, AI clips, voice-over and editing in vertical format. Client simulation: <strong>MamaPut Express</strong> (Lagos &amp; Abuja food chain) &mdash; the &ldquo;Weekend Family Combo&rdquo; Reel.</p>
+</section>
+<section id="module-campaign">
+<h2>Module 5: Full campaign pack (capstone)</h2>
+<p>A complete multi-platform campaign: main flyer, Instagram pack, WhatsApp Status set, short video and a 10-day posting schedule. Client simulation: <strong>EduBridge Foundation, Abuja</strong> &mdash; the 2026 Girls Scholarship Programme launch.</p>
+</section>
+<h2>Tools you will work with</h2>
+<p>Practical workflows using <strong>Groq</strong> for fast text and idea generation, <strong>Gemini</strong> for multimodal planning, <strong>GPT Image 2</strong> and advanced image models for high-quality visuals, plus accessible video and design tools that work well on Nigerian networks and budgets.</p>
+<h2>How the training works</h2>
+<p>Short video lessons and tool walkthroughs, then a real client-style brief in every module. You deliver the actual work step by step &mdash; and keep the portfolio pieces to show employers, clients and your NYSC PPA.</p>
+<p>Ready to start? <a href="/ai-creatives-training-nigeria#apply">Apply for the cohort below</a> &middot; <a href="/ai-hub">See the full AI Training Hub</a> &middot; <a href="/contact">Contact us</a></p>
+<h2>Apply for the AI Creatives Training cohort</h2>
+<form id="apply" name="aitraining" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="aitraining" />
+  <p><label>Full name <input type="text" name="name" required /></label></p>
+  <p><label>Email <input type="email" name="email" required /></label></p>
+  <p><label>WhatsApp number <input type="tel" name="whatsapp" required /></label></p>
+  <p><label>Are you currently a corps member?
+    <select name="corps"><option></option><option>Yes</option><option>No</option><option>Soon</option></select>
+  </label></p>
+  <p><label>Which skill interests you most?
+    <select name="track"><option>AI Image Generation</option><option>Flyer &amp; Poster Design</option><option>Social Media Content Packs</option><option>Short AI Videos &amp; Reels</option><option>Full Campaigns (Capstone)</option><option>Everything (all modules)</option></select>
+  </label></p>
+  <p><label>Why do you want to learn this? <textarea name="why" required></textarea></label></p>
+  <p><button type="submit">Apply now</button></p>
+</form>`,
     },
     {
       path: '/contact',
@@ -357,7 +442,7 @@ ${blogIndexItems}
         headAssets: assetLinks,
         entryScripts: scriptTags,
         body: page.path === '/contact' ? `${page.body || ''}\n${contactFormHtml}` : (page.body || ''),
-        jsonLd: [
+        jsonLd: page.jsonLd || [
           {
             '@context': 'https://schema.org',
             '@type': 'WebPage',

@@ -17,6 +17,7 @@ const SsmeToolkit = lazy(() => import('./pages/SsmeToolkit'))
 const ReportBuilder = lazy(() => import('./pages/ReportBuilder'))
 const ReportsLibrary = lazy(() => import('./pages/ReportsLibrary'))
 const OpenModels = lazy(() => import('./pages/OpenModels'))
+const AiCreativesTraining = lazy(() => import('./pages/AiCreativesTraining'))
 
 import DITLoader from './components/DITLoader'
 
@@ -58,6 +59,7 @@ export default function App() {
             <Route path="/report" element={<ReportBuilder />} />
             <Route path="/reports" element={<ReportsLibrary />} />
             <Route path="/open-models" element={<OpenModels />} />
+            <Route path="/ai-creatives-training-nigeria" element={<AiCreativesTraining />} />
             <Route path="/contact" element={<Contact />} />
           </Route>
         </Routes>

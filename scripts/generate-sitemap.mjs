@@ -16,6 +16,7 @@ const staticPages = [
   { path: '/about', priority: 0.7, changefreq: 'monthly' },
   { path: '/edutech', priority: 0.8, changefreq: 'monthly' },
   { path: '/ai-hub', priority: 0.8, changefreq: 'monthly' },
+  { path: '/ai-creatives-training-nigeria', priority: 0.9, changefreq: 'weekly' },
   { path: '/s-sme', priority: 0.7, changefreq: 'monthly' },
   { path: '/s-sme/evidence', priority: 0.5, changefreq: 'monthly' },
   { path: '/s-sme/toolkit', priority: 0.6, changefreq: 'monthly' },

@@ -68,8 +68,8 @@ export default function AIHub() {
         </div>
       </section>
 
-      {/* 9 TRACKS */}
-      <section className="bg-cream-2 py-24" id="tracks">
+      {/* TRAINING TRACKS */}
+      <section className="bg-paper py-24">
         <div className="max-w-[1000px] mx-auto px-6">
           <ScrollReveal>
             <span className="eyebrow">Training tracks</span>
@@ -137,6 +137,30 @@ export default function AIHub() {
                           <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.18em] text-[var(--color-burnt)] block mt-7">For</span>
                           <p className="mt-2 text-[0.95rem] text-[var(--color-ink-soft)]">{track.audience}</p>
 
+                          {(() => {
+                            const target = {
+                              creativity: 'module-flyers',
+                              'corporate-image': 'module-images',
+                              video: 'module-videos',
+                              voice: 'module-videos',
+                              writing: 'module-social',
+                              strategy: 'module-campaigns',
+                            }[track.id]
+                            return target ? (
+                              <div className="mt-7 mb-4">
+                                <p className="text-[0.9rem] text-[var(--color-ink-soft)] mb-3 max-w-[52ch]">
+                                  This track maps to a full project module in our AI Creatives programme for Nigerian
+                                  organisations — real client briefs, real deliverables, a portfolio at the end.
+                                </p>
+                                <Link
+                                  to={`/ai-creatives-training-nigeria#${target}`}
+                                  className="inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.78rem] uppercase tracking-[0.14em] text-[var(--color-burnt)] hover:underline"
+                                >
+                                  See the matching module <ArrowRight size={14} />
+                                </Link>
+                              </div>
+                            ) : null
+                          })()}
                           <Link to="/contact" className="btn btn-primary !py-2.5 !px-5 !text-sm mt-7">Book this track <ArrowRight size={16} /></Link>
                         </div>
                       </div>

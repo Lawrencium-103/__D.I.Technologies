@@ -16,6 +16,7 @@ const pages = [
   ['Research', '/research', 'Academic and industry sources behind OMSF'],
   ['EduTech / SomaBox', '/edutech', 'Offline AI tutor for schools, zero internet required'],
   ['AI Training Hub', '/ai-hub', 'Hands-on AI training in Nigeria'],
+  ['AI Creatives Training', '/ai-creatives-training-nigeria', 'Portfolio-first AI creatives training for Nigerian organisations: images, flyers, social packs and Reels for Lagos, Abuja and nationwide clients'],
   ['S-SME', '/s-sme', 'Sustainable SME services: green energy, offline inventory, compliance'],
   ['S-SME Toolkit', '/s-sme/toolkit', '117-item scored toolkit with fillable PDFs'],
   ['S-SME Evidence', '/s-sme/evidence', 'Published sources behind the S-SME numbers'],
