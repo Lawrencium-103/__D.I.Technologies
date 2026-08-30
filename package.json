@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "predev": "node scripts/build-posts.mjs",
-    "build": "node scripts/build-posts.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-llms.mjs && node scripts/generate-covers.mjs && vite build && node scripts/prerender.mjs",
+    "build": "node scripts/build-posts.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-llms.mjs && node scripts/generate-covers.mjs && vite build && node scripts/prerender.mjs && node scripts/ssr-smoke.mjs",
     "lint": "oxlint",
     "hf:catalog": "node scripts/build-hf-catalog.mjs",
     "preview": "vite preview",

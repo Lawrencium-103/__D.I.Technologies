@@ -397,7 +397,7 @@ function AiCreativesTraining() {
             <h2 className="mt-3 mb-10 max-w-[30ch]">Everything people ask before they apply</h2>
           </ScrollReveal>
           <div className="space-y-4">
-            {FAQ_ITEMS.map((f, i) => (
+            {FAQS.map((f, i) => (
               <ScrollReveal key={i} delay={i * 0.05}>
                 <details className="group border-2 border-[var(--color-ink)] bg-[var(--color-paper-2)] p-5">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[1.05rem] text-[var(--color-ink)]">
