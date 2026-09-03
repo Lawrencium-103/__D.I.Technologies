@@ -143,11 +143,22 @@ export default function Research() {
           <h1 className="text-[2.6rem] sm:text-[3.6rem] leading-[1.04] font-[var(--font-display)] font-bold max-w-[18ch] mb-6">
             The Research Behind OMSF
           </h1>
-          <p className="text-[1.2rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[64ch] mb-8">
+          <p className="text-[1.2rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[64ch] mb-6">
             OMSF is a buyer-side taxonomy for evaluating AI model openness — published on Zenodo, graded against
             821 open-weight LLMs, and built on top of peer-reviewed work by Solaiman, White et al., and
             Liesenfeld &amp; Dingemanse. This page names those sources directly and says where our own contribution begins.
           </p>
+
+          <a
+            href="#eoi"
+            className="btn btn-primary no-underline inline-flex items-center gap-2 mb-10"
+            onClick={(e) => {
+              e.preventDefault()
+              document.getElementById('eoi')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+          >
+            Expression of Interest — Next Study
+          </a>
 
           <div className="mb-12">
             <OmsfStats />
