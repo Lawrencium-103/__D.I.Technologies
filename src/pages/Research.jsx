@@ -151,7 +151,7 @@ export default function Research() {
 
           <a
             href="#eoi"
-            className="btn btn-primary no-underline inline-flex items-center gap-2 mb-10"
+            className="btn btn-primary no-underline inline-flex items-center gap-2 mb-10 whitespace-nowrap"
             onClick={(e) => {
               e.preventDefault()
               document.getElementById('eoi')?.scrollIntoView({ behavior: 'smooth' })
@@ -165,12 +165,12 @@ export default function Research() {
           </div>
 
           {/* Academic Integrity & Research Roadmap */}
-          <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-7 sm:p-8 mb-14 shadow-[6px_6px_0px_#1A1712]">
-            <div className="flex items-center justify-between gap-3 mb-4 border-b border-[var(--color-line)] pb-3">
-              <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.16em] text-[var(--color-burnt)] font-bold">
+          <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-5 sm:p-7 sm:p-8 mb-14 shadow-[6px_6px_0px_#1A1712]">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-4 border-b border-[var(--color-line)] pb-3">
+              <span className="font-[var(--font-mono)] text-[0.65rem] sm:text-[0.72rem] uppercase tracking-[0.16em] text-[var(--color-burnt)] font-bold">
                 [ ACADEMIC POSITION &amp; RESEARCH ROADMAP ]
               </span>
-              <span className="font-[var(--font-mono)] text-[0.68rem] uppercase tracking-[0.12em] bg-[var(--color-paper)] border border-[var(--color-ink)] px-2 py-0.5">
+              <span className="font-[var(--font-mono)] text-[0.6rem] sm:text-[0.68rem] uppercase tracking-[0.12em] bg-[var(--color-paper)] border border-[var(--color-ink)] px-2 py-0.5">
                 Published Preprint
               </span>
             </div>
@@ -220,9 +220,9 @@ export default function Research() {
           </p>
           <div className="flex flex-col gap-5">
             {academic.map((c) => (
-              <article key={c.n} className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-6 flex gap-5">
+              <article key={c.n} className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-5 sm:p-6 flex gap-3 sm:gap-5">
                 <div className="shrink-0">
-                  <span className="inline-flex items-center justify-center w-9 h-9 bg-[var(--color-ink)] text-[var(--color-paper)] font-[var(--font-mono)] text-sm">
+                  <span className="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 bg-[var(--color-ink)] text-[var(--color-paper)] font-[var(--font-mono)] text-xs sm:text-sm">
                     [{c.n}]
                   </span>
                 </div>
@@ -230,8 +230,8 @@ export default function Research() {
                   <p className="font-[var(--font-mono)] text-[0.74rem] uppercase tracking-[0.12em] text-[var(--color-burnt)]">
                     {c.authors} · {c.year}
                   </p>
-                  <h3 className="font-[var(--font-display)] font-semibold text-[1.2rem] leading-snug mt-1">
-                    “{c.title}”
+                  <h3 className="font-[var(--font-display)] font-semibold text-[1.05rem] sm:text-[1.2rem] leading-snug mt-1">
+                    "{c.title}"
                   </h3>
                   <p className="font-[var(--font-mono)] text-[0.78rem] text-[var(--color-ink-faint)] mt-1 mb-3">
                     {c.venue}
@@ -262,14 +262,14 @@ export default function Research() {
           </p>
           <div className="flex flex-col gap-5">
             {industry.map((c) => (
-              <article key={c.n} className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-6 flex gap-5">
+              <article key={c.n} className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-5 sm:p-6 flex gap-3 sm:gap-5">
                 <div className="shrink-0">
-                  <span className="inline-flex items-center justify-center w-9 h-9 bg-[var(--color-ink)] text-[var(--color-paper)] font-[var(--font-mono)] text-sm">
+                  <span className="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 bg-[var(--color-ink)] text-[var(--color-paper)] font-[var(--font-mono)] text-xs sm:text-sm">
                     [{c.n}]
                   </span>
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-[var(--font-display)] font-semibold text-[1.15rem] leading-snug">
+                  <h3 className="font-[var(--font-display)] font-semibold text-[1.05rem] sm:text-[1.15rem] leading-snug">
                     {c.name}
                   </h3>
                   <p className="font-[var(--font-mono)] text-[0.78rem] text-[var(--color-ink-faint)] mt-1 mb-3">
