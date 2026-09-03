@@ -161,7 +161,7 @@ export default function About() {
             <ScrollReveal delay={0.1}>
               <div className="bg-[var(--color-paper)] border-2 border-[var(--color-ink)] p-8 h-full">
                 <h3 className="text-[1.4rem] mb-3 text-[var(--color-ink)]">Three-year target</h3>
-                <p className="text-[0.98rem]">Offline AI in 100+ schools across Oyo, Osun and Ogun, S-SME toolkits deployed with small businesses, verifiable outcome data across sectors and a published impact report.</p>
+                <p className="text-[0.98rem] text-[var(--color-ink-soft)]">Offline AI in 100+ schools across Oyo, Osun and Ogun, S-SME toolkits deployed with small businesses, verifiable outcome data across sectors and a published impact report.</p>
               </div>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
@@ -191,9 +191,9 @@ export default function About() {
               },
               {
                 name: 'Esther Opeyemi Adekanmbi',
-                role: 'Co-Founder & Teacher',
+                role: 'Co-Founder & Educator',
                 img: '/Esther.jpeg',
-                bio: 'A certified Nigerian teacher, Esther graduated from Olabisi Onabanjo University with a degree in Child Education and brings over four years of classroom experience. She knows overcrowded, under-resourced classrooms first-hand, and makes sure every DIT learning product serves a teacher instead of adding to their load. Her classroom authority gives her the final say to veto any feature that complicates a teacher\'s day.',
+                bio: 'A certified Nigerian educator, Esther holds a B.Sc. Ed in Political Science Education from Olabisi Onabanjo University, Ago Iwoye, with over four years of teaching experience. She knows overcrowded, under-resourced classrooms first-hand, and makes sure every DIT learning product serves a teacher instead of adding to their load. Her classroom authority gives her the final say to veto any feature that complicates a teacher\'s day.',
               },
             ].map((f, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>

@@ -154,9 +154,9 @@ export default function AIHub() {
                                 </p>
                                 <Link
                                   to={`/ai-creatives-training-nigeria#${target}`}
-                                  className="inline-flex items-center gap-2 font-[var(--font-mono)] text-[0.78rem] uppercase tracking-[0.14em] text-[var(--color-burnt)] hover:underline"
+                                  className="btn btn-primary !py-2.5 !px-5 !text-sm"
                                 >
-                                  See the matching module <ArrowRight size={14} />
+                                  See the matching module <ArrowRight size={16} />
                                 </Link>
                               </div>
                             ) : null
@@ -229,9 +229,9 @@ export default function AIHub() {
               },
               {
                 name: 'Esther Opeyemi Adekanmbi',
-                role: 'AI Creator & Coach, DIT',
+                role: 'Educator & AI Coach, DIT',
                 img: '/Esther.jpeg',
-                bio: 'Esther is a creative, hands-on AI creator and coach with over two years helping individuals and businesses actually put AI to work. She teaches it in plain language that fits a Nigerian context.',
+                bio: 'Esther is a certified Nigerian educator — a B.Sc. Ed graduate in Political Science Education from Olabisi Onabanjo University, Ago Iwoye, with four years of teaching experience. A creative, hands-on AI creator and coach, she helps individuals and businesses put AI to work, teaching it in plain language that fits a Nigerian context.',
                 skills: [
                   'AI content creation',
                   'Prompt engineering',

@@ -292,7 +292,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               { name: 'Lawrence Oladeji', role: 'Co-Founder & Lead Developer', bio: 'A mechanical engineer who taught Maths and Physics, trained as a Solar Engineer, and now works as a Data Associate and Junior AI Engineer. That mix is what lets him build SomaBox to run offline on minimal hardware.' },
-              { name: 'Esther Adekambi', role: 'Co-Founder & Head of Education', bio: 'A certified Nigerian teacher with four years of classroom experience. She ensures every SomaBox feature serves teachers, not their workload, and holds the final veto on anything that complicates their day.' },
+              { name: 'Esther Adekanmbi', role: 'Co-Founder & Head of Education', bio: 'A certified Nigerian educator with a B.Sc. Ed in Political Science Education from Olabisi Onabanjo University and four years of teaching experience. She ensures every SomaBox feature serves educators, not their workload, and holds the final veto on anything that complicates a teacher\'s day.' },
             ].map((f, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
                 <div className="bg-[var(--color-paper)] p-8 h-full border-2 border-[var(--color-ink)]">
