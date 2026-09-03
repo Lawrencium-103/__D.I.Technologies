@@ -251,7 +251,7 @@ ${blogIndexItems}
     {
       path: '/research',
       title: 'The research behind OMSF',
-      description: 'Academic and industry sources behind OMSF. The evidence base for open model evaluation.',
+      description: 'The academic and industry sources behind the OpenModel Synthesis Framework, our published Zenodo preprint (DOI 10.5281/zenodo.21965789), and how to cite DIT and OMSF. Register interest in our next study on edge LLM serving.',
       body: `<h1>Research — the evidence behind OMSF</h1>
 <p>The academic and industry sources behind the OpenModel Synthesis Framework. OMSF is not a set of opinions &mdash; each rung of the Openness Ladder and every grade in the <a href="/reports">Reports Library</a> traces back to published work on open-source licensing, model evaluation and AI deployment.</p>
 <p>This page gathers that evidence base in one place: papers on open-weight licensing, industry analysis of model access, and technical documentation from the projects themselves. It is the same material the <a href="/open-models">Leaderboard</a> grades are built on.</p>
@@ -434,6 +434,29 @@ ${blogIndexItems}
       <p><button type="submit">Send message</button></p>
     </form>`
 
+  // Static Expression-of-Interest form for /research so Netlify's deploy-time
+  // detector finds the "research-eoi" form (the SPA renders it client-side,
+  // which the detector cannot see). Field-for-field identical to the React
+  // form in src/pages/Research.jsx so fetch-POST submissions are accepted.
+  const researchEoiFormHtml = `
+    <form name="research-eoi" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="research-eoi" />
+      <p><label>Full name <input type="text" name="name" required /></label></p>
+      <p><label>Email <input type="email" name="email" required /></label></p>
+      <p><label>Affiliation <input type="text" name="affiliation" /></label></p>
+      <p><label>How would you like to be involved?
+        <select name="area">
+          <option>Benchmarking &amp; data analysis</option>
+          <option>Academic writing &amp; positioning</option>
+          <option>Field study design (Nigeria school pilot)</option>
+          <option>Reproducing the study / open dataset</option>
+          <option>General — keep me posted</option>
+        </select>
+      </label></p>
+      <p><label>Anything else? <textarea name="message"></textarea></label></p>
+      <p><button type="submit">Register interest</button></p>
+    </form>`
+
   for (const page of staticPages) {
     routes.push({
       path: page.path,
@@ -444,7 +467,12 @@ ${blogIndexItems}
         path: page.path,
         headAssets: assetLinks,
         entryScripts: scriptTags,
-        body: page.path === '/contact' ? `${page.body || ''}\n${contactFormHtml}` : (page.body || ''),
+        body:
+          page.path === '/contact'
+            ? `${page.body || ''}\n${contactFormHtml}`
+            : page.path === '/research'
+              ? `${page.body || ''}\n${researchEoiFormHtml}`
+              : (page.body || ''),
         jsonLd: page.jsonLd || [
           {
             '@context': 'https://schema.org',

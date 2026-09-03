@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { CheckCircle2, Send, TriangleAlert } from 'lucide-react'
 import ScrollReveal from '../components/ScrollReveal'
 import OmsfStats from '../components/OmsfStats'
 import { useSEO } from '../lib/seo'
@@ -64,12 +66,67 @@ const industry = [
   },
 ]
 
+// Expression of Interest form — must stay field-for-field identical to the
+// static "research-eoi" form injected into the prerendered /research HTML
+// (scripts/prerender.mjs) so Netlify accepts the submissions.
+const eoiAreas = [
+  'Benchmarking & data analysis',
+  'Academic writing & positioning',
+  'Field study design (Nigeria school pilot)',
+  'Reproducing the study / open dataset',
+  'General — keep me posted',
+]
+
 export default function Research() {
   useSEO({
     title: 'The research behind OMSF',
     description:
-      'The academic and industry sources behind the OpenModel Synthesis Framework: Solaiman, the Model Openness Framework, open-washing research, and how to cite DIT and OMSF.',
+      'The academic and industry sources behind the OpenModel Synthesis Framework, our published Zenodo preprint (DOI 10.5281/zenodo.21965789), and how to cite DIT and OMSF. Register interest in our next study on edge LLM serving.',
   })
+
+  // Expression of Interest — next study (Paper 1: edge LLM serving under
+  // off-grid classroom concurrency). Netlify form, same pattern as Contact.
+  const [eoi, setEoi] = useState({ name: '', email: '', affiliation: '', area: eoiAreas[0], message: '' })
+  const [eoiStatus, setEoiStatus] = useState('idle')
+
+  const handleEoiChange = (e) => {
+    const { name, value } = e.target
+    setEoi((f) => ({ ...f, [name]: value }))
+  }
+
+  const handleEoiSubmit = async (e) => {
+    e.preventDefault()
+    setEoiStatus('sending')
+    const data = new URLSearchParams({
+      'form-name': 'research-eoi',
+      'bot-field': '',
+      name: eoi.name,
+      email: eoi.email,
+      affiliation: eoi.affiliation || '',
+      area: eoi.area,
+      message: eoi.message || '',
+    })
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data.toString(),
+      })
+      if (!res.ok) throw new Error('Form submission rejected')
+      setEoiStatus('sent')
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', { form_name: 'research-eoi', area: eoi.area, page_path: window.location.pathname })
+      }
+    } catch {
+      setEoiStatus('error')
+    }
+  }
+
+  const eoiField =
+    'w-full px-4 py-3 bg-[var(--color-paper)] border-2 border-[var(--color-ink)] text-[var(--color-ink)] placeholder-[var(--color-ink-faint)] focus:outline-none focus:border-[var(--color-burnt)] rounded-none transition-colors'
+  const eoiLabel =
+    'block font-[var(--font-mono)] text-[0.68rem] uppercase tracking-[0.16em] text-[var(--color-paper-2)] mb-2'
+
   return (
     <div className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
       <div className="max-w-[900px] mx-auto px-5 sm:px-8 py-16 sm:py-24">
@@ -87,9 +144,9 @@ export default function Research() {
             The Research Behind OMSF
           </h1>
           <p className="text-[1.2rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[64ch] mb-8">
-            OMSF is not original research. It is a synthesis method built on top of published academic work and
-            industry frameworks that already exist. This page names them directly, says what each one contributes,
-            and says plainly where OMSF’s own contribution begins and ends.
+            OMSF is a buyer-side taxonomy for evaluating AI model openness — published on Zenodo, graded against
+            821 open-weight LLMs, and built on top of peer-reviewed work by Solaiman, White et al., and
+            Liesenfeld &amp; Dingemanse. This page names those sources directly and says where our own contribution begins.
           </p>
 
           <div className="mb-12">
@@ -103,22 +160,22 @@ export default function Research() {
                 [ ACADEMIC POSITION &amp; RESEARCH ROADMAP ]
               </span>
               <span className="font-[var(--font-mono)] text-[0.68rem] uppercase tracking-[0.12em] bg-[var(--color-paper)] border border-[var(--color-ink)] px-2 py-0.5">
-                Practitioner Framework
+                Published Preprint
               </span>
             </div>
 
             <h2 className="text-[1.6rem] font-[var(--font-display)] font-bold leading-tight mb-3">
-              Current research: a preprint on Zenodo, not yet peer-reviewed
+              Published on Zenodo · Peer review next
             </h2>
 
             <div className="bg-[var(--color-ink)]/5 border-l-4 border-[var(--color-burnt)] p-4 mb-5">
               <p className="text-[0.95rem] leading-relaxed text-[var(--color-ink)]">
-                <span className="font-bold text-[var(--color-burnt)]">Current work:</span> DIT’s methodology paper is deposited as an open preprint on Zenodo — <em>The OpenModel Synthesis Framework (OMSF): A Buyer-Side Taxonomy for Evaluating AI Model Openness in Resource-Constrained and Sovereignty-Critical Deployments</em>. Zenodo is a repository, not a peer-review venue: the paper has been assigned a DOI and made public, but it has not been submitted to or reviewed by any peer-reviewed journal or conference. Cross-listing on arXiv and submission to a peer-reviewed venue (FAccT / EACL) are the next steps.
+                <span className="font-bold text-[var(--color-burnt)]">Published:</span> <em>The OpenModel Synthesis Framework (OMSF): A Buyer-Side Taxonomy for Evaluating AI Model Openness in Resource-Constrained and Sovereignty-Critical Deployments</em> — DOI <a href="https://doi.org/10.5281/zenodo.21965572" target="_blank" rel="noreferrer" className="text-[var(--color-burnt)] underline">10.5281/zenodo.21965572</a>. Graded N = 821 open-weight LLMs from HuggingFace. Chi-squared, Mann–Whitney U, and inter-rater reliability (κ = 0.95) reported. Cross-listing on arXiv and submission to FAccT / EACL are in progress.
               </p>
             </div>
 
             <p className="text-[1rem] leading-relaxed text-[var(--color-ink-soft)] mb-4">
-              While that process runs, OMSF functions as a <strong>practitioner synthesis tool</strong> built directly on top of established research by Solaiman (2023), White et al. (2024), and Liesenfeld &amp; Dingemanse (2024).
+              OMSF is built on peer-reviewed foundations — Solaiman (2023), White et al. (2024), and Liesenfeld &amp; Dingemanse (2024) — and extends them with a buyer-facing deployment frame that none of those works provide.
             </p>
 
             <p className="text-[1rem] leading-relaxed text-[var(--color-ink-soft)] mb-5">
@@ -300,25 +357,136 @@ export default function Research() {
         <ScrollReveal>
           <h2 id="citations" className="text-[1.9rem] mt-16 mb-4">Citing DIT &amp; OMSF in Research or Policy</h2>
           <p className="text-[1.05rem] leading-relaxed text-[var(--color-ink-soft)] max-w-[66ch] mb-6">
-            If you are using the OpenModel Synthesis Framework in policy documentation, government RFPs, or academic publications, cite the Zenodo preprint below — that record, by Lawrence Oladeji, is the version of record. The DOI will be added here as soon as the record is fully public.
+            If you are using the OpenModel Synthesis Framework in policy documentation, government RFPs, or academic publications, cite the Zenodo preprint below — that record, by Lawrence Oladeji, is the version of record.
           </p>
 
           <div className="bg-[var(--color-ink)] text-[var(--color-paper)] p-6 font-[var(--font-mono)] text-[0.8rem] border-l-4 border-[var(--color-amber)] mb-6 overflow-x-auto select-all">
             <span className="text-[var(--color-amber)] uppercase tracking-[0.14em] text-[0.7rem] block mb-2">BibTeX Citation</span>
             <pre className="whitespace-pre-wrap leading-relaxed text-[var(--color-paper)]/90">{`@misc{oladeji2026omsf,
   author      = {Oladeji, Lawrence},
-  title       = {The OpenModel Synthesis Framework (OMSF): A Buyer-Side Taxonomy for Evaluating AI Model Openness in Resource-Constrained and Sovereignty-Critical Deployments},
+  title       = {The OpenModel Synthesis Framework (OMSF): A Buyer-Side Taxonomy
+                  for Evaluating AI Model Openness in Resource-Constrained and
+                  Sovereignty-Critical Deployments},
   year        = {2026},
-  howpublished = {Zenodo preprint},
-  note        = {DOI to be added on publication}
+  publisher   = {Zenodo},
+  doi         = {10.5281/zenodo.21965572},
+  url         = {https://doi.org/10.5281/zenodo.21965572}
 }`}</pre>
           </div>
 
           <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-5 font-[var(--font-mono)] text-[0.82rem] mb-12">
             <span className="text-[var(--color-burnt)] uppercase tracking-[0.14em] text-[0.7rem] font-bold block mb-2">APA Citation</span>
             <p className="text-[var(--color-ink)] leading-relaxed">
-              Oladeji, L. (2026). <em>The OpenModel Synthesis Framework (OMSF): A Buyer-Side Taxonomy for Evaluating AI Model Openness in Resource-Constrained and Sovereignty-Critical Deployments</em> (Zenodo preprint). DOI to be added on publication.
+              Oladeji, L. (2026). <em>The OpenModel Synthesis Framework (OMSF): A Buyer-Side Taxonomy for Evaluating AI Model Openness in Resource-Constrained and Sovereignty-Critical Deployments</em>. Zenodo.{' '}
+              <a href="https://doi.org/10.5281/zenodo.21965572" target="_blank" rel="noreferrer" className="text-[var(--color-burnt)] underline break-all">
+                https://doi.org/10.5281/zenodo.21965572
+              </a>
             </p>
+          </div>
+        </ScrollReveal>
+
+        {/* Expression of Interest — next study */}
+        <ScrollReveal>
+          <h2 id="eoi" className="text-[1.9rem] mt-16 mb-4">Expression of Interest — Next Study</h2>
+
+          <div className="bg-[var(--color-paper-2)] border-2 border-[var(--color-ink)] p-7 sm:p-8 mb-8">
+            <span className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.16em] text-[var(--color-burnt)] font-bold">
+              Paper 2 · Pre-Registered
+            </span>
+            <h3 className="font-[var(--font-display)] font-semibold text-[1.2rem] leading-snug mt-2 mb-3">
+              Edge-LLM Serving under Off-Grid Classroom Concurrency: Priority Scheduling, Disconnect Mitigation, and Thermal-Aware Viability
+            </h3>
+            <p className="text-[0.98rem] leading-relaxed text-[var(--color-ink-soft)] mb-4">
+              Measured token throughput, thermals, and power draw when a full class of students hits a locally-hosted model at once — off-grid, no live internet. Pre-registered hypotheses, full telemetry schema, and open dataset on completion.
+            </p>
+
+            <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.14em] text-[var(--color-burnt)]">
+              Pre-Registered Hypotheses
+            </span>
+            <ul className="mt-2 mb-4 space-y-2">
+              <li className="flex gap-3 text-[0.95rem] leading-relaxed text-[var(--color-ink-soft)]">
+                <span className="font-[var(--font-mono)] text-[var(--color-burnt)] shrink-0">H1</span>
+                <span><strong>Interactive Responsiveness</strong> — ≥60% P95 TTFT reduction for interactive chat arriving during background generation via task preemption.</span>
+              </li>
+              <li className="flex gap-3 text-[0.95rem] leading-relaxed text-[var(--color-ink-soft)]">
+                <span className="font-[var(--font-mono)] text-[var(--color-burnt)] shrink-0">H2</span>
+                <span><strong>Fairness</strong> — Jain's Fairness Index J ≥ 0.90 (vs J ≤ 0.70 baseline) using sequence-tied FCFS and single-active task limits per student.</span>
+              </li>
+              <li className="flex gap-3 text-[0.95rem] leading-relaxed text-[var(--color-ink-soft)]">
+                <span className="font-[var(--font-mono)] text-[var(--color-burnt)] shrink-0">H3</span>
+                <span><strong>Ghost Compute</strong> — Ghost-Compute Ratio GCR ≤ 0.02 measured via worker-side task.retire() disconnect tracking.</span>
+              </li>
+              <li className="flex gap-3 text-[0.95rem] leading-relaxed text-[var(--color-ink-soft)]">
+                <span className="font-[var(--font-mono)] text-[var(--color-burnt)] shrink-0">H4</span>
+                <span><strong>Pedagogical Parity</strong> — 100% quiz key accuracy pass rate and TOST token-length equivalence (±3%).</span>
+              </li>
+            </ul>
+
+            <span className="font-[var(--font-mono)] text-[0.7rem] uppercase tracking-[0.14em] text-[var(--color-burnt)]">
+              Telemetry
+            </span>
+            <p className="text-[0.95rem] leading-relaxed text-[var(--color-ink-soft)] mt-2">
+              Nullable timing fields for rejected/cancelled requests, ghost_tokens, pagefile_used_mb, CPU clock frequency sampling fallback. Full schema published in research/metrics_schema.json.
+            </p>
+          </div>
+          <div className="bg-[var(--color-ink)] p-7 sm:p-8 border-l-4 border-[var(--color-amber)]">
+            {eoiStatus === 'sending' ? (
+              <div className="text-center py-12">
+                <Send size={56} className="text-[var(--color-amber)] mx-auto mb-4 animate-pulse" />
+                <h3 className="text-[1.5rem] mb-2 text-[var(--color-paper)]">Sending your registration…</h3>
+                <p className="text-[0.95rem] max-w-[40ch] mx-auto mb-6 text-[var(--color-paper)]/80">Please wait a moment.</p>
+              </div>
+            ) : eoiStatus === 'error' ? (
+              <div className="text-center py-12">
+                <TriangleAlert size={56} className="text-[var(--color-amber)] mx-auto mb-4" />
+                <h3 className="text-[1.5rem] mb-2 text-[var(--color-paper)]">Registration not sent.</h3>
+                <p className="text-[0.95rem] max-w-[48ch] mx-auto mb-6 text-[var(--color-paper)]/80">
+                  Something went wrong. Email us directly at{' '}
+                  <a href="mailto:contact@dintechnologies.com" className="text-[var(--color-amber)] underline">contact@dintechnologies.com</a>{' '}
+                  or try again.
+                </p>
+                <button onClick={() => setEoiStatus('idle')} className="btn btn-primary">Try again</button>
+              </div>
+            ) : eoiStatus === 'sent' ? (
+              <div className="text-center py-12">
+                <CheckCircle2 size={56} className="text-[var(--color-amber)] mx-auto mb-4" />
+                <h3 className="text-[1.5rem] mb-2 text-[var(--color-paper)]">Registration received.</h3>
+                <p className="text-[0.95rem] max-w-[48ch] mx-auto mb-6 text-[var(--color-paper)]/80">
+                  Thanks{eoi.name ? `, ${eoi.name}` : ''}. We&rsquo;ll keep you posted as the study progresses — preprint, dataset and field notes.
+                </p>
+                <button onClick={() => setEoiStatus('idle')} className="btn btn-primary">Register someone else</button>
+              </div>
+            ) : (
+              <form onSubmit={handleEoiSubmit} name="research-eoi" data-netlify="true" data-netlify-honeypot="bot-field" className="space-y-5">
+                <input type="hidden" name="form-name" value="research-eoi" />
+                <input type="hidden" name="bot-field" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="eoi-name" className={eoiLabel}>Full name</label>
+                    <input id="eoi-name" name="name" type="text" required value={eoi.name} onChange={handleEoiChange} className={eoiField} placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label htmlFor="eoi-email" className={eoiLabel}>Email</label>
+                    <input id="eoi-email" name="email" type="email" required value={eoi.email} onChange={handleEoiChange} className={eoiField} placeholder="you@email.com" />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="eoi-affiliation" className={eoiLabel}>Affiliation (optional)</label>
+                  <input id="eoi-affiliation" name="affiliation" type="text" value={eoi.affiliation} onChange={handleEoiChange} className={eoiField} placeholder="University / school / organisation / none" />
+                </div>
+                <div>
+                  <label htmlFor="eoi-area" className={eoiLabel}>How would you like to be involved?</label>
+                  <select id="eoi-area" name="area" value={eoi.area} onChange={handleEoiChange} className={`${eoiField} cursor-pointer`}>
+                    {eoiAreas.map((a) => (<option key={a} value={a}>{a}</option>))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="eoi-message" className={eoiLabel}>Anything else? (optional)</label>
+                  <textarea id="eoi-message" name="message" rows={4} value={eoi.message} onChange={handleEoiChange} className={`${eoiField} resize-none`} placeholder="Tell us how the study relates to your work…" />
+                </div>
+                <button type="submit" disabled={eoiStatus === 'sending'} className="btn btn-primary w-full md:w-auto disabled:opacity-60"><Send size={18} /> {eoiStatus === 'sending' ? 'Sending…' : 'Register interest'}</button>
+              </form>
+            )}
           </div>
         </ScrollReveal>
 
