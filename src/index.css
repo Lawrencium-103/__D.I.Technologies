@@ -230,3 +230,9 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hide prerendered static HTML until React mounts and replaces it.
+   Crawlers that don't execute CSS still see the content (SEO safe). */
+#root[data-prerender] {
+  visibility: hidden;
+}

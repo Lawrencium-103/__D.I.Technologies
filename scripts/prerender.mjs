@@ -128,7 +128,7 @@ function buildHtml({ title, description, path, type = 'website', image = SITE_DE
     </script>
   </head>
   <body>
-    <div id="root">${body}</div>
+    <div id="root" data-prerender>${body}</div>
     ${entryScripts}
   </body>
 </html>`
