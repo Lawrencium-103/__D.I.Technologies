@@ -17,6 +17,7 @@ export default function AIHub() {
     title: 'Dara AI Training Hub for Nigeria',
     description:
       'Hands-on AI training in Nigeria across 9 tracks for corporate teams, creatives, students and educators. Every session ends with a real output — an automation, agent, dashboard or content system you built.',
+    path: '/ai-hub',
   })
   const [active, setActive] = useState(null)
   const indexOf = (id) => tracks.findIndex(t => t.id === id) + 1

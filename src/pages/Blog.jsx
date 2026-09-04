@@ -17,6 +17,7 @@ export default function Blog() {
     title: 'Open models, offline AI & EdTech field notes',
     description:
       'Research notes from Lawrence Oladeji at DIT: how we grade open-source AI models for African deployment, what we learned building SomaBox, and the evidence behind S-SME.',
+    path: '/blog',
   })
   const [activeCat, setActiveCat] = useState('All')
   const [activeYear, setActiveYear] = useState('All')

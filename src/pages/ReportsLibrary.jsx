@@ -11,6 +11,7 @@ export default function ReportsLibrary() {
     title: 'OpenModel Reports Library',
     description:
       'Ready-made DIT OpenModel reports for leading models, audited against the OMSF 6-Rung Openness Ladder and verified against primary weights.',
+    path: '/reports',
   })
   const [items, setItems] = useState([])
   const [status, setStatus] = useState('loading')

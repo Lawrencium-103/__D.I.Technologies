@@ -19,6 +19,7 @@ export default function ReportBuilder() {
     title: 'OpenModel Report Builder',
     description:
       'Grade any AI model against the OMSF 6-Rung Openness Ladder and return a branded DIT report you can print to PDF. Free, instant, no sign-up.',
+    path: '/report',
   })
   const [model, setModel] = useState('')
   const [audience, setAudience] = useState('general')

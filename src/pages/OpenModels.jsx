@@ -118,6 +118,7 @@ export default function OpenModels() {
     title: 'Open Model Leaderboard, OMSF-graded',
     description:
       'The DIT open model leaderboard: leading open models graded on the OMSF 6-Rung Openness Ladder, plus the full HuggingFace catalog with computed VRAM estimates, license and access analysis.',
+    path: '/open-models',
   })
   const initialModels = Array.isArray(snapshot?.models) ? snapshot.models : []
   const initialFetchedAt = snapshot?.fetchedAt || new Date().toISOString()

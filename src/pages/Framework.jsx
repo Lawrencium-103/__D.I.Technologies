@@ -9,6 +9,7 @@ export default function Framework() {
     title: 'OpenModel Synthesis Framework (OMSF)',
     description:
       'OMSF is the six-rung Openness Ladder for grading open AI models for African enterprise and public deployment. Read the full framework, its position and how it differs.',
+    path: '/framework',
   })
   const f = framework
   return (

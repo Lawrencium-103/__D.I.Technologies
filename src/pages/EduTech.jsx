@@ -97,6 +97,7 @@ export default function EduTech() {
     title: 'SomaBox: offline AI tutor for schools',
     description:
       'SomaBox is an offline AI tutor in a single box: 60+ NERDC textbooks, 26 slash commands, zero internet required. AI tutoring for schools where connectivity and power are uncertain.',
+    path: '/edutech',
   })
 
   const runCommand = (cmd) => {

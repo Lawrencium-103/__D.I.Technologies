@@ -79,6 +79,7 @@ export default function SsmeEvidence() {
     title: 'S-SME evidence: the numbers that matter',
     description:
       'The published sources behind DIT S-SME: solar economics for Nigerian SMEs, offline inventory gains, and Nigeria e-invoicing compliance timelines.',
+    path: '/s-sme/evidence',
   })
   return (
     <div className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">

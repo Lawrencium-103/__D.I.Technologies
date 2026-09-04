@@ -31,6 +31,7 @@ export default function About() {
     title: 'About us',
     description:
       'Dara Initiative Technology builds open-weight, offline-first AI that runs without internet — applied to education (SomaBox), sustainable SMEs (S-SME) and agriculture, starting in Nigeria.',
+    path: '/about',
   })
   return (
     <>

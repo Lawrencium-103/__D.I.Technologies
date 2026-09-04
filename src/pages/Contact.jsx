@@ -18,6 +18,7 @@ export default function Contact() {
     title: 'Contact us',
     description:
       'Talk to DIT about SomaBox for your school, AI training for your team, an S-SME sustainability audit or a partnership. Based in Oyo State, Nigeria.',
+    path: '/contact',
   })
   const [form, setForm] = useState({ name: '', org: '', email: '', need: needs[0], message: '' })
   const [status, setStatus] = useState('idle')

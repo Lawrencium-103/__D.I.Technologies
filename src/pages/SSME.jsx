@@ -42,6 +42,7 @@ export default function SSME() {
     title: 'S-SME: sustainable SME toolkit for Nigeria',
     description:
       'DIT S-SME helps Nigerian SMEs cut power costs with solar, digitise inventory offline, stay audit-ready for e-invoicing and grow with evidence. Case studies and a 117-item toolkit included.',
+    path: '/s-sme',
   })
   const { counts, download, like } = useSmePdfs()
   return (

@@ -384,6 +384,7 @@ export default function SsmeToolkit() {
     title: 'S-SME Toolkit: score your business',
     description:
       '117 items from the DIT SME Toolkit, each scored against the frameworks that open doors: IFC, SMEDAN and more. Interactive scoring, ratings and fillable DIT PDFs.',
+    path: '/s-sme/toolkit',
   })
   const [state, setState] = useState(loadState)
   const { counts, download, like } = useSmePdfs()
