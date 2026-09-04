@@ -1,16 +1,45 @@
-# React + Vite
+# DIT Dara Initiative Tech — Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Source code for the official website of **DIT Dara Initiative Tech (D.I. Technologies)** — an AI, data, and open-technology initiative building offline-first, locally deployable AI, public research, and practical training for organisations across Nigeria and the Global South.
 
-Currently, two official plugins are available:
+The site covers the **Open Model Scoring Framework (OMSF)**, open-weight model research, and applied AI training. It is built as a prerendered React + Vite single-page app with generated sitemaps and structured data (JSON-LD) for search visibility.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Official Links
 
-## React Compiler
+These are the canonical properties for the project:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🌐 **Website:** [DIT Dara Initiative Tech — dintechnologies.com](https://dintechnologies.com)
+- 🔬 **Research:** [OMSF Research, Methodology & Citations — dintechnologies.com/research](https://dintechnologies.com/research)
 
-## Expanding the Oxlint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- [React](https://react.dev) + [Vite](https://vitejs.dev) (SPA with prerendered static output)
+- [Tailwind CSS](https://tailwindcss.com) v4
+- [Framer Motion](https://www.framer.com/motion/) for animation
+- [React Router](https://reactrouter.com) for routing
+- Build scripts that generate blog posts, sitemaps, `llms.txt`, and OpenGraph covers
+
+## Project Structure
+
+```
+src/
+  pages/        # Route pages (Home, About, Research, Blog, Contact, Training)
+  components/   # Reusable UI components
+  data/         # Blog + model datasets
+  lib/          # SEO helpers (JSON-LD, meta, sitemap)
+content/blog/   # Markdown source for blog posts
+scripts/        # Build-time generators (posts, sitemap, covers, prerender)
+```
+
+## Getting Started
+
+```bash
+npm install
+npm run dev        # local dev server
+npm run build      # production build (includes sitemap + prerender)
+npm run preview    # preview the built site
+```
+
+## License
+
+Source code in this repository is provided for reference. Content, brand, and assets belong to DIT Dara Initiative Tech. See [dintechnologies.com](https://dintechnologies.com) for the live site.

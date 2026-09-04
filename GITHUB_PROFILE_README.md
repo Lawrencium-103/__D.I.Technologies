@@ -442,6 +442,13 @@ I'm open to roles and projects where **data meets decisions** — whether that's
 - 🧭 **Portfolio:** [lawrenceanalyst1.github.io](https://lawrenceanalyst1.github.io)
 - 💼 **LinkedIn:** [lawrence-oladeji](https://www.linkedin.com/in/lawrence-oladeji)
 
+### 🏢 D.I. Technologies — Dara Initiative Tech
+
+The organisation behind the public research and offline-first AI work:
+
+- 🌐 **Website:** [DIT Dara Initiative Tech — dintechnologies.com](https://dintechnologies.com)
+- 🔬 **Research:** [OMSF Research & Methodology — dintechnologies.com/research](https://dintechnologies.com/research)
+
 > **🔗 Live demos:** everything marked **Live / Live App** is publicly deployed — Nigeria Health, WHO ESPEN, Premiership Fair-Value, Startup Signal, J_oblin, Lagos CVD Pre-Triage, Lagos NCD Simulator, Financial Strategy, Stanbic, SESA, OyoAirTrack, XGen, LinkyGen, Stratos. A few items remain private or available on request (Fintech Power BI, RegulAI, CBAM, Leadflow, churn, National Health Tracker) — [email me](mailto:oladeji.lawrence@gmail.com) and I'll point you to the demo or walk you through the repo.
 
 ---

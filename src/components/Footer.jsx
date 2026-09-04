@@ -43,6 +43,7 @@ export default function Footer() {
             <h4 className="font-[var(--font-mono)] text-[0.72rem] uppercase tracking-[0.2em] text-[var(--color-amber)] mb-4">Contact</h4>
             <div className="flex flex-col gap-2.5 text-sm">
               <Link to="/contact" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors no-underline">Contact</Link>
+              <a href="https://github.com/Lawrencium-103/__D.I.Technologies/blob/main/README.md" target="_blank" rel="noopener noreferrer" className="text-[var(--color-paper)]/75 hover:text-[var(--color-amber)] transition-colors no-underline">View source on GitHub</a>
             </div>
           </div>
         </div>
